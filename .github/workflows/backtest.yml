@@ -71,10 +71,20 @@ jobs:
           restore-keys: backtest-state-
 
       - name: Téléchargement + validation + backtest (une seule commande)
+        shell: bash
         env:
           PYTHONUNBUFFERED: "1"
-        shell: bash
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Toutes les 3 minutes : publie le journal en cours sur la branche « progress » (suivi à distance)
+          ( URL="https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            P="$RUNNER_TEMP/progress"; git init -q "$P"; git -C "$P" checkout -q -b progress
+            while true; do sleep 180
+              [ -f results/pipeline.log ] || continue
+              tail -n 300 results/pipeline.log > "$P/progress.log"; date -u > "$P/updated.txt"
+              git -C "$P" add -A && git -C "$P" -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm progress && \
+                git -C "$P" push -qf "$URL" progress >/dev/null 2>&1
+            done ) &
           ARGS=""
           if [ -n "${{ github.event.inputs.start }}" ]; then ARGS="$ARGS --start ${{ github.event.inputs.start }}"; fi
           if [ -n "${{ github.event.inputs.end }}" ]; then ARGS="$ARGS --end ${{ github.event.inputs.end }}"; fi

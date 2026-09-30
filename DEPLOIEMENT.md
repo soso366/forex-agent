@@ -59,7 +59,7 @@ Une seule commande : `python -m forex_agent pipeline`
    paramètres identiques ;
 4. copie des résultats dans `results/`.
 
-Avant ça, les 46 tests automatiques sont relancés : si le code a été abîmé, rien ne tourne.
+Avant ça, les 47 tests automatiques sont relancés : si le code a été abîmé, rien ne tourne.
 
 **Coût** : gratuit. Un dépôt privé dispose de 2 000 minutes de calcul par mois ; un backtest en prend
 environ 60 à 120.

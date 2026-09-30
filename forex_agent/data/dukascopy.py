@@ -63,29 +63,61 @@ def decode_bi5(raw: bytes, day: date, symbol: str) -> pd.DataFrame:
     return df
 
 
-def fetch(url: str, retries: int = 5, timeout: int = 30) -> bytes | None:
-    """Télécharge une URL. 404 = pas de fichier (jour sans données) → None."""
-    delay = 2.0
+class RateLimited(Exception):
+    """Dukascopy a demandé de ralentir (HTTP 429/503) et la patience est épuisée pour ce fichier."""
+
+
+_pace_lock = __import__("threading").Lock()
+_next_slot = [0.0]
+MIN_INTERVAL = 0.6          # au plus ~1,6 requête/seconde, tous fils confondus
+
+
+def _wait_turn(extra: float = 0.0) -> None:
+    """Espace les requêtes ; une pause imposée par le serveur s'applique à tous les fils."""
+    with _pace_lock:
+        now = time.monotonic()
+        slot = max(_next_slot[0], now) + extra
+        _next_slot[0] = slot + MIN_INTERVAL
+    delay = slot - time.monotonic()
+    if delay > 0:
+        time.sleep(delay)
+
+
+def fetch(url: str, retries: int = 8, timeout: int = 30) -> bytes | None:
+    """Télécharge une URL en respectant les limites de Dukascopy.
+    404 = jour sans données → None. 429/503 = on ralentit (Retry-After ou 15 s, 30 s, 60 s… max 5 min)."""
+    backoff = 15.0
     for attempt in range(retries):
+        _wait_turn()
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "forex-agent-research/1.0"})
             with urllib.request.urlopen(req, timeout=timeout) as r:
-                return r.read()
+                data = r.read()
+            if data and data[:1] != b"\x5d":            # pas un fichier LZMA : page d'erreur, on ne la garde pas
+                raise ConnectionError(f"réponse inattendue ({len(data)} octets, pas au format bi5)")
+            return data
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return None
             if attempt == retries - 1:
+                if e.code in (429, 503):
+                    raise RateLimited(f"HTTP {e.code} (limite de débit Dukascopy)") from e
                 raise
+            if e.code in (429, 503):
+                ra = e.headers.get("Retry-After") if e.headers else None
+                wait = float(ra) if ra and ra.isdigit() else backoff
+                _wait_turn(extra=min(wait, 300))        # tout le monde attend
+                backoff = min(backoff * 2, 300)
+                continue
         except (urllib.error.URLError, TimeoutError, ConnectionError):
             if attempt == retries - 1:
                 raise
-        time.sleep(delay)
-        delay *= 2
+        time.sleep(min(2 ** attempt, 60))
     return None
 
 
 def download(symbols: list[str], start: date, end: date, cache_dir: Path,
-             fetcher: Callable[[str], bytes | None] = fetch, workers: int = 4,
+             fetcher: Callable[[str], bytes | None] = fetch, workers: int = 2,
              log: Callable[[str], None] = print) -> dict:
     """Télécharge [start, end] inclus dans le cache ; les fichiers déjà présents ne sont pas retéléchargés."""
     jobs = []
@@ -196,7 +228,7 @@ def write_csv(df: pd.DataFrame, out_dir: Path, symbol: str) -> Path:
 
 
 def prepare(symbols: list[str], start: date, end: date, cache_dir: Path, out_dir: Path,
-            fetcher: Callable[[str], bytes | None] = fetch, workers: int = 4,
+            fetcher: Callable[[str], bytes | None] = fetch, workers: int = 2,
             log: Callable[[str], None] = print) -> dict:
     """Chaîne complète : téléchargement → conversion → validation → CSV + rapport qualité."""
     from .providers import CSVProvider

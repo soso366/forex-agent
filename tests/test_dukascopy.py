@@ -205,3 +205,49 @@ class CloudPipelineTest(unittest.TestCase):
             db.close()
             return r
         self.assertEqual(summary("bt_resume"), summary("bt_full"))
+
+
+class RateLimitTest(unittest.TestCase):
+    """Dukascopy répond 429 quand on va trop vite : on doit ralentir, pas échouer, ni garder une page d'erreur."""
+
+    def test_429_then_success(self):
+        import http.server
+        import threading
+        body = lzma.compress(struct.pack(">Iiiiif", 0, 117000, 117010, 116990, 117020, 1.0), format=lzma.FORMAT_ALONE)
+        hits = []
+
+        class H(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                hits.append(self.path)
+                if len(hits) <= 2:
+                    self.send_response(429)
+                    self.send_header("Retry-After", "1")
+                    self.end_headers()
+                    self.wfile.write(b"Too Many Requests")
+                elif self.path.endswith("html"):
+                    self.send_response(200)
+                    self.end_headers()
+                    self.wfile.write(b"<html>erreur</html>")
+                else:
+                    self.send_response(200)
+                    self.end_headers()
+                    self.wfile.write(body)
+
+            def log_message(self, *a):
+                pass
+        srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), H)
+        threading.Thread(target=srv.serve_forever, daemon=True).start()
+        base = f"http://127.0.0.1:{srv.server_address[1]}"
+        import os
+        old = {k: os.environ.pop(k, None) for k in ("HTTP_PROXY", "http_proxy", "HTTPS_PROXY", "https_proxy")}
+        os.environ["NO_PROXY"] = "127.0.0.1"
+        try:
+            self.assertEqual(dk.fetch(base + "/x.bi5"), body)          # 2 refus 429, puis succès
+            self.assertEqual(len(hits), 3)
+            with self.assertRaises(Exception):
+                dk.fetch(base + "/page.html", retries=2)              # page HTML : jamais mise en cache
+        finally:
+            srv.shutdown()
+            for k, v in old.items():
+                if v is not None:
+                    os.environ[k] = v

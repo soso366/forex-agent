@@ -10,7 +10,7 @@ Capital de référence 50 €, un cycle complet toutes les 5 minutes, scalping /
 
 ```bash
 pip install -r requirements.txt          # pandas, numpy, PyYAML (versions figées) ; LLM : requirements-llm.txt
-python -m unittest discover -s tests     # 46 tests : risque, broker, look-ahead, structure, liquidité, horaires, news, LLM, Dukascopy, pipeline cloud, cycle
+python -m unittest discover -s tests     # 47 tests : risque, broker, look-ahead, structure, liquidité, horaires, news, LLM, Dukascopy, pipeline cloud, cycle
 python -m forex_agent replay --days 5 --fresh   # rejoue 5 jours de cycles (données synthétiques)
 python -m forex_agent report             # bilan du journal
 ```

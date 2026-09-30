@@ -187,7 +187,7 @@ class _Tee:
 
 def run_pipeline(cfg: dict, start: date | None = None, end: date | None = None,
                  results_dir: Path | None = None, data_root: Path | None = None,
-                 fetcher=None, retry_wait: int = 60, progress: bool = True) -> int:
+                 fetcher=None, retry_wait: int = 180, progress: bool = True) -> int:
     """UNE commande : téléchargement Dukascopy (reprenable) → validation → backtest (reprenable)
     → results/ (report.md, trades.csv, quality_report.json, pipeline.log, STATUS.txt)."""
     import shutil
@@ -209,16 +209,18 @@ def run_pipeline(cfg: dict, start: date | None = None, end: date | None = None,
         data_root_ = Path(data_root) if data_root else ROOT / "data"
         csv_dir, raw = _csv_dir(cfg), data_root_ / "dukascopy_raw"
         step = "téléchargement Dukascopy"
-        for attempt in range(1, 4):
-            print(f"--- Étape 1/3 : {step} (passage {attempt}/3) ---")
+        passes = 5
+        for attempt in range(1, passes + 1):
+            print(f"--- Étape 1/3 : {step} (passage {attempt}/{passes}) ---")
             rep = dukascopy.prepare(cfg["symbols"], start, end, raw, csv_dir, fetcher=fetcher or dukascopy.fetch)
             if not rep["download"]["errors"]:
                 break
-            print(f"{len(rep['download']['errors'])} fichiers en erreur, nouvel essai dans {retry_wait} s…")
+            print(f"{len(rep['download']['errors'])} fichiers en erreur (souvent : Dukascopy demande de ralentir), "
+                  f"nouvel essai dans {retry_wait} s…")
             import time
             time.sleep(retry_wait)
         else:
-            raise RuntimeError(f"téléchargement incomplet après 3 passages : {rep['download']['errors'][:5]}")
+            raise RuntimeError(f"téléchargement incomplet après {passes} passages : {rep['download']['errors'][:5]}")
         step = "validation"
         print(f"--- Étape 2/3 : {step} ---")
         missing = [s for s, q in rep["symbols"].items() if "error" in q]
@@ -267,7 +269,7 @@ def main(argv: list[str] | None = None) -> None:
     dp.add_argument("--symbols", nargs="+", default=None)
     dp.add_argument("--start", default=None, help="AAAA-MM-JJ (défaut : début des 6 derniers mois complets)")
     dp.add_argument("--end", default=None, help="AAAA-MM-JJ inclus (défaut : fin du dernier mois complet)")
-    dp.add_argument("--workers", type=int, default=4)
+    dp.add_argument("--workers", type=int, default=2)
     sub.add_parser("data-validate", help="relit et valide les CSV M1 comme le fera le rejeu")
     bp = sub.add_parser("backtest", help="rejoue la V2 sur TOUTE la période CSV, journal séparé, puis rapport")
     bp.add_argument("--warmup-days", type=int, default=7, help="historique réservé au calcul des indicateurs")
