@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from ..analysis import indicators as ind
 from ..analysis.market import MarketContext
-from .base import build_setup, buffer, sign_of
+from .base import build_setup, buffer, sign_of, sp
 
 NAME = "DoubleTopBottom_v1"
 ESSENTIAL = ["htf_aligned", "second_touch", "neckline_break", "neckline_retest", "buying_pressure"]
@@ -30,7 +30,7 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
     for i2 in range(len(pts) - 1, 0, -1):
         for i1 in range(i2 - 1, -1, -1):
             p1, p2 = pos[pts[i1][0]], pos[pts[i2][0]]
-            if p2 - p1 < 4:
+            if p2 - p1 < int(sp(cfg, "dt_min_separation")):
                 continue
             b1 = w.iloc[p1]
             if d == 1:
@@ -50,8 +50,9 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
             if brk is None or brk >= len(after) - 1:
                 continue
             post = after.iloc[brk + 1:]
-            near = (post["l"] <= neck + 0.25 * atr) if d == 1 else (post["h"] >= neck - 0.25 * atr)
-            held = (d * (post["c"] - neck) >= -0.25 * atr).all()
+            rz = sp(cfg, "dt_retest_atr") * atr
+            near = (post["l"] <= neck + rz) if d == 1 else (post["h"] >= neck - rz)
+            held = (d * (post["c"] - neck) >= -rz).all()
             pressure = d * (last["c"] - last["o"]) > 0
             conf = {
                 "htf_aligned": ctx.regime == ("TREND_UP" if d == 1 else "TREND_DOWN"),

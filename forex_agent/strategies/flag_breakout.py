@@ -9,7 +9,7 @@ sens de la tendance supérieure.
 from __future__ import annotations
 
 from ..analysis.market import MarketContext
-from .base import build_setup, buffer, params, sign_of
+from .base import build_setup, buffer, params, sign_of, sp
 
 NAME = "FlagBreakout_v1"
 ESSENTIAL = ["context", "pole", "flag", "volatile_trend", "breakout"]
@@ -20,7 +20,7 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
     m5 = ctx.frames["M5"]
     atr = ctx.atr_m5
     last = m5.iloc[-1]
-    pole_min = params(cfg).get("flag_pole_atr", 2.5) * atr
+    pole_min = sp(cfg, "flag_pole_atr") * atr
     for f in range(3, 9):
         flag = m5.iloc[-1 - f:-1]
         pre = m5.iloc[-1 - f - 8:-1 - f]
@@ -38,12 +38,12 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
         if pole < pole_min:
             continue
         flag_range = abs(flag["h"].max() - flag["l"].min())
-        shallow = d * (fl_lo - (top - d * 0.5 * pole)) >= 0      # le drapeau ne corrige pas plus de 50 %
-        if flag_range > 0.5 * pole or not shallow:
+        shallow = d * (fl_lo - (top - d * sp(cfg, "flag_max_retrace") * pole)) >= 0   # correction max du drapeau
+        if flag_range > sp(cfg, "flag_max_range_ratio") * pole or not shallow:
             continue
         seg = m5.iloc[-1 - f - 8:]
-        above_ema = bool((d * (seg["c"] - seg["ema20"]) >= -0.2 * atr).all())
-        breakout = d * (last["c"] - fl_hi) > 0 and d * (last["c"] - last["o"]) >= 0.5 * atr
+        above_ema = bool((d * (seg["c"] - seg["ema20"]) >= -sp(cfg, "flag_ema_tol_atr") * atr).all())
+        breakout = d * (last["c"] - fl_hi) > 0 and d * (last["c"] - last["o"]) >= sp(cfg, "flag_break_body_atr") * atr
         conf = {
             "context": ctx.regime == ("TREND_UP" if d == 1 else "TREND_DOWN"),
             "pole": True,

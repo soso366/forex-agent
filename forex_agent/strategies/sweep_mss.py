@@ -12,7 +12,7 @@ from __future__ import annotations
 from ..analysis import indicators as ind
 from ..analysis import structure as st
 from ..analysis.market import MarketContext
-from .base import build_setup, buffer, params, sign_of
+from .base import build_setup, buffer, params, sign_of, sp
 
 NAME = "SweepMSS_v2"
 ESSENTIAL = ["bias", "time", "sweep", "displacement", "mss", "fvg", "retracement", "premium_discount"]
@@ -30,13 +30,13 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
 
     # 1. prise de liquidité dans les 8 dernières M5 (mèche au-delà, clôture revenue du bon côté)
     sweep_pos, swept = None, None
-    for j in range(n - 8, n - 1):
+    for j in range(n - int(sp(cfg, "sweep_lookback")), n - 1):
         bar = m5.iloc[j]
         wick = bar["l"] if d == 1 else bar["h"]
         for pl in pools:
-            beyond = d * (pl["price"] - wick) >= 0.05 * atr
+            beyond = d * (pl["price"] - wick) >= sp(cfg, "sweep_beyond_atr") * atr
             back = d * (bar["c"] - pl["price"]) > 0 or d * (m5["c"].iloc[j + 1] - pl["price"]) > 0
-            before_ok = (d * (m5["l" if d == 1 else "h"].iloc[j - 12:j] - pl["price"]) > 0).all()
+            before_ok = (d * (m5["l" if d == 1 else "h"].iloc[j - int(sp(cfg, "sweep_clean_bars")):j] - pl["price"]) > 0).all()
             if beyond and back and before_ok:
                 sweep_pos, swept = j, pl
                 break
@@ -51,12 +51,13 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
     minor = (highs[-1][1] if highs else float(pre["h"].iloc[-6:].max())) if d == 1 else \
             (lows[-1][1] if lows else float(pre["l"].iloc[-6:].min()))
     after = m5.iloc[sweep_pos + 1:]
-    disp_mult = params(cfg).get("displacement_atr", 1.0)
-    displacement = any(st.displacement_bar(after.iloc[k], atr, d, disp_mult) for k in range(len(after)))
+    disp_mult = sp(cfg, "displacement_atr")
+    displacement = any(st.displacement_bar(after.iloc[k], atr, d, disp_mult, sp(cfg, "displacement_close_pos"))
+                       for k in range(len(after)))
     mss = bool((d * (after["c"] - minor) > 0).any())
 
     # 3. FVG créée après le sweep, non invalidée ; entrée seulement au retracement dedans
-    gaps = st.fvgs(m5, sweep_pos, d)
+    gaps = st.fvgs(m5, sweep_pos, d, sp(cfg, "fvg_min_atr") * atr)
     fvg = gaps[-1] if gaps else None
     last = m5.iloc[-1]
     retracement = False
@@ -65,7 +66,8 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
         since = m5.iloc[k + 1:]
         intact = not ((since["c"] < lo).any() if d == 1 else (since["c"] > hi).any())
         touched = (last["l"] <= hi and last["c"] >= lo) if d == 1 else (last["h"] >= lo and last["c"] <= hi)
-        in_zone = lo - 0.1 * atr <= ctx.mid <= hi + 0.1 * atr
+        tol = sp(cfg, "fvg_entry_tol_atr") * atr
+        in_zone = lo - tol <= ctx.mid <= hi + tol
         retracement = intact and k < n - 1 and (touched or in_zone)
 
     against = "down" if d == 1 else "up"

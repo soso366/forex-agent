@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from ..analysis import structure as st
 from ..analysis.market import MarketContext
-from .base import build_setup, buffer, sign_of
+from .base import build_setup, buffer, sign_of, sp
 
 NAME = "RangeFade_v2"
 ESSENTIAL = ["context", "location", "rejection", "trigger"]
@@ -25,13 +25,13 @@ def scan(ctx: MarketContext, direction: str, cfg: dict):
     edge = rl if d == 1 else rh
     probe = m5.iloc[-3:]
     reach = probe["l"].min() if d == 1 else probe["h"].max()
-    at_edge = d * (reach - edge) <= 0.15 * w
+    at_edge = d * (reach - edge) <= sp(cfg, "rf_edge_pct") * w
     if not at_edge:
         return None
     # rejet : mèche longue vers la borne sur l'une des 3 dernières bougies
     wicks = [(min(b["o"], b["c"]) - b["l"]) if d == 1 else (b["h"] - max(b["o"], b["c"])) for _, b in probe.iterrows()]
     ranges = [(b["h"] - b["l"]) for _, b in probe.iterrows()]
-    rejection = any(r > 0 and wk >= 0.5 * r for wk, r in zip(wicks, ranges))
+    rejection = any(r > 0 and wk >= sp(cfg, "rf_wick_pct") * r for wk, r in zip(wicks, ranges))
     approach = m5.iloc[-7:-1]
     bodies = (approach["c"] - approach["o"]).abs().to_numpy()
     trigger = st.candle_trigger(last, prev, d)

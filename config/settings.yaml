@@ -73,6 +73,49 @@ strategy_params:
   displacement_atr: 1.0        # corps minimal d'une bougie de displacement (ICT)
   opposite_displacement_atr: 1.5   # « d'où vient le prix » : impulsion contraire récente = pas de trade
   flag_pole_atr: 2.5           # hauteur minimale du mât d'un flag
+  # Constantes rendues paramétrables pour le Parameter Lab (valeurs identiques à la V2) :
+  target_offset_atr: 0.05      # la cible s'arrête 0,05 ATR + spread avant le niveau visé
+  target_min_spreads: 2.0      # un niveau à moins de 2 spreads n'est pas une cible
+  displacement_close_pos: 0.7  # bougie de displacement : clôture dans les 30 % extrêmes
+  tp_min_leg_atr: 2.0          # TrendPullback : jambe d'impulsion minimale
+  tp_leg_lookback: 30          # TrendPullback : fenêtre M5 de recherche de la jambe
+  tp_value_zone_atr: 0.3       # TrendPullback : tolérance autour EMA20/EMA50/ancien niveau
+  br_level_lookback_m15: 48    # BreakRetest : swings M15 des 12 dernières heures
+  br_break_min_atr: 0.1        # BreakRetest : clôture minimale au-delà du niveau
+  br_hold_bars: 6              # BreakRetest : bougies M5 où le niveau devait tenir avant la cassure
+  br_zone_atr: 0.25            # BreakRetest : largeur de la zone de retest
+  br_fall_through_atr: 0.1     # BreakRetest : réintégration tolérée
+  br_strong_break_atr: 0.3     # BreakRetest : cassure « franche »
+  br_break_displacement: 0.6   # BreakRetest : corps minimal de la bougie de cassure
+  flag_max_range_ratio: 0.5    # Flag : amplitude max du drapeau / mât
+  flag_max_retrace: 0.5        # Flag : correction max du mât
+  flag_ema_tol_atr: 0.2        # Flag : tolérance sous/au-dessus de l'EMA20
+  flag_break_body_atr: 0.5     # Flag : corps minimal de la bougie de cassure
+  dt_retest_atr: 0.25          # DoubleTop/Bottom : tolérance du retour sur neckline
+  dt_min_separation: 4         # DoubleTop/Bottom : bougies minimales entre les deux sommets/creux
+  sweep_beyond_atr: 0.05       # SweepMSS : mèche minimale au-delà de la liquidité
+  sweep_lookback: 8            # SweepMSS : fenêtre de recherche du sweep (M5)
+  sweep_clean_bars: 12         # SweepMSS : le niveau doit être intact avant
+  fvg_min_atr: 0.0             # SweepMSS : taille minimale de FVG (0 = toute FVG)
+  fvg_entry_tol_atr: 0.1       # SweepMSS : tolérance autour de la FVG pour l'entrée
+  rf_edge_pct: 0.15            # RangeFade : zone de borne (% de la largeur)
+  rf_wick_pct: 0.5             # RangeFade : mèche de rejet minimale (% de la bougie)
+
+regime:                        # définition des régimes (valeurs identiques à la V2)
+  vol_extreme_ratio: 2.5
+  vol_high_ratio: 1.5
+  vol_low_ratio: 0.7
+  dead_atr_spread_mult: 1.2
+  er_trend_min: 0.30
+  er_range_max: 0.25
+  er_strong: 0.5
+  range_width_atr_min: 3.0
+  range_width_atr_max: 15.0
+  range_touches_min: 2
+  range_touch_band: 0.15
+  fresh_max_bos: 3
+  fresh_max_ext_atr: 2.5
+  equal_level_tol_atr: 0.1
 
 strategies:                    # statut : experimental | paper_validated | live_validated
   TrendPullback_v2:   {enabled: true, status: experimental}
@@ -109,6 +152,11 @@ management:
   trail_ema20_after_r: 1.0     # au-delà : trailing sous/au-dessus de l'EMA20 M5 (vidéo technical analysis)
   take_profit_near_target: 0.8 # ≥ 80 % du chemin + momentum qui s'essouffle -> TAKE PROFIT
   opposite_displacement_atr: 1.2   # bougie M5 contraire de cette taille = invalidation narrative (ICT)
+  regime_flip_exit: true       # CLOSE si le régime passe contre la position ou VOLATILE
+  chop_exit: true              # CLOSE si CHOP et position en perte (sauf RangeFade/SweepMSS)
+  momentum_exit_r: -0.3        # CLOSE si momentum M5 contre ET position sous ce R
+  momentum_rsi_band: 5         # « momentum contre » = RSI M5 à plus de 5 points du 50 dans le mauvais sens
+  trail_offset_atr: 0.3        # trailing = EMA20 M5 -/+ 0,3 ATR
 
 llm:
   enabled: false               # true = Claude relit les candidats et les positions

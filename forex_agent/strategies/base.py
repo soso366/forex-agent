@@ -24,13 +24,41 @@ def sign_of(direction: str) -> int:
     return 1 if direction == "BUY" else -1
 
 
+STRATEGY_DEFAULTS = {
+    # communs
+    "stop_buffer_atr": 0.5, "target_offset_atr": 0.05, "target_min_spreads": 2.0,
+    "opposite_displacement_atr": 1.5, "displacement_atr": 1.0, "displacement_close_pos": 0.7,
+    # TrendPullback
+    "min_pullback_pct": 0.30, "max_pullback_pct": 0.786, "tp_min_leg_atr": 2.0, "tp_leg_lookback": 30,
+    "tp_value_zone_atr": 0.3,
+    # BreakRetest
+    "br_level_lookback_m15": 48, "br_break_min_atr": 0.1, "br_hold_bars": 6, "br_zone_atr": 0.25,
+    "br_fall_through_atr": 0.1, "br_strong_break_atr": 0.3, "br_break_displacement": 0.6,
+    # FlagBreakout
+    "flag_pole_atr": 2.5, "flag_max_range_ratio": 0.5, "flag_max_retrace": 0.5, "flag_ema_tol_atr": 0.2,
+    "flag_break_body_atr": 0.5,
+    # DoubleTopBottom
+    "dt_retest_atr": 0.25, "dt_min_separation": 4,
+    # SweepMSS
+    "sweep_beyond_atr": 0.05, "sweep_lookback": 8, "sweep_clean_bars": 12, "fvg_min_atr": 0.0,
+    "fvg_entry_tol_atr": 0.1,
+    # RangeFade
+    "rf_edge_pct": 0.15, "rf_wick_pct": 0.5,
+}
+
+
 def params(cfg: dict) -> dict:
     return cfg.get("strategy_params", {})
 
 
+def sp(cfg: dict, key: str):
+    """Paramètre de stratégie : config « strategy_params: », sinon valeur par défaut documentée."""
+    return params(cfg).get(key, STRATEGY_DEFAULTS[key])
+
+
 def buffer(ctx: MarketContext, cfg: dict) -> float:
     """Tampon au-delà de l'invalidation : fraction d'ATR M5 + demi-spread."""
-    return params(cfg).get("stop_buffer_atr", 0.5) * ctx.atr_m5 + (ctx.ask - ctx.bid) / 2
+    return sp(cfg, "stop_buffer_atr") * ctx.atr_m5 + (ctx.ask - ctx.bid) / 2
 
 
 def opposite_impulse(m5: pd.DataFrame, atr: float, d: int, mult: float, lookback: int = 6) -> bool:
@@ -51,10 +79,11 @@ def build_setup(ctx: MarketContext, strategy: str, direction: str, entry: float,
     spread = ctx.ask - ctx.bid
     if target is None:
         levels = ctx.levels_beyond(entry, d) + [lv for lv in (extra_levels or []) if d * (lv[0] - entry) > 0]
-        levels = sorted((lv for lv in levels if d * (lv[0] - entry) > 2 * spread), key=lambda x: d * (x[0] - entry))
+        min_gap = sp(cfg, "target_min_spreads") * spread
+        levels = sorted((lv for lv in levels if d * (lv[0] - entry) > min_gap), key=lambda x: d * (x[0] - entry))
         if levels:
             lvl, name = levels[0]
-            target = lvl - d * (spread + 0.05 * ctx.atr_m5)     # sortir juste avant le niveau
+            target = lvl - d * (spread + sp(cfg, "target_offset_atr") * ctx.atr_m5)   # sortir juste avant le niveau
             meta.setdefault("target_level", name)
         else:
             target = entry + d * fallback_rr * risk

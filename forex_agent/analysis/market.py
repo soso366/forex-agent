@@ -29,10 +29,12 @@ class TFView:
     ema20: float
     ema50: float
     atr: float
+    fresh_max_bos: int = 3          # regime.fresh_max_bos
+    fresh_max_ext_atr: float = 2.5  # regime.fresh_max_ext_atr
 
     @property
     def fresh(self) -> bool:
-        return self.bos_count <= 3 and self.extension_atr <= 2.5
+        return self.bos_count <= self.fresh_max_bos and self.extension_atr <= self.fresh_max_ext_atr
 
 
 @dataclass
@@ -129,6 +131,69 @@ def session_of(ts: datetime) -> str:
     return "asia"
 
 
+REGIME_DEFAULTS = {
+    "vol_extreme_ratio": 2.5,    # ATR M5 / médiane > x -> VOLATILE
+    "vol_high_ratio": 1.5,
+    "vol_low_ratio": 0.7,
+    "dead_atr_spread_mult": 1.2,  # ATR M5 < x * spread -> DEAD
+    "er_trend_min": 0.30,         # efficiency ratio M15 minimal pour une tendance
+    "er_range_max": 0.25,
+    "er_strong": 0.5,
+    "range_width_atr_min": 3.0,
+    "range_width_atr_max": 15.0,
+    "range_touches_min": 2,
+    "range_touch_band": 0.15,
+    "fresh_max_bos": 3,
+    "fresh_max_ext_atr": 2.5,
+    "equal_level_tol_atr": 0.1,
+}
+
+
+def rp(cfg: dict | None, key: str):
+    """Paramètre de régime (config « regime: »), valeur par défaut documentée ci-dessus."""
+    return ((cfg or {}).get("regime") or {}).get(key, REGIME_DEFAULTS[key])
+
+
+def classify(v_h1: "TFView", v_m15: "TFView", er: float, vol_ratio: float, atr_pips: float,
+             spread_pips: float, width_atr: float, touch_hi: int, touch_lo: int,
+             cfg: dict | None = None) -> tuple[str, str, str, str]:
+    """Volatilité, force, régime et raison — séparé d'analyze() pour pouvoir être réévalué (Parameter Lab)."""
+    if vol_ratio > rp(cfg, "vol_extreme_ratio"):
+        vol = "extreme"
+    elif atr_pips < rp(cfg, "dead_atr_spread_mult") * spread_pips:
+        vol = "dead"
+    elif vol_ratio > rp(cfg, "vol_high_ratio"):
+        vol = "high"
+    elif vol_ratio < rp(cfg, "vol_low_ratio"):
+        vol = "low"
+    else:
+        vol = "normal"
+    er_trend = rp(cfg, "er_trend_min")
+    strength = "strong" if er >= rp(cfg, "er_strong") else "normal" if er >= er_trend else "weak"
+
+    def aligned(direction: str) -> bool:
+        return (v_h1.trend == v_m15.trend == direction and er >= er_trend
+                and v_m15.struct_trend != ("down" if direction == "up" else "up"))
+
+    if vol == "extreme":
+        regime, why = "VOLATILE", f"ATR M5 = {vol_ratio:.1f}x sa médiane (spike/news)"
+    elif vol == "dead":
+        regime, why = "DEAD", f"ATR M5 {atr_pips:.1f} pips trop faible vs spread {spread_pips:.1f}"
+    elif aligned("up"):
+        regime, why = "TREND_UP", f"H1 et M15 haussiers (structure M15 {v_m15.struct_trend}), efficiency {er:.2f}"
+    elif aligned("down"):
+        regime, why = "TREND_DOWN", f"H1 et M15 baissiers (structure M15 {v_m15.struct_trend}), efficiency {er:.2f}"
+    elif (er < rp(cfg, "er_range_max")
+          and rp(cfg, "range_width_atr_min") <= width_atr <= rp(cfg, "range_width_atr_max")
+          and touch_hi >= rp(cfg, "range_touches_min") and touch_lo >= rp(cfg, "range_touches_min")
+          and not (v_h1.trend == v_m15.trend != "flat")):     # pas de « range » contre une tendance H1+M15
+        regime, why = "RANGE", f"range M15 {width_atr:.1f} ATR, bornes touchées {touch_hi}/{touch_lo}"
+    else:
+        regime = "CHOP"
+        why = f"H1 {v_h1.trend} / M15 {v_m15.trend}, efficiency {er:.2f} : pas de biais suffisamment clair"
+    return vol, strength, regime, why
+
+
 def _tf_view(df: pd.DataFrame) -> TFView:
     last = df.iloc[-1]
     slope = df["ema20"].iloc[-1] - df["ema20"].iloc[-6]
@@ -167,27 +232,20 @@ def analyze(symbol: str, raw: dict[str, pd.DataFrame], bid: float, ask: float,
     v_h1, v_m15 = _tf_view(h1), _tf_view(m15)
     er = ind.efficiency_ratio(m15["c"], 20)
 
+    for v in (v_h1, v_m15):
+        v.fresh_max_bos, v.fresh_max_ext_atr = rp(cfg, "fresh_max_bos"), rp(cfg, "fresh_max_ext_atr")
+
     atr_m5 = float(m5["atr"].iloc[-1])
     med = float(m5["atr"].iloc[-100:].median())
     vol_ratio = atr_m5 / med if med > 0 else 1.0
     atr_pips = atr_m5 / pip
-    if vol_ratio > 2.5:
-        vol = "extreme"
-    elif atr_pips < 1.2 * spread_pips:
-        vol = "dead"
-    elif vol_ratio > 1.5:
-        vol = "high"
-    elif vol_ratio < 0.7:
-        vol = "low"
-    else:
-        vol = "normal"
 
     sh, sl = ind.swings(m15.iloc[-96:])
     price = (bid + ask) / 2
     resistances = sorted({round(p, 6) for _, p in sh if p > price})
     supports = sorted({round(p, 6) for _, p in sl if p < price})
     asia = tuple(cfg.get("sessions", {}).get("asia_utc", (0, 7)))
-    pools = st.liquidity_pools(h1, m15, now, v_m15.atr, asia)
+    pools = st.liquidity_pools(h1, m15, now, v_m15.atr, asia, rp(cfg, "equal_level_tol_atr"))
     day = m15.iloc[-96:]
     dealing_high, dealing_low = float(day["h"].max()), float(day["l"].min())
 
@@ -195,28 +253,11 @@ def analyze(symbol: str, raw: dict[str, pd.DataFrame], bid: float, ask: float,
     r_hi, r_lo = float(rng["h"].max()), float(rng["l"].min())
     width = r_hi - r_lo
     width_atr = width / v_m15.atr if v_m15.atr > 0 else 0.0
-    touch_hi = int((rng["h"] >= r_hi - 0.15 * width).sum())
-    touch_lo = int((rng["l"] <= r_lo + 0.15 * width).sum())
-    strength = "strong" if er >= 0.5 else "normal" if er >= 0.3 else "weak"
-
-    def aligned(direction: str) -> bool:
-        return (v_h1.trend == v_m15.trend == direction and er >= 0.30
-                and v_m15.struct_trend != ("down" if direction == "up" else "up"))
-
-    if vol == "extreme":
-        regime, why = "VOLATILE", f"ATR M5 = {vol_ratio:.1f}x sa médiane (spike/news)"
-    elif vol == "dead":
-        regime, why = "DEAD", f"ATR M5 {atr_pips:.1f} pips trop faible vs spread {spread_pips:.1f}"
-    elif aligned("up"):
-        regime, why = "TREND_UP", f"H1 et M15 haussiers (structure M15 {v_m15.struct_trend}), efficiency {er:.2f}"
-    elif aligned("down"):
-        regime, why = "TREND_DOWN", f"H1 et M15 baissiers (structure M15 {v_m15.struct_trend}), efficiency {er:.2f}"
-    elif (er < 0.25 and 3 <= width_atr <= 15 and touch_hi >= 2 and touch_lo >= 2
-          and not (v_h1.trend == v_m15.trend != "flat")):     # pas de « range » contre une tendance H1+M15
-        regime, why = "RANGE", f"range M15 {width_atr:.1f} ATR, bornes touchées {touch_hi}/{touch_lo}"
-    else:
-        regime = "CHOP"
-        why = f"H1 {v_h1.trend} / M15 {v_m15.trend}, efficiency {er:.2f} : pas de biais suffisamment clair"
+    band = rp(cfg, "range_touch_band")
+    touch_hi = int((rng["h"] >= r_hi - band * width).sum())
+    touch_lo = int((rng["l"] <= r_lo + band * width).sum())
+    vol, strength, regime, why = classify(v_h1, v_m15, er, vol_ratio, atr_pips, spread_pips,
+                                          width_atr, touch_hi, touch_lo, cfg)
 
     zones = cfg.get("sessions", {}).get("killzones_ny", {"london": [2, 5], "new_york_am": [7, 10]})
     return MarketContext(

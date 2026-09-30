@@ -93,22 +93,22 @@ def candle_trigger(bar: pd.Series, prev: pd.Series, d: int) -> str | None:
     return None
 
 
-def displacement_bar(bar: pd.Series, atr: float, d: int, mult: float = 1.0) -> bool:
+def displacement_bar(bar: pd.Series, atr: float, d: int, mult: float = 1.0, close_pos_min: float = 0.7) -> bool:
     """Bougie de déplacement : grand corps dans le sens, clôture près de l'extrême."""
     body = d * (bar["c"] - bar["o"])
     rng = bar["h"] - bar["l"]
     close_pos = (bar["c"] - bar["l"]) / rng if rng > 0 else 0.5
-    return body >= mult * atr and (close_pos >= 0.7 if d == 1 else close_pos <= 0.3)
+    return body >= mult * atr and (close_pos >= close_pos_min if d == 1 else close_pos <= 1 - close_pos_min)
 
 
-def fvgs(df: pd.DataFrame, start: int, d: int) -> list[tuple[int, float, float]]:
+def fvgs(df: pd.DataFrame, start: int, d: int, min_size: float = 0.0) -> list[tuple[int, float, float]]:
     """FVG formées à partir de l'indice `start` : (indice de la 3e bougie, bas, haut) de la zone."""
     h, l = df["h"].to_numpy(), df["l"].to_numpy()
     out = []
     for k in range(max(start, 2), len(df)):
-        if d == 1 and h[k - 2] < l[k]:
+        if d == 1 and h[k - 2] < l[k] and l[k] - h[k - 2] >= min_size:
             out.append((k, float(h[k - 2]), float(l[k])))
-        if d == -1 and l[k - 2] > h[k]:
+        if d == -1 and l[k - 2] > h[k] and l[k - 2] - h[k] >= min_size:
             out.append((k, float(h[k]), float(l[k - 2])))
     return out
 
@@ -134,7 +134,7 @@ def forex_day(ts: pd.Timestamp) -> date:
 
 
 def liquidity_pools(h1: pd.DataFrame, m15: pd.DataFrame, now: datetime, atr_m15: float,
-                    asia_utc: tuple[int, int] = (0, 7)) -> list[dict]:
+                    asia_utc: tuple[int, int] = (0, 7), equal_tol_atr: float = 0.1) -> list[dict]:
     pools: list[dict] = []
     days = pd.Series([forex_day(t) for t in h1.index], index=h1.index)
     today = forex_day(pd.Timestamp(now))
@@ -155,7 +155,7 @@ def liquidity_pools(h1: pd.DataFrame, m15: pd.DataFrame, now: datetime, atr_m15:
             pools += [{"name": "haut Asie", "price": float(asia["h"].max()), "side": "BSL", "kind": "external"},
                       {"name": "bas Asie", "price": float(asia["l"].min()), "side": "SSL", "kind": "external"}]
     highs, lows = ind.swings(m15.iloc[-96:])
-    tol = 0.1 * atr_m15
+    tol = equal_tol_atr * atr_m15
     for side, pts, name in (("BSL", highs, "equal highs"), ("SSL", lows, "equal lows")):
         prices = [p for _, p in pts]
         for i in range(len(prices)):
