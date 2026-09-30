@@ -1,0 +1,100 @@
+test_broker (unittest.loader._FailedTest.test_broker) ... ERROR
+test_dukascopy (unittest.loader._FailedTest.test_dukascopy) ... ERROR
+test_risk (unittest.loader._FailedTest.test_risk) ... ERROR
+test_structure (unittest.loader._FailedTest.test_structure) ... ERROR
+test_system (unittest.loader._FailedTest.test_system) ... ERROR
+
+======================================================================
+ERROR: test_broker (unittest.loader._FailedTest.test_broker)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_broker
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 419, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 362, in _get_module_from_name
+    __import__(name)
+  File "/home/runner/work/forex-agent/forex-agent/tests/test_broker.py", line 4, in <module>
+    from helpers import T0, simple_provider, store_for, tmp_cfg
+  File "/home/runner/work/forex-agent/forex-agent/tests/helpers.py", line 15, in <module>
+    from forex_agent.data.providers import InMemoryProvider  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'forex_agent.data'
+
+
+======================================================================
+ERROR: test_dukascopy (unittest.loader._FailedTest.test_dukascopy)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dukascopy
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 419, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 362, in _get_module_from_name
+    __import__(name)
+  File "/home/runner/work/forex-agent/forex-agent/tests/test_dukascopy.py", line 14, in <module>
+    from helpers import UTC, tmp_cfg
+  File "/home/runner/work/forex-agent/forex-agent/tests/helpers.py", line 15, in <module>
+    from forex_agent.data.providers import InMemoryProvider  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'forex_agent.data'
+
+
+======================================================================
+ERROR: test_risk (unittest.loader._FailedTest.test_risk)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_risk
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 419, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 362, in _get_module_from_name
+    __import__(name)
+  File "/home/runner/work/forex-agent/forex-agent/tests/test_risk.py", line 4, in <module>
+    from helpers import MIDS, T0, setup, store_for, tmp_cfg
+  File "/home/runner/work/forex-agent/forex-agent/tests/helpers.py", line 15, in <module>
+    from forex_agent.data.providers import InMemoryProvider  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'forex_agent.data'
+
+
+======================================================================
+ERROR: test_structure (unittest.loader._FailedTest.test_structure)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_structure
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 419, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 362, in _get_module_from_name
+    __import__(name)
+  File "/home/runner/work/forex-agent/forex-agent/tests/test_structure.py", line 6, in <module>
+    from helpers import T0, UTC, setup, simple_provider, store_for, tmp_cfg
+  File "/home/runner/work/forex-agent/forex-agent/tests/helpers.py", line 15, in <module>
+    from forex_agent.data.providers import InMemoryProvider  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'forex_agent.data'
+
+
+======================================================================
+ERROR: test_system (unittest.loader._FailedTest.test_system)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_system
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 419, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/unittest/loader.py", line 362, in _get_module_from_name
+    __import__(name)
+  File "/home/runner/work/forex-agent/forex-agent/tests/test_system.py", line 6, in <module>
+    from helpers import T0, UTC, flat_m1, simple_provider, store_for, tmp_cfg
+  File "/home/runner/work/forex-agent/forex-agent/tests/helpers.py", line 15, in <module>
+    from forex_agent.data.providers import InMemoryProvider  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'forex_agent.data'
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (errors=5)

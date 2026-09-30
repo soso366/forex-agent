@@ -1,0 +1,2 @@
+ÉCHEC
+étape : tests automatiques (voir tests.log)
