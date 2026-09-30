@@ -74,3 +74,20 @@ Téléchargement Dukascopy EURUSD, GBPUSD, USDJPY du 2026-03-01 au 2026-08-31 (B
   725/948 fichiers (19 téléchargés, 706 en cache, 0 erreurs, 0 reportés)
   750/948 fichiers (21 téléchargés, 729 en cache, 0 erreurs, 0 reportés)
   775/948 fichiers (21 téléchargés, 754 en cache, 0 erreurs, 0 reportés)
+  800/948 fichiers (23 téléchargés, 777 en cache, 0 erreurs, 0 reportés)
+  825/948 fichiers (25 téléchargés, 800 en cache, 0 erreurs, 0 reportés)
+  850/948 fichiers (26 téléchargés, 824 en cache, 0 erreurs, 0 reportés)
+  875/948 fichiers (28 téléchargés, 847 en cache, 0 erreurs, 0 reportés)
+  900/948 fichiers (28 téléchargés, 872 en cache, 0 erreurs, 0 reportés)
+  925/948 fichiers (28 téléchargés, 897 en cache, 0 erreurs, 0 reportés)
+  948/948 fichiers (31 téléchargés, 917 en cache, 0 erreurs, 0 reportés)
+  EURUSD : 187,987 minutes, 158 jours, spread médian 0.3 pips, 39,533 minutes plates retirées
+  GBPUSD : 187,897 minutes, 158 jours, spread médian 0.7 pips, 39,623 minutes plates retirées
+  USDJPY : 187,937 minutes, 158 jours, spread médian 0.5 pips, 39,583 minutes plates retirées
+Validation CSVProvider OK : EURUSD, GBPUSD, USDJPY
+--- Étape 2/3 : validation ---
+Validation OK : EURUSD, GBPUSD, USDJPY, période commune 2026-03-01 22:00:00+00:00 → 2026-08-31 23:59:00+00:00
+--- Étape 3/3 : backtest (V2 inchangée) ---
+Données : 2026-03-01 22:00:00+00:00 → 2026-08-31 23:59:00+00:00. Cycles simulés du 2026-03-08 00:00 au 2026-08-31 23:59 UTC (7 jours réservés au préchauffage des indicateurs).
+[     0 s] 2026-03-08  cycles 1  trades 0  capital 50.00
+[     3 s] 2026-03-09  cycles 37  trades 0  capital 50.00
