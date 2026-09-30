@@ -1,0 +1,5 @@
+=== Pipeline démarré 2026-09-30 12:19 UTC — période 2026-03-01 → 2026-08-31 ===
+Mode PAPER uniquement. Aucun broker, aucun argent réel. Stratégies et paramètres inchangés.
+--- Étape 1/3 : téléchargement Dukascopy (passage 1/3) ---
+Téléchargement Dukascopy EURUSD, GBPUSD, USDJPY du 2026-03-01 au 2026-08-31 (BID + ASK, M1)
+  100/948 fichiers (92 téléchargés, 0 en cache, 8 erreurs)
