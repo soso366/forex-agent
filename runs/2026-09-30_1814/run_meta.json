@@ -1,0 +1,18 @@
+{
+  "code_and_config": "a7a52f84eef151a6",
+  "data_first": "2026-03-01 22:00:00+00:00",
+  "data_last": "2026-08-31 23:59:00+00:00",
+  "warmup_days": 7,
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY"
+  ],
+  "csv_sizes": {
+    "EURUSD": 15813699,
+    "GBPUSD": 15807382,
+    "USDJPY": 15804741
+  },
+  "started_at": "2026-09-30T17:35:16.656953+00:00",
+  "finished_at": "2026-09-30T18:14:30.252164+00:00"
+}

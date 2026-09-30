@@ -1,0 +1,68 @@
+{
+  "download": {
+    "requested": 948,
+    "cached": 917,
+    "downloaded": 31,
+    "missing": 0,
+    "errors": [],
+    "postponed": 0
+  },
+  "symbols": {
+    "EURUSD": {
+      "symbol": "EURUSD",
+      "days_with_data": 158,
+      "days_missing_side": [],
+      "flat_minutes_removed": 39533,
+      "ask_below_bid_removed": 0,
+      "ohlc_invalid_removed": 0,
+      "rows": 187987,
+      "first": "2026-03-01 22:00:00+00:00",
+      "last": "2026-08-31 23:59:00+00:00",
+      "spread_pips": {
+        "median": 0.3,
+        "p95": 0.8,
+        "max": 19.7
+      },
+      "gaps_over_15min_weekdays": 0
+    },
+    "GBPUSD": {
+      "symbol": "GBPUSD",
+      "days_with_data": 158,
+      "days_missing_side": [],
+      "flat_minutes_removed": 39623,
+      "ask_below_bid_removed": 0,
+      "ohlc_invalid_removed": 0,
+      "rows": 187897,
+      "first": "2026-03-01 22:00:00+00:00",
+      "last": "2026-08-31 23:59:00+00:00",
+      "spread_pips": {
+        "median": 0.7,
+        "p95": 1.5,
+        "max": 34.7
+      },
+      "gaps_over_15min_weekdays": 0
+    },
+    "USDJPY": {
+      "symbol": "USDJPY",
+      "days_with_data": 158,
+      "days_missing_side": [],
+      "flat_minutes_removed": 39583,
+      "ask_below_bid_removed": 0,
+      "ohlc_invalid_removed": 0,
+      "rows": 187937,
+      "first": "2026-03-01 22:00:00+00:00",
+      "last": "2026-08-31 23:59:00+00:00",
+      "spread_pips": {
+        "median": 0.5,
+        "p95": 1.2,
+        "max": 30.1
+      },
+      "gaps_over_15min_weekdays": 0
+    }
+  },
+  "validated_with_csvprovider": [
+    "EURUSD",
+    "GBPUSD",
+    "USDJPY"
+  ]
+}
