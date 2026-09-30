@@ -69,11 +69,12 @@ class RateLimited(Exception):
 
 _pace_lock = __import__("threading").Lock()
 _next_slot = [0.0]
-MIN_INTERVAL = 0.6          # au plus ~1,6 requête/seconde, tous fils confondus
+MIN_INTERVAL = 1.0          # au plus 1 requête/seconde, tous fils confondus (politesse envers Dukascopy)
+TRANSIENT_HTTP = (429, 500, 502, 503, 504)
 
 
 def _wait_turn(extra: float = 0.0) -> None:
-    """Espace les requêtes ; une pause imposée par le serveur s'applique à tous les fils."""
+    """Espace les requêtes ; une pause Retry-After imposée par le serveur s'applique à tous les fils."""
     with _pace_lock:
         now = time.monotonic()
         slot = max(_next_slot[0], now) + extra
@@ -83,43 +84,43 @@ def _wait_turn(extra: float = 0.0) -> None:
         time.sleep(delay)
 
 
-def fetch(url: str, retries: int = 8, timeout: int = 30) -> bytes | None:
-    """Télécharge une URL en respectant les limites de Dukascopy.
-    404 = jour sans données → None. 429/503 = on ralentit (Retry-After ou 15 s, 30 s, 60 s… max 5 min)."""
-    backoff = 15.0
+def fetch(url: str, retries: int = 15, timeout: int = 20) -> bytes | None:
+    """Télécharge une URL. Depuis certains serveurs cloud, Dukascopy refuse une partie des requêtes
+    au hasard (503, coupures, délais) : on réessaie vite et souvent, sans jamais garder une réponse
+    qui n'est pas un vrai fichier bi5. 404 = jour sans données → None."""
+    import random
     for attempt in range(retries):
         _wait_turn()
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "forex-agent-research/1.0"})
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (forex-agent-research)"})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 data = r.read()
-            if data and data[:1] != b"\x5d":            # pas un fichier LZMA : page d'erreur, on ne la garde pas
+            if data and data[:1] != b"\x5d":            # pas un fichier LZMA : page d'erreur, jamais gardée
                 raise ConnectionError(f"réponse inattendue ({len(data)} octets, pas au format bi5)")
             return data
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return None
-            if attempt == retries - 1:
-                if e.code in (429, 503):
-                    raise RateLimited(f"HTTP {e.code} (limite de débit Dukascopy)") from e
+            if e.code not in TRANSIENT_HTTP or attempt == retries - 1:
+                if e.code in TRANSIENT_HTTP:
+                    raise RateLimited(f"HTTP {e.code} répété {retries} fois") from e
                 raise
-            if e.code in (429, 503):
-                ra = e.headers.get("Retry-After") if e.headers else None
-                wait = float(ra) if ra and ra.isdigit() else backoff
-                _wait_turn(extra=min(wait, 300))        # tout le monde attend
-                backoff = min(backoff * 2, 300)
+            ra = e.headers.get("Retry-After") if e.headers else None
+            if e.code == 429 and ra and ra.isdigit():
+                _wait_turn(extra=min(float(ra), 60))
                 continue
-        except (urllib.error.URLError, TimeoutError, ConnectionError):
+        except (urllib.error.URLError, TimeoutError, ConnectionError, OSError):
             if attempt == retries - 1:
                 raise
-        time.sleep(min(2 ** attempt, 60))
+        time.sleep(random.uniform(1.0, 4.0))
     return None
 
 
 def download(symbols: list[str], start: date, end: date, cache_dir: Path,
-             fetcher: Callable[[str], bytes | None] = fetch, workers: int = 2,
-             log: Callable[[str], None] = print) -> dict:
-    """Télécharge [start, end] inclus dans le cache ; les fichiers déjà présents ne sont pas retéléchargés."""
+             fetcher: Callable[[str], bytes | None] = fetch, workers: int = 3,
+             log: Callable[[str], None] = print, deadline: float | None = None) -> dict:
+    """Télécharge [start, end] inclus dans le cache ; les fichiers déjà présents ne sont pas retéléchargés.
+    deadline (time.time()) : au-delà, les fichiers restants sont laissés pour le prochain lancement."""
     jobs = []
     d = start
     while d <= end:
@@ -128,13 +129,15 @@ def download(symbols: list[str], start: date, end: date, cache_dir: Path,
                 for side in SIDES:
                     jobs.append((s, d, side))
         d += timedelta(days=1)
-    stats = {"requested": len(jobs), "cached": 0, "downloaded": 0, "missing": 0, "errors": []}
+    stats = {"requested": len(jobs), "cached": 0, "downloaded": 0, "missing": 0, "errors": [], "postponed": 0}
 
     def one(job):
         s, d, side = job
         path = cache_path(cache_dir, s, d, side)
         if path.exists():
             return "cached"
+        if deadline is not None and time.time() > deadline:
+            return "postponed"
         try:
             raw = fetcher(day_url(s, d, side))
         except Exception as e:                         # on continue, l'erreur est rapportée
@@ -151,9 +154,9 @@ def download(symbols: list[str], start: date, end: date, cache_dir: Path,
                 stats["errors"].append(res[6:])
             else:
                 stats[res] += 1
-            if done % 100 == 0 or done == len(jobs):
+            if done % 25 == 0 or done == len(jobs):
                 log(f"  {done}/{len(jobs)} fichiers ({stats['downloaded']} téléchargés, "
-                    f"{stats['cached']} en cache, {len(stats['errors'])} erreurs)")
+                    f"{stats['cached']} en cache, {len(stats['errors'])} erreurs, {stats['postponed']} reportés)")
     return stats
 
 
@@ -228,13 +231,16 @@ def write_csv(df: pd.DataFrame, out_dir: Path, symbol: str) -> Path:
 
 
 def prepare(symbols: list[str], start: date, end: date, cache_dir: Path, out_dir: Path,
-            fetcher: Callable[[str], bytes | None] = fetch, workers: int = 2,
-            log: Callable[[str], None] = print) -> dict:
+            fetcher: Callable[[str], bytes | None] = fetch, workers: int = 3,
+            log: Callable[[str], None] = print, deadline: float | None = None) -> dict:
     """Chaîne complète : téléchargement → conversion → validation → CSV + rapport qualité."""
     from .providers import CSVProvider
     log(f"Téléchargement Dukascopy {', '.join(symbols)} du {start} au {end} (BID + ASK, M1)")
-    dl = download(symbols, start, end, cache_dir, fetcher, workers, log)
+    dl = download(symbols, start, end, cache_dir, fetcher, workers, log, deadline)
     report = {"download": dl, "symbols": {}}
+    if dl["errors"] or dl["postponed"]:
+        report["incomplete"] = True                     # on ne construit rien sur des données incomplètes
+        return report
     for s in symbols:
         df, q = build_symbol(s, start, end, cache_dir)
         if df.empty:

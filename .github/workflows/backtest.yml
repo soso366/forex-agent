@@ -19,12 +19,17 @@ on:
         description: "Fin AAAA-MM-JJ incluse (vide = fin du dernier mois complet)"
         required: false
         default: ""
+      attempt:
+        description: "Numéro de lancement (rempli automatiquement lors des reprises)"
+        required: false
+        default: "1"
   push:
     paths:
       - deploy/trigger/backtest.txt
 
 permissions:
   contents: write          # pour enregistrer les résultats dans la branche « results »
+  actions: write           # pour relancer automatiquement la suite tant que le travail n'est pas fini
 
 concurrency:
   group: backtest
@@ -50,6 +55,7 @@ jobs:
           python -c "import sys,pandas,numpy,yaml;print(sys.version);print('pandas',pandas.__version__,'numpy',numpy.__version__,'yaml',yaml.__version__)"
 
       - name: Vérifier que le code est intact (tous les tests)
+        if: ${{ (github.event.inputs.attempt || '1') == '1' }}
         run: |
           set +e
           mkdir -p results
@@ -88,7 +94,7 @@ jobs:
           ARGS=""
           if [ -n "${{ github.event.inputs.start }}" ]; then ARGS="$ARGS --start ${{ github.event.inputs.start }}"; fi
           if [ -n "${{ github.event.inputs.end }}" ]; then ARGS="$ARGS --end ${{ github.event.inputs.end }}"; fi
-          python -m forex_agent pipeline $ARGS
+          python -m forex_agent pipeline $ARGS --time-budget-min 290
 
       - name: Sauvegarder les données téléchargées (même en cas d'échec)
         if: always()
@@ -124,6 +130,20 @@ jobs:
           git add -A
           git commit --quiet -m "Résultats backtest $STAMP ($(head -1 latest/STATUS.txt))" || exit 0
           git push --quiet origin results
+
+      - name: Relancer automatiquement la suite si le travail n'est pas fini
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          N="${{ github.event.inputs.attempt || '1' }}"
+          STATUS=$(head -1 results/STATUS.txt 2>/dev/null || echo "?")
+          echo "Lancement n°$N — statut : $STATUS"
+          if [ "$STATUS" = "EN COURS" ] && [ "$N" -lt 12 ]; then
+            gh workflow run backtest.yml --repo "$GITHUB_REPOSITORY" --ref main \
+              -f attempt=$((N+1)) -f start="${{ github.event.inputs.start }}" -f end="${{ github.event.inputs.end }}"
+            echo "Suite relancée automatiquement (lancement n°$((N+1)))."
+          fi
 
       - name: Résultats téléchargeables (Artifacts)
         if: always()

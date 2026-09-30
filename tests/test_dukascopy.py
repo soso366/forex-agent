@@ -90,7 +90,7 @@ class DukascopyTest(unittest.TestCase):
         with redirect_stdout(io.StringIO()):
             rep = dk.prepare(syms, start, end, tmp / "raw", tmp / "m1", fetcher=fake, workers=2, log=lambda *_: None)
         self.assertEqual(len(rep["download"]["errors"]), 1)             # coupure rapportée, pas masquée
-        self.assertIn("GBPUSD", rep["symbols"])
+        self.assertTrue(rep.get("incomplete"))                           # rien n'est construit sur des données incomplètes
         calls_before = fake.calls
         rep = dk.prepare(syms, start, end, tmp / "raw", tmp / "m1", fetcher=fake, workers=2, log=lambda *_: None)
         self.assertEqual(fake.calls - calls_before, 1)                   # reprise : seul le fichier manquant
@@ -251,3 +251,39 @@ class RateLimitTest(unittest.TestCase):
             for k, v in old.items():
                 if v is not None:
                     os.environ[k] = v
+
+
+class TimeBudgetTest(unittest.TestCase):
+    """Chaque lancement cloud a une durée limitée : le travail restant reprend au lancement suivant."""
+
+    def test_budget_splits_work_and_resumes_to_same_result(self):
+        import sqlite3
+        import time as _t
+        from unittest import mock
+        import forex_agent.__main__ as cli
+        tmp = Path(tempfile.mkdtemp())
+        start, end = date(2026, 3, 2), date(2026, 3, 13)
+        syms = ["EURUSD", "GBPUSD", "USDJPY"]
+        fake = FakeDukascopy(syms, start, end)
+        cfg = tmp_cfg(data={"provider": "csv", "csv_dir": str(tmp / "m1")})
+        kw = dict(results_dir=tmp / "results", data_root=tmp / "data", fetcher=fake, progress=False)
+        # 1er lancement : budget épuisé pendant le téléchargement (horloge simulée)
+        real_time = _t.time
+        clock = {"t": real_time()}
+        with mock.patch("time.time", lambda: clock["t"]), redirect_stdout(io.StringIO()):
+            clock["t"] += 0
+            orig = fake.__call__
+
+            def slow(url, _o=orig):
+                clock["t"] += 60                                  # chaque fichier « coûte » 1 min
+                return _o(url)
+            fake.__call__ = slow
+            code = cli.run_pipeline(cfg, start, end, time_budget_min=60, fetcher=lambda u: slow(u), **{k: v for k, v in kw.items() if k != "fetcher"})
+        self.assertEqual(code, 0)
+        self.assertTrue((tmp / "results" / "STATUS.txt").read_text().startswith("EN COURS"))
+        # 2e lancement : sans limite, reprend et termine
+        with redirect_stdout(io.StringIO()):
+            code = cli.run_pipeline(cfg, start, end, **kw)
+        self.assertEqual(code, 0)
+        self.assertTrue((tmp / "results" / "STATUS.txt").read_text().startswith("OK"))
+        self.assertIn("Budget de temps atteint", (tmp / "results" / "pipeline.log").read_text())

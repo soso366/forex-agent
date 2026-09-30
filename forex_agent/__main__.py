@@ -115,7 +115,7 @@ def code_fingerprint(cfg: dict) -> str:
 
 
 def run_backtest(cfg: dict, warmup_days: int = 7, out_dir: Path | None = None, progress: bool = True,
-                 resume: bool = False) -> str:
+                 resume: bool = False, stop_at: float | None = None, state: dict | None = None) -> str:
     """Rejeu de la V2 inchangée sur toute la période CSV disponible (aucune sélection de période).
     resume=True : reprend après une interruption, uniquement si code, config et données sont identiques."""
     from .backtest_report import build_report
@@ -157,8 +157,20 @@ def run_backtest(cfg: dict, warmup_days: int = 7, out_dir: Path | None = None, p
         start = resume_from
     print(f"Données : {first} → {last}. Cycles simulés du {start:%Y-%m-%d %H:%M} au {last:%Y-%m-%d %H:%M} UTC "
           f"({warmup_days} jours réservés au préchauffage des indicateurs).", flush=True)
-    n = replay(cfg, start, last, provider=prov, keep_records=False, progress=progress) if start <= last else 0
-    text, trades = build_report(cfg["paths"]["db"], f"Rejeu V2 sur données Dukascopy M1 ({', '.join(cfg['symbols'])})")
+    n = replay(cfg, start, last, provider=prov, keep_records=False, progress=progress,
+               stop_at=stop_at) if start <= last else 0
+    db = sqlite3.connect(cfg["paths"]["db"])
+    last_ts = db.execute("SELECT MAX(ts) FROM cycles").fetchone()[0]
+    db.close()
+    import time as _t
+    finished = not (stop_at is not None and _t.time() > stop_at)     # arrêté par le budget = pas fini
+    if state is not None:
+        state["finished"] = finished
+        state["last_cycle"] = last_ts
+    title = f"Rejeu V2 sur données Dukascopy M1 ({', '.join(cfg['symbols'])})"
+    if not finished:
+        title = f"RAPPORT PARTIEL (rejeu arrêté au {last_ts}, reprise automatique) — " + title
+    text, trades = build_report(cfg["paths"]["db"], title)
     (bt_dir / "report.md").write_text(text, encoding="utf-8")
     cols = [c for c in (trades.columns if not trades.empty else []) if c != "setup_json"]
     (trades[cols] if not trades.empty else pd.DataFrame(columns=["aucun_trade"])).to_csv(bt_dir / "trades.csv", index=False)
@@ -187,40 +199,56 @@ class _Tee:
 
 def run_pipeline(cfg: dict, start: date | None = None, end: date | None = None,
                  results_dir: Path | None = None, data_root: Path | None = None,
-                 fetcher=None, retry_wait: int = 180, progress: bool = True) -> int:
+                 fetcher=None, retry_wait: int = 30, progress: bool = True,
+                 time_budget_min: float | None = None) -> int:
     """UNE commande : téléchargement Dukascopy (reprenable) → validation → backtest (reprenable)
-    → results/ (report.md, trades.csv, quality_report.json, pipeline.log, STATUS.txt)."""
+    → results/ (report.md, trades.csv, quality_report.json, pipeline.log, STATUS.txt).
+
+    time_budget_min : durée max de ce lancement. S'il reste du travail, STATUS.txt vaut « EN COURS »
+    et le lancement suivant reprend exactement là où celui-ci s'est arrêté."""
     import shutil
     import sys
+    import time
     import traceback
     from .data import dukascopy
     from .data.providers import CSVProvider
+    t_start = time.time()
+    stop_at = t_start + time_budget_min * 60 if time_budget_min else None
     results = Path(results_dir) if results_dir else ROOT / "results"
     results.mkdir(parents=True, exist_ok=True)
     log_f = open(results / "pipeline.log", "a", encoding="utf-8")
     out, err = sys.stdout, sys.stderr
     sys.stdout, sys.stderr = _Tee(out, log_f), _Tee(err, log_f)
-    status, step = "ÉCHEC", "démarrage"
+    status, step, detail = "ÉCHEC", "démarrage", ""
     try:
         if start is None or end is None:
             start, end = default_period()
-        print(f"=== Pipeline démarré {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC — période {start} → {end} ===")
+        print(f"=== Pipeline démarré {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC — période {start} → {end}"
+              + (f" — budget {time_budget_min:.0f} min" if time_budget_min else "") + " ===")
         print("Mode PAPER uniquement. Aucun broker, aucun argent réel. Stratégies et paramètres inchangés.")
         data_root_ = Path(data_root) if data_root else ROOT / "data"
         csv_dir, raw = _csv_dir(cfg), data_root_ / "dukascopy_raw"
         step = "téléchargement Dukascopy"
-        passes = 5
-        for attempt in range(1, passes + 1):
-            print(f"--- Étape 1/3 : {step} (passage {attempt}/{passes}) ---")
-            rep = dukascopy.prepare(cfg["symbols"], start, end, raw, csv_dir, fetcher=fetcher or dukascopy.fetch)
-            if not rep["download"]["errors"]:
+        # le téléchargement s'arrête 45 min avant la fin du budget pour laisser du temps au backtest
+        dl_deadline = stop_at - 45 * 60 if stop_at else None
+        attempt = 0
+        while True:
+            attempt += 1
+            print(f"--- Étape 1/3 : {step} (passage {attempt}) ---")
+            rep = dukascopy.prepare(cfg["symbols"], start, end, raw, csv_dir, fetcher=fetcher or dukascopy.fetch,
+                                    deadline=dl_deadline)
+            if not rep.get("incomplete"):
                 break
-            print(f"{len(rep['download']['errors'])} fichiers en erreur (souvent : Dukascopy demande de ralentir), "
-                  f"nouvel essai dans {retry_wait} s…")
-            import time
+            dl = rep["download"]
+            remaining = len(dl["errors"]) + dl["postponed"]
+            if dl_deadline and time.time() > dl_deadline:
+                status, detail = "EN COURS", f"téléchargement : {remaining} fichiers restants"
+                print(f"Budget de temps atteint : {remaining} fichiers restants, reprise au prochain lancement.")
+                return 0
+            if not dl_deadline and attempt >= 5:
+                raise RuntimeError(f"téléchargement incomplet après {attempt} passages : {dl['errors'][:5]}")
+            print(f"{remaining} fichiers encore refusés par Dukascopy, nouveau passage dans {retry_wait} s…")
             time.sleep(retry_wait)
-        else:
-            raise RuntimeError(f"téléchargement incomplet après {passes} passages : {rep['download']['errors'][:5]}")
         step = "validation"
         print(f"--- Étape 2/3 : {step} ---")
         missing = [s for s, q in rep["symbols"].items() if "error" in q]
@@ -231,8 +259,13 @@ def run_pipeline(cfg: dict, start: date | None = None, end: date | None = None,
         print(f"Validation OK : {', '.join(cfg['symbols'])}, période commune {first} → {last}")
         step = "backtest"
         print(f"--- Étape 3/3 : {step} (V2 inchangée) ---")
-        run_backtest(cfg, resume=True, out_dir=data_root_ / "backtest", progress=progress)
-        status = "OK"
+        state: dict = {}
+        run_backtest(cfg, resume=True, out_dir=data_root_ / "backtest", progress=progress,
+                     stop_at=(stop_at - 5 * 60) if stop_at else None, state=state)
+        if state.get("finished", True):
+            status = "OK"
+        else:
+            status, detail = "EN COURS", f"backtest arrêté au cycle {state.get('last_cycle')}, reprise au prochain lancement"
         return 0
     except Exception as e:
         print(f"ERREUR pendant l'étape « {step} » : {e}")
@@ -244,8 +277,9 @@ def run_pipeline(cfg: dict, start: date | None = None, end: date | None = None,
             if src.exists():
                 shutil.copy2(src, results / src.name)
         (results / "STATUS.txt").write_text(
-            f"{status}\nétape : {step}\nfin : {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC\n", encoding="utf-8")
-        print(f"=== Pipeline terminé : {status} (étape {step}) — fichiers dans {results} ===")
+            f"{status}\nétape : {step}\n" + (f"détail : {detail}\n" if detail else "")
+            + f"fin : {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC\n", encoding="utf-8")
+        print(f"=== Pipeline terminé : {status} (étape {step}{', ' + detail if detail else ''}) — fichiers dans {results} ===")
         sys.stdout, sys.stderr = out, err
         log_f.close()
 
@@ -277,6 +311,7 @@ def main(argv: list[str] | None = None) -> None:
     pp = sub.add_parser("pipeline", help="téléchargement + validation + backtest + résultats, en une commande")
     pp.add_argument("--start", default=None)
     pp.add_argument("--end", default=None)
+    pp.add_argument("--time-budget-min", type=float, default=None, help="durée max de ce lancement (reprise ensuite)")
     a = ap.parse_args(argv)
     cfg = load_config(a.config)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
@@ -336,7 +371,8 @@ def main(argv: list[str] | None = None) -> None:
         run_backtest(cfg, a.warmup_days, resume=a.resume)
     elif a.cmd == "pipeline":
         raise SystemExit(run_pipeline(cfg, date.fromisoformat(a.start) if a.start else None,
-                                      date.fromisoformat(a.end) if a.end else None))
+                                      date.fromisoformat(a.end) if a.end else None,
+                                      time_budget_min=a.time_budget_min))
 
 
 if __name__ == "__main__":

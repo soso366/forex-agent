@@ -84,7 +84,8 @@ def loop(cfg: dict, max_cycles: int | None = None) -> None:
 
 
 def replay(cfg: dict, start: datetime, end: datetime, provider: DataProvider | None = None,
-           verbose: bool = False, keep_records: bool = True, progress: bool = False) -> list[dict] | int:
+           verbose: bool = False, keep_records: bool = True, progress: bool = False,
+           stop_at: float | None = None) -> list[dict] | int:
     """Rejoue le fonctionnement autonome sur une période : un cycle toutes les 5 min simulées.
     Même code que le fonctionnement réel (run_cycle) ; seule l'horloge est simulée."""
     import sys
@@ -96,6 +97,10 @@ def replay(cfg: dict, start: datetime, end: datetime, provider: DataProvider | N
     records, count, day, t0 = [], 0, None, _time.time()
     try:
         while now <= end:
+            if stop_at is not None and _time.time() > stop_at:     # arrêt propre, entre deux cycles
+                print(f"Budget de temps atteint : arrêt propre avant le cycle {now:%Y-%m-%d %H:%M} (reprise possible).",
+                      file=sys.stderr, flush=True)
+                break
             if market_open_at(now, cfg["scheduler"]):
                 rec = run_cycle(cfg, provider, store, now)
                 count += 1
