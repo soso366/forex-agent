@@ -161,3 +161,14 @@ Données : 2026-03-01 22:00:00+00:00 → 2026-08-31 23:59:00+00:00. Cycles simul
 [  1066 s] 2026-05-27  cycles 16,453  trades 80  capital 49.31
 [  1083 s] 2026-05-28  cycles 16,741  trades 82  capital 49.13
 [  1102 s] 2026-05-29  cycles 17,029  trades 82  capital 49.13
+[  1119 s] 2026-05-31  cycles 17,281  trades 82  capital 49.13
+[  1121 s] 2026-06-01  cycles 17,317  trades 82  capital 49.13
+[  1139 s] 2026-06-02  cycles 17,605  trades 83  capital 49.06
+[  1158 s] 2026-06-03  cycles 17,893  trades 84  capital 48.95
+[  1176 s] 2026-06-04  cycles 18,181  trades 84  capital 48.95
+[  1194 s] 2026-06-05  cycles 18,469  trades 84  capital 48.95
+[  1211 s] 2026-06-07  cycles 18,721  trades 88  capital 48.86
+[  1212 s] 2026-06-08  cycles 18,757  trades 88  capital 48.86
+[  1231 s] 2026-06-09  cycles 19,045  trades 90  capital 48.87
+[  1248 s] 2026-06-10  cycles 19,333  trades 90  capital 48.87
+[  1266 s] 2026-06-11  cycles 19,621  trades 91  capital 48.72
