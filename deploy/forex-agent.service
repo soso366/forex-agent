@@ -1,0 +1,16 @@
+# Alternative à cron : boucle intégrée, redémarrée automatiquement si elle s'arrête.
+# sudo cp deploy/forex-agent.service /etc/systemd/system/ && sudo systemctl enable --now forex-agent
+[Unit]
+Description=Agent de trading Forex autonome (paper trading)
+After=network-online.target
+
+[Service]
+WorkingDirectory=/chemin/vers/forex_agent
+ExecStart=/usr/bin/python3 -m forex_agent loop
+Restart=always
+RestartSec=30
+# Environment=ANTHROPIC_API_KEY=...   (si llm.enabled: true)
+# Environment=OANDA_TOKEN=...         (si data.provider: oanda)
+
+[Install]
+WantedBy=multi-user.target

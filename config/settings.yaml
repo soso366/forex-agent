@@ -1,0 +1,125 @@
+# ============================================================
+# Agent de trading Forex autonome — V1 (PAPER TRADING UNIQUEMENT)
+# Tout est configurable ici ; rien n'est en dur dans le code.
+# ============================================================
+
+mode: paper                    # V1 : "paper" uniquement. Aucun broker réel.
+
+account:
+  currency: EUR
+  starting_capital: 50.0       # capital de référence
+  leverage: 30                 # levier retail UE sur les majeures (ESMA)
+  commission_per_lot_eur: 0.0  # 0 = broker "spread only" (type OANDA)
+
+data:
+  provider: synthetic          # synthetic | csv | oanda
+  csv_dir: data/m1             # CSV M1 bid/ask (ex. Dukascopy) : <SYMBOL>.csv
+  synthetic:
+    seed: 7
+    start: "2026-09-01"
+    days: 30
+  oanda:                       # lecture seule des prix (compte démo), jamais d'ordres
+    environment: practice
+    token_env: OANDA_TOKEN
+
+symbols: [EURUSD, GBPUSD, USDJPY]
+
+timeframes:
+  context: [H1, M15]           # compréhension du contexte
+  entry: [M5, M1]              # timing et entrée
+bars:                          # bougies clôturées chargées par timeframe
+  H1: 120
+  M15: 160
+  M5: 150
+  M1: 60
+
+scheduler:
+  interval_minutes: 5
+  delay_seconds: 15            # attendre la clôture de la bougie M5
+  # Forex fermé du vendredi 21:00 UTC au dimanche 21:00 UTC (approximation, DST non gérée en V1)
+  weekly_close: {weekday: 4, hour: 21}
+  weekly_open:  {weekday: 6, hour: 21}
+
+sessions:
+  # Heures UTC où l'OUVERTURE de nouvelles positions est autorisée (Londres + New York).
+  # La gestion des positions ouvertes continue en dehors.
+  new_trades_utc: [[7, 20]]
+  no_new_trades_friday_after_utc: 19
+  asia_utc: [0, 7]             # range Asie (liquidité balayée ensuite par Londres — ICT)
+  killzones_ny:                # heures de New York (DST gérée automatiquement)
+    london: [2, 5]
+    new_york_am: [7, 10]
+
+news:                          # aucune nouvelle position autour des annonces (ICT, NNFX)
+  blackout_minutes_before: 30
+  blackout_minutes_after: 30
+  auto_nfp: true               # NFP : 1er vendredi du mois, 8:30 New York
+  events: []                   # à remplir : {time: "2026-10-28T18:00Z", name: FOMC, currencies: [USD]}
+
+trading:
+  max_hold_minutes: 30         # fermeture automatique au plus tard après 30 min
+  max_new_trades_per_cycle: 1
+  # Entrée BINAIRE (NNFX) : toutes les conditions essentielles de la stratégie sont vraies,
+  # sinon NO TRADE. Les confirmations optionnelles sont journalisées pour être pondérées
+  # plus tard par les statistiques, pas par des poids arbitraires.
+  min_optional_confirmations: 0
+  allow_experimental_in_paper: true   # stratégies "experimental" autorisées en paper seulement
+  reentry_cooldown_minutes: 30 # après une perte sur une paire : pas de nouvelle entrée dessus (pas de chase)
+
+strategy_params:
+  stop_buffer_atr: 0.5         # stop = invalidation ± 0,5 ATR M5 (les sources disent 1 ATR en Daily : à tester)
+  min_pullback_pct: 0.30       # pullback ≥ 30 % de la jambe (Wysetrade : 50 % = meilleur)
+  max_pullback_pct: 0.786
+  displacement_atr: 1.0        # corps minimal d'une bougie de displacement (ICT)
+  opposite_displacement_atr: 1.5   # « d'où vient le prix » : impulsion contraire récente = pas de trade
+  flag_pole_atr: 2.5           # hauteur minimale du mât d'un flag
+
+strategies:                    # statut : experimental | paper_validated | live_validated
+  TrendPullback_v2:   {enabled: true, status: experimental}
+  BreakRetest_v2:     {enabled: true, status: experimental}
+  FlagBreakout_v1:    {enabled: true, status: experimental}
+  DoubleTopBottom_v1: {enabled: true, status: experimental}
+  SweepMSS_v2:        {enabled: true, status: experimental}
+  RangeFade_v2:       {enabled: true, status: experimental}
+
+risk:
+  risk_per_trade_pct: 1.0      # 1 % du capital par trade (0,50 € à 50 €)
+  max_total_risk_pct: 2.0      # risque cumulé max de toutes les positions ouvertes
+  max_open_positions: 2
+  max_trades_per_day: 12
+  daily_loss_limit_pct: 3.0    # au-delà : plus de nouvelles positions ce jour-là
+  max_drawdown_pct: 20.0       # depuis le plus haut : kill switch automatique
+  max_consecutive_losses: 3
+  cooldown_minutes_after_losses: 60
+  reduced_risk_pct_after_losses: 0.5   # le risque ne peut que BAISSER après des pertes
+  min_rr: 1.5
+  min_stop_pips: 3.0
+  max_stop_pips: 20.0
+  max_spread_pips: {default: 2.0, GBPUSD: 2.5, USDJPY: 2.0}
+  max_spread_to_stop_ratio: 0.25
+  max_margin_usage_pct: 60.0
+  min_units: 1                 # OANDA accepte 1 unité ; broker MT4 : 1000 (micro-lot)
+  unit_step: 1
+  block_same_currency_same_direction: true
+
+management:
+  breakeven_at_r: 1.0          # à +1R : stop au prix d'entrée (+ spread)
+  lock_at_r: 1.5               # à +1,5R : stop verrouille +0,5R
+  lock_r: 0.5
+  trail_ema20_after_r: 1.0     # au-delà : trailing sous/au-dessus de l'EMA20 M5 (vidéo technical analysis)
+  take_profit_near_target: 0.8 # ≥ 80 % du chemin + momentum qui s'essouffle -> TAKE PROFIT
+  opposite_displacement_atr: 1.2   # bougie M5 contraire de cette taille = invalidation narrative (ICT)
+
+llm:
+  enabled: false               # true = Claude relit les candidats et les positions
+  model: claude-sonnet-5-5
+  max_tokens: 1500
+  api_key_env: ANTHROPIC_API_KEY
+
+paths:
+  db: data/journal.sqlite
+  jsonl: data/cycles.jsonl
+  kill_switch: data/KILL_SWITCH
+  lock: data/agent.lock
+  prompt: prompts/agent_system.md
+  playbook: knowledge/playbook.md

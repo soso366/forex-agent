@@ -1,0 +1,18 @@
+# Alternative à GitHub Actions sur n'importe quel serveur avec Docker.
+#   docker compose run --rm backtest     -> premier vrai backtest (résultats dans ./results)
+#   docker compose up -d scheduler       -> PLUS TARD seulement : cycle toutes les 5 min, 24/7
+services:
+  backtest:
+    build: .
+    command: ["python", "-m", "forex_agent", "pipeline"]
+    volumes: ["./data:/app/data", "./results:/app/results"]
+
+  scheduler:
+    build: .
+    command: ["python", "-m", "forex_agent", "loop"]
+    restart: unless-stopped
+    volumes: ["./data:/app/data"]
+    environment:
+      FOREX_DATA_PROVIDER: oanda          # prix temps réel en LECTURE SEULE (compte démo), jamais d'ordres
+      OANDA_TOKEN: ${OANDA_TOKEN:-}
+    profiles: ["later"]                   # ne démarre pas tant qu'on ne le demande pas explicitement

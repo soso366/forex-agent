@@ -1,0 +1,117 @@
+# Premier vrai backtest de la V2 sur données Dukascopy — PAPER uniquement, aucun broker, aucun argent.
+#
+# Se lance :
+#   - avec le bouton « Run workflow » (onglet Actions de GitHub), ou
+#   - automatiquement quand le fichier deploy/trigger/backtest.txt est modifié.
+# Résultats : branche « results » du dépôt (dossier results/) + téléchargement « Artifacts » du run.
+# Reprise : les données déjà téléchargées et l'avancement du backtest sont conservés entre deux lancements.
+
+name: Backtest V2 (Dukascopy)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "Début AAAA-MM-JJ (vide = 6 derniers mois civils complets)"
+        required: false
+        default: ""
+      end:
+        description: "Fin AAAA-MM-JJ incluse (vide = fin du dernier mois complet)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - deploy/trigger/backtest.txt
+
+permissions:
+  contents: write          # pour enregistrer les résultats dans la branche « results »
+
+concurrency:
+  group: backtest
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Récupérer le projet
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Vérifier que le code est intact (tous les tests)
+        run: python -m unittest discover -s tests
+
+      - name: Restaurer les données Dukascopy déjà téléchargées
+        uses: actions/cache/restore@v4
+        with:
+          path: data/dukascopy_raw
+          key: dukascopy-${{ github.run_id }}
+          restore-keys: dukascopy-
+
+      - name: Restaurer l'avancement d'un backtest interrompu
+        uses: actions/cache/restore@v4
+        with:
+          path: data/backtest
+          key: backtest-state-${{ github.run_id }}
+          restore-keys: backtest-state-
+
+      - name: Téléchargement + validation + backtest (une seule commande)
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.start }}" ]; then ARGS="$ARGS --start ${{ github.event.inputs.start }}"; fi
+          if [ -n "${{ github.event.inputs.end }}" ]; then ARGS="$ARGS --end ${{ github.event.inputs.end }}"; fi
+          python -m forex_agent pipeline $ARGS
+
+      - name: Sauvegarder les données téléchargées (même en cas d'échec)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/dukascopy_raw
+          key: dukascopy-${{ github.run_id }}
+
+      - name: Sauvegarder l'avancement du backtest (même en cas d'échec)
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/backtest
+          key: backtest-state-${{ github.run_id }}
+
+      - name: Enregistrer les résultats dans la branche « results »
+        if: always()
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          [ -d results ] || { echo "Aucun résultat à enregistrer"; exit 0; }
+          STAMP=$(date -u +%Y-%m-%d_%H%M)
+          cd "$RUNNER_TEMP"
+          URL="https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git clone --quiet --depth 1 --branch results "$URL" res 2>/dev/null; then cd res; else
+            mkdir res && cd res && git init --quiet && git checkout --quiet -b results && git remote add origin "$URL"; fi
+          rm -rf latest && mkdir -p latest "runs/$STAMP"
+          cp -r "$GITHUB_WORKSPACE"/results/* latest/
+          cp -r "$GITHUB_WORKSPACE"/results/* "runs/$STAMP/"
+          git config user.name "forex-agent-bot"
+          git config user.email "forex-agent-bot@users.noreply.github.com"
+          git add -A
+          git commit --quiet -m "Résultats backtest $STAMP ($(head -1 latest/STATUS.txt))" || exit 0
+          git push --quiet origin results
+
+      - name: Résultats téléchargeables (Artifacts)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultats-backtest
+          path: results/
+          retention-days: 90

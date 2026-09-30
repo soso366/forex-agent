@@ -1,0 +1,3 @@
+# Lance un cycle complet toutes les 5 minutes (le cycle attend lui-même la bonne bougie).
+# crontab -e puis ajouter (adapter le chemin) :
+*/5 * * * * cd /chemin/vers/forex_agent && sleep 15 && /usr/bin/python3 -m forex_agent run-once >> data/cron.log 2>&1
