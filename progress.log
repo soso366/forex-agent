@@ -91,3 +91,15 @@ Validation OK : EURUSD, GBPUSD, USDJPY, période commune 2026-03-01 22:00:00+00:
 Données : 2026-03-01 22:00:00+00:00 → 2026-08-31 23:59:00+00:00. Cycles simulés du 2026-03-08 00:00 au 2026-08-31 23:59 UTC (7 jours réservés au préchauffage des indicateurs).
 [     0 s] 2026-03-08  cycles 1  trades 0  capital 50.00
 [     3 s] 2026-03-09  cycles 37  trades 0  capital 50.00
+[    23 s] 2026-03-10  cycles 325  trades 2  capital 49.19
+[    42 s] 2026-03-11  cycles 613  trades 4  capital 48.74
+[    61 s] 2026-03-12  cycles 901  trades 7  capital 48.18
+[    81 s] 2026-03-13  cycles 1,189  trades 10  capital 48.33
+[    97 s] 2026-03-15  cycles 1,441  trades 13  capital 47.97
+[    99 s] 2026-03-16  cycles 1,477  trades 13  capital 47.97
+[   119 s] 2026-03-17  cycles 1,765  trades 15  capital 47.78
+[   136 s] 2026-03-18  cycles 2,053  trades 17  capital 47.71
+[   155 s] 2026-03-19  cycles 2,341  trades 18  capital 47.85
+[   174 s] 2026-03-20  cycles 2,629  trades 22  capital 48.83
+[   189 s] 2026-03-22  cycles 2,881  trades 22  capital 48.83
+[   191 s] 2026-03-23  cycles 2,917  trades 22  capital 48.83
