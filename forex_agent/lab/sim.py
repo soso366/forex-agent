@@ -102,10 +102,13 @@ def requalify(setup, ctx, cfg):
     risk = d * (s.entry - s.stop)
     reward = d * (s.target - s.entry)
     net_rr = (reward - spread) / (risk + spread) if reward > 0 else 0.0
-    if "rr" in s.confirmations:
+    # Recalcul seulement si le paramètre testé change : la valeur en cache a été calculée par build_setup
+    # sur les prix non arrondis, un recalcul inutile pourrait basculer un cas limite (écart d'arrondi).
+    if "rr" in s.confirmations and (cfg["risk"].get("min_rr", 1.5) != 1.5 or off != 0.05):
         s.confirmations["rr"] = net_rr >= cfg["risk"].get("min_rr", 1.5)
-    if "spread" in s.confirmations:
-        s.confirmations["spread"] = spread <= cfg["risk"].get("max_spread_to_stop_ratio", 0.25) * risk
+    ratio = cfg["risk"].get("max_spread_to_stop_ratio", 0.25)
+    if "spread" in s.confirmations and ratio != 0.25:
+        s.confirmations["spread"] = spread <= ratio * risk
     if "news" in s.confirmations:
         s.confirmations["news"] = not ctx.news_block
     return s

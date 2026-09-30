@@ -29,6 +29,9 @@ ROBUSTNESS = {
     "max_dd_worsening": 1.10,      # C7 : drawdown IS (en R) pas plus de 10 % pire
     "val_not_worse": True,         # C8 : validation (juin-juillet) non dégradée
     "winrate_trap": 0.25,          # C9 : rejeté si le gain moyen chute de plus de 25 % (on coupe les gros gagnants)
+    "min_changed_IS": 10,          # C10 : au moins 10 trades IS dont l'issue change (sinon : pas assez de preuves)
+    "drop_best_changes": 2,        # C11 : le gain reste positif sans les 2 changements les plus favorables
+    "min_changed_VAL": 5,          # C12 : la validation doit réellement tester le changement (≥ 5 trades modifiés)
 }
 
 
@@ -96,8 +99,18 @@ def paired(base: pd.DataFrame, var: pd.DataFrame) -> dict:
     return {"common": int(len(m)), "diff": float(d.mean()), "t": float(d.mean() / se) if se and se > 0 else np.nan}
 
 
-def evaluate(base_t: pd.DataFrame, var_t: pd.DataFrame, neighbors_exp: list[float] | None = None,
-             filter_block: bool = False) -> dict:
+def changes(base: pd.DataFrame, var: pd.DataFrame) -> pd.Series:
+    """Contribution de chaque trade modifié / supprimé / ajouté à l'écart de R total."""
+    key = ["symbol", "entry_time", "strategy", "direction"]
+    if base.empty and var.empty:
+        return pd.Series(dtype=float)
+    m = base[key + ["r_multiple"]].merge(var[key + ["r_multiple"]], on=key, how="outer", suffixes=("_b", "_v"))
+    contrib = m["r_multiple_v"].fillna(0) - m["r_multiple_b"].fillna(0)
+    changed = m["r_multiple_b"].isna() | m["r_multiple_v"].isna() | (contrib.abs() > 1e-9)
+    return contrib[changed]
+
+
+def evaluate(base_t: pd.DataFrame, var_t: pd.DataFrame, neighbors_exp: list[float] | None = None) -> dict:
     """Applique les critères C1–C9. Renvoie les mesures, chaque critère et le verdict."""
     R = ROBUSTNESS
     b_is, v_is = period(base_t, "IS"), period(var_t, "IS")
@@ -121,6 +134,14 @@ def evaluate(base_t: pd.DataFrame, var_t: pd.DataFrame, neighbors_exp: list[floa
     c["C8_val"] = mvv["n"] > 0 and (mvv["exp"] >= mbv["exp"]) and (mvv["R"] >= mbv["R"])
     c["C9_winrate_trap"] = not (mb["avg_win"] and mv["avg_win"] < (1 - R["winrate_trap"]) * mb["avg_win"]
                                 and mv["exp"] - mb["exp"] < 0.05)
+    ch_is, ch_val = changes(b_is, v_is), changes(b_val, v_val)
+    c["C10_evidence"] = len(ch_is) >= R["min_changed_IS"]
+    c["C11_not_2_trades"] = bool(len(ch_is)) and \
+        float(ch_is.sort_values(ascending=False).iloc[R["drop_best_changes"]:].sum()) > 0
+    c["C12_val_tested"] = len(ch_val) >= R["min_changed_VAL"]
     tested = [v for k, v in c.items() if v is not None]
     return {"IS": mv, "IS_base": mb, "VAL": mvv, "VAL_base": mbv, "criteria": c,
-            "accepted": all(tested), "paired": paired(b_is, v_is)}
+            "accepted": all(tested), "paired": paired(b_is, v_is),
+            "changed_IS": int(len(ch_is)), "changed_VAL": int(len(ch_val)),
+            "gain_top2_share": float(ch_is.sort_values(ascending=False).iloc[:2].sum() / ch_is.sum())
+            if len(ch_is) and ch_is.sum() > 0 else None}

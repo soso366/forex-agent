@@ -1,0 +1,34 @@
+{
+  "overrides": {
+    "sessions": {
+      "new_trades_utc": [
+        [
+          6,
+          16
+        ]
+      ]
+    }
+  },
+  "lab": {},
+  "rescan": [],
+  "history": [
+    {
+      "block": "A",
+      "kept": []
+    },
+    {
+      "block": "B",
+      "kept": [
+        {
+          "param": "horaires d'entrée (UTC)",
+          "value": [
+            6,
+            16
+          ],
+          "gain_exp_IS": 0.08719428090832636
+        }
+      ]
+    }
+  ],
+  "reclassify": false
+}

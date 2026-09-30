@@ -28,6 +28,8 @@ LAB = ROOT / "lab"
 RES = LAB / "results"
 DEFAULT_CACHE = Path("/home/claude/labcache/2026mar-aug")
 START, END = datetime(2026, 3, 8, tzinfo=UTC), datetime(2026, 8, 31, 23, 59, tzinfo=UTC)
+# 2e hors-échantillon : 6 mois ANTÉRIEURS, jamais vus pendant les blocs (données 01/09/2025 → 28/02/2026)
+OOS_B_START, OOS_B_END = datetime(2025, 9, 8, tzinfo=UTC), datetime(2026, 2, 28, 23, 59, tzinfo=UTC)
 
 
 def lab_cfg() -> dict:
@@ -130,12 +132,18 @@ def run_block(name: str, cache: Path, workers: int = 2) -> dict:
             row = {"value": v, "is_base": v == p.base, "summary": summarize(trades[key])}
             if v != p.base:
                 nb = B.numeric_neighbors(p, v)
-                numeric = v is None or (isinstance(v, (int, float)) and not isinstance(v, bool))
-                has_nums = any(isinstance(g, (int, float)) and not isinstance(g, bool) for g in p.grid)
+                numeric = v is None or (isinstance(v, (int, float)) and not isinstance(v, bool)) or \
+                    (isinstance(v, (tuple, list)) and len(v) == 2 and all(isinstance(x, int) for x in v))
+                has_nums = any((isinstance(g, (int, float)) and not isinstance(g, bool)) or
+                               (isinstance(g, (tuple, list)) and len(g) == 2) for g in p.grid)
                 ev = evaluate(bt, t, [exp_of[repr(n)] for n in nb] if (numeric and has_nums) else None)
-                row.update({"criteria": ev["criteria"], "accepted": ev["accepted"], "paired": ev["paired"]})
+                row.update({"criteria": ev["criteria"], "accepted": ev["accepted"], "paired": ev["paired"],
+                            "changed_IS": ev["changed_IS"], "changed_VAL": ev["changed_VAL"],
+                            "gain_top2_share": ev["gain_top2_share"]})
                 if ev["accepted"]:
-                    accepted.append((ev["IS"]["exp"] - ev["IS_base"]["exp"], p, v, key))
+                    # score robuste : la plus faible espérance entre la valeur et ses voisines (on préfère le centre du plateau)
+                    robust = min([ev["IS"]["exp"]] + [exp_of[repr(n)] for n in nb]) if nb else ev["IS"]["exp"]
+                    accepted.append((ev["IS"]["exp"] - ev["IS_base"]["exp"], p, v, key, robust))
             rows.append(row)
         report["params"].append({"name": p.name, "section": p.section, "key": p.key, "base": p.base,
                                  "note": p.note, "rows": rows})
@@ -144,11 +152,16 @@ def run_block(name: str, cache: Path, workers: int = 2) -> dict:
         report["heatmaps"].setdefault(title, []).append(
             {"x": a, "y": b_, "IS": metrics(period(t, "IS")), "VAL": metrics(period(t, "VAL"))})
 
-    # combinaison des réglages retenus, ajoutés un par un par ordre de gain
-    accepted.sort(key=lambda x: x[0], reverse=True)
+    # une seule valeur par paramètre : la plus robuste (meilleure « pire voisine »), puis combinaison par ordre de gain
+    best = {}
+    for item in accepted:
+        k = item[1].key
+        if k not in best or item[4] > best[k][4]:
+            best[k] = item
+    accepted = sorted(best.values(), key=lambda x: x[0], reverse=True)
     new_locked = copy.deepcopy(locked)
     kept = []
-    for gain, p, v, key in accepted:
+    for gain, p, v, key, _robust in accepted:
         trial = copy.deepcopy(new_locked)
         var = p.variant(v, trial)
         trial["overrides"], trial["lab"] = var.overrides, var.lab
@@ -189,6 +202,14 @@ def run_final(cache: Path, oos_caches: dict[str, Path] | None = None) -> dict:
         out[label] = {p: metrics(period(t, p)) for p in PERIODS}
         out[label]["strategies_OOS"] = breakdown(period(t, "OOS"), "strategy")
         out[label]["pairs_OOS"] = breakdown(period(t, "OOS"), "symbol")
+    for tag, (c_dir, csv_dir, a_, b_) in (oos_caches or {}).items():
+        trb = run_all([ref, fin], cfg, str(c_dir), str(csv_dir), a_, b_, RES / f"trades_{tag}", 2)
+        for label, v in (("reference", ref), ("locked", fin)):
+            t = with_r(trb[v.key])
+            out[label]["OOS_B"] = metrics(t)
+            out[label]["strategies_OOS_B"] = breakdown(t, "strategy")
+            out[label]["pairs_OOS_B"] = breakdown(t, "symbol")
+            out[label]["months_OOS_B"] = breakdown(t, "month")
     (RES / "final.json").write_text(json.dumps(clean(out), indent=2, ensure_ascii=False, default=str))
     return out
 
@@ -200,7 +221,12 @@ def main(argv=None):
     sub.add_parser("cache")
     b = sub.add_parser("block")
     b.add_argument("name", choices=["A", "B", "C", "D"])
-    sub.add_parser("final")
+    f = sub.add_parser("final")
+    f.add_argument("--oos-cache", default=None)
+    f.add_argument("--oos-csv", default=None)
+    co = sub.add_parser("cache-oos")
+    co.add_argument("--oos-cache", required=True)
+    co.add_argument("--oos-csv", required=True)
     a = ap.parse_args(argv)
     cache = Path(a.cache)
     if a.cmd == "cache":
@@ -213,7 +239,15 @@ def main(argv=None):
                                 "base_VAL": r["base"]["VAL"], "after_VAL": r["after"]["VAL"]}), indent=1,
                          ensure_ascii=False))
     elif a.cmd == "final":
-        print(json.dumps(clean(run_final(cache)), indent=1, ensure_ascii=False))
+        extra = {}
+        if a.oos_cache:
+            extra["2025sep-2026feb"] = (Path(a.oos_cache), Path(a.oos_csv), OOS_B_START, OOS_B_END)
+        print(json.dumps(clean(run_final(cache, extra)), indent=1, ensure_ascii=False))
+    elif a.cmd == "cache-oos":
+        from .cache import build
+        cfg = lab_cfg()
+        build(cfg, Path(a.oos_csv), Path(a.oos_cache), OOS_B_START, OOS_B_END, workers=2,
+              log=lambda m: print(m, flush=True))
 
 
 if __name__ == "__main__":

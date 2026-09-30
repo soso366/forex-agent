@@ -129,7 +129,19 @@ def block_d() -> list[Param]:
 
 
 def numeric_neighbors(p: Param, value) -> list:
-    """Voisins dans la grille (hors valeur de référence). None/booléens/listes : pas de voisinage."""
+    """Voisins dans la grille (hors valeur de référence). None/booléens/listes : pas de voisinage.
+    Grille 2D (horaires début × fin) : voisins = un pas sur une seule des deux coordonnées."""
+    if isinstance(value, (tuple, list)) and len(value) == 2 and all(isinstance(a, int) for a in value):
+        pts = [tuple(g) for g in p.grid]
+        xs, ys = sorted({g[0] for g in pts}), sorted({g[1] for g in pts})
+        i, j = xs.index(value[0]), ys.index(value[1])
+        cand = []
+        for di, dj in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+            if 0 <= i + di < len(xs) and 0 <= j + dj < len(ys):
+                q = (xs[i + di], ys[j + dj])
+                if q in pts and q != tuple(p.base):
+                    cand.append(q)
+        return cand
     nums = sorted(v for v in p.grid if isinstance(v, (int, float)) and not isinstance(v, bool))
     if value is None and nums:                       # « désactivé » : voisin = valeur la moins active
         ext = nums[-1] if p.none_like == "max" else nums[0]
