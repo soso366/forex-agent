@@ -44,11 +44,17 @@ jobs:
           python-version: "3.11"
           cache: pip
 
-      - name: Installer les dépendances
-        run: pip install -r requirements.txt
+      - name: Installer les dépendances (versions exactes testées)
+        run: |
+          pip install -r requirements.txt
+          python -c "import sys,pandas,numpy,yaml;print(sys.version);print('pandas',pandas.__version__,'numpy',numpy.__version__,'yaml',yaml.__version__)"
 
       - name: Vérifier que le code est intact (tous les tests)
-        run: python -m unittest discover -s tests
+        run: |
+          set +e
+          mkdir -p results
+          python -m unittest discover -s tests -v 2>&1 | tee results/tests.log
+          test ${PIPESTATUS[0]} -eq 0 || { printf 'ÉCHEC\nétape : tests automatiques (voir tests.log)\n' > results/STATUS.txt; exit 1; }
 
       - name: Restaurer les données Dukascopy déjà téléchargées
         uses: actions/cache/restore@v4
@@ -67,6 +73,7 @@ jobs:
       - name: Téléchargement + validation + backtest (une seule commande)
         env:
           PYTHONUNBUFFERED: "1"
+        shell: bash
         run: |
           ARGS=""
           if [ -n "${{ github.event.inputs.start }}" ]; then ARGS="$ARGS --start ${{ github.event.inputs.start }}"; fi

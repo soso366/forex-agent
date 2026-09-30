@@ -1,0 +1,2 @@
+# Optionnel : cerveau LLM (llm.enabled: true dans config/settings.yaml)
+anthropic>=0.40

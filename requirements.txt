@@ -1,5 +1,4 @@
-pandas>=2.0
-numpy>=1.24
-PyYAML>=6.0
-# optionnel : cerveau LLM (llm.enabled: true)
-anthropic>=0.40
+# Versions exactes avec lesquelles les 46 tests et le moteur ont été validés.
+pandas==3.0.2
+numpy==2.4.4
+PyYAML==6.0.3
