@@ -1,0 +1,90 @@
+# Exporte les données Dukascopy M1 préparées (CSV bid/ask compressés) vers une branche « data-<tag> ».
+# Sert au Parameter Lab. Reprise automatique tant que le téléchargement n'est pas complet.
+name: Export données M1
+
+on:
+  workflow_dispatch:
+    inputs:
+      start: {description: "Début AAAA-MM-JJ", required: true}
+      end: {description: "Fin AAAA-MM-JJ incluse", required: true}
+      tag: {description: "Nom court (ex. 2026h1)", required: true}
+      attempt: {description: "Numéro de lancement (auto)", required: false, default: "1"}
+  push:
+    paths: [deploy/trigger/export.txt]   # une ligne par export : « début fin tag »
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: dukascopy-cache
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        job: ${{ fromJSON(github.event_name == 'push' && '[0,1,2,3]' || '[0]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Paramètres de l'export
+        id: p
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            LINE=$(grep -v '^#' deploy/trigger/export.txt | grep -v '^$' | sed -n "$(( ${{ matrix.job }} + 1 ))p")
+            [ -n "$LINE" ] || { echo "skip=1" >> $GITHUB_OUTPUT; exit 0; }
+            set -- $LINE; echo "start=$1" >> $GITHUB_OUTPUT; echo "end=$2" >> $GITHUB_OUTPUT; echo "tag=$3" >> $GITHUB_OUTPUT
+            echo "attempt=1" >> $GITHUB_OUTPUT
+          else
+            echo "start=${{ inputs.start }}" >> $GITHUB_OUTPUT; echo "end=${{ inputs.end }}" >> $GITHUB_OUTPUT
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT; echo "attempt=${{ inputs.attempt }}" >> $GITHUB_OUTPUT
+          fi
+      - if: steps.p.outputs.skip != '1'
+        uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - if: steps.p.outputs.skip != '1'
+        run: pip install -r requirements.txt
+      - name: Restaurer le cache Dukascopy
+        if: steps.p.outputs.skip != '1'
+        uses: actions/cache/restore@v4
+        with:
+          path: data/dukascopy_raw
+          key: dukascopy-${{ github.run_id }}
+          restore-keys: dukascopy-
+      - name: Télécharger / préparer
+        if: steps.p.outputs.skip != '1'
+        env: {PYTHONUNBUFFERED: "1"}
+        run: python -m forex_agent data-download --start ${{ steps.p.outputs.start }} --end ${{ steps.p.outputs.end }} --time-budget-min 300
+      - name: Sauvegarder le cache
+        if: always() && steps.p.outputs.skip != '1'
+        uses: actions/cache/save@v4
+        with:
+          path: data/dukascopy_raw
+          key: dukascopy-${{ github.run_id }}
+      - name: Publier les CSV (si complet) ou relancer
+        if: always() && steps.p.outputs.skip != '1'
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STATUS=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
+          echo "Statut : $STATUS"
+          if [ "$STATUS" = "COMPLETE" ]; then
+            mkdir -p "$RUNNER_TEMP/out" && cd "$RUNNER_TEMP/out"
+            for f in "$GITHUB_WORKSPACE"/data/m1/*.csv; do gzip -9 -c "$f" > "$(basename "$f").gz"; done
+            cp "$GITHUB_WORKSPACE/data/m1/quality_report.json" .
+            git init -q && git checkout -q -b "data-${{ steps.p.outputs.tag }}"
+            git add -A && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "M1 ${{ steps.p.outputs.start }} → ${{ steps.p.outputs.end }}"
+            git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "data-${{ steps.p.outputs.tag }}"
+            echo "Publié sur la branche data-${{ steps.p.outputs.tag }}"
+          elif [ "$STATUS" = "INCOMPLETE" ] && [ "${{ steps.p.outputs.attempt }}" -lt 8 ]; then
+            gh workflow run export-data.yml --repo "$GITHUB_REPOSITORY" --ref main \
+              -f start=${{ steps.p.outputs.start }} -f end=${{ steps.p.outputs.end }} -f tag=${{ steps.p.outputs.tag }} -f attempt=$(( ${{ steps.p.outputs.attempt }} + 1 ))
+            echo "Suite relancée."
+          else
+            exit 1
+          fi

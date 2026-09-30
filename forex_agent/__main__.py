@@ -303,7 +303,9 @@ def main(argv: list[str] | None = None) -> None:
     dp.add_argument("--symbols", nargs="+", default=None)
     dp.add_argument("--start", default=None, help="AAAA-MM-JJ (défaut : début des 6 derniers mois complets)")
     dp.add_argument("--end", default=None, help="AAAA-MM-JJ inclus (défaut : fin du dernier mois complet)")
-    dp.add_argument("--workers", type=int, default=2)
+    dp.add_argument("--workers", type=int, default=3)
+    dp.add_argument("--time-budget-min", type=float, default=None,
+                    help="au-delà, les fichiers restants sont laissés pour le lancement suivant")
     sub.add_parser("data-validate", help="relit et valide les CSV M1 comme le fera le rejeu")
     bp = sub.add_parser("backtest", help="rejoue la V2 sur TOUTE la période CSV, journal séparé, puis rapport")
     bp.add_argument("--warmup-days", type=int, default=7, help="historique réservé au calcul des indicateurs")
@@ -351,9 +353,18 @@ def main(argv: list[str] | None = None) -> None:
         start = date.fromisoformat(a.start) if a.start else start
         end = date.fromisoformat(a.end) if a.end else end
         csv_dir = _csv_dir(cfg)
+        import time as _time
+        deadline = _time.time() + a.time_budget_min * 60 if a.time_budget_min else None
         rep = dukascopy.prepare(a.symbols or cfg["symbols"], start, end, ROOT / "data" / "dukascopy_raw", csv_dir,
-                                workers=a.workers)
-        errs = rep["download"]["errors"]
+                                workers=a.workers, deadline=deadline)
+        complete = not rep.get("incomplete")
+        (ROOT / "data").mkdir(exist_ok=True)
+        (ROOT / "data" / "download_status.txt").write_text(
+            ("COMPLETE" if complete else "INCOMPLETE") + f"\n{start} {end}\n", encoding="utf-8")
+        dl = rep["download"]
+        print(f"Téléchargement {'COMPLET' if complete else 'INCOMPLET'} : {dl['downloaded']} téléchargés, "
+              f"{dl['cached']} en cache, {len(dl['errors'])} erreurs, {dl['postponed']} reportés")
+        errs = dl["errors"]
         print(f"\nRapport qualité : {csv_dir / 'quality_report.json'}")
         if errs:
             print(f"ATTENTION : {len(errs)} fichiers en erreur (relancer la même commande reprend là où ça s'est arrêté) :")
