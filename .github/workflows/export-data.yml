@@ -17,7 +17,8 @@ permissions:
   actions: write
 
 concurrency:
-  group: dukascopy-cache
+  # une file par période : deux périodes ne s'annulent plus (GitHub ne garde qu'un lancement en attente par file)
+  group: dukascopy-${{ github.event.inputs.tag || github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -53,8 +54,10 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: data/dukascopy_raw
-          key: dukascopy-${{ github.run_id }}
-          restore-keys: dukascopy-
+          key: dukascopy-${{ steps.p.outputs.tag }}-${{ github.run_id }}
+          restore-keys: |
+            dukascopy-${{ steps.p.outputs.tag }}-
+            dukascopy-
       - name: Télécharger / préparer
         if: steps.p.outputs.skip != '1'
         env: {PYTHONUNBUFFERED: "1"}
@@ -64,7 +67,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: data/dukascopy_raw
-          key: dukascopy-${{ github.run_id }}
+          key: dukascopy-${{ steps.p.outputs.tag }}-${{ github.run_id }}
       - name: Publier les CSV (si complet) ou relancer
         if: always() && steps.p.outputs.skip != '1'
         env:
