@@ -1,0 +1,492 @@
+{
+ "period": [
+  "2025-09-08 15:35:00+00:00",
+  "2026-08-28 17:40:00+00:00"
+ ],
+ "global": {
+  "n": 305,
+  "win_rate": 0.416,
+  "exp_r": -0.033,
+  "avg_win_r": 0.716,
+  "avg_loss_r": -0.568,
+  "pf": 0.9,
+  "total_r": -10.13,
+  "t": -0.73,
+  "enough": true
+ },
+ "by_strategy": {
+  "BreakRetest_v2": {
+   "n": 84,
+   "win_rate": 0.429,
+   "exp_r": -0.033,
+   "avg_win_r": 0.708,
+   "avg_loss_r": -0.589,
+   "pf": 0.9,
+   "total_r": -2.8,
+   "t": -0.4,
+   "enough": true
+  },
+  "DoubleTopBottom_v1": {
+   "n": 83,
+   "win_rate": 0.373,
+   "exp_r": -0.134,
+   "avg_win_r": 0.601,
+   "avg_loss_r": -0.573,
+   "pf": 0.63,
+   "total_r": -11.16,
+   "t": -1.67,
+   "enough": true
+  },
+  "FlagBreakout_v1": {
+   "n": 102,
+   "win_rate": 0.441,
+   "exp_r": 0.021,
+   "avg_win_r": 0.698,
+   "avg_loss_r": -0.513,
+   "pf": 1.07,
+   "total_r": 2.18,
+   "t": 0.28,
+   "enough": true
+  },
+  "RangeFade_v2": {
+   "n": 20,
+   "win_rate": 0.5,
+   "exp_r": 0.067,
+   "avg_win_r": 0.724,
+   "avg_loss_r": -0.59,
+   "pf": 1.23,
+   "total_r": 1.34,
+   "t": 0.38,
+   "enough": false
+  },
+  "TrendPullback_v2": {
+   "n": 16,
+   "win_rate": 0.312,
+   "exp_r": 0.019,
+   "avg_win_r": 1.623,
+   "avg_loss_r": -0.711,
+   "pf": 1.04,
+   "total_r": 0.3,
+   "t": 0.06,
+   "enough": false
+  }
+ },
+ "by_pair": {
+  "EURUSD": {
+   "n": 95,
+   "win_rate": 0.337,
+   "exp_r": -0.105,
+   "avg_win_r": 0.811,
+   "avg_loss_r": -0.571,
+   "pf": 0.72,
+   "total_r": -10.0,
+   "t": -1.25,
+   "enough": true
+  },
+  "GBPUSD": {
+   "n": 103,
+   "win_rate": 0.437,
+   "exp_r": -0.011,
+   "avg_win_r": 0.681,
+   "avg_loss_r": -0.547,
+   "pf": 0.97,
+   "total_r": -1.09,
+   "t": -0.14,
+   "enough": true
+  },
+  "USDJPY": {
+   "n": 107,
+   "win_rate": 0.467,
+   "exp_r": 0.009,
+   "avg_win_r": 0.686,
+   "avg_loss_r": -0.585,
+   "pf": 1.03,
+   "total_r": 0.95,
+   "t": 0.12,
+   "enough": true
+  }
+ },
+ "by_hour_utc": {
+  "7": {
+   "n": 21,
+   "win_rate": 0.381,
+   "exp_r": -0.027,
+   "avg_win_r": 0.928,
+   "avg_loss_r": -0.614,
+   "pf": 0.93,
+   "total_r": -0.56,
+   "t": -0.14,
+   "enough": false
+  },
+  "8": {
+   "n": 21,
+   "win_rate": 0.524,
+   "exp_r": -0.088,
+   "avg_win_r": 0.496,
+   "avg_loss_r": -0.73,
+   "pf": 0.75,
+   "total_r": -1.84,
+   "t": -0.55,
+   "enough": false
+  },
+  "9": {
+   "n": 30,
+   "win_rate": 0.533,
+   "exp_r": -0.016,
+   "avg_win_r": 0.543,
+   "avg_loss_r": -0.656,
+   "pf": 0.95,
+   "total_r": -0.49,
+   "t": -0.13,
+   "enough": true
+  },
+  "10": {
+   "n": 25,
+   "win_rate": 0.6,
+   "exp_r": 0.258,
+   "avg_win_r": 0.725,
+   "avg_loss_r": -0.442,
+   "pf": 2.46,
+   "total_r": 6.45,
+   "t": 1.6,
+   "enough": false
+  },
+  "11": {
+   "n": 18,
+   "win_rate": 0.389,
+   "exp_r": -0.105,
+   "avg_win_r": 0.666,
+   "avg_loss_r": -0.595,
+   "pf": 0.71,
+   "total_r": -1.89,
+   "t": -0.6,
+   "enough": false
+  },
+  "12": {
+   "n": 27,
+   "win_rate": 0.481,
+   "exp_r": 0.274,
+   "avg_win_r": 1.229,
+   "avg_loss_r": -0.613,
+   "pf": 1.86,
+   "total_r": 7.4,
+   "t": 1.17,
+   "enough": false
+  },
+  "13": {
+   "n": 19,
+   "win_rate": 0.211,
+   "exp_r": -0.169,
+   "avg_win_r": 1.068,
+   "avg_loss_r": -0.499,
+   "pf": 0.57,
+   "total_r": -3.21,
+   "t": -0.97,
+   "enough": false
+  },
+  "14": {
+   "n": 22,
+   "win_rate": 0.273,
+   "exp_r": -0.052,
+   "avg_win_r": 0.902,
+   "avg_loss_r": -0.409,
+   "pf": 0.83,
+   "total_r": -1.14,
+   "t": -0.35,
+   "enough": false
+  },
+  "15": {
+   "n": 31,
+   "win_rate": 0.452,
+   "exp_r": -0.015,
+   "avg_win_r": 0.696,
+   "avg_loss_r": -0.6,
+   "pf": 0.96,
+   "total_r": -0.46,
+   "t": -0.1,
+   "enough": true
+  },
+  "16": {
+   "n": 25,
+   "win_rate": 0.28,
+   "exp_r": -0.206,
+   "avg_win_r": 0.626,
+   "avg_loss_r": -0.53,
+   "pf": 0.46,
+   "total_r": -5.16,
+   "t": -1.57,
+   "enough": false
+  },
+  "17": {
+   "n": 27,
+   "win_rate": 0.519,
+   "exp_r": -0.04,
+   "avg_win_r": 0.398,
+   "avg_loss_r": -0.512,
+   "pf": 0.84,
+   "total_r": -1.09,
+   "t": -0.38,
+   "enough": false
+  },
+  "18": {
+   "n": 24,
+   "win_rate": 0.333,
+   "exp_r": -0.192,
+   "avg_win_r": 0.683,
+   "avg_loss_r": -0.629,
+   "pf": 0.54,
+   "total_r": -4.61,
+   "t": -1.18,
+   "enough": false
+  },
+  "19": {
+   "n": 15,
+   "win_rate": 0.267,
+   "exp_r": -0.236,
+   "avg_win_r": 0.742,
+   "avg_loss_r": -0.592,
+   "pf": 0.46,
+   "total_r": -3.54,
+   "t": -1.17,
+   "enough": false
+  }
+ },
+ "by_session": {
+  "london": {
+   "n": 115,
+   "win_rate": 0.496,
+   "exp_r": 0.015,
+   "avg_win_r": 0.651,
+   "avg_loss_r": -0.611,
+   "pf": 1.05,
+   "total_r": 1.67,
+   "t": 0.2,
+   "enough": true
+  },
+  "new_york": {
+   "n": 91,
+   "win_rate": 0.363,
+   "exp_r": -0.158,
+   "avg_win_r": 0.557,
+   "avg_loss_r": -0.565,
+   "pf": 0.56,
+   "total_r": -14.4,
+   "t": -2.21,
+   "enough": true
+  },
+  "overlap_london_ny": {
+   "n": 99,
+   "win_rate": 0.374,
+   "exp_r": 0.026,
+   "avg_win_r": 0.957,
+   "avg_loss_r": -0.529,
+   "pf": 1.08,
+   "total_r": 2.6,
+   "t": 0.29,
+   "enough": true
+  }
+ },
+ "by_weekday": {
+  "Friday": {
+   "n": 46,
+   "win_rate": 0.543,
+   "exp_r": 0.138,
+   "avg_win_r": 0.693,
+   "avg_loss_r": -0.522,
+   "pf": 1.58,
+   "total_r": 6.36,
+   "t": 1.1,
+   "enough": true
+  },
+  "Monday": {
+   "n": 51,
+   "win_rate": 0.333,
+   "exp_r": -0.173,
+   "avg_win_r": 0.736,
+   "avg_loss_r": -0.627,
+   "pf": 0.59,
+   "total_r": -8.81,
+   "t": -1.63,
+   "enough": true
+  },
+  "Thursday": {
+   "n": 79,
+   "win_rate": 0.43,
+   "exp_r": 0.02,
+   "avg_win_r": 0.804,
+   "avg_loss_r": -0.573,
+   "pf": 1.06,
+   "total_r": 1.54,
+   "t": 0.2,
+   "enough": true
+  },
+  "Tuesday": {
+   "n": 58,
+   "win_rate": 0.362,
+   "exp_r": -0.073,
+   "avg_win_r": 0.654,
+   "avg_loss_r": -0.486,
+   "pf": 0.76,
+   "total_r": -4.26,
+   "t": -0.82,
+   "enough": true
+  },
+  "Wednesday": {
+   "n": 71,
+   "win_rate": 0.423,
+   "exp_r": -0.07,
+   "avg_win_r": 0.666,
+   "avg_loss_r": -0.608,
+   "pf": 0.8,
+   "total_r": -4.97,
+   "t": -0.75,
+   "enough": true
+  }
+ },
+ "by_exit": {
+  "CLOSE": {
+   "n": 61,
+   "win_rate": 0.082,
+   "exp_r": -0.419,
+   "avg_win_r": 0.4,
+   "avg_loss_r": -0.492,
+   "pf": 0.07,
+   "total_r": -25.56,
+   "t": -9.31,
+   "enough": true
+  },
+  "STOP_LOSS": {
+   "n": 53,
+   "win_rate": 0.0,
+   "exp_r": -1.001,
+   "avg_win_r": null,
+   "avg_loss_r": -1.001,
+   "pf": 0.0,
+   "total_r": -53.07,
+   "t": -985.4,
+   "enough": true
+  },
+  "TAKE_PROFIT": {
+   "n": 15,
+   "win_rate": 1.0,
+   "exp_r": 1.977,
+   "avg_win_r": 1.977,
+   "avg_loss_r": null,
+   "pf": null,
+   "total_r": 29.65,
+   "t": 16.0,
+   "enough": false
+  },
+  "TIME_STOP": {
+   "n": 176,
+   "win_rate": 0.608,
+   "exp_r": 0.221,
+   "avg_win_r": 0.554,
+   "avg_loss_r": -0.296,
+   "pf": 2.91,
+   "total_r": 38.85,
+   "t": 5.51,
+   "enough": true
+  }
+ },
+ "duration_min": {
+  "winners_median": 30.0,
+  "losers_median": 21.0
+ },
+ "mfe_mae": {
+  "winners": {
+   "mfe": 0.93,
+   "mae": 0.29
+  },
+  "losers": {
+   "mfe": 0.21,
+   "mae": 0.79
+  }
+ },
+ "winners_turned_losers": {
+  "n": 39,
+  "share": 0.219
+ },
+ "early_exits": {
+  "n_management_exits": 76,
+  "method": "prix après sortie",
+  "measured": 76,
+  "share_continued_0_5R": 0.395,
+  "median_post_exit_mfe_r": 0.325
+ },
+ "losing_streaks": {
+  "BreakRetest_v2": 7,
+  "DoubleTopBottom_v1": 7,
+  "FlagBreakout_v1": 9,
+  "RangeFade_v2": 2,
+  "TrendPullback_v2": 4
+ },
+ "hidden_correlations": {
+  "overlapping_pairs": 0,
+  "days_with_2plus_trades": 88,
+  "share_days_all_same_outcome": 0.35
+ },
+ "observations": [
+  {
+   "type": "stratégie",
+   "constat": "BreakRetest_v2 : -0.03 R/trade sur 84 trades (PF 0.9)",
+   "n": 84,
+   "statut": "hypothèse à tester (backtest → validation → OOS)"
+  },
+  {
+   "type": "stratégie",
+   "constat": "DoubleTopBottom_v1 : -0.13 R/trade sur 83 trades (PF 0.63)",
+   "n": 83,
+   "statut": "hypothèse à tester (backtest → validation → OOS)"
+  },
+  {
+   "type": "contexte perdant",
+   "constat": "TrendPullback_v2 × TREND_DOWN : -0.43 R/trade sur 9 trades",
+   "n": 9,
+   "statut": "échantillon insuffisant : ne rien conclure"
+  },
+  {
+   "type": "contexte perdant",
+   "constat": "EURUSD × 18 : -0.56 R/trade sur 10 trades",
+   "n": 10,
+   "statut": "échantillon insuffisant : ne rien conclure"
+  },
+  {
+   "type": "contexte perdant",
+   "constat": "GBPUSD × 13 : -0.39 R/trade sur 8 trades",
+   "n": 8,
+   "statut": "échantillon insuffisant : ne rien conclure"
+  },
+  {
+   "type": "contexte perdant",
+   "constat": "USDJPY × 8 : -0.39 R/trade sur 10 trades",
+   "n": 10,
+   "statut": "échantillon insuffisant : ne rien conclure"
+  },
+  {
+   "type": "contexte perdant",
+   "constat": "DoubleTopBottom_v1 × EURUSD : -0.35 R/trade sur 27 trades",
+   "n": 27,
+   "statut": "échantillon insuffisant : ne rien conclure"
+  },
+  {
+   "type": "série",
+   "constat": "BreakRetest_v2 : série de 7 pertes consécutives",
+   "n": 84,
+   "statut": "hypothèse à tester (backtest → validation → OOS)"
+  },
+  {
+   "type": "série",
+   "constat": "DoubleTopBottom_v1 : série de 7 pertes consécutives",
+   "n": 83,
+   "statut": "hypothèse à tester (backtest → validation → OOS)"
+  },
+  {
+   "type": "série",
+   "constat": "FlagBreakout_v1 : série de 9 pertes consécutives",
+   "n": 102,
+   "statut": "hypothèse à tester (backtest → validation → OOS)"
+  }
+ ],
+ "rule": "Une observation du journal ne devient JAMAIS une règle automatiquement : observation → hypothèse → backtest → validation → OOS → éventuellement intégration."
+}

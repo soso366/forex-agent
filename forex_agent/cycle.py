@@ -24,7 +24,49 @@ from .broker.paper import PaperBroker
 from .config import Decision
 from .data.providers import DataProvider, market_open_at
 from .journal import Store
+from .meta import adversarial, exposure
 from .risk.manager import RiskManager
+
+
+def _journal_stats(store: Store) -> dict:
+    """Espérance par stratégie dans le journal (pour le critique). Ne sert à aucune décision."""
+    out: dict = {}
+    for t in store.closed_trades():
+        r = t.get("r_multiple")
+        if r is None:
+            continue
+        s = out.setdefault(t["strategy"], {"n": 0, "sum": 0.0})
+        s["n"] += 1
+        s["sum"] += float(r)
+    return {k: {"n": v["n"], "exp_r": v["sum"] / v["n"]} for k, v in out.items()}
+
+
+def _meta_reviews(candidates, contexts, cfg, store) -> dict:
+    """META-SKILL revue adversariale : informative, toute erreur est ignorée (jamais d'effet sur la décision)."""
+    out: dict = {}
+    try:
+        js = _journal_stats(store)
+        for c in candidates:
+            try:
+                out.setdefault(c.symbol, []).append({"strategy": c.strategy, "direction": c.direction, "id": c.id,
+                                                     **adversarial.review(c, contexts[c.symbol], cfg, js)})
+            except Exception as e:                     # pragma: no cover
+                out.setdefault(c.symbol, []).append({"strategy": c.strategy, "error": str(e)})
+    except Exception:
+        pass
+    return out
+
+
+def _meta_exposure(setup, open_trades, provider, now, cfg, broker, risk) -> dict:
+    """META-SKILL audit d'exposition avant une 2e position : informatif, le Risk Manager décide."""
+    try:
+        if not open_trades:
+            return {"applies": False}
+        est = min(broker.balance, broker.equity(now)) * risk.risk_pct() / 100
+        return exposure.audit({"symbol": setup.symbol, "direction": setup.direction, "risk_eur": est},
+                              open_trades, provider, now, cfg)
+    except Exception as e:                             # pragma: no cover
+        return {"applies": True, "error": str(e)}
 
 
 def new_trades_window(now: datetime, cfg: dict) -> tuple[bool, str]:
@@ -96,6 +138,10 @@ def run_cycle(cfg: dict, provider: DataProvider, store: Store, now: datetime,
         candidates = sorted((s for sym, r in scans.items() for s in r.qualified if sym not in open_syms),
                             key=lambda s: (s.rr, s.score), reverse=True)
 
+        # 5bis. META-SKILL : revue adversariale de chaque candidat (journalisée, ne décide rien)
+        reviews = _meta_reviews(candidates, contexts, cfg, store)
+        exposures: dict[str, dict] = {}
+
         # 6. revue LLM (optionnelle, bornée)
         llm_out, llm_status = None, brain.status
         if brain.enabled and (candidates or advice):
@@ -110,6 +156,7 @@ def run_cycle(cfg: dict, provider: DataProvider, store: Store, now: datetime,
                                    for t in store.open_trades()],
                 "markets": {s: c.summary() for s, c in contexts.items()},
                 "candidates": [c.to_dict() for c in candidates],
+                "adversarial_review": reviews,
             }
             llm_out, llm_status = brain.review(payload, {c.id for c in candidates},
                                                {t["id"] for t in store.open_trades()})
@@ -166,6 +213,7 @@ def run_cycle(cfg: dict, provider: DataProvider, store: Store, now: datetime,
                     continue
                 bid, ask = provider.quote(setup.symbol, now)
                 mids = broker.mids(now)
+                exposures[setup.symbol] = _meta_exposure(setup, store.open_trades(), provider, now, cfg, broker, risk)
                 verdict = risk.evaluate(setup, bid, ask, store.open_trades(), broker.equity(now),
                                         broker.balance, mids, now)
                 if not verdict.approved:
@@ -206,6 +254,7 @@ def run_cycle(cfg: dict, provider: DataProvider, store: Store, now: datetime,
                 "strategies_considered": r.considered,
                 "opportunities": [s.to_dict() for s in r.setups],
                 "chosen_strategy": strat, "decision": dec, "reason": reason,
+                "meta": {"adversarial_review": reviews.get(sym, []), "exposure_audit": exposures.get(sym)},
             }
         return _finish(cfg, store, broker, now, decisions, snapshots, ideas, llm_status, prompt_hash, None)
     except Exception:
