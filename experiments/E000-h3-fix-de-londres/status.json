@@ -1,0 +1,16 @@
+{
+ "id": "E000",
+ "title": "H3 fix de Londres (V4)",
+ "family": "flux / heure précise / retour à la moyenne",
+ "stage": "VALIDATED",
+ "created": "2026-10-01 09:00 UTC",
+ "cycle": 0,
+ "legacy": true,
+ "protocol_commit": "2e4ae39",
+ "blocked_by": "données OOS sept. 2024 → août 2025 : il faut les DEUX branches data-2025mar-aug et data-2024sep-2025feb. AVANT de lancer quoi que ce soit : si `git show origin/research-v4:research/v4/out/oos_check.json` existe, le test a déjà été lu → NE PAS le relancer, copier ce fichier dans results/oos.json. Sinon (données présentes) : quant lance UNE fois `python -m research.v4.oos_check`, copie research/v4/out/oos_check.json dans results/oos.json. Aucun paramètre ni critère ne change.",
+ "history": [
+  {"stage": "PROTOCOL_LOCKED", "at": "2026-10-01 09:40 UTC", "by": "quant", "note": "PROTOCOLE.md commité avant tests"},
+  {"stage": "TRAIN_DONE", "at": "2026-10-01 10:20 UTC", "by": "quant", "note": "Train +0,119 R (288 trades), passe les 7 critères"},
+  {"stage": "VALIDATED", "at": "2026-10-01 10:30 UTC", "by": "quant", "note": "Validation +0,135 R (294 trades, PF 1,47) ; critères OOS verrouillés 2e4ae39"}
+ ]
+}

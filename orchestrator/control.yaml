@@ -1,0 +1,18 @@
+# Interrupteur du système autonome. Modifiable depuis GitHub (bouton crayon) ou en le demandant à Claude.
+# mode: RUNNING  → le Manager exécute un cycle à chaque déclenchement
+# mode: PAUSED   → le Manager lit ce fichier, n'exécute rien et s'arrête
+mode: RUNNING
+max_new_hypotheses_per_cycle: 3
+max_variants_per_hypothesis: 8
+max_active_experiments: 3
+work_branch: multi-agent-research
+# Actions qui exigent l'accord explicite de l'utilisateur (le Manager s'arrête et le demande) :
+requires_user_approval:
+  - argent réel
+  - broker live
+  - clés de trading live
+  - augmentation du risque
+  - modification du Risk Manager
+  - suppression d'une protection
+  - modification de la baseline officielle
+  - merge vers main / production

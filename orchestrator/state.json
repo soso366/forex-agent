@@ -1,0 +1,19 @@
+{
+ "cycle": 0,
+ "cycle_open": false,
+ "created": "2026-10-01 19:39 UTC",
+ "history": [
+  {
+   "cycle": 0,
+   "opened": "2026-10-01 19:39 UTC"
+  },
+  {
+   "cycle": 0,
+   "closed": "2026-10-01 19:39 UTC",
+   "decision": "mise en place du système multi-agents"
+  }
+ ],
+ "notes": [
+  "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
+ ]
+}

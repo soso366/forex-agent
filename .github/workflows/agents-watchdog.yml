@@ -1,0 +1,39 @@
+# Chien de garde : si le système est en marche (control.yaml = RUNNING) mais qu'aucun cycle n'a eu lieu depuis
+# 48 h, ouvre une issue GitHub (l'utilisateur reçoit un e-mail). Ne lance aucun calcul.
+name: Agents — chien de garde
+
+on:
+  schedule:
+    - cron: "17 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: multi-agent-research}
+      - name: Vérifier la dernière activité
+        id: c
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, re, datetime as dt
+          mode = re.search(r"^mode: (\w+)", open("orchestrator/control.yaml").read(), re.M).group(1)
+          s = json.load(open("orchestrator/state.json"))
+          stamps = [h.get("closed") or h.get("opened") for h in s.get("history", []) if h.get("closed") or h.get("opened")]
+          last = max(stamps) if stamps else s.get("created", "2000-01-01 00:00 UTC")
+          age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.strptime(last, "%Y-%m-%d %H:%M UTC").replace(tzinfo=dt.timezone.utc)).total_seconds() / 3600
+          print(f"mode={mode}"); print(f"last={last}"); print(f"stale={'yes' if mode == 'RUNNING' and age > 48 else 'no'}")
+          PY
+      - name: Ouvrir une alerte
+        if: steps.c.outputs.stale == 'yes'
+        env: {GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"}
+        run: |
+          T="Système multi-agents : aucun cycle depuis plus de 48 h"
+          gh issue list --state open --search "$T in:title" --json number | grep -q number || \
+          gh issue create --title "$T" --body "Dernière activité : ${{ steps.c.outputs.last }}. Vérifier la tâche planifiée « Forex — cycle Manager » dans Claude (désactivée ? erreur ?). Le système est en mode RUNNING."

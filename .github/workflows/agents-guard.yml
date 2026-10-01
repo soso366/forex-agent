@@ -1,0 +1,27 @@
+# Garde-fous du système multi-agents : à chaque push sur la branche de recherche, vérifie que la baseline,
+# le Risk Manager, la configuration officielle et H3 n'ont pas été modifiés, et que les protocoles verrouillés
+# sont intacts. Un échec = un agent a franchi une limite d'autorité.
+name: Agents — garde-fous
+
+on:
+  push:
+    branches: [multi-agent-research]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - name: Garde-fous (fichiers protégés, protocoles verrouillés)
+        run: python -m orchestrator guard
+      - name: Tests de l'orchestrateur et des meta-skills
+        run: python -m unittest tests.test_orchestrator tests.test_meta -v
