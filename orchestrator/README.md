@@ -41,7 +41,8 @@ Manager, configuration, H3) identiques aux empreintes `protected.json` ; protoco
 pas de travail sur `main`.
 
 ## Autonomie
-- Tâche planifiée Claude (cloud) : lance une session « Manager » à intervalle régulier, qui exécute un cycle.
+- Tâche planifiée Claude « Forex — cycle Manager » (cloud, toutes les 6 h : 02:41, 08:41, 14:41, 20:41 Paris) :
+  session Manager neuve qui clone le dépôt, exécute `bootstrap.sh`, un cycle complet, pousse, et renvoie le rapport.
 - GitHub Actions : `agents-guard.yml` (garde-fous + tests à chaque push), `agents-watchdog.yml` (alerte par issue
   GitHub si aucun cycle depuis 48 h), `export-data.yml` (téléchargements Dukascopy demandés par le Quant).
 

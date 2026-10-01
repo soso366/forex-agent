@@ -3,6 +3,7 @@
 Dernière mise à jour : 2026-10-01 (création de la mémoire, avant le premier cycle autonome)
 Dernier cycle autonome : aucun (cycle 0 = mise en place)
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
+Moteur d'autonomie : tâche planifiée Claude « Forex — cycle Manager » (id trig_01FQqW1RLoX1zX21rHAYZCHe), toutes les 6 h (02:41, 08:41, 14:41, 20:41 heure de Paris), cloud, approbation automatique.
 
 ## Où en est-on
 - **Baseline officielle = V2** (branche `main`) : 6 stratégies, Router par régime, Risk Manager. Pas d'avantage démontré.
