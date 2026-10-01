@@ -1,0 +1,27 @@
+{
+ "H1": {
+  "decision": "REJECT",
+  "variant": null
+ },
+ "H2": {
+  "decision": "REJECT",
+  "variant": null
+ },
+ "H3": {
+  "decision": "KEEP FOR VALIDATION",
+  "variant": "mode=fade · k=0.5 · days=tous",
+  "params": {
+   "mode": "fade",
+   "k": 0.5,
+   "days": "tous"
+  }
+ },
+ "H4": {
+  "decision": "REJECT",
+  "variant": null
+ },
+ "H5": {
+  "decision": "REJECT",
+  "variant": null
+ }
+}
