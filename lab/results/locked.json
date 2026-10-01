@@ -7,6 +7,9 @@
           16
         ]
       ]
+    },
+    "regime": {
+      "er_trend_min": 0.25
     }
   },
   "lab": {},
@@ -28,7 +31,22 @@
           "gain_exp_IS": 0.08719428090832636
         }
       ]
+    },
+    {
+      "block": "C",
+      "kept": []
+    },
+    {
+      "block": "D",
+      "kept": [
+        {
+          "param": "tendance : efficiency minimale",
+          "value": 0.25,
+          "gain_exp_IS": 0.06041497401983936
+        }
+      ],
+      "note": "0,20 et 0,25 passent tous les critères ; la règle automatique choisissait 0,20, bord de grille (rien n'a été testé en dessous). Choix prudent fait AVANT le hors-échantillon : 0,25, valeur intérieure encadrée par deux voisins testés et plus petit écart avec la valeur d'origine 0,30."
     }
   ],
-  "reclassify": false
+  "reclassify": true
 }

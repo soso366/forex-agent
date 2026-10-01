@@ -1,0 +1,2323 @@
+{
+  "block": "D",
+  "locked_before": {
+    "overrides": {
+      "sessions": {
+        "new_trades_utc": [
+          [
+            6,
+            16
+          ]
+        ]
+      }
+    },
+    "lab": {},
+    "rescan": [],
+    "history": [
+      {
+        "block": "A",
+        "kept": []
+      },
+      {
+        "block": "B",
+        "kept": [
+          {
+            "param": "horaires d'entrée (UTC)",
+            "value": [
+              6,
+              16
+            ],
+            "gain_exp_IS": 0.0872
+          }
+        ]
+      },
+      {
+        "block": "C",
+        "kept": []
+      }
+    ],
+    "reclassify": false
+  },
+  "base": {
+    "IS": {
+      "n": 58,
+      "win": 0.4138,
+      "R": 4.171,
+      "exp": 0.0719,
+      "pf": 1.2067,
+      "dd": 7.579,
+      "avg_win": 1.0145,
+      "avg_loss": -0.5935,
+      "time_exit": 0.4655,
+      "exp_ex_top3": -0.0584,
+      "pnl_eur": 1.1677
+    },
+    "pairs_IS": {
+      "EURUSD": {
+        "n": 20,
+        "exp": 0.3004,
+        "R": 6.008
+      },
+      "GBPUSD": {
+        "n": 20,
+        "exp": -0.0077,
+        "R": -0.154
+      },
+      "USDJPY": {
+        "n": 18,
+        "exp": -0.0935,
+        "R": -1.683
+      }
+    },
+    "months_IS": {
+      "2026-03": {
+        "n": 22,
+        "exp": -0.1464,
+        "R": -3.221
+      },
+      "2026-04": {
+        "n": 22,
+        "exp": 0.2904,
+        "R": 6.388
+      },
+      "2026-05": {
+        "n": 14,
+        "exp": 0.0717,
+        "R": 1.004
+      }
+    },
+    "strategies_IS": {
+      "BreakRetest_v2": {
+        "n": 19,
+        "exp": -0.4052,
+        "R": -7.698
+      },
+      "DoubleTopBottom_v1": {
+        "n": 16,
+        "exp": 0.0762,
+        "R": 1.22
+      },
+      "FlagBreakout_v1": {
+        "n": 15,
+        "exp": 0.2239,
+        "R": 3.358
+      },
+      "RangeFade_v2": {
+        "n": 5,
+        "exp": 0.5278,
+        "R": 2.639
+      },
+      "TrendPullback_v2": {
+        "n": 3,
+        "exp": 1.5507,
+        "R": 4.652
+      }
+    },
+    "VAL": {
+      "n": 30,
+      "win": 0.3667,
+      "R": 1.05,
+      "exp": 0.035,
+      "pf": 1.1085,
+      "dd": 2.942,
+      "avg_win": 0.9753,
+      "avg_loss": -0.5094,
+      "time_exit": 0.5333,
+      "exp_ex_top3": -0.139,
+      "pnl_eur": 0.439
+    },
+    "strategies_VAL": {
+      "BreakRetest_v2": {
+        "n": 10,
+        "exp": 0.3392,
+        "R": 3.392
+      },
+      "DoubleTopBottom_v1": {
+        "n": 11,
+        "exp": -0.4416,
+        "R": -4.858
+      },
+      "FlagBreakout_v1": {
+        "n": 8,
+        "exp": 0.2381,
+        "R": 1.905
+      },
+      "RangeFade_v2": {
+        "n": 1,
+        "exp": 0.611,
+        "R": 0.611
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "stratégie désactivée",
+      "section": "lab",
+      "key": "disable_strategies",
+      "base": [],
+      "note": "",
+      "rows": [
+        {
+          "value": [],
+          "is_base": true,
+          "summary": {
+            "IS": {
+              "n": 58,
+              "win": 0.4138,
+              "R": 4.171,
+              "exp": 0.0719,
+              "pf": 1.2067,
+              "dd": 7.579,
+              "avg_win": 1.0145,
+              "avg_loss": -0.5935,
+              "time_exit": 0.4655,
+              "exp_ex_top3": -0.0584,
+              "pnl_eur": 1.1677
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 20,
+                "exp": 0.3004,
+                "R": 6.008
+              },
+              "GBPUSD": {
+                "n": 20,
+                "exp": -0.0077,
+                "R": -0.154
+              },
+              "USDJPY": {
+                "n": 18,
+                "exp": -0.0935,
+                "R": -1.683
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 22,
+                "exp": -0.1464,
+                "R": -3.221
+              },
+              "2026-04": {
+                "n": 22,
+                "exp": 0.2904,
+                "R": 6.388
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 30,
+              "win": 0.3667,
+              "R": 1.05,
+              "exp": 0.035,
+              "pf": 1.1085,
+              "dd": 2.942,
+              "avg_win": 0.9753,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5333,
+              "exp_ex_top3": -0.139,
+              "pnl_eur": 0.439
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          }
+        },
+        {
+          "value": [
+            "TrendPullback_v2"
+          ],
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 56,
+              "win": 0.4107,
+              "R": 3.011,
+              "exp": 0.0538,
+              "pf": 1.1532,
+              "dd": 7.416,
+              "avg_win": 0.9852,
+              "avg_loss": -0.5954,
+              "time_exit": 0.4821,
+              "exp_ex_top3": -0.0864,
+              "pnl_eur": 0.3382
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 19,
+                "exp": 0.2273,
+                "R": 4.318
+              },
+              "GBPUSD": {
+                "n": 19,
+                "exp": 0.0198,
+                "R": 0.376
+              },
+              "USDJPY": {
+                "n": 18,
+                "exp": -0.0935,
+                "R": -1.683
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 20,
+                "exp": -0.2293,
+                "R": -4.587
+              },
+              "2026-04": {
+                "n": 22,
+                "exp": 0.2997,
+                "R": 6.594
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 20,
+                "exp": -0.2103,
+                "R": -4.206
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              }
+            },
+            "VAL": {
+              "n": 30,
+              "win": 0.3667,
+              "R": 1.05,
+              "exp": 0.035,
+              "pf": 1.1085,
+              "dd": 2.942,
+              "avg_win": 0.9753,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5333,
+              "exp_ex_top3": -0.139,
+              "pnl_eur": 0.4346
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": null,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": true,
+            "C9_winrate_trap": true,
+            "C10_evidence": false,
+            "C11_not_2_trades": false,
+            "C12_val_tested": false
+          },
+          "accepted": false,
+          "paired": {
+            "common": 55,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 4,
+          "changed_VAL": 0,
+          "gain_top2_share": null
+        },
+        {
+          "value": [
+            "BreakRetest_v2"
+          ],
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 44,
+              "win": 0.4773,
+              "R": 13.467,
+              "exp": 0.3061,
+              "pf": 2.0853,
+              "dd": 5.604,
+              "avg_win": 1.2322,
+              "avg_loss": -0.5395,
+              "time_exit": 0.4545,
+              "exp_ex_top3": 0.1276,
+              "pnl_eur": 4.5873
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 16,
+                "exp": 0.5616,
+                "R": 8.985
+              },
+              "GBPUSD": {
+                "n": 15,
+                "exp": 0.2579,
+                "R": 3.869
+              },
+              "USDJPY": {
+                "n": 13,
+                "exp": 0.0472,
+                "R": 0.613
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 17,
+                "exp": 0.0299,
+                "R": 0.509
+              },
+              "2026-04": {
+                "n": 18,
+                "exp": 0.5893,
+                "R": 10.608
+              },
+              "2026-05": {
+                "n": 9,
+                "exp": 0.2611,
+                "R": 2.35
+              }
+            },
+            "strategies_IS": {
+              "DoubleTopBottom_v1": {
+                "n": 18,
+                "exp": 0.2083,
+                "R": 3.749
+              },
+              "FlagBreakout_v1": {
+                "n": 18,
+                "exp": 0.1348,
+                "R": 2.427
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 20,
+              "win": 0.3,
+              "R": -2.342,
+              "exp": -0.1171,
+              "pf": 0.6439,
+              "dd": 2.737,
+              "avg_win": 0.7057,
+              "avg_loss": -0.4697,
+              "time_exit": 0.6,
+              "exp_ex_top3": -0.2992,
+              "pnl_eur": -0.7932
+            },
+            "strategies_VAL": {
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": true,
+            "C2_plateau": null,
+            "C3_trades": true,
+            "C4_top3": true,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": false,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": true,
+            "C12_val_tested": true
+          },
+          "accepted": false,
+          "paired": {
+            "common": 39,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 24,
+          "changed_VAL": 10,
+          "gain_top2_share": 0.41
+        },
+        {
+          "value": [
+            "FlagBreakout_v1"
+          ],
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 44,
+              "win": 0.3864,
+              "R": -0.187,
+              "exp": -0.0042,
+              "pf": 0.9889,
+              "dd": 6.751,
+              "avg_win": 0.9818,
+              "avg_loss": -0.6251,
+              "time_exit": 0.4545,
+              "exp_ex_top3": -0.1846,
+              "pnl_eur": -0.8138
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 13,
+                "exp": 0.0591,
+                "R": 0.768
+              },
+              "GBPUSD": {
+                "n": 15,
+                "exp": 0.1029,
+                "R": 1.544
+              },
+              "USDJPY": {
+                "n": 16,
+                "exp": -0.1562,
+                "R": -2.499
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 16,
+                "exp": -0.2451,
+                "R": -3.922
+              },
+              "2026-04": {
+                "n": 19,
+                "exp": 0.2874,
+                "R": 5.46
+              },
+              "2026-05": {
+                "n": 9,
+                "exp": -0.1917,
+                "R": -1.725
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 17,
+                "exp": 0.0129,
+                "R": 0.22
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 25,
+              "win": 0.4,
+              "R": 0.979,
+              "exp": 0.0392,
+              "pf": 1.1041,
+              "dd": 3.926,
+              "avg_win": 1.0387,
+              "avg_loss": -0.6272,
+              "time_exit": 0.52,
+              "exp_ex_top3": -0.1739,
+              "pnl_eur": 0.1253
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 11,
+                "exp": 0.2613,
+                "R": 2.874
+              },
+              "DoubleTopBottom_v1": {
+                "n": 13,
+                "exp": -0.1928,
+                "R": -2.506
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": null,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": false,
+            "C6_months": false,
+            "C7_dd": true,
+            "C8_val": false,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": false,
+            "C12_val_tested": true
+          },
+          "accepted": false,
+          "paired": {
+            "common": 43,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 16,
+          "changed_VAL": 13,
+          "gain_top2_share": null
+        },
+        {
+          "value": [
+            "DoubleTopBottom_v1"
+          ],
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 43,
+              "win": 0.3953,
+              "R": 3.107,
+              "exp": 0.0723,
+              "pf": 1.2025,
+              "dd": 5.035,
+              "avg_win": 1.0852,
+              "avg_loss": -0.59,
+              "time_exit": 0.4186,
+              "exp_ex_top3": -0.1008,
+              "pnl_eur": 0.929
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 16,
+                "exp": 0.4804,
+                "R": 7.687
+              },
+              "GBPUSD": {
+                "n": 14,
+                "exp": -0.209,
+                "R": -2.926
+              },
+              "USDJPY": {
+                "n": 13,
+                "exp": -0.1272,
+                "R": -1.654
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 19,
+                "exp": -0.1105,
+                "R": -2.099
+              },
+              "2026-04": {
+                "n": 12,
+                "exp": 0.3066,
+                "R": 3.679
+              },
+              "2026-05": {
+                "n": 12,
+                "exp": 0.1273,
+                "R": 1.527
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 20,
+                "exp": -0.3771,
+                "R": -7.542
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 26,
+              "win": 0.5,
+              "R": 5.697,
+              "exp": 0.2191,
+              "pf": 1.9476,
+              "dd": 1.809,
+              "avg_win": 0.9007,
+              "avg_loss": -0.4625,
+              "time_exit": 0.6154,
+              "exp_ex_top3": 0.0388,
+              "pnl_eur": 2.5746
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 14,
+                "exp": 0.2377,
+                "R": 3.328
+              },
+              "FlagBreakout_v1": {
+                "n": 11,
+                "exp": 0.1598,
+                "R": 1.758
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": null,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": true,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": false,
+            "C12_val_tested": true
+          },
+          "accepted": false,
+          "paired": {
+            "common": 41,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 19,
+          "changed_VAL": 18,
+          "gain_top2_share": null
+        },
+        {
+          "value": [
+            "RangeFade_v2"
+          ],
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 53,
+              "win": 0.3962,
+              "R": 1.532,
+              "exp": 0.0289,
+              "pf": 1.0818,
+              "dd": 8.911,
+              "avg_win": 0.9648,
+              "avg_loss": -0.5853,
+              "time_exit": 0.4906,
+              "exp_ex_top3": -0.1158,
+              "pnl_eur": 0.3445
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 18,
+                "exp": 0.2968,
+                "R": 5.342
+              },
+              "GBPUSD": {
+                "n": 19,
+                "exp": -0.0399,
+                "R": -0.758
+              },
+              "USDJPY": {
+                "n": 16,
+                "exp": -0.1907,
+                "R": -3.052
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 19,
+                "exp": -0.2364,
+                "R": -4.491
+              },
+              "2026-04": {
+                "n": 20,
+                "exp": 0.251,
+                "R": 5.019
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 29,
+              "win": 0.3448,
+              "R": 0.439,
+              "exp": 0.0151,
+              "pf": 1.0454,
+              "dd": 2.942,
+              "avg_win": 1.0117,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5172,
+              "exp_ex_top3": -0.1679,
+              "pnl_eur": 0.1262
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": null,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": false,
+            "C6_months": false,
+            "C7_dd": false,
+            "C8_val": false,
+            "C9_winrate_trap": true,
+            "C10_evidence": false,
+            "C11_not_2_trades": false,
+            "C12_val_tested": false
+          },
+          "accepted": false,
+          "paired": {
+            "common": 53,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 5,
+          "changed_VAL": 1,
+          "gain_top2_share": null
+        }
+      ]
+    },
+    {
+      "name": "tendance : efficiency minimale",
+      "section": "regime",
+      "key": "er_trend_min",
+      "base": 0.3,
+      "note": "",
+      "rows": [
+        {
+          "value": 0.2,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 73,
+              "win": 0.4247,
+              "R": 9.66,
+              "exp": 0.1323,
+              "pf": 1.4127,
+              "dd": 7.52,
+              "avg_win": 1.0667,
+              "avg_loss": -0.5573,
+              "time_exit": 0.4932,
+              "exp_ex_top3": 0.0183,
+              "pnl_eur": 2.4807
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 26,
+                "exp": 0.2803,
+                "R": 7.289
+              },
+              "GBPUSD": {
+                "n": 28,
+                "exp": 0.2367,
+                "R": 6.628
+              },
+              "USDJPY": {
+                "n": 19,
+                "exp": -0.2241,
+                "R": -4.257
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 22,
+                "exp": -0.106,
+                "R": -2.333
+              },
+              "2026-04": {
+                "n": 33,
+                "exp": 0.3042,
+                "R": 10.04
+              },
+              "2026-05": {
+                "n": 18,
+                "exp": 0.1085,
+                "R": 1.953
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 24,
+                "exp": -0.054,
+                "R": -1.295
+              },
+              "DoubleTopBottom_v1": {
+                "n": 20,
+                "exp": 0.0519,
+                "R": 1.038
+              },
+              "FlagBreakout_v1": {
+                "n": 17,
+                "exp": 0.1321,
+                "R": 2.245
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 7,
+                "exp": 0.719,
+                "R": 5.033
+              }
+            },
+            "VAL": {
+              "n": 44,
+              "win": 0.5,
+              "R": 8.1,
+              "exp": 0.1841,
+              "pf": 1.5798,
+              "dd": 4.09,
+              "avg_win": 1.0032,
+              "avg_loss": -0.635,
+              "time_exit": 0.5227,
+              "exp_ex_top3": 0.0548,
+              "pnl_eur": 2.8986
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 16,
+                "exp": 0.4433,
+                "R": 7.093
+              },
+              "DoubleTopBottom_v1": {
+                "n": 15,
+                "exp": -0.0589,
+                "R": -0.884
+              },
+              "FlagBreakout_v1": {
+                "n": 10,
+                "exp": -0.051,
+                "R": -0.51
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              },
+              "TrendPullback_v2": {
+                "n": 2,
+                "exp": 0.895,
+                "R": 1.79
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": true,
+            "C2_plateau": true,
+            "C3_trades": true,
+            "C4_top3": true,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": true,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": true,
+            "C12_val_tested": true
+          },
+          "accepted": true,
+          "paired": {
+            "common": 51,
+            "diff": -0.0135,
+            "t": -1.2469
+          },
+          "changed_IS": 32,
+          "changed_VAL": 20,
+          "gain_top2_share": 0.9282
+        },
+        {
+          "value": 0.25,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 66,
+              "win": 0.4545,
+              "R": 9.858,
+              "exp": 0.1494,
+              "pf": 1.4663,
+              "dd": 7.825,
+              "avg_win": 1.0332,
+              "avg_loss": -0.5872,
+              "time_exit": 0.5152,
+              "exp_ex_top3": 0.0257,
+              "pnl_eur": 2.4099
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 23,
+                "exp": 0.342,
+                "R": 7.865
+              },
+              "GBPUSD": {
+                "n": 24,
+                "exp": 0.1725,
+                "R": 4.14
+              },
+              "USDJPY": {
+                "n": 19,
+                "exp": -0.113,
+                "R": -2.147
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 22,
+                "exp": -0.1606,
+                "R": -3.534
+              },
+              "2026-04": {
+                "n": 28,
+                "exp": 0.3901,
+                "R": 10.922
+              },
+              "2026-05": {
+                "n": 16,
+                "exp": 0.1544,
+                "R": 2.47
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 22,
+                "exp": -0.1793,
+                "R": -3.944
+              },
+              "DoubleTopBottom_v1": {
+                "n": 18,
+                "exp": 0.1783,
+                "R": 3.21
+              },
+              "FlagBreakout_v1": {
+                "n": 17,
+                "exp": 0.1321,
+                "R": 2.245
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 4,
+                "exp": 1.427,
+                "R": 5.708
+              }
+            },
+            "VAL": {
+              "n": 37,
+              "win": 0.4595,
+              "R": 3.892,
+              "exp": 0.1052,
+              "pf": 1.3162,
+              "dd": 3.869,
+              "avg_win": 0.9529,
+              "avg_loss": -0.6154,
+              "time_exit": 0.5676,
+              "exp_ex_top3": -0.052,
+              "pnl_eur": 1.5278
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 15,
+                "exp": 0.3545,
+                "R": 5.318
+              },
+              "DoubleTopBottom_v1": {
+                "n": 12,
+                "exp": -0.2452,
+                "R": -2.942
+              },
+              "FlagBreakout_v1": {
+                "n": 9,
+                "exp": 0.1006,
+                "R": 0.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": true,
+            "C2_plateau": true,
+            "C3_trades": true,
+            "C4_top3": true,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": true,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": true,
+            "C12_val_tested": true
+          },
+          "accepted": true,
+          "paired": {
+            "common": 55,
+            "diff": -0.0057,
+            "t": -0.7617
+          },
+          "changed_IS": 16,
+          "changed_VAL": 11,
+          "gain_top2_share": 0.8243
+        },
+        {
+          "value": 0.3,
+          "is_base": true,
+          "summary": {
+            "IS": {
+              "n": 58,
+              "win": 0.4138,
+              "R": 4.171,
+              "exp": 0.0719,
+              "pf": 1.2067,
+              "dd": 7.579,
+              "avg_win": 1.0145,
+              "avg_loss": -0.5935,
+              "time_exit": 0.4655,
+              "exp_ex_top3": -0.0584,
+              "pnl_eur": 1.1677
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 20,
+                "exp": 0.3004,
+                "R": 6.008
+              },
+              "GBPUSD": {
+                "n": 20,
+                "exp": -0.0077,
+                "R": -0.154
+              },
+              "USDJPY": {
+                "n": 18,
+                "exp": -0.0935,
+                "R": -1.683
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 22,
+                "exp": -0.1464,
+                "R": -3.221
+              },
+              "2026-04": {
+                "n": 22,
+                "exp": 0.2904,
+                "R": 6.388
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 30,
+              "win": 0.3667,
+              "R": 1.05,
+              "exp": 0.035,
+              "pf": 1.1085,
+              "dd": 2.942,
+              "avg_win": 0.9753,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5333,
+              "exp_ex_top3": -0.139,
+              "pnl_eur": 0.439
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          }
+        },
+        {
+          "value": 0.35,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 50,
+              "win": 0.4,
+              "R": 3.302,
+              "exp": 0.066,
+              "pf": 1.1803,
+              "dd": 5.632,
+              "avg_win": 1.0806,
+              "avg_loss": -0.6104,
+              "time_exit": 0.44,
+              "exp_ex_top3": -0.0816,
+              "pnl_eur": 1.0921
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 18,
+                "exp": 0.3786,
+                "R": 6.814
+              },
+              "GBPUSD": {
+                "n": 16,
+                "exp": -0.0895,
+                "R": -1.432
+              },
+              "USDJPY": {
+                "n": 16,
+                "exp": -0.13,
+                "R": -2.08
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 20,
+                "exp": -0.1054,
+                "R": -2.108
+              },
+              "2026-04": {
+                "n": 18,
+                "exp": 0.2195,
+                "R": 3.951
+              },
+              "2026-05": {
+                "n": 12,
+                "exp": 0.1216,
+                "R": 1.459
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 16,
+                "exp": -0.4424,
+                "R": -7.079
+              },
+              "DoubleTopBottom_v1": {
+                "n": 12,
+                "exp": -0.0442,
+                "R": -0.53
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.206,
+                "R": 3.09
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 2,
+                "exp": 2.591,
+                "R": 5.182
+              }
+            },
+            "VAL": {
+              "n": 28,
+              "win": 0.4286,
+              "R": 0.945,
+              "exp": 0.0337,
+              "pf": 1.0951,
+              "dd": 2.436,
+              "avg_win": 0.9064,
+              "avg_loss": -0.6208,
+              "time_exit": 0.5714,
+              "exp_ex_top3": -0.1532,
+              "pnl_eur": 0.6777
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 8,
+                "exp": 0.1482,
+                "R": 1.186
+              },
+              "DoubleTopBottom_v1": {
+                "n": 10,
+                "exp": -0.193,
+                "R": -1.93
+              },
+              "FlagBreakout_v1": {
+                "n": 9,
+                "exp": 0.1198,
+                "R": 1.078
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": true,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": false,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": false,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": false,
+            "C12_val_tested": true
+          },
+          "accepted": false,
+          "paired": {
+            "common": 47,
+            "diff": -0.0148,
+            "t": -1.0
+          },
+          "changed_IS": 15,
+          "changed_VAL": 14,
+          "gain_top2_share": null
+        },
+        {
+          "value": 0.4,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 40,
+              "win": 0.45,
+              "R": 9.314,
+              "exp": 0.2329,
+              "pf": 1.7326,
+              "dd": 4.294,
+              "avg_win": 1.2238,
+              "avg_loss": -0.5779,
+              "time_exit": 0.45,
+              "exp_ex_top3": 0.0341,
+              "pnl_eur": 3.4034
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 15,
+                "exp": 0.5737,
+                "R": 8.605
+              },
+              "GBPUSD": {
+                "n": 12,
+                "exp": 0.0809,
+                "R": 0.971
+              },
+              "USDJPY": {
+                "n": 13,
+                "exp": -0.0202,
+                "R": -0.262
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 18,
+                "exp": -0.073,
+                "R": -1.314
+              },
+              "2026-04": {
+                "n": 12,
+                "exp": 0.6989,
+                "R": 8.387
+              },
+              "2026-05": {
+                "n": 10,
+                "exp": 0.2241,
+                "R": 2.241
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 11,
+                "exp": -0.6202,
+                "R": -6.822
+              },
+              "DoubleTopBottom_v1": {
+                "n": 9,
+                "exp": 0.351,
+                "R": 3.159
+              },
+              "FlagBreakout_v1": {
+                "n": 13,
+                "exp": 0.3966,
+                "R": 5.156
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 2,
+                "exp": 2.591,
+                "R": 5.182
+              }
+            },
+            "VAL": {
+              "n": 22,
+              "win": 0.2727,
+              "R": -2.686,
+              "exp": -0.1221,
+              "pf": 0.6486,
+              "dd": 4.5,
+              "avg_win": 0.8262,
+              "avg_loss": -0.4777,
+              "time_exit": 0.3636,
+              "exp_ex_top3": -0.3239,
+              "pnl_eur": -0.8985
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 5,
+                "exp": -0.1788,
+                "R": -0.894
+              },
+              "DoubleTopBottom_v1": {
+                "n": 9,
+                "exp": -0.3832,
+                "R": -3.449
+              },
+              "FlagBreakout_v1": {
+                "n": 7,
+                "exp": 0.1494,
+                "R": 1.046
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": true,
+            "C2_plateau": false,
+            "C3_trades": true,
+            "C4_top3": true,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": false,
+            "C9_winrate_trap": true,
+            "C10_evidence": true,
+            "C11_not_2_trades": true,
+            "C12_val_tested": true
+          },
+          "accepted": false,
+          "paired": {
+            "common": 35,
+            "diff": -0.0122,
+            "t": -0.5857
+          },
+          "changed_IS": 31,
+          "changed_VAL": 21,
+          "gain_top2_share": 0.741
+        }
+      ]
+    },
+    {
+      "name": "range : efficiency maximale",
+      "section": "regime",
+      "key": "er_range_max",
+      "base": 0.25,
+      "note": "",
+      "rows": [
+        {
+          "value": 0.15,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 53,
+              "win": 0.3962,
+              "R": 1.532,
+              "exp": 0.0289,
+              "pf": 1.0818,
+              "dd": 8.911,
+              "avg_win": 0.9648,
+              "avg_loss": -0.5853,
+              "time_exit": 0.4906,
+              "exp_ex_top3": -0.1158,
+              "pnl_eur": 0.3445
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 18,
+                "exp": 0.2968,
+                "R": 5.342
+              },
+              "GBPUSD": {
+                "n": 19,
+                "exp": -0.0399,
+                "R": -0.758
+              },
+              "USDJPY": {
+                "n": 16,
+                "exp": -0.1907,
+                "R": -3.052
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 19,
+                "exp": -0.2364,
+                "R": -4.491
+              },
+              "2026-04": {
+                "n": 20,
+                "exp": 0.251,
+                "R": 5.019
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 30,
+              "win": 0.3667,
+              "R": 1.05,
+              "exp": 0.035,
+              "pf": 1.1085,
+              "dd": 2.942,
+              "avg_win": 0.9753,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5333,
+              "exp_ex_top3": -0.139,
+              "pnl_eur": 0.4345
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": false,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": false,
+            "C6_months": false,
+            "C7_dd": false,
+            "C8_val": true,
+            "C9_winrate_trap": true,
+            "C10_evidence": false,
+            "C11_not_2_trades": false,
+            "C12_val_tested": false
+          },
+          "accepted": false,
+          "paired": {
+            "common": 53,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 5,
+          "changed_VAL": 0,
+          "gain_top2_share": null
+        },
+        {
+          "value": 0.2,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 54,
+              "win": 0.3889,
+              "R": 0.944,
+              "exp": 0.0175,
+              "pf": 1.0489,
+              "dd": 9.499,
+              "avg_win": 0.9648,
+              "avg_loss": -0.5853,
+              "time_exit": 0.4815,
+              "exp_ex_top3": -0.1251,
+              "pnl_eur": 0.1991
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 18,
+                "exp": 0.2968,
+                "R": 5.342
+              },
+              "GBPUSD": {
+                "n": 19,
+                "exp": -0.0399,
+                "R": -0.758
+              },
+              "USDJPY": {
+                "n": 17,
+                "exp": -0.2141,
+                "R": -3.64
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 19,
+                "exp": -0.2364,
+                "R": -4.491
+              },
+              "2026-04": {
+                "n": 21,
+                "exp": 0.211,
+                "R": 4.431
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": -0.588,
+                "R": -0.588
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 30,
+              "win": 0.3667,
+              "R": 1.05,
+              "exp": 0.035,
+              "pf": 1.1085,
+              "dd": 2.942,
+              "avg_win": 0.9753,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5333,
+              "exp_ex_top3": -0.139,
+              "pnl_eur": 0.4342
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": false,
+            "C3_trades": true,
+            "C4_top3": false,
+            "C5_pairs": false,
+            "C6_months": false,
+            "C7_dd": false,
+            "C8_val": true,
+            "C9_winrate_trap": true,
+            "C10_evidence": false,
+            "C11_not_2_trades": false,
+            "C12_val_tested": false
+          },
+          "accepted": false,
+          "paired": {
+            "common": 54,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 4,
+          "changed_VAL": 0,
+          "gain_top2_share": null
+        },
+        {
+          "value": 0.25,
+          "is_base": true,
+          "summary": {
+            "IS": {
+              "n": 58,
+              "win": 0.4138,
+              "R": 4.171,
+              "exp": 0.0719,
+              "pf": 1.2067,
+              "dd": 7.579,
+              "avg_win": 1.0145,
+              "avg_loss": -0.5935,
+              "time_exit": 0.4655,
+              "exp_ex_top3": -0.0584,
+              "pnl_eur": 1.1677
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 20,
+                "exp": 0.3004,
+                "R": 6.008
+              },
+              "GBPUSD": {
+                "n": 20,
+                "exp": -0.0077,
+                "R": -0.154
+              },
+              "USDJPY": {
+                "n": 18,
+                "exp": -0.0935,
+                "R": -1.683
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 22,
+                "exp": -0.1464,
+                "R": -3.221
+              },
+              "2026-04": {
+                "n": 22,
+                "exp": 0.2904,
+                "R": 6.388
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 30,
+              "win": 0.3667,
+              "R": 1.05,
+              "exp": 0.035,
+              "pf": 1.1085,
+              "dd": 2.942,
+              "avg_win": 0.9753,
+              "avg_loss": -0.5094,
+              "time_exit": 0.5333,
+              "exp_ex_top3": -0.139,
+              "pnl_eur": 0.439
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 1,
+                "exp": 0.611,
+                "R": 0.611
+              }
+            }
+          }
+        },
+        {
+          "value": 0.3,
+          "is_base": false,
+          "summary": {
+            "IS": {
+              "n": 58,
+              "win": 0.4138,
+              "R": 4.171,
+              "exp": 0.0719,
+              "pf": 1.2067,
+              "dd": 7.579,
+              "avg_win": 1.0145,
+              "avg_loss": -0.5935,
+              "time_exit": 0.4655,
+              "exp_ex_top3": -0.0584,
+              "pnl_eur": 1.1677
+            },
+            "pairs_IS": {
+              "EURUSD": {
+                "n": 20,
+                "exp": 0.3004,
+                "R": 6.008
+              },
+              "GBPUSD": {
+                "n": 20,
+                "exp": -0.0077,
+                "R": -0.154
+              },
+              "USDJPY": {
+                "n": 18,
+                "exp": -0.0935,
+                "R": -1.683
+              }
+            },
+            "months_IS": {
+              "2026-03": {
+                "n": 22,
+                "exp": -0.1464,
+                "R": -3.221
+              },
+              "2026-04": {
+                "n": 22,
+                "exp": 0.2904,
+                "R": 6.388
+              },
+              "2026-05": {
+                "n": 14,
+                "exp": 0.0717,
+                "R": 1.004
+              }
+            },
+            "strategies_IS": {
+              "BreakRetest_v2": {
+                "n": 19,
+                "exp": -0.4052,
+                "R": -7.698
+              },
+              "DoubleTopBottom_v1": {
+                "n": 16,
+                "exp": 0.0762,
+                "R": 1.22
+              },
+              "FlagBreakout_v1": {
+                "n": 15,
+                "exp": 0.2239,
+                "R": 3.358
+              },
+              "RangeFade_v2": {
+                "n": 5,
+                "exp": 0.5278,
+                "R": 2.639
+              },
+              "TrendPullback_v2": {
+                "n": 3,
+                "exp": 1.5507,
+                "R": 4.652
+              }
+            },
+            "VAL": {
+              "n": 32,
+              "win": 0.3438,
+              "R": -0.885,
+              "exp": -0.0277,
+              "pf": 0.9238,
+              "dd": 3.737,
+              "avg_win": 0.9753,
+              "avg_loss": -0.553,
+              "time_exit": 0.5,
+              "exp_ex_top3": -0.1962,
+              "pnl_eur": -0.0566
+            },
+            "strategies_VAL": {
+              "BreakRetest_v2": {
+                "n": 10,
+                "exp": 0.3392,
+                "R": 3.392
+              },
+              "DoubleTopBottom_v1": {
+                "n": 11,
+                "exp": -0.4416,
+                "R": -4.858
+              },
+              "FlagBreakout_v1": {
+                "n": 8,
+                "exp": 0.2381,
+                "R": 1.905
+              },
+              "RangeFade_v2": {
+                "n": 3,
+                "exp": -0.4413,
+                "R": -1.324
+              }
+            }
+          },
+          "criteria": {
+            "C1_gain": false,
+            "C2_plateau": false,
+            "C3_trades": true,
+            "C4_top3": true,
+            "C5_pairs": true,
+            "C6_months": true,
+            "C7_dd": true,
+            "C8_val": false,
+            "C9_winrate_trap": true,
+            "C10_evidence": false,
+            "C11_not_2_trades": false,
+            "C12_val_tested": false
+          },
+          "accepted": false,
+          "paired": {
+            "common": 58,
+            "diff": 0.0,
+            "t": null
+          },
+          "changed_IS": 0,
+          "changed_VAL": 2,
+          "gain_top2_share": null
+        }
+      ]
+    }
+  ],
+  "heatmaps": {},
+  "locked_after": {
+    "overrides": {
+      "sessions": {
+        "new_trades_utc": [
+          [
+            6,
+            16
+          ]
+        ]
+      },
+      "regime": {
+        "er_trend_min": 0.2
+      }
+    },
+    "lab": {},
+    "rescan": [],
+    "history": [
+      {
+        "block": "A",
+        "kept": []
+      },
+      {
+        "block": "B",
+        "kept": [
+          {
+            "param": "horaires d'entrée (UTC)",
+            "value": [
+              6,
+              16
+            ],
+            "gain_exp_IS": 0.0872
+          }
+        ]
+      },
+      {
+        "block": "C",
+        "kept": []
+      },
+      {
+        "block": "D",
+        "kept": [
+          {
+            "param": "tendance : efficiency minimale",
+            "value": 0.2,
+            "gain_exp_IS": 0.0604
+          }
+        ]
+      }
+    ],
+    "reclassify": true
+  },
+  "kept": [
+    {
+      "param": "tendance : efficiency minimale",
+      "value": 0.25,
+      "gain_exp_IS": 0.0775,
+      "note": "0,20 passait aussi ; écarté car bord de grille (choix prudent fait avant le hors-échantillon)"
+    }
+  ],
+  "after": {
+    "IS": {
+      "n": 73,
+      "win": 0.4247,
+      "R": 9.66,
+      "exp": 0.1323,
+      "pf": 1.4127,
+      "dd": 7.52,
+      "avg_win": 1.0667,
+      "avg_loss": -0.5573,
+      "time_exit": 0.4932,
+      "exp_ex_top3": 0.0183,
+      "pnl_eur": 2.4807
+    },
+    "pairs_IS": {
+      "EURUSD": {
+        "n": 26,
+        "exp": 0.2803,
+        "R": 7.289
+      },
+      "GBPUSD": {
+        "n": 28,
+        "exp": 0.2367,
+        "R": 6.628
+      },
+      "USDJPY": {
+        "n": 19,
+        "exp": -0.2241,
+        "R": -4.257
+      }
+    },
+    "months_IS": {
+      "2026-03": {
+        "n": 22,
+        "exp": -0.106,
+        "R": -2.333
+      },
+      "2026-04": {
+        "n": 33,
+        "exp": 0.3042,
+        "R": 10.04
+      },
+      "2026-05": {
+        "n": 18,
+        "exp": 0.1085,
+        "R": 1.953
+      }
+    },
+    "strategies_IS": {
+      "BreakRetest_v2": {
+        "n": 24,
+        "exp": -0.054,
+        "R": -1.295
+      },
+      "DoubleTopBottom_v1": {
+        "n": 20,
+        "exp": 0.0519,
+        "R": 1.038
+      },
+      "FlagBreakout_v1": {
+        "n": 17,
+        "exp": 0.1321,
+        "R": 2.245
+      },
+      "RangeFade_v2": {
+        "n": 5,
+        "exp": 0.5278,
+        "R": 2.639
+      },
+      "TrendPullback_v2": {
+        "n": 7,
+        "exp": 0.719,
+        "R": 5.033
+      }
+    },
+    "VAL": {
+      "n": 44,
+      "win": 0.5,
+      "R": 8.1,
+      "exp": 0.1841,
+      "pf": 1.5798,
+      "dd": 4.09,
+      "avg_win": 1.0032,
+      "avg_loss": -0.635,
+      "time_exit": 0.5227,
+      "exp_ex_top3": 0.0548,
+      "pnl_eur": 2.8986
+    },
+    "strategies_VAL": {
+      "BreakRetest_v2": {
+        "n": 16,
+        "exp": 0.4433,
+        "R": 7.093
+      },
+      "DoubleTopBottom_v1": {
+        "n": 15,
+        "exp": -0.0589,
+        "R": -0.884
+      },
+      "FlagBreakout_v1": {
+        "n": 10,
+        "exp": -0.051,
+        "R": -0.51
+      },
+      "RangeFade_v2": {
+        "n": 1,
+        "exp": 0.611,
+        "R": 0.611
+      },
+      "TrendPullback_v2": {
+        "n": 2,
+        "exp": 0.895,
+        "R": 1.79
+      }
+    }
+  }
+}
