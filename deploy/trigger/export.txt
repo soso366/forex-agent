@@ -1,3 +1,4 @@
-# début fin tag — modifier ce fichier relance les exports (utilisés par le Parameter Lab)
-2026-03-01 2026-08-31 2026mar-aug
-2025-09-01 2026-02-28 2025sep-2026feb
+# début fin tag — modifier ce fichier relance les exports
+# Recherche V4 : périodes jamais regardées, réservées au test final verrouillé
+2025-03-01 2025-08-31 2025mar-aug
+2024-09-01 2025-02-28 2024sep-2025feb
