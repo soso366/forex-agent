@@ -13,7 +13,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES = [ROOT / "data" / "m1_2025", ROOT / "data" / "m1"]           # sept. 2025 → fév. 2026, mars → août 2026
-LOCKED = [ROOT / "data" / "m1_locked"]                                 # mars → août 2025 : test final uniquement
+LOCKED = [ROOT / "data" / "m1_locked_2024", ROOT / "data" / "m1_locked"]  # sept. 2024 → août 2025 : test final uniquement
 CACHE = ROOT / "research" / "v4" / "cache"
 PAIRS = ("EURUSD", "GBPUSD", "USDJPY")
 PIP = {"EURUSD": 1e-4, "GBPUSD": 1e-4, "USDJPY": 1e-2}

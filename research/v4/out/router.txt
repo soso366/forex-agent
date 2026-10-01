@@ -1,0 +1,82 @@
+
+## Stratégies V2 (12 mois)
+matrice complète (5 dimensions) : {'cells': 131, 'status': {'UNKNOWN': 131}, 'median_n': 2.0}
+                       dims  cells  rank_corr  same_sign
+          strategy × regime      6       0.03       0.33
+         strategy × session      7      -0.21       0.29
+             strategy × vol      6       0.43       0.67
+             strategy × sym      7      -0.11       0.29
+strategy × regime × session      1        NaN        NaN
+    strategy × regime × vol      6       0.26       0.67
+    strategy × regime × sym      3       0.50       0.67
+   strategy × session × vol      0        NaN        NaN
+   strategy × session × sym      0        NaN        NaN
+       strategy × vol × sym      2        NaN        NaN
+          strategy     regime  n    exp  ci_lo  ci_hi  status
+    BreakRetest_v2 TREND_DOWN 28  0.176 -0.043  0.388 UNKNOWN
+    BreakRetest_v2   TREND_UP 56 -0.138 -0.305  0.040 UNKNOWN
+DoubleTopBottom_v1 TREND_DOWN 33 -0.264 -0.418 -0.102 NO_EDGE
+DoubleTopBottom_v1   TREND_UP 50 -0.049 -0.232  0.138 UNKNOWN
+   FlagBreakout_v1 TREND_DOWN 42 -0.001 -0.196  0.206 UNKNOWN
+   FlagBreakout_v1   TREND_UP 60  0.037 -0.118  0.200 UNKNOWN
+      RangeFade_v2      RANGE 20  0.067 -0.211  0.386 UNKNOWN
+          strategy           session  n    exp  ci_lo  ci_hi  status
+    BreakRetest_v2            london 26 -0.002 -0.264  0.275 UNKNOWN
+    BreakRetest_v2          new_york 29 -0.137 -0.333  0.051 UNKNOWN
+    BreakRetest_v2 overlap_london_ny 29  0.043 -0.204  0.290 UNKNOWN
+DoubleTopBottom_v1            london 38 -0.023 -0.217  0.179 UNKNOWN
+DoubleTopBottom_v1          new_york 22 -0.237 -0.483  0.007 UNKNOWN
+DoubleTopBottom_v1 overlap_london_ny 23 -0.220 -0.453  0.046 UNKNOWN
+   FlagBreakout_v1            london 41  0.144 -0.055  0.347 UNKNOWN
+   FlagBreakout_v1          new_york 23 -0.171 -0.368  0.028 UNKNOWN
+   FlagBreakout_v1 overlap_london_ny 38  0.006 -0.214  0.234 UNKNOWN
+          strategy     vol  n    exp  ci_lo  ci_hi  status
+    BreakRetest_v2   haute 42  0.028 -0.149  0.203 UNKNOWN
+    BreakRetest_v2 normale 36 -0.089 -0.304  0.123 UNKNOWN
+DoubleTopBottom_v1   basse 14  0.349 -0.051  0.749 UNKNOWN
+DoubleTopBottom_v1   haute 33 -0.344 -0.492 -0.193 NO_EDGE
+DoubleTopBottom_v1 normale 36 -0.130 -0.322  0.070 UNKNOWN
+   FlagBreakout_v1   basse 11 -0.130 -0.497  0.281 UNKNOWN
+   FlagBreakout_v1   haute 62 -0.029 -0.160  0.112 UNKNOWN
+   FlagBreakout_v1 normale 29  0.187 -0.078  0.475 UNKNOWN
+      RangeFade_v2   haute 10  0.086 -0.294  0.493 UNKNOWN
+      RangeFade_v2 normale 10  0.049 -0.354  0.495 UNKNOWN
+          strategy    sym  n    exp  ci_lo  ci_hi  status
+    BreakRetest_v2 EURUSD 23  0.104 -0.179  0.396 UNKNOWN
+    BreakRetest_v2 GBPUSD 28 -0.080 -0.277  0.137 UNKNOWN
+    BreakRetest_v2 USDJPY 33 -0.089 -0.305  0.137 UNKNOWN
+DoubleTopBottom_v1 EURUSD 27 -0.352 -0.529 -0.164 UNKNOWN
+DoubleTopBottom_v1 GBPUSD 24 -0.054 -0.345  0.243 UNKNOWN
+DoubleTopBottom_v1 USDJPY 32 -0.011 -0.214  0.199 UNKNOWN
+   FlagBreakout_v1 EURUSD 31 -0.087 -0.301  0.130 UNKNOWN
+   FlagBreakout_v1 GBPUSD 38  0.076 -0.116  0.286 UNKNOWN
+   FlagBreakout_v1 USDJPY 33  0.061 -0.166  0.292 UNKNOWN
+
+## H3 fix de Londres
+matrice complète (5 dimensions) : {'cells': 27, 'status': {'UNKNOWN': 26, 'EDGE': 1}, 'median_n': 12.0}
+            dims  cells  rank_corr  same_sign
+          regime      4      -0.40       0.25
+         session      1        NaN        NaN
+             vol      2        NaN        NaN
+             sym      3       0.50       1.00
+regime × session      4      -0.40       0.25
+    regime × vol      5      -0.30       0.40
+    regime × sym      8      -0.21       0.50
+   session × vol      2        NaN        NaN
+   session × sym      3       0.50       1.00
+       vol × sym      4      -0.80       0.75
+    regime   n    exp  ci_lo  ci_hi  status
+      CHOP  52  0.173 -0.009  0.356 UNKNOWN
+     RANGE 361  0.153  0.071  0.239    EDGE
+TREND_DOWN  80 -0.000 -0.160  0.166 UNKNOWN
+  TREND_UP  99  0.134 -0.001  0.265 UNKNOWN
+session   n   exp  ci_lo  ci_hi status
+overlap 592 0.131   0.07  0.197   EDGE
+    vol   n    exp  ci_lo  ci_hi  status
+  basse  10 -0.096 -0.801  0.910 UNKNOWN
+  haute 488  0.121  0.054  0.189    EDGE
+normale  84  0.190  0.041  0.332    EDGE
+   sym   n   exp  ci_lo  ci_hi status
+EURUSD 196 0.158  0.063  0.257   EDGE
+GBPUSD 202 0.111  0.018  0.216   EDGE
+USDJPY 194 0.123  0.005  0.238   EDGE

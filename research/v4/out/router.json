@@ -1,0 +1,776 @@
+{
+ "V2": {
+  "name": "Stratégies V2 (12 mois)",
+  "full": {
+   "cells": 131,
+   "status": {
+    "UNKNOWN": 131
+   },
+   "median_n": 2.0
+  },
+  "two_dims": [
+   {
+    "dims": [
+     "strategy",
+     "regime"
+    ],
+    "table": [
+     {
+      "strategy": "BreakRetest_v2",
+      "regime": "TREND_DOWN",
+      "n": 28,
+      "exp": 0.176,
+      "ci_lo": -0.043,
+      "ci_hi": 0.388,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "regime": "TREND_UP",
+      "n": 56,
+      "exp": -0.138,
+      "ci_lo": -0.305,
+      "ci_hi": 0.04,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "regime": "TREND_DOWN",
+      "n": 33,
+      "exp": -0.264,
+      "ci_lo": -0.418,
+      "ci_hi": -0.102,
+      "status": "NO_EDGE"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "regime": "TREND_UP",
+      "n": 50,
+      "exp": -0.049,
+      "ci_lo": -0.232,
+      "ci_hi": 0.138,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "regime": "TREND_DOWN",
+      "n": 42,
+      "exp": -0.001,
+      "ci_lo": -0.196,
+      "ci_hi": 0.206,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "regime": "TREND_UP",
+      "n": 60,
+      "exp": 0.037,
+      "ci_lo": -0.118,
+      "ci_hi": 0.2,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "regime": "RANGE",
+      "n": 20,
+      "exp": 0.067,
+      "ci_lo": -0.211,
+      "ci_hi": 0.386,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "regime": "TREND_DOWN",
+      "n": 9,
+      "exp": -0.425,
+      "ci_lo": -0.783,
+      "ci_hi": 0.014,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "regime": "TREND_UP",
+      "n": 7,
+      "exp": 0.59,
+      "ci_lo": -0.323,
+      "ci_hi": 1.549,
+      "status": "UNKNOWN"
+     }
+    ]
+   },
+   {
+    "dims": [
+     "strategy",
+     "session"
+    ],
+    "table": [
+     {
+      "strategy": "BreakRetest_v2",
+      "session": "london",
+      "n": 26,
+      "exp": -0.002,
+      "ci_lo": -0.264,
+      "ci_hi": 0.275,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "session": "new_york",
+      "n": 29,
+      "exp": -0.137,
+      "ci_lo": -0.333,
+      "ci_hi": 0.051,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "session": "overlap_london_ny",
+      "n": 29,
+      "exp": 0.043,
+      "ci_lo": -0.204,
+      "ci_hi": 0.29,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "session": "london",
+      "n": 38,
+      "exp": -0.023,
+      "ci_lo": -0.217,
+      "ci_hi": 0.179,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "session": "new_york",
+      "n": 22,
+      "exp": -0.237,
+      "ci_lo": -0.483,
+      "ci_hi": 0.007,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "session": "overlap_london_ny",
+      "n": 23,
+      "exp": -0.22,
+      "ci_lo": -0.453,
+      "ci_hi": 0.046,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "session": "london",
+      "n": 41,
+      "exp": 0.144,
+      "ci_lo": -0.055,
+      "ci_hi": 0.347,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "session": "new_york",
+      "n": 23,
+      "exp": -0.171,
+      "ci_lo": -0.368,
+      "ci_hi": 0.028,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "session": "overlap_london_ny",
+      "n": 38,
+      "exp": 0.006,
+      "ci_lo": -0.214,
+      "ci_hi": 0.234,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "session": "london",
+      "n": 6,
+      "exp": -0.228,
+      "ci_lo": -0.633,
+      "ci_hi": 0.218,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "session": "new_york",
+      "n": 9,
+      "exp": 0.001,
+      "ci_lo": -0.254,
+      "ci_hi": 0.256,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "session": "overlap_london_ny",
+      "n": 5,
+      "exp": 0.541,
+      "ci_lo": -0.248,
+      "ci_hi": 1.307,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "session": "london",
+      "n": 4,
+      "exp": -0.478,
+      "ci_lo": NaN,
+      "ci_hi": NaN,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "session": "new_york",
+      "n": 8,
+      "exp": -0.161,
+      "ci_lo": -0.808,
+      "ci_hi": 0.529,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "session": "overlap_london_ny",
+      "n": 4,
+      "exp": 0.876,
+      "ci_lo": NaN,
+      "ci_hi": NaN,
+      "status": "UNKNOWN"
+     }
+    ]
+   },
+   {
+    "dims": [
+     "strategy",
+     "vol"
+    ],
+    "table": [
+     {
+      "strategy": "BreakRetest_v2",
+      "vol": "basse",
+      "n": 6,
+      "exp": -0.129,
+      "ci_lo": -0.764,
+      "ci_hi": 0.568,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "vol": "haute",
+      "n": 42,
+      "exp": 0.028,
+      "ci_lo": -0.149,
+      "ci_hi": 0.203,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "vol": "normale",
+      "n": 36,
+      "exp": -0.089,
+      "ci_lo": -0.304,
+      "ci_hi": 0.123,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "vol": "basse",
+      "n": 14,
+      "exp": 0.349,
+      "ci_lo": -0.051,
+      "ci_hi": 0.749,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "vol": "haute",
+      "n": 33,
+      "exp": -0.344,
+      "ci_lo": -0.492,
+      "ci_hi": -0.193,
+      "status": "NO_EDGE"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "vol": "normale",
+      "n": 36,
+      "exp": -0.13,
+      "ci_lo": -0.322,
+      "ci_hi": 0.07,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "vol": "basse",
+      "n": 11,
+      "exp": -0.13,
+      "ci_lo": -0.497,
+      "ci_hi": 0.281,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "vol": "haute",
+      "n": 62,
+      "exp": -0.029,
+      "ci_lo": -0.16,
+      "ci_hi": 0.112,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "vol": "normale",
+      "n": 29,
+      "exp": 0.187,
+      "ci_lo": -0.078,
+      "ci_hi": 0.475,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "vol": "haute",
+      "n": 10,
+      "exp": 0.086,
+      "ci_lo": -0.294,
+      "ci_hi": 0.493,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "vol": "normale",
+      "n": 10,
+      "exp": 0.049,
+      "ci_lo": -0.354,
+      "ci_hi": 0.495,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "vol": "basse",
+      "n": 3,
+      "exp": 0.38,
+      "ci_lo": NaN,
+      "ci_hi": NaN,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "vol": "haute",
+      "n": 6,
+      "exp": -0.055,
+      "ci_lo": -0.808,
+      "ci_hi": 0.701,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "vol": "normale",
+      "n": 7,
+      "exp": -0.073,
+      "ci_lo": -0.82,
+      "ci_hi": 0.993,
+      "status": "UNKNOWN"
+     }
+    ]
+   },
+   {
+    "dims": [
+     "strategy",
+     "sym"
+    ],
+    "table": [
+     {
+      "strategy": "BreakRetest_v2",
+      "sym": "EURUSD",
+      "n": 23,
+      "exp": 0.104,
+      "ci_lo": -0.179,
+      "ci_hi": 0.396,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "sym": "GBPUSD",
+      "n": 28,
+      "exp": -0.08,
+      "ci_lo": -0.277,
+      "ci_hi": 0.137,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "BreakRetest_v2",
+      "sym": "USDJPY",
+      "n": 33,
+      "exp": -0.089,
+      "ci_lo": -0.305,
+      "ci_hi": 0.137,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "sym": "EURUSD",
+      "n": 27,
+      "exp": -0.352,
+      "ci_lo": -0.529,
+      "ci_hi": -0.164,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "sym": "GBPUSD",
+      "n": 24,
+      "exp": -0.054,
+      "ci_lo": -0.345,
+      "ci_hi": 0.243,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "DoubleTopBottom_v1",
+      "sym": "USDJPY",
+      "n": 32,
+      "exp": -0.011,
+      "ci_lo": -0.214,
+      "ci_hi": 0.199,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "sym": "EURUSD",
+      "n": 31,
+      "exp": -0.087,
+      "ci_lo": -0.301,
+      "ci_hi": 0.13,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "sym": "GBPUSD",
+      "n": 38,
+      "exp": 0.076,
+      "ci_lo": -0.116,
+      "ci_hi": 0.286,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "FlagBreakout_v1",
+      "sym": "USDJPY",
+      "n": 33,
+      "exp": 0.061,
+      "ci_lo": -0.166,
+      "ci_hi": 0.292,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "sym": "EURUSD",
+      "n": 8,
+      "exp": 0.011,
+      "ci_lo": -0.429,
+      "ci_hi": 0.484,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "sym": "GBPUSD",
+      "n": 6,
+      "exp": -0.015,
+      "ci_lo": -0.434,
+      "ci_hi": 0.404,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "RangeFade_v2",
+      "sym": "USDJPY",
+      "n": 6,
+      "exp": 0.224,
+      "ci_lo": -0.298,
+      "ci_hi": 0.868,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "sym": "EURUSD",
+      "n": 6,
+      "exp": -0.05,
+      "ci_lo": -0.912,
+      "ci_hi": 1.135,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "sym": "GBPUSD",
+      "n": 7,
+      "exp": -0.046,
+      "ci_lo": -0.639,
+      "ci_hi": 0.566,
+      "status": "UNKNOWN"
+     },
+     {
+      "strategy": "TrendPullback_v2",
+      "sym": "USDJPY",
+      "n": 3,
+      "exp": 0.306,
+      "ci_lo": NaN,
+      "ci_hi": NaN,
+      "status": "UNKNOWN"
+     }
+    ]
+   }
+  ],
+  "persistence": [
+   {
+    "dims": "strategy × regime",
+    "cells": 6,
+    "rank_corr": 0.03,
+    "same_sign": 0.33
+   },
+   {
+    "dims": "strategy × session",
+    "cells": 7,
+    "rank_corr": -0.21,
+    "same_sign": 0.29
+   },
+   {
+    "dims": "strategy × vol",
+    "cells": 6,
+    "rank_corr": 0.43,
+    "same_sign": 0.67
+   },
+   {
+    "dims": "strategy × sym",
+    "cells": 7,
+    "rank_corr": -0.11,
+    "same_sign": 0.29
+   },
+   {
+    "dims": "strategy × regime × session",
+    "cells": 1,
+    "rank_corr": null,
+    "same_sign": null
+   },
+   {
+    "dims": "strategy × regime × vol",
+    "cells": 6,
+    "rank_corr": 0.26,
+    "same_sign": 0.67
+   },
+   {
+    "dims": "strategy × regime × sym",
+    "cells": 3,
+    "rank_corr": 0.5,
+    "same_sign": 0.67
+   },
+   {
+    "dims": "strategy × session × vol",
+    "cells": 0,
+    "rank_corr": null,
+    "same_sign": null
+   },
+   {
+    "dims": "strategy × session × sym",
+    "cells": 0,
+    "rank_corr": null,
+    "same_sign": null
+   },
+   {
+    "dims": "strategy × vol × sym",
+    "cells": 2,
+    "rank_corr": null,
+    "same_sign": null
+   }
+  ]
+ },
+ "H3": {
+  "name": "H3 fix de Londres",
+  "full": {
+   "cells": 27,
+   "status": {
+    "UNKNOWN": 26,
+    "EDGE": 1
+   },
+   "median_n": 12.0
+  },
+  "two_dims": [
+   {
+    "dims": [
+     "regime"
+    ],
+    "table": [
+     {
+      "regime": "CHOP",
+      "n": 52,
+      "exp": 0.173,
+      "ci_lo": -0.009,
+      "ci_hi": 0.356,
+      "status": "UNKNOWN"
+     },
+     {
+      "regime": "RANGE",
+      "n": 361,
+      "exp": 0.153,
+      "ci_lo": 0.071,
+      "ci_hi": 0.239,
+      "status": "EDGE"
+     },
+     {
+      "regime": "TREND_DOWN",
+      "n": 80,
+      "exp": -0.0,
+      "ci_lo": -0.16,
+      "ci_hi": 0.166,
+      "status": "UNKNOWN"
+     },
+     {
+      "regime": "TREND_UP",
+      "n": 99,
+      "exp": 0.134,
+      "ci_lo": -0.001,
+      "ci_hi": 0.265,
+      "status": "UNKNOWN"
+     }
+    ]
+   },
+   {
+    "dims": [
+     "session"
+    ],
+    "table": [
+     {
+      "session": "overlap",
+      "n": 592,
+      "exp": 0.131,
+      "ci_lo": 0.07,
+      "ci_hi": 0.197,
+      "status": "EDGE"
+     }
+    ]
+   },
+   {
+    "dims": [
+     "vol"
+    ],
+    "table": [
+     {
+      "vol": "basse",
+      "n": 10,
+      "exp": -0.096,
+      "ci_lo": -0.801,
+      "ci_hi": 0.91,
+      "status": "UNKNOWN"
+     },
+     {
+      "vol": "haute",
+      "n": 488,
+      "exp": 0.121,
+      "ci_lo": 0.054,
+      "ci_hi": 0.189,
+      "status": "EDGE"
+     },
+     {
+      "vol": "normale",
+      "n": 84,
+      "exp": 0.19,
+      "ci_lo": 0.041,
+      "ci_hi": 0.332,
+      "status": "EDGE"
+     }
+    ]
+   },
+   {
+    "dims": [
+     "sym"
+    ],
+    "table": [
+     {
+      "sym": "EURUSD",
+      "n": 196,
+      "exp": 0.158,
+      "ci_lo": 0.063,
+      "ci_hi": 0.257,
+      "status": "EDGE"
+     },
+     {
+      "sym": "GBPUSD",
+      "n": 202,
+      "exp": 0.111,
+      "ci_lo": 0.018,
+      "ci_hi": 0.216,
+      "status": "EDGE"
+     },
+     {
+      "sym": "USDJPY",
+      "n": 194,
+      "exp": 0.123,
+      "ci_lo": 0.005,
+      "ci_hi": 0.238,
+      "status": "EDGE"
+     }
+    ]
+   }
+  ],
+  "persistence": [
+   {
+    "dims": "regime",
+    "cells": 4,
+    "rank_corr": -0.4,
+    "same_sign": 0.25
+   },
+   {
+    "dims": "session",
+    "cells": 1,
+    "rank_corr": null,
+    "same_sign": null
+   },
+   {
+    "dims": "vol",
+    "cells": 2,
+    "rank_corr": null,
+    "same_sign": null
+   },
+   {
+    "dims": "sym",
+    "cells": 3,
+    "rank_corr": 0.5,
+    "same_sign": 1.0
+   },
+   {
+    "dims": "regime × session",
+    "cells": 4,
+    "rank_corr": -0.4,
+    "same_sign": 0.25
+   },
+   {
+    "dims": "regime × vol",
+    "cells": 5,
+    "rank_corr": -0.3,
+    "same_sign": 0.4
+   },
+   {
+    "dims": "regime × sym",
+    "cells": 8,
+    "rank_corr": -0.21,
+    "same_sign": 0.5
+   },
+   {
+    "dims": "session × vol",
+    "cells": 2,
+    "rank_corr": null,
+    "same_sign": null
+   },
+   {
+    "dims": "session × sym",
+    "cells": 3,
+    "rank_corr": 0.5,
+    "same_sign": 1.0
+   },
+   {
+    "dims": "vol × sym",
+    "cells": 4,
+    "rank_corr": -0.8,
+    "same_sign": 0.75
+   }
+  ]
+ }
+}

@@ -1,0 +1,15 @@
+Confirmations optionnelles (toutes stratégies) : espérance R avec / sans
+               size          mean       
+val           False  True   False  True 
+conf                                    
+fresh_trend   154.0  115.0  0.002 -0.105
+killzone      173.0  112.0 -0.070  0.005
+strong_trend   48.0   54.0 -0.023  0.061
+
+Par période (P1 / P2)
+val           False         True        
+P                P1     P2     P1     P2
+conf                                    
+fresh_trend   0.049 -0.057 -0.047 -0.153
+killzone      0.031 -0.159 -0.058  0.103
+strong_trend  0.010 -0.079 -0.003  0.129

@@ -109,5 +109,28 @@ def stage_val():
     (OUT / "validation.json").write_text(json.dumps(out, indent=1, ensure_ascii=False, default=float))
 
 
+def stage_oos():
+    """Lecture UNIQUE du hors-échantillon verrouillé, pour les seules candidates de la validation."""
+    val = json.loads((OUT / "validation.json").read_text())
+    G = grid()
+    C = ctxs(locked=True)
+    out = {}
+    for hyp, v in val.items():
+        if not v["candidate"]:
+            continue
+        fn, variants = G[hyp]
+        params = next(p for p in variants if vname(p) == v["variant"])
+        t = trades_for(C, fn, params)
+        q = pd.DatetimeIndex(t["time"]).tz_convert("UTC").to_period("Q").astype(str)
+        t["quarter"] = q
+        out[hyp] = {"variant": v["variant"], "OOS": stats(t["r"]), "quarters": by(t, "quarter"),
+                    "pairs": by(t, "sym"), "first": str(t["time"].min()), "last": str(t["time"].max())}
+        o = out[hyp]
+        o["retained"] = o["OOS"]["exp"] > 0 and o["OOS"]["pf"] > 1
+        t.to_pickle(OUT / f"oos_{hyp}_trades.pkl")
+        print(hyp, json.dumps(o, indent=1, default=float))
+    (OUT / "oos.json").write_text(json.dumps(out, indent=1, ensure_ascii=False, default=float))
+
+
 if __name__ == "__main__":
-    {"train": stage_train, "val": stage_val}[sys.argv[1]]()
+    {"train": stage_train, "val": stage_val, "oos": stage_oos}[sys.argv[1]]()
