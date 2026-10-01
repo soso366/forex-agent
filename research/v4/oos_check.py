@@ -20,9 +20,12 @@ Verdict (règles fixées ici, avant les données) :
     c. au moins 3 trimestres sur 4 positifs ;
     d. encore positif sans les fins de mois, sans les 5 meilleurs jours, sans le meilleur trimestre, sans la meilleure paire ;
     e. « une seule paire par jour » positive ;
-    f. 16:00 reste spécial : au plus 1 des 8 heures placebo a une espérance ≥ celle de 16:00.
-- INCONCLUSIVE sinon (positif mais une condition b–f manque).
-Le test de coûts est rapporté, il ne change pas le verdict, mais il décide si un usage réel est envisageable.
+    f. 16:00 est spécifique : son espérance est STRICTEMENT supérieure à celle des 8 heures placebo ;
+    g. exploitable après coûts réalistes : espérance > 0 et PF > 1 avec 0,6 pip de coût TOTAL supplémentaire par trade
+       (≈ commission d'un compte à spread brut + glissement au fix ; le spread Dukascopy est déjà déduit).
+- FAIL aussi si clairement instable : moins de 2 trimestres sur 4 positifs.
+- INCONCLUSIVE sinon (positif mais trop faible, trop concentré, non spécifique ou trop sensible aux coûts).
+Règles renforcées le 1er octobre 2026 à la demande de l'utilisateur, toujours AVANT d'avoir les données.
 
 Usage : python -m research.v4.oos_check            (données verrouillées)
         python -m research.v4.oos_check --dry-run  (essai du code sur les données de recherche déjà vues)
@@ -172,10 +175,12 @@ def main(dry=False):
         "d_concentration": all((conc[k]["exp"] or -1) > 0 for k in
                                ("without_month_end", "without_top5_days", "without_best_quarter", "without_best_pair")),
         "e_une_paire": (dv["one_pair_per_day"]["exp"] or -1) > 0,
-        "f_placebo": sum(1 for v in pl.values() if (v["exp"] if v["exp"] == v["exp"] else -9) >= g["exp"]) <= 1,
+        "f_placebo": all((v["exp"] if v["exp"] == v["exp"] else -9) < g["exp"] for v in pl.values()),
+        "g_couts_0_6": res["costs"]["0.6"]["exp"] > 0 and res["costs"]["0.6"]["pf"] > 1,
     }
     res["conditions"] = cond
-    if not cond["a_exp_pf"]:
+    unstable = sum(1 for v in q.values() if v["exp"] > 0) < 2
+    if not cond["a_exp_pf"] or unstable:
         res["verdict"] = "FAIL"
     elif all(cond.values()):
         res["verdict"] = "PASS"

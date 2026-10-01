@@ -420,7 +420,8 @@
   "c_trimestres": true,
   "d_concentration": true,
   "e_une_paire": true,
-  "f_placebo": true
+  "f_placebo": false,
+  "g_couts_0_6": true
  },
- "verdict": "PASS"
+ "verdict": "INCONCLUSIVE"
 }
