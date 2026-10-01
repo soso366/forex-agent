@@ -174,6 +174,11 @@ def run_backtest(cfg: dict, warmup_days: int = 7, out_dir: Path | None = None, p
     (bt_dir / "report.md").write_text(text, encoding="utf-8")
     cols = [c for c in (trades.columns if not trades.empty else []) if c != "setup_json"]
     (trades[cols] if not trades.empty else pd.DataFrame(columns=["aucun_trade"])).to_csv(bt_dir / "trades.csv", index=False)
+    try:                                   # META-SKILL : audit du journal (observations, jamais des règles)
+        from .meta import journal_audit
+        journal_audit.run(cfg["paths"]["db"], bt_dir, provider=prov)
+    except Exception as e:                 # pragma: no cover
+        print(f"audit du journal non produit : {e}")
     meta = json.loads(meta_path.read_text())
     meta["finished_at"] = datetime.now(timezone.utc).isoformat()
     meta_path.write_text(json.dumps(meta, indent=2))
@@ -273,7 +278,8 @@ def run_pipeline(cfg: dict, start: date | None = None, end: date | None = None,
         return 1
     finally:
         bt = (Path(data_root) if data_root else ROOT / "data") / "backtest"
-        for src in (bt / "report.md", bt / "trades.csv", bt / "run_meta.json", _csv_dir(cfg) / "quality_report.json"):
+        for src in (bt / "report.md", bt / "trades.csv", bt / "run_meta.json", bt / "journal_audit.md",
+                    bt / "journal_audit.json", _csv_dir(cfg) / "quality_report.json"):
             if src.exists():
                 shutil.copy2(src, results / src.name)
         (results / "STATUS.txt").write_text(
@@ -310,6 +316,9 @@ def main(argv: list[str] | None = None) -> None:
     bp = sub.add_parser("backtest", help="rejoue la V2 sur TOUTE la période CSV, journal séparé, puis rapport")
     bp.add_argument("--warmup-days", type=int, default=7, help="historique réservé au calcul des indicateurs")
     bp.add_argument("--resume", action="store_true", help="reprendre un backtest interrompu (à l'identique)")
+    ja = sub.add_parser("journal-audit", help="audit chiffré du journal (observations → hypothèses, jamais des règles)")
+    ja.add_argument("--db", default=None, help="base du journal (défaut : journal paper)")
+    ja.add_argument("--out", default=None, help="dossier de sortie (défaut : data/audit)")
     pp = sub.add_parser("pipeline", help="téléchargement + validation + backtest + résultats, en une commande")
     pp.add_argument("--start", default=None)
     pp.add_argument("--end", default=None)
@@ -380,6 +389,11 @@ def main(argv: list[str] | None = None) -> None:
         print(f"Période commune : {first} → {last}")
     elif a.cmd == "backtest":
         run_backtest(cfg, a.warmup_days, resume=a.resume)
+    elif a.cmd == "journal-audit":
+        from .meta import journal_audit
+        db = Path(a.db) if a.db else resolve_path(cfg, "db")
+        out = Path(a.out) if a.out else ROOT / "data" / "audit"
+        print(f"Audit écrit : {journal_audit.run(db, out)}")
     elif a.cmd == "pipeline":
         raise SystemExit(run_pipeline(cfg, date.fromisoformat(a.start) if a.start else None,
                                       date.fromisoformat(a.end) if a.end else None,

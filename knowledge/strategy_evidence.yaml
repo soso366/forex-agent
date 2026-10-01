@@ -1,0 +1,14 @@
+# Preuves mesurées par stratégie (recherche V4, 12 mois Dukascopy M1 bid/ask, sept. 2025 → août 2026).
+# Utilisé UNIQUEMENT par la revue adversariale (meta-skill) comme argument du critique.
+# Ce fichier ne change aucune règle : seule la chaîne observation → hypothèse → backtest → validation → OOS le peut.
+source: "research/v4 (branche research-v4), analyse des échecs V2"
+strategies:
+  BreakRetest_v2:      {verdict: DROP, n: 84, exp_r: -0.033, note: "+0,13 R puis -0,20 R d'une période à l'autre ; sens sans information (test du miroir)"}
+  DoubleTopBottom_v1:  {verdict: DROP, n: 83, exp_r: -0.134, note: "négative dans les deux périodes ; NO_EDGE en tendance baissière et en volatilité haute"}
+  FlagBreakout_v1:     {verdict: DROP, n: 102, exp_r: 0.021, note: "≈ 0 R dans les deux périodes"}
+  TrendPullback_v2:    {verdict: INSUFFICIENT_DATA, n: 16, exp_r: 0.019, note: "trop peu de trades"}
+  RangeFade_v2:        {verdict: MODIFY, n: 20, exp_r: 0.067, note: "seule stratégie où le sens porte de l'information, mais 20 trades"}
+  SweepMSS_v2:         {verdict: INSUFFICIENT_DATA, n: 0, exp_r: null, note: "≈ 0 trade en 12 mois"}
+general:
+  target_reach_rate: "4 à 12 % des cibles V2 atteintes en 30 min ; cible médiane = 1,5 à 2,9 × l'amplitude typique de 30 min"
+  typical_30min_range_atr_m5: 2.3      # médiane mesurée 07–20 UTC : EURUSD 2,28 · GBPUSD 2,29 · USDJPY 2,21
