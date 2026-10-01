@@ -1,0 +1,181 @@
+
+### Global par période
+                     n    exp      R    win      t
+period                                            
+P1 sept.25-fév.26  157 -0.020 -3.115  0.433 -0.320
+P2 mars-août 26    148 -0.047 -7.019  0.399 -0.712
+
+### Stratégie × période
+                                       n    exp      R    win      t
+strategy           period                                           
+BreakRetest_v2     P1 sept.25-fév.26  42  0.133  5.572  0.524  1.103
+                   P2 mars-août 26    42 -0.199 -8.368  0.333 -1.791
+DoubleTopBottom_v1 P1 sept.25-fév.26  38 -0.107 -4.080  0.368 -0.970
+                   P2 mars-août 26    45 -0.157 -7.076  0.378 -1.347
+FlagBreakout_v1    P1 sept.25-fév.26  58  0.004  0.234  0.448  0.037
+                   P2 mars-août 26    44  0.044  1.944  0.432  0.419
+RangeFade_v2       P1 sept.25-fév.26   8 -0.215 -1.718  0.375 -1.066
+                   P2 mars-août 26    12  0.255  3.059  0.583  0.987
+TrendPullback_v2   P1 sept.25-fév.26  11 -0.284 -3.123  0.273 -1.008
+                   P2 mars-août 26     5  0.684  3.422  0.400  0.852
+
+### Stratégie × régime
+                                n    exp      R    win      t
+strategy           regime                                    
+BreakRetest_v2     TREND_DOWN  28  0.176  4.918  0.571  1.330
+                   TREND_UP    56 -0.138 -7.714  0.357 -1.321
+DoubleTopBottom_v1 TREND_DOWN  33 -0.264 -8.711  0.303 -2.748
+                   TREND_UP    50 -0.049 -2.445  0.420 -0.417
+FlagBreakout_v1    TREND_DOWN  42 -0.001 -0.031  0.333 -0.006
+                   TREND_UP    60  0.037  2.209  0.517  0.384
+RangeFade_v2       RANGE       20  0.067  1.341  0.500  0.375
+TrendPullback_v2   TREND_DOWN   9 -0.425 -3.829  0.111 -1.634
+                   TREND_UP     7  0.590  4.128  0.571  0.958
+
+### Stratégie × session
+                                       n    exp      R    win      t
+strategy           session                                          
+BreakRetest_v2     london             26 -0.002 -0.057  0.500 -0.013
+                   new_york           29 -0.137 -3.977  0.379 -1.143
+                   overlap_london_ny  29  0.043  1.238  0.414  0.280
+DoubleTopBottom_v1 london             38 -0.023 -0.876  0.500 -0.193
+                   new_york           22 -0.237 -5.213  0.318 -1.533
+                   overlap_london_ny  23 -0.220 -5.067  0.217 -1.411
+FlagBreakout_v1    london             41  0.144  5.887  0.537  1.189
+                   new_york           23 -0.171 -3.927  0.348 -1.387
+                   overlap_london_ny  38  0.006  0.218  0.395  0.042
+RangeFade_v2       london              6 -0.228 -1.371  0.333 -0.814
+                   new_york            9  0.001  0.007  0.556  0.005
+                   overlap_london_ny   5  0.541  2.705  0.600  0.981
+TrendPullback_v2   london              4 -0.479 -1.914  0.250 -2.035
+                   new_york            8 -0.161 -1.291  0.250 -0.396
+                   overlap_london_ny   4  0.876  3.504  0.500  0.927
+
+### Stratégie × paire
+                            n    exp      R    win      t
+strategy           symbol                                
+BreakRetest_v2     EURUSD  23  0.104  2.395  0.478  0.590
+                   GBPUSD  28 -0.080 -2.247  0.429 -0.626
+                   USDJPY  33 -0.089 -2.944  0.394 -0.653
+DoubleTopBottom_v1 EURUSD  27 -0.352 -9.495  0.222 -3.189
+                   GBPUSD  24 -0.054 -1.302  0.375 -0.303
+                   USDJPY  32 -0.011 -0.359  0.500 -0.088
+FlagBreakout_v1    EURUSD  31 -0.087 -2.688  0.323 -0.645
+                   GBPUSD  38  0.076  2.869  0.500  0.612
+                   USDJPY  33  0.061  1.997  0.485  0.432
+RangeFade_v2       EURUSD   8  0.011  0.089  0.500  0.038
+                   GBPUSD   6 -0.015 -0.091  0.500 -0.054
+                   USDJPY   6  0.224  1.343  0.500  0.568
+TrendPullback_v2   EURUSD   6 -0.050 -0.298  0.167 -0.073
+                   GBPUSD   7 -0.046 -0.321  0.286 -0.116
+                   USDJPY   3  0.306  0.918  0.667  0.380
+
+### Stratégie × volatilité
+                                n    exp       R    win      t
+strategy           vol_bucket                                 
+BreakRetest_v2     basse        6 -0.129  -0.774  0.333 -0.281
+                   normale     36 -0.089  -3.193  0.389 -0.673
+                   haute       42  0.028   1.171  0.476  0.259
+DoubleTopBottom_v1 basse       14  0.349   4.889  0.643  1.360
+                   normale     36 -0.130  -4.683  0.361 -1.075
+                   haute       33 -0.344 -11.362  0.273 -3.706
+FlagBreakout_v1    basse       11 -0.130  -1.425  0.364 -0.508
+                   normale     29  0.187   5.425  0.552  1.084
+                   haute       62 -0.029  -1.822  0.403 -0.348
+RangeFade_v2       normale     10  0.049   0.485  0.500  0.177
+                   haute       10  0.086   0.856  0.500  0.352
+TrendPullback_v2   basse        3  0.380   1.139  0.333  0.536
+                   normale      7 -0.073  -0.509  0.286 -0.125
+                   haute        6 -0.055  -0.331  0.333 -0.114
+
+### Stratégie × H1 aligné
+                                  n    exp       R    win      t
+strategy           htf_aligned                                  
+BreakRetest_v2     True          84 -0.033  -2.796  0.429 -0.399
+DoubleTopBottom_v1 True          83 -0.134 -11.156  0.373 -1.666
+FlagBreakout_v1    False          1 -0.788  -0.788  0.000    NaN
+                   True         101  0.029   2.966  0.446  0.385
+RangeFade_v2       False         17 -0.044  -0.752  0.471 -0.257
+                   True           3  0.698   2.093  0.667  1.045
+TrendPullback_v2   True          16  0.019   0.299  0.312  0.058
+
+### Heure UTC
+       n    exp      R    win      t
+hour                                
+7     21 -0.027 -0.559  0.381 -0.145
+8     21 -0.088 -1.842  0.524 -0.546
+9     30 -0.016 -0.495  0.533 -0.127
+10    25  0.258  6.454  0.600  1.602
+11    18 -0.105 -1.889  0.389 -0.601
+12    27  0.274  7.403  0.481  1.169
+13    19 -0.169 -3.212  0.211 -0.973
+14    22 -0.052 -1.137  0.273 -0.353
+15    31 -0.015 -0.456  0.452 -0.104
+16    25 -0.206 -5.162  0.280 -1.573
+17    27 -0.040 -1.087  0.519 -0.378
+18    24 -0.192 -4.608  0.333 -1.180
+19    15 -0.236 -3.544  0.267 -1.168
+
+### Sortie
+               n    exp       R    win        t
+exit_kind                                      
+CLOSE         61 -0.419 -25.565  0.082   -9.314
+STOP_LOSS     53 -1.001 -53.071  0.000 -985.399
+TAKE_PROFIT   15  1.977  29.648  1.000   16.001
+TIME_STOP    176  0.221  38.854  0.608    5.515
+
+### Géométrie médiane
+                    stop_pips  target_pips  target_R  stop_atr  target_atr  spread_R  typ30_pips  target_vs_typ30  mfe_r  mae_r
+strategy                                                                                                                       
+BreakRetest_v2           8.90        17.10      1.94      1.82        3.52      0.05        8.30             2.09   0.42   0.57
+DoubleTopBottom_v1       6.90        15.10      1.92      1.57        3.24      0.05        7.70             1.88   0.44   0.58
+FlagBreakout_v1         12.55        25.00      1.85      2.33        4.52      0.03        8.44             2.88   0.48   0.42
+RangeFade_v2             6.85        12.50      1.83      1.25        2.45      0.06        8.72             1.48   0.63   0.52
+TrendPullback_v2         5.40        10.95      1.87      1.34        3.25      0.06        7.70             1.88   0.43   0.59
+
+### Part des trades dont la cible a été atteinte (MFE ≥ cible)
+                    reach
+strategy                 
+BreakRetest_v2      0.036
+DoubleTopBottom_v1  0.036
+FlagBreakout_v1     0.049
+RangeFade_v2        0.100
+TrendPullback_v2    0.125
+
+### MFE/MAE gagnants vs perdants
+                          mfe_r  mae_r  duration_min
+strategy           w                                
+BreakRetest_v2     False   0.20   0.82          22.5
+                   True    0.98   0.25          30.0
+DoubleTopBottom_v1 False   0.26   0.81          15.0
+                   True    0.82   0.32          30.0
+FlagBreakout_v1    False   0.21   0.70          30.0
+                   True    0.82   0.24          30.0
+RangeFade_v2       False   0.22   0.72           7.5
+                   True    1.00   0.37          30.0
+TrendPullback_v2   False   0.29   0.85          15.0
+                   True    1.60   0.52          30.0
+
+### Test du miroir (espérance R) : signal vs sens opposé, même instant/géométrie
+                    r_multiple  sim_same  sim_opp  sim_1R  sim_notarget    n
+strategy                                                                    
+BreakRetest_v2          -0.033    -0.065   -0.033  -0.028        -0.081   84
+DoubleTopBottom_v1      -0.134    -0.111   -0.001  -0.061        -0.106   83
+FlagBreakout_v1          0.021     0.005   -0.076  -0.031         0.006  102
+RangeFade_v2             0.067     0.423   -0.540   0.475         0.551   20
+TrendPullback_v2         0.019    -0.063    0.042  -0.312         0.083   16
+
+### Miroir global
+                  0
+r_multiple   -0.033
+sim_same     -0.022
+sim_opp      -0.068
+sim_1R       -0.020
+sim_notarget -0.009
+
+### Persistance des cellules (≥ 8 trades dans chaque période)
+               découpage  cellules  corr_rang_P1_P2  même_signe
+0      strategy × regime         7            -0.36        0.29
+1     strategy × session         7            -0.21        0.29
+2      strategy × symbol         9            -0.32        0.22
+3  strategy × vol_bucket         6             0.43        0.67
