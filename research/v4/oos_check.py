@@ -16,8 +16,10 @@ Verdict (règles fixées ici, avant les données) :
 - FAIL si espérance ≤ 0 ou profit factor ≤ 1 (coût supplémentaire 0).
 - PASS si TOUT est vrai :
     a. espérance > 0 et PF > 1 ;
-    b. vue par jour : PnL moyen par jour > 0 et borne basse de l'IC 90 % bootstrap par jour > 0 ;
-    c. au moins 3 trimestres sur 4 positifs ;
+    b. « sûrement positif » = bootstrap au niveau JOUR DE FIX (somme des R du jour, 10 000 tirages) :
+       borne basse de l'IC 95 % de l'espérance quotidienne > 0 (une moyenne positive seule ne suffit pas) ;
+    c. au moins 3 trimestres sur 4 positifs (trimestres : sept.–nov., déc.–fév., mars–mai, juin–août) ;
+       2/4 = au mieux INCONCLUSIVE ; 0 ou 1/4 = FAIL ;
     d. encore positif sans les fins de mois, sans les 5 meilleurs jours, sans le meilleur trimestre, sans la meilleure paire ;
     e. « une seule paire par jour » positive ;
     f. 16:00 est spécifique : son espérance est STRICTEMENT supérieure à celle des 8 heures placebo ;
@@ -26,6 +28,7 @@ Verdict (règles fixées ici, avant les données) :
 - FAIL aussi si clairement instable : moins de 2 trimestres sur 4 positifs.
 - INCONCLUSIVE sinon (positif mais trop faible, trop concentré, non spécifique ou trop sensible aux coûts).
 Règles renforcées le 1er octobre 2026 à la demande de l'utilisateur, toujours AVANT d'avoir les données.
+Dernier verrou (IC 95 % par jour, trimestres) le 1er octobre 2026, 11:31 Paris. Plus aucun critère ne sera ajouté.
 
 Usage : python -m research.v4.oos_check            (données verrouillées)
         python -m research.v4.oos_check --dry-run  (essai du code sur les données de recherche déjà vues)
@@ -73,11 +76,11 @@ def fade_local(ctx, hh: int, mm: int) -> pd.DataFrame:
 
 def day_view(t: pd.DataFrame, rng) -> dict:
     d = t.groupby("fix_day")["r"].sum()
-    boots = np.array([rng.choice(d.to_numpy(), len(d)).mean() for _ in range(5000)])
+    boots = np.array([rng.choice(d.to_numpy(), len(d)).mean() for _ in range(10000)])
     one = t.sort_values(["fix_day", "prio"]).groupby("fix_day").head(1)
     return {"days": int(len(d)), "win_days": int((d > 0).sum()), "lose_days": int((d < 0).sum()),
             "flat_days": int((d == 0).sum()), "mean_R_per_day": float(d.mean()),
-            "day_ci90": [float(np.quantile(boots, .05)), float(np.quantile(boots, .95))],
+            "day_ci95": [float(np.quantile(boots, .025)), float(np.quantile(boots, .975))],
             "pairs_per_day": float(t.groupby("fix_day").size().mean()),
             "one_pair_per_day": stats(one["r"]),
             "corr_pairs_same_day": corr_pairs(t)}
@@ -104,7 +107,10 @@ def main(dry=False):
     loc = tm.tz_convert("Europe/London")
     t["fix_day"] = loc.normalize().tz_localize(None)
     t["prio"] = t["sym"].map(PRIORITY)
-    t["quarter"] = tm.tz_convert("UTC").tz_localize(None).to_period("Q").astype(str)
+    # 4 trimestres de 3 mois : sept.–nov., déc.–fév., mars–mai, juin–août (pas les trimestres civils)
+    m = tm.tz_convert("UTC").month
+    t["quarter"] = np.select([np.isin(m, [9, 10, 11]), np.isin(m, [12, 1, 2]), np.isin(m, [3, 4, 5])],
+                             ["Q1 sept-nov", "Q2 déc-fév", "Q3 mars-mai"], "Q4 juin-août")
     t["month"] = tm.tz_convert("UTC").strftime("%Y-%m")
     t["weekday"] = loc.day_name()
     t["month_end"] = (t["fix_day"] == t["fix_day"] + pd.offsets.BMonthEnd(0)).to_numpy()
@@ -170,7 +176,7 @@ def main(dry=False):
     conc = res["concentration"]
     cond = {
         "a_exp_pf": g["exp"] > 0 and g["pf"] > 1,
-        "b_jour_ic": dv["mean_R_per_day"] > 0 and dv["day_ci90"][0] > 0,
+        "b_jour_ic95": dv["mean_R_per_day"] > 0 and dv["day_ci95"][0] > 0,
         "c_trimestres": sum(1 for v in q.values() if v["exp"] > 0) >= 3,
         "d_concentration": all((conc[k]["exp"] or -1) > 0 for k in
                                ("without_month_end", "without_top5_days", "without_best_quarter", "without_best_pair")),
