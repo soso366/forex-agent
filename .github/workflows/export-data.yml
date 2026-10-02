@@ -17,8 +17,7 @@ permissions:
   actions: write
 
 concurrency:
-  # une file par période : deux périodes ne s'annulent plus (GitHub ne garde qu'un lancement en attente par file)
-  group: dukascopy-${{ github.event.inputs.tag || github.ref }}
+  group: dukascopy-cache
   cancel-in-progress: false
 
 jobs:
@@ -54,10 +53,8 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: data/dukascopy_raw
-          key: dukascopy-${{ steps.p.outputs.tag }}-${{ github.run_id }}
-          restore-keys: |
-            dukascopy-${{ steps.p.outputs.tag }}-
-            dukascopy-
+          key: dukascopy-${{ github.run_id }}
+          restore-keys: dukascopy-
       - name: Télécharger / préparer
         if: steps.p.outputs.skip != '1'
         env: {PYTHONUNBUFFERED: "1"}
@@ -67,12 +64,12 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: data/dukascopy_raw
-          key: dukascopy-${{ steps.p.outputs.tag }}-${{ github.run_id }}
+          key: dukascopy-${{ github.run_id }}
       - name: Publier les CSV (si complet) ou relancer
         if: always() && steps.p.outputs.skip != '1'
         env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
         run: |
           STATUS=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
           echo "Statut : $STATUS"
@@ -82,8 +79,10 @@ jobs:
             cp "$GITHUB_WORKSPACE/data/m1/quality_report.json" .
             git init -q && git checkout -q -b "data-${{ steps.p.outputs.tag }}"
             git add -A && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "M1 ${{ steps.p.outputs.start }} → ${{ steps.p.outputs.end }}"
-            git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "data-${{ steps.p.outputs.tag }}"
-            echo "Publié sur la branche data-${{ steps.p.outputs.tag }}"
+            # Les données vont dans le dépôt PRIVÉ soso366/forex-data (forex-agent est public).
+            [ -n "${DATA_TOKEN}" ] || { echo "::error::Secret DATA_REPO_TOKEN absent : publication des données impossible"; exit 1; }
+            git push -qf "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git" "data-${{ steps.p.outputs.tag }}"
+            echo "Publié sur soso366/forex-data, branche data-${{ steps.p.outputs.tag }}"
           elif [ "$STATUS" = "INCOMPLETE" ] && [ "${{ steps.p.outputs.attempt }}" -lt 8 ]; then
             gh workflow run export-data.yml --repo "$GITHUB_REPOSITORY" --ref main \
               -f start=${{ steps.p.outputs.start }} -f end=${{ steps.p.outputs.end }} -f tag=${{ steps.p.outputs.tag }} -f attempt=$(( ${{ steps.p.outputs.attempt }} + 1 ))

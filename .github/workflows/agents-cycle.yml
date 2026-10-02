@@ -10,7 +10,8 @@
 #   multi-agent-research ci-dessous, quelle que soit la branche choisie dans le menu).
 # - Tant que le fichier n'est que sur multi-agent-research / automation-track, il ne se déclenche jamais.
 #
-# Secrets : ANTHROPIC_API_KEY (console.anthropic.com → API Keys) OU CLAUDE_CODE_OAUTH_TOKEN. Voir
+# Secrets : ANTHROPIC_API_KEY (console.anthropic.com → API Keys) OU CLAUDE_CODE_OAUTH_TOKEN, et DATA_REPO_TOKEN
+# (jeton GitHub en lecture sur le dépôt privé soso366/forex-data, pour les données Dukascopy). Voir
 # orchestrator/AUTOMATION.md. Arrêt : orchestrator/control.yaml → mode: PAUSED, ou désactiver le workflow.
 name: Agents — cycle Manager
 
@@ -69,7 +70,9 @@ jobs:
           git config user.name "forex-agents[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Préparation (branche, données Dukascopy depuis les branches data-*)
+      - name: Préparation (branche, données Dukascopy depuis le dépôt privé forex-data)
+        env:
+          DATA_REPO_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
         run: bash orchestrator/bootstrap.sh
 
       - name: Interrupteur (control.yaml)
