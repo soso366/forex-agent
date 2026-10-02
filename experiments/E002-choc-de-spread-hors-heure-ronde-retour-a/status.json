@@ -2,7 +2,7 @@
  "id": "E002",
  "title": "Choc de spread hors heure ronde : retour apres normalisation de la liquidite",
  "family": "microstructure-liquidite",
- "stage": "PRECRITIQUED",
+ "stage": "OOS_DONE",
  "created": "2026-10-02 11:37 UTC",
  "cycle": 1,
  "history": [
@@ -17,6 +17,36 @@
    "by": "critic",
    "note": "",
    "verdict": "GO"
+  },
+  {
+   "stage": "PROTOCOL_LOCKED",
+   "at": "2026-10-02 14:18 UTC",
+   "by": "quant",
+   "note": ""
+  },
+  {
+   "stage": "TRAIN_DONE",
+   "at": "2026-10-02 14:19 UTC",
+   "by": "quant",
+   "note": ""
+  },
+  {
+   "stage": "VALIDATED",
+   "at": "2026-10-02 14:19 UTC",
+   "by": "quant",
+   "note": "étape non exécutée : Train échoué"
+  },
+  {
+   "stage": "OOS_DONE",
+   "at": "2026-10-02 14:19 UTC",
+   "by": "quant",
+   "note": "étape non exécutée : Train échoué"
   }
+ ],
+ "protocol_sha": "034695aebcbd3652a8f86d0323a9c234953747f5cf5a0a972f1b83391c484a0f",
+ "protocol_commit": "222bf4d",
+ "skipped_stages": [
+  "VALIDATED",
+  "OOS_DONE"
  ]
 }
