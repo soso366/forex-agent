@@ -1,0 +1,22 @@
+{
+ "id": "E001",
+ "title": "Divergence EURUSD-GBPUSD : retour de l'ecart EURGBP implicite",
+ "family": "relations-entre-paires",
+ "stage": "PRECRITIQUED",
+ "created": "2026-10-02 11:37 UTC",
+ "cycle": 1,
+ "history": [
+  {
+   "stage": "PROPOSED",
+   "at": "2026-10-02 11:37 UTC",
+   "by": "researcher"
+  },
+  {
+   "stage": "PRECRITIQUED",
+   "at": "2026-10-02 11:43 UTC",
+   "by": "critic",
+   "note": "",
+   "verdict": "GO"
+  }
+ ]
+}
