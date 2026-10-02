@@ -5,3 +5,8 @@ __pycache__/
 lab/results/trades/
 research/v4/cache/
 research/v4/out/*.pkl
+
+# Contenus de tiers protégés : jamais dans le dépôt public
+knowledge/sources/*.pdf
+knowledge/sources/*.pages
+knowledge/sources/*.txt

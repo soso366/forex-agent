@@ -10,12 +10,16 @@ if [ "$(git rev-parse --abbrev-ref HEAD)" != "$BRANCH" ]; then
 fi
 git pull -q --ff-only origin "$BRANCH" || echo "pull impossible (modifications locales ?) : on continue"
 python3 -c "import pandas, numpy, yaml" 2>/dev/null || pip install -q -r requirements.txt --break-system-packages || pip install -q -r requirements.txt
-# Données : branche GitHub data-<tag> → dossier local (CSV gzip). Rien n'est lu ici, on prépare seulement.
+# Données : branche data-<tag> du dépôt PRIVÉ soso366/forex-data → dossier local (CSV gzip).
+# (Le dépôt forex-agent est public : les données Dukascopy n'y sont plus.) Rien n'est lu ici, on prépare seulement.
+# Dans GitHub Actions, le secret DATA_REPO_TOKEN (jeton en lecture sur forex-data) donne l'accès.
+DATA_REMOTE="https://github.com/soso366/forex-data"
+[ -n "${DATA_REPO_TOKEN:-}" ] && DATA_REMOTE="https://x-access-token:${DATA_REPO_TOKEN}@github.com/soso366/forex-data"
 fetch() {  # $1 = tag, $2 = dossier
   [ -f "data/$2/EURUSD.csv" ] && return 0
-  git ls-remote --exit-code --heads origin "data-$1" >/dev/null 2>&1 || { echo "données $1 : pas encore publiées"; return 0; }
+  git ls-remote --exit-code --heads "$DATA_REMOTE" "data-$1" >/dev/null 2>&1 || { echo "données $1 : indisponibles (pas publiées ou pas d'accès à forex-data)"; return 0; }
   tmp=$(mktemp -d)
-  git clone -q --depth 1 -b "data-$1" "$(git remote get-url origin)" "$tmp/d" && mkdir -p "data/$2" && \
+  git clone -q --depth 1 -b "data-$1" "$DATA_REMOTE" "$tmp/d" && mkdir -p "data/$2" && \
     for f in "$tmp"/d/*.csv.gz; do gunzip -c "$f" > "data/$2/$(basename "$f" .gz)"; done && \
     cp "$tmp"/d/quality_report.json "data/$2/" 2>/dev/null
   rm -rf "$tmp"

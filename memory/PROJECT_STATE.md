@@ -5,6 +5,13 @@ Dernier cycle : cycle 1 (2026-10-02, session interactive de test — agents rée
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
 Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès au dépôt privé). Remplaçant prêt : GitHub Actions `agents-cycle.yml` (en attente d'un secret API et de l'accord pour main). Les cycles tournent pour l'instant en session interactive.
 
+## Publication (2 octobre 2026)
+- Historique Git RÉÉCRIT pour retirer `knowledge/sources` (contenus de tiers) : tous les identifiants de commit
+  antérieurs au 2 oct. 2026 21:00 ont changé ; ceux cités dans la mémoire ou les status.json sont ANCIENS (retrouver
+  le commit par son message).
+- Données Dukascopy déplacées dans le dépôt PRIVÉ `soso366/forex-data` (mêmes branches `data-*`). `bootstrap.sh` et
+  `export-data.yml` utilisent ce dépôt ; GitHub Actions a besoin du secret `DATA_REPO_TOKEN`.
+
 ## Où en est-on
 - **Baseline officielle = V2** (branche `main`) : 6 stratégies, Router par régime, Risk Manager. Pas d'avantage démontré.
 - **Meta-skills** ajoutées sur `main` (informatives, rejeu identique 148 trades / −1,97 €).
@@ -24,7 +31,7 @@ perte jour 3 %, drawdown 20 % = kill switch, 3 pertes = pause 60 min, pas de mar
 min R:R 1,5 (baseline), pas deux positions avec la même devise dans le même sens.
 
 ## Données disponibles (Dukascopy M1 bid/ask)
-| Période | Dossier local | Branche GitHub | Rôle |
+| Période | Dossier local | Branche (dépôt privé soso366/forex-data) | Rôle |
 |---|---|---|---|
 | sept. 2025 → fév. 2026 | `data/m1_2025` | `data-2025sep-2026feb` | Train V4 |
 | mars → août 2026 | `data/m1` | `data-2026mar-aug` | Validation V4 |
