@@ -12,3 +12,5 @@
 | Filtrage par cellules de contexte (régime/séance/vol/paire) appris sur une période | non persistant (corr. rang ≤ 0) | ≥ 3 ans de données |
 | « Tendance fraîche » comme confirmation | négative dans les deux périodes | — |
 | Killzone comme confirmation | change de signe entre périodes | — |
+| **H3 / E000 — fade du fix de Londres 16:00** (et toute variante : seuil k, stop, durée, jours, autres fixings à heure fixe en fade) | OOS sept. 2024 → août 2025 : 577 trades, −0,108 R, PF 0,74, 0/7 critères ; non spécifique à 16:00 | aucun : ne jamais retester |
+| E001 — divergence EURUSD-GBPUSD (retour EURGBP implicite), y compris seuil 3,0 | Train : t 0,87, IC jour contient 0, porté par quelques jours d'annonces | un calendrier économique permettant d'exclure les annonces (nouvelle hypothèse, pas un réglage) |

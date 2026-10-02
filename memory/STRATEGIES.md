@@ -14,10 +14,16 @@
 ## Candidates
 | ID | Statut | Règle | Prochaine étape |
 |---|---|---|---|
-| V4-H3 fix de Londres | OOS final en cours | 16:00 Europe/London (DST auto) : si mouvement 30 min ≥ 0,5 ATR M5 → position opposée à 16:01, stop 1,5 ATR, sortie 30 min | PASS → paper séparé ; FAIL/INCONCLUSIVE → archive |
+| — | Aucune candidate validée | — | E002 en préparation (cycle 2) |
+
+## Archivées
+| ID | Verdict | Résumé |
+|---|---|---|
+| V4-H3 / E000 fix de Londres | FAIL OOS → REJECT | 577 trades OOS, −0,108 R, PF 0,74 ; ne jamais retester |
+| E001 divergence EURUSD-GBPUSD | REJECT (Train) | 78 trades, t 0,87, porté par quelques jours d'annonces |
 
 ## Leçons générales (à respecter dans toute nouvelle stratégie)
 - À 5–30 min, la famille **continuation / cassure** est négative (H2, H5, figures V2).
-- Les résultats positifs viennent de la famille **retour à la moyenne à heure précise / flux** (H3, RangeFade).
+- La famille **retour à la moyenne à heure précise** (H3) a échoué hors-échantillon : les résultats positifs Train/Validation étaient du bruit de sélection et de période.
 - Cibles structurelles de swing incompatibles avec 30 min : préférer sortie au temps ou cible ≤ 1–1,5 R.
 - L'avantage éventuel est petit (≈ 1 pip) : toujours tester +0,2 à +1 pip de coût.

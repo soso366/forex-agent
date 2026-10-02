@@ -1,12 +1,10 @@
-# Prochaines tâches (file d'attente du Manager — la source exécutable est `orchestrator/state.json`)
+# Prochaines tâches (file d'attente du Manager — la source exécutable est `python -m orchestrator plan`)
 
-1. **[BLOQUÉ par données]** Lire le verdict OOS final de H3 dès que `data-2025mar-aug` ET `data-2024sep-2025feb`
-   existent : `python -m research.v4.oos_check` (une seule fois, aucun ajustement). Enregistrer le verdict.
-   - PASS → préparer H3 en paper trading séparé de la baseline (demander l'accord avant tout merge vers `main`).
-   - FAIL / INCONCLUSIVE → archiver H3 dans `experiments/` + `REJECTED_HYPOTHESES.md`.
-2. **[Data]** Télécharger un NOUVEL OOS jamais lu pour les prochaines hypothèses (ex. sept. 2023 → août 2024).
-3. **[Cycle 1 — Researcher]** Nouvelle famille (≤ 3 hypothèses) dans la direction « retour à la moyenne à heure
-   précise / flux » ou microstructure, en excluant tout ce qui est dans `REJECTED_HYPOTHESES.md`.
-   Pistes possibles (non validées) : RangeFade reformulée pour produire ≥ 100 trades/an ; fins de mois
-   (rééquilibrages) ; ouverture des marchés actions (NY cash open) comme flux ; observations du journal M-01.
-4. **[Quant]** Généraliser les tests de robustesse (placebo, coûts, vue par jour) via `research/common/robustness.py`.
+1. **[Quant — cycle 2] E002 choc de spread** : écrire et verrouiller le protocole (contrôles imposés par le Critic :
+   artefact de cotation côté exécutable, « même mouvement, spread normal », minutes rondes, ≤ 8 variantes), puis Train
+   (sept. 2025 → fév. 2026) → Validation (mars → août 2026 ET sept. 2024 → août 2025).
+2. **[Data]** OOS vierge sept. 2023 → août 2024 en téléchargement (runs GitHub 37002044362, 37002046304) : une fois les
+   branches `data-2023sep-2024feb` et `data-2024mar-aug` publiées, `bootstrap.sh` les prépare dans
+   `data/m1_oos2324_a` / `data/m1_oos2324_b`. Ne JAMAIS les ouvrir avant un protocole verrouillé.
+3. **[Researcher]** 1 à 2 nouvelles hypothèses (familles non testées) pour garder la file pleine ; exclure H3 et E001.
+4. **INTERDIT** : resélectionner H3 / E000 ou E001 sous quelque forme que ce soit.

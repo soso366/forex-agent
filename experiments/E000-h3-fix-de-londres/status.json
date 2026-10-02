@@ -2,12 +2,11 @@
  "id": "E000",
  "title": "H3 fix de Londres (V4)",
  "family": "flux / heure précise / retour à la moyenne",
- "stage": "VALIDATED",
+ "stage": "ARCHIVED",
  "created": "2026-10-01 09:00 UTC",
  "cycle": 0,
  "legacy": true,
  "protocol_commit": "2e4ae39",
- "blocked_by": "Le test OOS final de H3 est exécuté UNE fois par la session principale de l'utilisateur (branche research-v4), PAS par le Manager. Le Manager attend que `git show origin/research-v4:research/v4/out/oos_check.json` existe, puis le copie dans results/oos.json, fait auditer par le critic et enregistre la décision (verdict déjà défini par les critères verrouillés). Il ne lance jamais research.v4.oos_check lui-même.",
  "history": [
   {
    "stage": "PROTOCOL_LOCKED",
@@ -26,6 +25,33 @@
    "at": "2026-10-01 10:30 UTC",
    "by": "quant",
    "note": "Validation +0,135 R (294 trades, PF 1,47) ; critères OOS verrouillés 2e4ae39"
+  },
+  {
+   "stage": "OOS_DONE",
+   "at": "2026-10-02 11:36 UTC",
+   "by": "quant",
+   "note": "OOS sept. 2024 → août 2025 lu une fois par la session principale (commit c57b82f research-v4) : FAIL"
+  },
+  {
+   "stage": "AUDITED",
+   "at": "2026-10-02 11:40 UTC",
+   "by": "critic",
+   "note": "",
+   "verdict": "REJECT"
+  },
+  {
+   "stage": "DECIDED",
+   "at": "2026-10-02 11:55 UTC",
+   "by": "manager",
+   "note": "",
+   "verdict": "REJECT"
+  },
+  {
+   "stage": "ARCHIVED",
+   "at": "2026-10-02 11:55 UTC",
+   "by": "manager",
+   "note": "verdict définitif FAIL OOS"
   }
- ]
+ ],
+ "verdict": "REJECT"
 }

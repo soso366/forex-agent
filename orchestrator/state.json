@@ -1,5 +1,5 @@
 {
- "cycle": 0,
+ "cycle": 1,
  "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
@@ -11,9 +11,19 @@
    "cycle": 0,
    "closed": "2026-10-01 19:39 UTC",
    "decision": "mise en place du système multi-agents"
+  },
+  {
+   "cycle": 1,
+   "opened": "2026-10-02 11:36 UTC"
+  },
+  {
+   "cycle": 1,
+   "closed": "2026-10-02 11:56 UTC",
+   "decision": "E000 (H3) REJECT/ARCHIVED définitif ; E001 REJECT au Train ; E002 KEEP → protocole au cycle 2"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
- ]
+ ],
+ "last_report_commit": "44a949b63acd3de3f9ee13aac22c02b67e048b2c"
 }

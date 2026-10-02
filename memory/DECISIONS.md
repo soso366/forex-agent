@@ -13,3 +13,6 @@
 | 2026-10-01 | Si H3 FAIL/INCONCLUSIVE : archiver, ne pas la sauver, nouvelle famille d'hypothèses | exigence utilisateur |
 | 2026-10-01 | Meta-skills = informatives seulement ; aucune décision de trading modifiée | rejeu identique 148 trades |
 | 2026-10-01 | Système multi-agents sur `multi-agent-research` ; merge vers `main` uniquement avec accord | limites d'autorité |
+| 2026-10-02 | H3 / E000 : FAIL OOS → REJECT / ARCHIVED définitif | 577 trades, −0,108 R, PF 0,74 ; verdict utilisateur « ne plus retester » |
+| 2026-10-02 | Sept. 2024 → août 2026 = données contaminées (Train / Validation uniquement) ; nouvel OOS vierge = sept. 2023 → août 2024 | exigence utilisateur |
+| 2026-10-02 | E001 REJECT au Train | audit du Critic |
