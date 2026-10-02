@@ -14,13 +14,14 @@
 ## Candidates
 | ID | Statut | Règle | Prochaine étape |
 |---|---|---|---|
-| — | Aucune candidate validée | — | E002 en préparation (cycle 2) |
+| — | Aucune candidate validée | — | nouvelle hypothèse au cycle 3 |
 
 ## Archivées
 | ID | Verdict | Résumé |
 |---|---|---|
 | V4-H3 / E000 fix de Londres | FAIL OOS → REJECT | 577 trades OOS, −0,108 R, PF 0,74 ; ne jamais retester |
 | E001 divergence EURUSD-GBPUSD | REJECT (Train) | 78 trades, t 0,87, porté par quelques jours d'annonces |
+| E002 choc de spread | REJECT (Train) | 8 trades, portés par 3-4 événements (Fed, BoJ, panne CME) |
 
 ## Leçons générales (à respecter dans toute nouvelle stratégie)
 - À 5–30 min, la famille **continuation / cassure** est négative (H2, H5, figures V2).

@@ -16,3 +16,5 @@
 | 2026-10-02 | H3 / E000 : FAIL OOS → REJECT / ARCHIVED définitif | 577 trades, −0,108 R, PF 0,74 ; verdict utilisateur « ne plus retester » |
 | 2026-10-02 | Sept. 2024 → août 2026 = données contaminées (Train / Validation uniquement) ; nouvel OOS vierge = sept. 2023 → août 2024 | exigence utilisateur |
 | 2026-10-02 | E001 REJECT au Train | audit du Critic |
+| 2026-10-02 | E002 REJECT au Train ; OOS vierge 2023-2024 toujours non lu (verrou oos-gate) | audit du Critic |
+| 2026-10-02 | Tâche planifiée Claude externe désactivée (pas d'accès au dépôt privé) ; automatisation à porter sur GitHub Actions | piste automatisation séparée |

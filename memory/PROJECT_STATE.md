@@ -1,9 +1,9 @@
 # État du projet (mis à jour par le Manager à chaque cycle)
 
-Dernière mise à jour : 2026-10-02 (cycle 1)
+Dernière mise à jour : 2026-10-02 (cycle 2)
 Dernier cycle : cycle 1 (2026-10-02, session interactive de test — agents réellement invoqués, voir reports/CYCLE_001.md)
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
-Moteur d'autonomie : tâche planifiée Claude « Forex — cycle Manager » (id trig_01FQqW1RLoX1zX21rHAYZCHe), toutes les 6 h (02:41, 08:41, 14:41, 20:41 heure de Paris), cloud, approbation automatique.
+Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès au dépôt privé). Remplaçant prêt : GitHub Actions `agents-cycle.yml` (en attente d'un secret API et de l'accord pour main). Les cycles tournent pour l'instant en session interactive.
 
 ## Où en est-on
 - **Baseline officielle = V2** (branche `main`) : 6 stratégies, Router par régime, Risk Manager. Pas d'avantage démontré.
@@ -13,7 +13,8 @@ Moteur d'autonomie : tâche planifiée Claude « Forex — cycle Manager » (id 
   3 paires négatives, 1 trimestre positif / 4, IC 95 % journalier entièrement négatif, placebos 13:00/14:00 > 16:00).
   Ne JAMAIS la resélectionner, la retester, l'optimiser ni la recycler.
 - **Aucune stratégie validée pour le paper trading.**
-- **Cycle 1** : E001 (divergence EURUSD-GBPUSD) REJECT au Train ; E002 (choc de spread) pré-critiquée GO, protocole au cycle 2.
+- **Cycle 1** : E001 (divergence EURUSD-GBPUSD) REJECT au Train.
+- **Cycle 2** : E002 (choc de spread) REJECT au Train (8 trades, portés par quelques événements). Aucune donnée de validation ni OOS consommée.
 - **OOS vierge en préparation** : sept. 2023 → août 2024 (voir memory/DATA_REQUESTS.md). Les 24 mois sept. 2024 → août 2026
   sont CONTAMINÉS : utilisables en Train / Validation, jamais comme OOS.
 
