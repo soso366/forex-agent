@@ -88,6 +88,40 @@ class Sandbox(unittest.TestCase):
         self.assertFalse(json.loads(core.STATE.read_text())["cycle_open"])
         self.assertTrue((core.REPORTS / "CYCLE_001.md").exists())
 
+    def test_skipped_stages_traced_and_not_reported(self):
+        core.save_state({"cycle": 0, "cycle_open": False, "history": []})
+        core.open_cycle()
+        d = core.new_experiment("Arrêt au Train")
+        eid = d.name.split("-")[0]
+        core.template(eid, "precritique.md")
+        core.advance(eid, "PRECRITIQUED", "critic")
+        core.template(eid, "protocol.md")
+        core.advance(eid, "PROTOCOL_LOCKED", "quant")
+        (d / "results/train.json").write_text(json.dumps({"pass": False}))
+        core.advance(eid, "TRAIN_DONE", "quant")
+        (d / "results/validation.json").write_text(json.dumps({"skipped": "Train KO"}))
+        # validation.json déjà écrit en skipped : plus « En validation »
+        self.assertIn("En validation : aucune", core.report("x", "x", "x", "x", close=False))
+        core.advance(eid, "VALIDATED", "quant")
+        self.assertIn("En OOS : aucune", core.report("x", "x", "x", "x", close=False))
+        (d / "results/oos.json").write_text(json.dumps({"skipped": "Train KO"}))
+        s = core.advance(eid, "OOS_DONE", "quant")
+        self.assertEqual(s["skipped_stages"], ["VALIDATED", "OOS_DONE"])
+        notes = [h.get("note", "") for h in s["history"]]
+        self.assertEqual(sum("étape non exécutée : Train KO" in n for n in notes), 2)
+        txt = core.report("x", "x", "x", "x", close=False)
+        self.assertIn(f"Hypothèses testées : {eid}", txt)   # le Train a réellement tourné
+        # Train lui-même sauté : pas une hypothèse testée
+        d2 = core.new_experiment("Sans Train")
+        e2 = d2.name.split("-")[0]
+        core.template(e2, "precritique.md")
+        core.advance(e2, "PRECRITIQUED", "critic")
+        core.template(e2, "protocol.md")
+        core.advance(e2, "PROTOCOL_LOCKED", "quant")
+        (d2 / "results/train.json").write_text(json.dumps({"skipped": "données absentes"}))
+        core.advance(e2, "TRAIN_DONE", "quant")
+        self.assertNotIn(e2, core.report("x", "x", "x", "x", close=False).splitlines()[1])
+
 
 if __name__ == "__main__":
     unittest.main()

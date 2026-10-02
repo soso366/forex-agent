@@ -159,6 +159,14 @@ def advance(eid: str, stage: str, by: str, note: str = "", verdict: str | None =
     _, agent, need = STAGES[cur]
     if need and stage != "ARCHIVED" and not (d / need).exists():
         raise SystemExit(f"{eid} : {need} manquant pour quitter {s['stage']}")
+    # étape sautée (ex. le Quant arrête au Train) : le fichier requis contient {"skipped": raison}
+    skip_reason = _skip_reason(d / need) if need and stage != "ARCHIVED" else None
+    if skip_reason is not None:
+        skipped = ORDER[cur + 1]
+        s.setdefault("skipped_stages", [])
+        if skipped not in s["skipped_stages"]:
+            s["skipped_stages"].append(skipped)
+        note = f"étape non exécutée : {skip_reason}" + (f" ; {note}" if note else "")
     if stage == "PROTOCOL_LOCKED":
         # verrou : empreinte du protocole + commit ; toute modification ultérieure est détectée par guard
         s["protocol_sha"] = sha(d / "protocol.md")
@@ -173,6 +181,32 @@ def advance(eid: str, stage: str, by: str, note: str = "", verdict: str | None =
     s["history"].append({"stage": stage, "at": now(), "by": by, "note": note, **({"verdict": verdict} if verdict else {})})
     write_status(d, s)
     return s
+
+
+def _skip_reason(p: Path) -> str | None:
+    """Raison si p est un JSON {"skipped": raison}, sinon None."""
+    if p.suffix != ".json" or not p.exists():
+        return None
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return None
+    if isinstance(data, dict) and "skipped" in data:
+        return str(data["skipped"])
+    return None
+
+
+def _skipped(e: dict, stage: str) -> bool:
+    """Étape sautée : tracée dans status.json, ou fichier de l'étape déjà écrit en {"skipped": ...}."""
+    if stage in e.get("skipped_stages", []):
+        return True
+    i = ORDER.index(stage)
+    need = STAGES[i - 1][2] if i > 0 else None
+    return bool(need and e.get("dir") and _skip_reason(ROOT / e["dir"] / need) is not None)
+
+
+def _train_run(e: dict) -> bool:
+    return ORDER.index(e["stage"]) >= ORDER.index("TRAIN_DONE") and not _skipped(e, "TRAIN_DONE")
 
 
 # ------------------------------------------------------------------ ce que le Manager doit lancer
@@ -284,10 +318,12 @@ def report(decision: str, best: str, problem: str, next_exp: str, close: bool = 
     cyc = s["cycle"]
     exps = experiments()
     this = [e for e in exps if any(h.get("at", "") >= _opened(s, cyc) for h in e["history"])]
-    tested = [e for e in this if ORDER.index(e["stage"]) >= ORDER.index("TRAIN_DONE")]
+    tested = [e for e in this if _train_run(e)]
     rejected = [e for e in this if e.get("verdict") == "REJECT"]
-    in_val = [e for e in exps if e["stage"] in ("TRAIN_DONE",) and e.get("verdict") != "REJECT"]
-    in_oos = [e for e in exps if e["stage"] == "VALIDATED"]
+    in_val = [e for e in exps if e["stage"] == "TRAIN_DONE" and e.get("verdict") != "REJECT"
+              and not _skipped(e, "TRAIN_DONE") and not _skipped(e, "VALIDATED")]
+    in_oos = [e for e in exps if e["stage"] == "VALIDATED" and e.get("verdict") != "REJECT"
+              and not _skipped(e, "VALIDATED") and not _skipped(e, "OOS_DONE")]
     branch = git("rev-parse", "--abbrev-ref", "HEAD")
     changed = git("diff", "--stat", "--name-only", f"{s.get('last_report_commit') or 'HEAD~1'}", "HEAD")
     names = lambda L: ", ".join(f"{e['id']} {e['title']}" for e in L) or "aucune"
