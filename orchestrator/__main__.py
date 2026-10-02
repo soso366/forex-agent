@@ -48,6 +48,12 @@ def main(argv=None):
     r.add_argument("--problem", required=True)
     r.add_argument("--next", required=True, dest="next_exp")
     r.add_argument("--keep-open", action="store_true")
+    lk = sub.add_parser("lock")
+    lk.add_argument("action", choices=["acquire", "release"])
+    lk.add_argument("--owner", default="manager")
+    la = sub.add_parser("log-agent")
+    for k in ("agent", "task", "produced", "start", "end", "result", "next"):
+        la.add_argument(f"--{k}", required=True)
     sub.add_parser("pause")
     sub.add_parser("resume")
     lp = sub.add_parser("lock-protected")
@@ -84,6 +90,16 @@ def main(argv=None):
         print("garde-fous OK : baseline, Risk Manager, H3 et protocoles verrouillés intacts")
     elif x.cmd == "report":
         print(core.report(x.decision, x.best, x.problem, x.next_exp, close=not x.keep_open))
+    elif x.cmd == "lock":
+        if x.action == "acquire":
+            ok, msg = core.lock_acquire(x.owner)
+            print(msg)
+            sys.exit(0 if ok else 3)
+        core.lock_release()
+        print("verrou libéré (à commiter/pousser avec la fin de cycle)")
+    elif x.cmd == "log-agent":
+        core.log_agent(core.load_state()["cycle"], x.agent, x.task, x.produced, x.start, x.end, x.result, getattr(x, "next"))
+        print("enregistré")
     elif x.cmd == "pause":
         core.set_mode("PAUSED")
         print("système en PAUSE")

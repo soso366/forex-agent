@@ -25,6 +25,9 @@ REPORTS = ROOT / "reports"
 STATE = ORCH / "state.json"
 CONTROL = ORCH / "control.yaml"
 PROTECTED = ORCH / "protected.json"
+LOCK = ORCH / "cycle.lock"
+AGENT_LOG = ORCH / "agent_log.jsonl"
+LOCK_HOURS = 5
 
 # Étapes, agent responsable de l'étape SUIVANTE, fichier attendu pour la franchir
 STAGES = [
@@ -301,7 +304,7 @@ def report(decision: str, best: str, problem: str, next_exp: str, close: bool = 
         f"Fichiers/branches modifiés : branche {branch} ; " + (", ".join(changed.splitlines()[:12]) or "—"),
     ])
     REPORTS.mkdir(exist_ok=True)
-    (REPORTS / f"cycle_{cyc:03d}.md").write_text(txt + "\n", encoding="utf-8")
+    (REPORTS / f"CYCLE_{cyc:03d}.md").write_text(txt + "\n" + agent_table(cyc), encoding="utf-8")
     if close:
         s["cycle_open"] = False
         s["last_report_commit"] = git("rev-parse", "HEAD")
@@ -315,3 +318,47 @@ def _opened(s: dict, cyc: int) -> str:
         if h.get("cycle") == cyc and "opened" in h:
             return h["opened"]
     return ""
+
+
+# ------------------------------------------------------------------ verrou de cycle (un seul Manager à la fois)
+def lock_acquire(owner: str) -> tuple[bool, str]:
+    """Le verrou est un fichier commité et poussé : deux sessions (interactive et planifiée) ne travaillent jamais en même temps."""
+    git("pull", "-q", "--ff-only")
+    if LOCK.exists():
+        d = json.loads(LOCK.read_text(encoding="utf-8"))
+        age = (datetime.now(timezone.utc) - datetime.strptime(d["at"], "%Y-%m-%d %H:%M UTC").replace(tzinfo=timezone.utc))
+        if age.total_seconds() < LOCK_HOURS * 3600:
+            return False, f"cycle déjà en cours ({d['owner']}, depuis {d['at']})"
+    LOCK.write_text(json.dumps({"owner": owner, "at": now()}, ensure_ascii=False), encoding="utf-8")
+    git("add", str(LOCK.relative_to(ROOT)))
+    git("commit", "-qm", f"Verrou de cycle : {owner}")
+    r = subprocess.run(["git", "push", "-q"], cwd=ROOT, capture_output=True, text=True)
+    if r.returncode != 0:
+        git("reset", "-q", "--hard", "HEAD~1")        # un autre Manager a poussé avant nous : on s'efface
+        return False, f"push du verrou impossible ({r.stderr.strip()[:120]})"
+    return True, "verrou acquis"
+
+
+def lock_release() -> None:
+    if LOCK.exists():
+        LOCK.unlink()
+
+
+# ------------------------------------------------------------------ journal des agents réellement invoqués
+def log_agent(cycle: int, agent: str, task: str, produced: str, start: str, end: str, result: str, next_dep: str) -> None:
+    with open(AGENT_LOG, "a", encoding="utf-8") as f:
+        f.write(json.dumps({"cycle": cycle, "agent": agent, "task": task, "produced": produced, "start": start,
+                            "end": end, "result": result, "next": next_dep}, ensure_ascii=False) + "\n")
+
+
+def agent_table(cycle: int) -> str:
+    if not AGENT_LOG.exists():
+        return ""
+    rows = [json.loads(l) for l in AGENT_LOG.read_text(encoding="utf-8").splitlines() if l.strip()]
+    rows = [r for r in rows if r["cycle"] == cycle]
+    if not rows:
+        return ""
+    out = ["", "## Agents réellement invoqués", "", "| Agent | Tâche reçue | Fichier produit | Début | Fin | Résultat | Dépendance suivante |",
+           "|---|---|---|---|---|---|---|"]
+    out += [f"| {r['agent']} | {r['task']} | {r['produced']} | {r['start']} | {r['end']} | {r['result']} | {r['next']} |" for r in rows]
+    return "\n".join(out) + "\n"

@@ -86,6 +86,7 @@ class Sandbox(unittest.TestCase):
                   "Problème principal", "Décision du Manager", "Prochaine expérience", "Fichiers/branches modifiés"):
             self.assertIn(k, txt)
         self.assertFalse(json.loads(core.STATE.read_text())["cycle_open"])
+        self.assertTrue((core.REPORTS / "CYCLE_001.md").exists())
 
 
 if __name__ == "__main__":
