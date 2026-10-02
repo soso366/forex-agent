@@ -1,0 +1,151 @@
+# Cycle autonome du Manager exécuté PAR GitHub Actions (plus besoin d'une tâche planifiée Claude externe).
+# Le Manager tourne dans claude-code-action, sur la branche multi-agent-research, et pousse ses commits sur
+# cette branche uniquement (jamais sur main).
+#
+# IMPORTANT — limites de GitHub (documentées honnêtement) :
+# - Les déclencheurs `schedule` ne s'exécutent QUE depuis la branche par défaut (main). Ce fichier doit donc
+#   être copié sur main (UNIQUEMENT ce fichier, aucun code de trading) avec l'accord de l'utilisateur.
+# - Le bouton « Run workflow » (workflow_dispatch) n'apparaît lui aussi que si le fichier existe sur main.
+#   Une fois présent sur main, le lancement manuel est possible (le job extrait de toute façon la branche
+#   multi-agent-research ci-dessous, quelle que soit la branche choisie dans le menu).
+# - Tant que le fichier n'est que sur multi-agent-research / automation-track, il ne se déclenche jamais.
+#
+# Secrets : ANTHROPIC_API_KEY (console.anthropic.com → API Keys) OU CLAUDE_CODE_OAUTH_TOKEN. Voir
+# orchestrator/AUTOMATION.md. Arrêt : orchestrator/control.yaml → mode: PAUSED, ou désactiver le workflow.
+name: Agents — cycle Manager
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"   # toutes les 6 h (minute décalée pour éviter la saturation de :00)
+
+concurrency:
+  group: agents-cycle
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      WORK_BRANCH: multi-agent-research
+    steps:
+      - name: Vérification des secrets Anthropic
+        id: secrets
+        env:
+          HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+          HAS_OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+        run: |
+          if [ "$HAS_API_KEY" != "true" ] && [ "$HAS_OAUTH" != "true" ]; then
+            {
+              echo "## Cycle non lancé : aucun secret Anthropic"
+              echo ""
+              echo "Ajoutez le secret **ANTHROPIC_API_KEY** (ou **CLAUDE_CODE_OAUTH_TOKEN**) :"
+              echo "GitHub → dépôt → Settings → Secrets and variables → Actions → New repository secret."
+              echo "Voir orchestrator/AUTOMATION.md."
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::Aucun secret ANTHROPIC_API_KEY ni CLAUDE_CODE_OAUTH_TOKEN défini"
+            exit 1
+          fi
+          echo "has_api_key=$HAS_API_KEY" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: multi-agent-research
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+
+      - name: Dépendances
+        run: pip install -r requirements.txt
+
+      - name: Configuration git (bot)
+        run: |
+          git config user.name "forex-agents[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Préparation (branche, données Dukascopy depuis les branches data-*)
+        run: bash orchestrator/bootstrap.sh
+
+      - name: Interrupteur (control.yaml)
+        id: control
+        run: |
+          if grep -Eq '^mode:[[:space:]]*PAUSED' orchestrator/control.yaml; then
+            echo "## Système en PAUSE (orchestrator/control.yaml) : aucun cycle exécuté" >> "$GITHUB_STEP_SUMMARY"
+            echo "paused=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "paused=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Garde-fous avant cycle
+        if: steps.control.outputs.paused != 'true'
+        run: python -m orchestrator guard
+
+      - name: Cycle du Manager (Claude)
+        if: steps.control.outputs.paused != 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ steps.secrets.outputs.has_api_key == 'true' && secrets.ANTHROPIC_API_KEY || '' }}
+          claude_code_oauth_token: ${{ steps.secrets.outputs.has_api_key != 'true' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          claude_args: >-
+            --max-turns 200
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,Task,Agent"
+          prompt: |
+            Tu es le MANAGER du projet forex-agent, lancé automatiquement par GitHub Actions (session
+            "github-actions-${{ github.run_id }}"). Tu travailles en français.
+
+            1. Lis `.claude/agents/manager.md` et applique-le STRICTEMENT : exécute UN SEUL cycle complet
+               (démarrage, distribution, boucle d'expérience, fin de cycle), puis arrête-toi.
+            2. Le dépôt est déjà sur la branche `multi-agent-research`, bootstrap déjà exécuté (tu peux le relancer,
+               il est idempotent). Pour le verrou : `python -m orchestrator lock acquire --owner "github-actions-${{ github.run_id }}"`.
+               Code de sortie 3 → « Cycle déjà en cours », ne modifie rien et termine.
+            3. Sous-agents : utilise l'outil Task (ou Agent) avec les rôles définis dans `.claude/agents/`
+               (researcher, quant, critic, developer). Chaque sous-agent doit lire son fichier de rôle.
+            4. Limites d'autorité (ARRÊT, aucune action, tu le signales dans le rapport) : argent réel, broker live,
+               clés live, hausse du risque, Risk Manager, suppression d'une protection, baseline officielle,
+               merge ou push vers `main`. Ne modifie jamais `.github/workflows/agents-cycle.yml`.
+            5. Commits uniquement sur `multi-agent-research`. Ne pousse JAMAIS sur `main`. Le push final est fait par
+               l'étape suivante du workflow : tu peux commiter, inutile de pousser.
+            6. À la fin, libère le verrou (`python -m orchestrator lock release`) et commite.
+
+      - name: Garde-fous après cycle et push
+        if: steps.control.outputs.paused != 'true'
+        run: |
+          python -m orchestrator guard
+          if [ "$(git rev-parse --abbrev-ref HEAD)" != "$WORK_BRANCH" ]; then
+            echo "::error::Branche inattendue : $(git rev-parse --abbrev-ref HEAD)"; exit 1
+          fi
+          git add -A orchestrator memory reports experiments knowledge 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Cycle automatique (GitHub Actions run ${{ github.run_id }})"
+          if [ -n "$(git log origin/$WORK_BRANCH..HEAD --oneline)" ]; then
+            git push origin HEAD:$WORK_BRANCH
+          else
+            echo "aucun commit à pousser"
+          fi
+          echo "## Cycle terminé — commits poussés sur $WORK_BRANCH" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Libération du verrou en cas d'échec
+        # Ne s'exécute que si le dépôt a été préparé (étape « Interrupteur » atteinte, système non en pause).
+        if: failure() && steps.control.outputs.paused == 'false'
+        run: |
+          git checkout -q "$WORK_BRANCH" 2>/dev/null || true
+          git add -A orchestrator memory reports experiments knowledge 2>/dev/null || true
+          git diff --cached --quiet || git commit -q -m "Travail partiel du cycle interrompu (run ${{ github.run_id }})"
+          if ! python -m orchestrator guard; then
+            # Garde-fous violés : on NE pousse PAS le travail de ce cycle, on repart de la version distante.
+            echo "::error::Garde-fous violés : travail du cycle abandonné, seul le verrou est libéré"
+            git fetch -q origin "$WORK_BRANCH" && git reset -q --hard "origin/$WORK_BRANCH"
+          fi
+          python -m orchestrator lock release || true
+          git add -A orchestrator 2>/dev/null || true
+          git diff --cached --quiet || git commit -q -m "Libération du verrou après échec (run ${{ github.run_id }})"
+          if [ -n "$(git log origin/$WORK_BRANCH..HEAD --oneline 2>/dev/null)" ]; then
+            git push origin HEAD:$WORK_BRANCH || echo "::warning::push du verrou libéré impossible"
+          fi
+          echo "## Échec du cycle : verrou libéré" >> "$GITHUB_STEP_SUMMARY"
