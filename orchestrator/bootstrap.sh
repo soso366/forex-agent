@@ -25,7 +25,6 @@ fetch 2025sep-2026feb m1_2025
 fetch 2026mar-aug m1
 fetch 2025mar-aug m1_locked
 fetch 2024sep-2025feb m1_locked_2024
-# OOS vierge des hypothèses post-H3 : préparé ici, à n'ouvrir qu'après verrouillage d'un protocole
-fetch 2023sep-2024feb m1_oos2324_a
-fetch 2024mar-aug m1_oos2324_b
+# OOS vierge sept. 2023 → août 2024 : JAMAIS préparé automatiquement. Il n'est cloné qu'au moment de l'OOS final
+# d'une expérience ayant survécu Train ET Validation (python -m orchestrator oos-gate E### doit répondre OUVERT).
 python3 -m orchestrator status

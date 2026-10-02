@@ -277,6 +277,8 @@ def guard() -> list[str]:
             p = ROOT / e["dir"] / "protocol.md"
             if not p.exists() or sha(p) != e["protocol_sha"]:
                 issues.append(f"{e['id']} : protocole modifié après verrouillage (interdit)")
+    if any((ROOT / "data").glob("m1_oos2324*")) and not oos_gate_open():
+        issues.append("OOS vierge 2023-2024 présent localement alors qu'aucune expérience n'a survécu Train + Validation")
     br = git("rev-parse", "--abbrev-ref", "HEAD")
     if br in ("main", "master"):
         issues.append("travail sur main : interdit sans accord de l'utilisateur")
@@ -398,3 +400,21 @@ def agent_table(cycle: int) -> str:
            "|---|---|---|---|---|---|---|"]
     out += [f"| {r['agent']} | {r['task']} | {r['produced']} | {r['start']} | {r['end']} | {r['result']} | {r['next']} |" for r in rows]
     return "\n".join(out) + "\n"
+
+
+# ------------------------------------------------------------------ verrou de l'OOS vierge
+def validation_passed(e: dict) -> bool:
+    """Train ET Validation réellement exécutés et réussis (results/validation.json : {"passed": true})."""
+    if e.get("verdict") == "REJECT" or "VALIDATED" in e.get("skipped_stages", []):
+        return False
+    p = ROOT / e["dir"] / "results" / "validation.json"
+    try:
+        v = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    return bool(v.get("passed")) and "skipped" not in v and ORDER.index(e["stage"]) >= ORDER.index("VALIDATED")
+
+
+def oos_gate_open(eid: str | None = None) -> bool:
+    exps = [e for e in experiments() if eid is None or e["id"] == eid]
+    return any(validation_passed(e) and e.get("protocol_sha") for e in exps)

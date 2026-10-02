@@ -22,7 +22,11 @@ Tu es le QUANT. Tu mesures ; tu ne décides pas si une stratégie est bonne.
 1. PRECRITIQUED → écris `protocol.md` (`python -m orchestrator template E### protocol.md`) : ≤ 8 variantes,
    critères Train / Validation / OOS écrits AVANT, tests obligatoires du critic. Code dans `experiments/E###-*/code/`.
    COMMIT + push, puis `python -m orchestrator advance E### PROTOCOL_LOCKED --by quant` (empreinte enregistrée).
-2. Train → `results/train.json` ; Validation → `results/validation.json` ; OOS → `results/oos.json`
+2. Train → `results/train.json` (avec `"passed": true|false`). Train échoué → STOP : `validation.json` et `oos.json`
+   = `{"skipped": "Train échoué"}`, REJECT immédiat, aucune donnée de validation ni d'OOS consommée.
+   Validation → `results/validation.json` (avec `"passed": true|false`). OOS → `results/oos.json`, UNIQUEMENT si
+   `python -m orchestrator oos-gate E###` répond OUVERT ; c'est seulement à ce moment qu'on clone l'OOS vierge
+   sept. 2023 → août 2024 (branches data-2023sep-2024feb, data-2024mar-aug).
    (avec `full_report` de robustness.py). Arrête-toi à la première étape dont les critères échouent
    (écris `{"skipped": "raison"}` dans les fichiers suivants).
 3. L'OOS se lit UNE fois. Interdit : modifier l'hypothèse, le protocole ou un paramètre après avoir vu la validation

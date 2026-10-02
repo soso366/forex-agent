@@ -54,6 +54,8 @@ def main(argv=None):
     la = sub.add_parser("log-agent")
     for k in ("agent", "task", "produced", "start", "end", "result", "next"):
         la.add_argument(f"--{k}", required=True)
+    og = sub.add_parser("oos-gate")
+    og.add_argument("eid")
     sub.add_parser("pause")
     sub.add_parser("resume")
     lp = sub.add_parser("lock-protected")
@@ -100,6 +102,11 @@ def main(argv=None):
     elif x.cmd == "log-agent":
         core.log_agent(core.load_state()["cycle"], x.agent, x.task, x.produced, x.start, x.end, x.result, getattr(x, "next"))
         print("enregistré")
+    elif x.cmd == "oos-gate":
+        ok = core.oos_gate_open(x.eid)
+        print("OUVERT : Train et Validation réussis, protocole verrouillé" if ok else
+              "FERMÉ : l'OOS vierge ne peut pas être lu pour cette expérience")
+        sys.exit(0 if ok else 4)
     elif x.cmd == "pause":
         core.set_mode("PAUSED")
         print("système en PAUSE")

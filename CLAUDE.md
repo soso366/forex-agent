@@ -35,11 +35,14 @@ Risk Manager, H3 et ses critères (`research/v4/hypotheses.py`, `research/v4/oos
 4. Découpage : Train sept. 2025 → fév. 2026 · Validation mars → août 2026 · OOS verrouillé sept. 2024 → août 2025
    (voir `memory/PROJECT_STATE.md` : l'OOS 2024-2025 est consommé par H3 ; les hypothèses suivantes ont besoin d'un
    nouvel OOS jamais lu, à télécharger).
-5. Une observation (journal, graphique) ne devient **jamais** une règle sans : hypothèse → backtest → validation → OOS.
-6. On ne sauve pas une hypothèse rejetée avec des micro-réglages. Une hypothèse rejetée est archivée.
-7. Mesures en **R**, coûts bid/ask inclus ; toujours : test placebo, coûts +0,2 à +1 pip, concentration
+5. **OOS vierge sept. 2023 → août 2024** : aucun agent ne le clone, ne l'ouvre ni ne l'analyse tant que
+   `python -m orchestrator oos-gate E###` ne répond pas OUVERT (Train ET Validation réussis). Une expérience qui échoue au
+   Train est REJECT immédiatement : pas de Validation, pas d'OOS.
+6. Une observation (journal, graphique) ne devient **jamais** une règle sans : hypothèse → backtest → validation → OOS.
+7. On ne sauve pas une hypothèse rejetée avec des micro-réglages. Une hypothèse rejetée est archivée.
+8. Mesures en **R**, coûts bid/ask inclus ; toujours : test placebo, coûts +0,2 à +1 pip, concentration
    (jours, paire, trimestre), vue par jour quand les paires sont corrélées (USD commun).
-8. Ne jamais défendre une idée parce qu'on l'a proposée (auto-critique : RESEARCHER → CRITIC → DATA).
+9. Ne jamais défendre une idée parce qu'on l'a proposée (auto-critique : RESEARCHER → CRITIC → DATA).
 
 ## Meta-skills existantes (services partagés, ne pas dupliquer)
 - Revue adversariale : `forex_agent/meta/adversarial.py` → Critic (et revue de chaque setup dans le cycle live).
