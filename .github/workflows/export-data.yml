@@ -69,7 +69,7 @@ jobs:
         if: always() && steps.p.outputs.skip != '1'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+          DATA_TOKEN: ${{ secrets.DATA_WRITE_TOKEN }}
         run: |
           STATUS=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
           echo "Statut : $STATUS"
@@ -80,7 +80,7 @@ jobs:
             git init -q && git checkout -q -b "data-${{ steps.p.outputs.tag }}"
             git add -A && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "M1 ${{ steps.p.outputs.start }} → ${{ steps.p.outputs.end }}"
             # Les données vont dans le dépôt PRIVÉ soso366/forex-data (forex-agent est public).
-            [ -n "${DATA_TOKEN}" ] || { echo "::error::Secret DATA_REPO_TOKEN absent : publication des données impossible"; exit 1; }
+            [ -n "${DATA_TOKEN}" ] || { echo "::error::Secret DATA_WRITE_TOKEN absent (jeton en écriture sur forex-data, créé seulement si de nouvelles données doivent être publiées)"; exit 1; }
             git push -qf "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git" "data-${{ steps.p.outputs.tag }}"
             echo "Publié sur soso366/forex-data, branche data-${{ steps.p.outputs.tag }}"
           elif [ "$STATUS" = "INCOMPLETE" ] && [ "${{ steps.p.outputs.attempt }}" -lt 8 ]; then

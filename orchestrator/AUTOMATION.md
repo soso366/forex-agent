@@ -14,6 +14,12 @@ Vous n'avez rien à lancer sur votre ordinateur. Tout est prêt dans le fichier
 Alternative (si vous avez un abonnement Claude Pro/Max) : un secret nommé `CLAUDE_CODE_OAUTH_TOKEN`
 à la place. Un seul des deux suffit. Si aucun n'est présent, le cycle s'arrête avec un message clair.
 
+Accès aux données (dépôt privé `soso366/forex-data`) — moindre privilège :
+- `DATA_REPO_TOKEN` : jeton GitHub « fine-grained », **Repository access : only forex-data**,
+  **Permissions : Contents = Read-only** (rien d'autre). Utilisé par le cycle (lecture des données).
+- `DATA_WRITE_TOKEN` : à créer **seulement** si de nouvelles données doivent être publiées (workflow export) ;
+  Contents = Read and write, uniquement forex-data. Non nécessaire aujourd'hui.
+
 ## 2. Donner votre accord pour copier UN fichier sur `main`
 
 GitHub n'exécute les tâches automatiques (toutes les 6 h) **que si le fichier est sur la branche principale `main`**.

@@ -10,7 +10,11 @@ Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès
   antérieurs au 2 oct. 2026 21:00 ont changé ; ceux cités dans la mémoire ou les status.json sont ANCIENS (retrouver
   le commit par son message).
 - Données Dukascopy déplacées dans le dépôt PRIVÉ `soso366/forex-data` (mêmes branches `data-*`). `bootstrap.sh` et
-  `export-data.yml` utilisent ce dépôt ; GitHub Actions a besoin du secret `DATA_REPO_TOKEN`.
+  `export-data.yml` utilisent ce dépôt. Moindre privilège : `DATA_REPO_TOKEN` = jeton fin LECTURE SEULE (Contents: Read)
+  limité à forex-data, utilisé par `agents-cycle` / `bootstrap.sh`. La publication de nouvelles données (`export-data.yml`)
+  utilise un secret séparé `DATA_WRITE_TOKEN`, NON créé tant qu'aucune nouvelle donnée n'est nécessaire.
+- Audit de publication du 9 oct. 2026 : aucun secret ni donnée personnelle dans l'historique ; forex-data privé ;
+  6 branches `data-*` identiques (mêmes SHA) dans forex-data avant suppression de forex-agent.
 
 ## Où en est-on
 - **Baseline officielle = V2** (branche `main`) : 6 stratégies, Router par régime, Risk Manager. Pas d'avantage démontré.
