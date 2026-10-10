@@ -1,0 +1,305 @@
+{
+ "note": "simulation de recherche : aucun changement du Risk Manager ni de la baseline",
+ "hyp": {
+  "P1": {
+   "variant": "P1a",
+   "trades_24m": 3904,
+   "exp_R_24m": -0.03132,
+   "exp_R_24m_plus_0.5pip": -0.09987,
+   "risk_1pct_cost_+0.0pip": {
+    "final": 42.88,
+    "taken": 1053,
+    "skipped_risk_too_small": 2536,
+    "skipped_share": 0.707,
+    "avg_real_risk_pct": 0.78,
+    "skipped_margin": 0,
+    "account_stopped_date": null,
+    "max_dd_pct": 35.6,
+    "kill_switch_20pct_date": "2025-07-08",
+    "monte_carlo": {
+     "p_lose_50pct": 0.035,
+     "p_drawdown_20pct": 0.883,
+     "median_final": 42.36,
+     "p10_final": 30.13,
+     "p90_final": 62.33
+    }
+   },
+   "risk_1pct_cost_+0.5pip": {
+    "final": 29.07,
+    "taken": 499,
+    "skipped_risk_too_small": 2505,
+    "skipped_share": 0.834,
+    "avg_real_risk_pct": 0.8,
+    "skipped_margin": 526,
+    "account_stopped_date": "2026-07-21",
+    "max_dd_pct": 52.3,
+    "kill_switch_20pct_date": "2025-02-11",
+    "monte_carlo": {
+     "p_lose_50pct": 0.278,
+     "p_drawdown_20pct": 0.991,
+     "median_final": 28.75,
+     "p10_final": 22.28,
+     "p90_final": 37.04
+    }
+   },
+   "risk_1pct_force_0.01lot": {
+    "final": 35.92,
+    "taken": 2865,
+    "skipped_risk_too_small": 0,
+    "skipped_share": 0.0,
+    "avg_real_risk_pct": 1.19,
+    "skipped_margin": 20,
+    "account_stopped_date": null,
+    "max_dd_pct": 57.5,
+    "kill_switch_20pct_date": "2024-12-11"
+   },
+   "risk_2pct_cost_+0.0pip": {
+    "final": 28.95,
+    "taken": 740,
+    "skipped_risk_too_small": 460,
+    "skipped_share": 0.383,
+    "avg_real_risk_pct": 1.37,
+    "skipped_margin": 367,
+    "account_stopped_date": "2025-07-30",
+    "max_dd_pct": 52.2,
+    "kill_switch_20pct_date": "2024-12-16",
+    "monte_carlo": {
+     "p_lose_50pct": 0.442,
+     "p_drawdown_20pct": 0.998,
+     "median_final": 29.55,
+     "p10_final": 18.09,
+     "p90_final": 46.96
+    }
+   },
+   "risk_2pct_cost_+0.5pip": {
+    "final": 32.29,
+    "taken": 443,
+    "skipped_risk_too_small": 221,
+    "skipped_share": 0.333,
+    "avg_real_risk_pct": 1.36,
+    "skipped_margin": 108,
+    "account_stopped_date": "2025-02-10",
+    "max_dd_pct": 41.6,
+    "kill_switch_20pct_date": "2024-09-30",
+    "monte_carlo": {
+     "p_lose_50pct": 0.286,
+     "p_drawdown_20pct": 0.986,
+     "median_final": 31.72,
+     "p10_final": 21.72,
+     "p90_final": 47.22
+    }
+   },
+   "risk_2pct_force_0.01lot": {
+    "final": 35.76,
+    "taken": 2858,
+    "skipped_risk_too_small": 0,
+    "skipped_share": 0.0,
+    "avg_real_risk_pct": 1.28,
+    "skipped_margin": 34,
+    "account_stopped_date": null,
+    "max_dd_pct": 57.5,
+    "kill_switch_20pct_date": "2024-12-11"
+   }
+  },
+  "P2": {
+   "variant": "P2c",
+   "trades_24m": 4719,
+   "exp_R_24m": -0.05987,
+   "exp_R_24m_plus_0.5pip": -0.16991,
+   "risk_1pct_cost_+0.0pip": {
+    "final": 28.54,
+    "taken": 657,
+    "skipped_risk_too_small": 977,
+    "skipped_share": 0.598,
+    "avg_real_risk_pct": 0.76,
+    "skipped_margin": 525,
+    "account_stopped_date": "2025-09-05",
+    "max_dd_pct": 51.3,
+    "kill_switch_20pct_date": "2024-11-05",
+    "monte_carlo": {
+     "p_lose_50pct": 0.402,
+     "p_drawdown_20pct": 0.995,
+     "median_final": 28.48,
+     "p10_final": 19.64,
+     "p90_final": 41.14
+    }
+   },
+   "risk_1pct_cost_+0.5pip": {
+    "final": 31.89,
+    "taken": 234,
+    "skipped_risk_too_small": 297,
+    "skipped_share": 0.559,
+    "avg_real_risk_pct": 0.74,
+    "skipped_margin": 136,
+    "account_stopped_date": "2024-12-25",
+    "max_dd_pct": 39.7,
+    "kill_switch_20pct_date": "2024-10-16",
+    "monte_carlo": {
+     "p_lose_50pct": 0.081,
+     "p_drawdown_20pct": 0.973,
+     "median_final": 31.54,
+     "p10_final": 25.94,
+     "p90_final": 39.61
+    }
+   },
+   "risk_1pct_force_0.01lot": {
+    "final": 29.34,
+    "taken": 1206,
+    "skipped_risk_too_small": 0,
+    "skipped_share": 0.0,
+    "avg_real_risk_pct": 0.97,
+    "skipped_margin": 49,
+    "account_stopped_date": "2025-05-09",
+    "max_dd_pct": 62.8,
+    "kill_switch_20pct_date": "2024-10-29"
+   },
+   "risk_2pct_cost_+0.0pip": {
+    "final": 29.06,
+    "taken": 1083,
+    "skipped_risk_too_small": 59,
+    "skipped_share": 0.052,
+    "avg_real_risk_pct": 0.98,
+    "skipped_margin": 95,
+    "account_stopped_date": "2025-04-29",
+    "max_dd_pct": 60.0,
+    "kill_switch_20pct_date": "2024-10-17",
+    "monte_carlo": {
+     "p_lose_50pct": 0.507,
+     "p_drawdown_20pct": 1.0,
+     "median_final": 28.85,
+     "p10_final": 15.3,
+     "p90_final": 55.98
+    }
+   },
+   "risk_2pct_cost_+0.5pip": {
+    "final": 30.58,
+    "taken": 226,
+    "skipped_risk_too_small": 12,
+    "skipped_share": 0.05,
+    "avg_real_risk_pct": 0.99,
+    "skipped_margin": 27,
+    "account_stopped_date": "2024-10-23",
+    "max_dd_pct": 39.5,
+    "kill_switch_20pct_date": "2024-09-12",
+    "monte_carlo": {
+     "p_lose_50pct": 0.199,
+     "p_drawdown_20pct": 0.983,
+     "median_final": 30.32,
+     "p10_final": 23.35,
+     "p90_final": 39.11
+    }
+   },
+   "risk_2pct_force_0.01lot": {
+    "final": 29.23,
+    "taken": 1105,
+    "skipped_risk_too_small": 0,
+    "skipped_share": 0.0,
+    "avg_real_risk_pct": 1.01,
+    "skipped_margin": 49,
+    "account_stopped_date": "2025-04-16",
+    "max_dd_pct": 66.3,
+    "kill_switch_20pct_date": "2024-10-16"
+   }
+  },
+  "P3": {
+   "variant": "P3b",
+   "trades_24m": 10249,
+   "exp_R_24m": -0.02371,
+   "exp_R_24m_plus_0.5pip": -0.07757,
+   "risk_1pct_cost_+0.0pip": {
+    "final": 31.17,
+    "taken": 620,
+    "skipped_risk_too_small": 8601,
+    "skipped_share": 0.933,
+    "avg_real_risk_pct": 0.82,
+    "skipped_margin": 675,
+    "account_stopped_date": null,
+    "max_dd_pct": 41.7,
+    "kill_switch_20pct_date": "2025-09-11",
+    "monte_carlo": {
+     "p_lose_50pct": 0.118,
+     "p_drawdown_20pct": 0.989,
+     "median_final": 31.01,
+     "p10_final": 25.21,
+     "p90_final": 38.26
+    }
+   },
+   "risk_1pct_cost_+0.5pip": {
+    "final": 29.24,
+    "taken": 403,
+    "skipped_risk_too_small": 7682,
+    "skipped_share": 0.95,
+    "avg_real_risk_pct": 0.83,
+    "skipped_margin": 1232,
+    "account_stopped_date": "2026-07-08",
+    "max_dd_pct": 42.8,
+    "kill_switch_20pct_date": "2025-09-11",
+    "monte_carlo": {
+     "p_lose_50pct": 0.172,
+     "p_drawdown_20pct": 0.997,
+     "median_final": 29.27,
+     "p10_final": 23.89,
+     "p90_final": 35.9
+    }
+   },
+   "risk_1pct_force_0.01lot": {
+    "final": 31.03,
+    "taken": 656,
+    "skipped_risk_too_small": 0,
+    "skipped_share": 0.0,
+    "avg_real_risk_pct": 2.3,
+    "skipped_margin": 77,
+    "account_stopped_date": "2024-11-25",
+    "max_dd_pct": 39.1,
+    "kill_switch_20pct_date": "2024-09-06"
+   },
+   "risk_2pct_cost_+0.0pip": {
+    "final": 28.75,
+    "taken": 1155,
+    "skipped_risk_too_small": 2215,
+    "skipped_share": 0.657,
+    "avg_real_risk_pct": 1.57,
+    "skipped_margin": 1016,
+    "account_stopped_date": "2025-08-27",
+    "max_dd_pct": 51.0,
+    "kill_switch_20pct_date": "2024-10-16",
+    "monte_carlo": {
+     "p_lose_50pct": 0.527,
+     "p_drawdown_20pct": 1.0,
+     "median_final": 27.82,
+     "p10_final": 15.7,
+     "p90_final": 49.8
+    }
+   },
+   "risk_2pct_cost_+0.5pip": {
+    "final": 31.86,
+    "taken": 308,
+    "skipped_risk_too_small": 576,
+    "skipped_share": 0.652,
+    "avg_real_risk_pct": 1.56,
+    "skipped_margin": 461,
+    "account_stopped_date": "2024-12-19",
+    "max_dd_pct": 37.2,
+    "kill_switch_20pct_date": "2024-09-20",
+    "monte_carlo": {
+     "p_lose_50pct": 0.184,
+     "p_drawdown_20pct": 0.973,
+     "median_final": 31.77,
+     "p10_final": 23.62,
+     "p90_final": 42.51
+    }
+   },
+   "risk_2pct_force_0.01lot": {
+    "final": 31.03,
+    "taken": 656,
+    "skipped_risk_too_small": 0,
+    "skipped_share": 0.0,
+    "avg_real_risk_pct": 2.3,
+    "skipped_margin": 77,
+    "account_stopped_date": "2024-11-25",
+    "max_dd_pct": 39.1,
+    "kill_switch_20pct_date": "2024-09-06"
+   }
+  }
+ }
+}

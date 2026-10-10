@@ -245,14 +245,19 @@ def account(tr: pd.DataFrame, mid: dict, risk: float, extra_pips: float = 0.0, f
     busy_until = None
     curve = []
     kill20 = None
+    stopped = None
+    skipped_margin = 0
     pnl_list = []
     for _, x in tr.iterrows():
         t = pd.Timestamp(x["time"])
         if busy_until is not None and t < busy_until:
             continue
-        if eq < margin_eur(x["sym"], t, mid, lev):
-            curve.append((t, eq))
+        if eq < min(margin_eur(s, t, mid, lev) for s in PAIRS):
+            stopped = str(t.date())                                           # plus assez de marge pour aucune paire
             break
+        if eq < margin_eur(x["sym"], t, mid, lev):
+            skipped_margin += 1                                               # pas assez de marge pour CETTE paire
+            continue
         per_lot_stop = x["stop"] * eur_per_price_unit(x["sym"], t, mid)          # € perdus au stop pour 0,01 lot
         max_by_margin = int(eq // margin_eur(x["sym"], t, mid, lev))
         n = min(int((risk * eq) // per_lot_stop), max_by_margin)
@@ -277,6 +282,7 @@ def account(tr: pd.DataFrame, mid: dict, risk: float, extra_pips: float = 0.0, f
     return {"final": round(eq, 2), "taken": taken, "skipped_risk_too_small": skipped,
             "skipped_share": round(skipped / max(1, taken + skipped), 3),
             "avg_real_risk_pct": round(100 * float(np.mean(real_risk)), 2) if real_risk else None,
+            "skipped_margin": skipped_margin, "account_stopped_date": stopped,
             "max_dd_pct": round(100 * maxdd, 1), "kill_switch_20pct_date": kill20,
             "_pnl": pnl_list, "_curve": curve}
 
