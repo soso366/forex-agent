@@ -1,6 +1,6 @@
 {
  "cycle": 3,
- "cycle_open": true,
+ "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -33,10 +33,15 @@
   {
    "cycle": 3,
    "opened": "2026-10-10 18:36 UTC"
+  },
+  {
+   "cycle": 3,
+   "closed": "2026-10-10 18:48 UTC",
+   "decision": "E003 REJECT au Train (P1, P2, P3) ; risque 2 % non adopté (aucun changement du Risk Manager / baseline)"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
  ],
- "last_report_commit": "62521f7fa3a4801f8f956a8d854abcd56e0a9f6d"
+ "last_report_commit": "c3ddcfe650b9f28d8292a2cc40dffd9ce61242ce"
 }
