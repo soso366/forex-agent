@@ -2,7 +2,7 @@
  "id": "E003",
  "title": "Strategies publiques classiques (BB+RSI, EMA 9/21, RSI2 Connors) et petit compte 50 EUR",
  "family": "strategies-publiques",
- "stage": "PRECRITIQUED",
+ "stage": "TRAIN_DONE",
  "created": "2026-10-10 18:36 UTC",
  "cycle": 3,
  "history": [
@@ -17,6 +17,20 @@
    "by": "critic",
    "note": "",
    "verdict": "GO"
+  },
+  {
+   "stage": "PROTOCOL_LOCKED",
+   "at": "2026-10-10 18:37 UTC",
+   "by": "quant",
+   "note": ""
+  },
+  {
+   "stage": "TRAIN_DONE",
+   "at": "2026-10-10 18:40 UTC",
+   "by": "quant",
+   "note": "P1, P2, P3 : FAIL Train (aucune variante positive avec t>=2)"
   }
- ]
+ ],
+ "protocol_sha": "6b26499432dece17e38f852065aba3b90bb66194f2d536f1c9f24e42cbb78dd7",
+ "protocol_commit": "89b27a4"
 }
