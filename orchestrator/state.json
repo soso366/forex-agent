@@ -1,6 +1,6 @@
 {
- "cycle": 2,
- "cycle_open": false,
+ "cycle": 3,
+ "cycle_open": true,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -29,6 +29,10 @@
    "cycle": 2,
    "closed": "2026-10-02 14:22 UTC",
    "decision": "E002 REJECT au Train (8 trades portés par quelques événements) ; aucune validation ni OOS consommée"
+  },
+  {
+   "cycle": 3,
+   "opened": "2026-10-10 18:36 UTC"
   }
  ],
  "notes": [

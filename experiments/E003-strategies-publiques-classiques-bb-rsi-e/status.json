@@ -1,0 +1,22 @@
+{
+ "id": "E003",
+ "title": "Strategies publiques classiques (BB+RSI, EMA 9/21, RSI2 Connors) et petit compte 50 EUR",
+ "family": "strategies-publiques",
+ "stage": "PRECRITIQUED",
+ "created": "2026-10-10 18:36 UTC",
+ "cycle": 3,
+ "history": [
+  {
+   "stage": "PROPOSED",
+   "at": "2026-10-10 18:36 UTC",
+   "by": "researcher"
+  },
+  {
+   "stage": "PRECRITIQUED",
+   "at": "2026-10-10 18:37 UTC",
+   "by": "critic",
+   "note": "",
+   "verdict": "GO"
+  }
+ ]
+}
