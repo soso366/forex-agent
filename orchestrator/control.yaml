@@ -1,7 +1,7 @@
 # Interrupteur du système autonome. Modifiable depuis GitHub (bouton crayon) ou en le demandant à Claude.
 # mode: RUNNING  → le Manager exécute un cycle à chaque déclenchement
 # mode: PAUSED   → le Manager lit ce fichier, n'exécute rien et s'arrête
-mode: RUNNING
+mode: PAUSED
 max_new_hypotheses_per_cycle: 3
 max_variants_per_hypothesis: 8
 max_active_experiments: 3
