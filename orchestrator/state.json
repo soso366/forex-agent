@@ -1,6 +1,6 @@
 {
- "cycle": 3,
- "cycle_open": false,
+ "cycle": 4,
+ "cycle_open": true,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -38,6 +38,10 @@
    "cycle": 3,
    "closed": "2026-10-11 18:44 UTC",
    "decision": "E003 nombres ronds : pré-critique GO, protocole verrouillé ; Train non lancé (données absentes)"
+  },
+  {
+   "cycle": 4,
+   "opened": "2026-10-11 18:46 UTC"
   }
  ],
  "notes": [
