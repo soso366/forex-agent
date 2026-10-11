@@ -365,7 +365,11 @@ def lock_acquire(owner: str) -> tuple[bool, str]:
     if LOCK.exists():
         d = json.loads(LOCK.read_text(encoding="utf-8"))
         age = (datetime.now(timezone.utc) - datetime.strptime(d["at"], "%Y-%m-%d %H:%M UTC").replace(tzinfo=timezone.utc))
-        if age.total_seconds() < LOCK_HOURS * 3600:
+        # GitHub Actions n'exécute qu'un cycle à la fois (concurrency: agents-cycle) : un verrou laissé par un AUTRE
+        # run GitHub Actions est forcément orphelin (run terminé sans libération). Les verrous interactifs restent respectés.
+        orphan = owner.startswith("github-actions-") and str(d.get("owner", "")).startswith("github-actions-") \
+            and d.get("owner") != owner
+        if age.total_seconds() < LOCK_HOURS * 3600 and not orphan:
             return False, f"cycle déjà en cours ({d['owner']}, depuis {d['at']})"
     LOCK.write_text(json.dumps({"owner": owner, "at": now()}, ensure_ascii=False), encoding="utf-8")
     git("add", str(LOCK.relative_to(ROOT)))
