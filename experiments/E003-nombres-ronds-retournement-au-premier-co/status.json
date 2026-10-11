@@ -1,0 +1,21 @@
+{
+ "id": "E003",
+ "title": "Nombres ronds : retournement au premier contact (ordres take-profit groupés)",
+ "family": "order-clustering",
+ "stage": "PRECRITIQUED",
+ "created": "2026-10-11 18:30 UTC",
+ "cycle": 3,
+ "history": [
+  {
+   "stage": "PROPOSED",
+   "at": "2026-10-11 18:30 UTC",
+   "by": "researcher"
+  },
+  {
+   "stage": "PRECRITIQUED",
+   "at": "2026-10-11 18:34 UTC",
+   "by": "critic",
+   "note": ""
+  }
+ ]
+}
