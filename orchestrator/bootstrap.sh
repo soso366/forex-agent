@@ -17,10 +17,12 @@ DATA_REMOTE="https://github.com/soso366/forex-data"
 # Espaces ou retour à la ligne collés avec le jeton : on les retire.
 [ -n "${DATA_REPO_TOKEN:-}" ] && DATA_REPO_TOKEN=$(printf '%s' "$DATA_REPO_TOKEN" | tr -d '[:space:]')
 [ -n "${DATA_REPO_TOKEN:-}" ] && DATA_REMOTE="https://x-access-token:${DATA_REPO_TOKEN}@github.com/soso366/forex-data"
+# actions/checkout laisse un en-tête d'authentification (GITHUB_TOKEN de forex-agent) pour github.com qui
+# remplace notre jeton : on le neutralise (-c ...extraheader=) pour les seules commandes vers forex-data.
 fetch() {  # $1 = tag, $2 = dossier
   [ -f "data/$2/EURUSD.csv" ] && return 0
   local err rc
-  err=$(git ls-remote --exit-code --heads "$DATA_REMOTE" "data-$1" 2>&1 >/dev/null); rc=$?
+  err=$(git -c http.https://github.com/.extraheader= ls-remote --exit-code --heads "$DATA_REMOTE" "data-$1" 2>&1 >/dev/null); rc=$?
   if [ $rc -ne 0 ]; then
     # Diagnostic sans jamais afficher le jeton : on classe seulement l'erreur.
     if [ -z "${DATA_REPO_TOKEN:-}" ]; then why="DATA_REPO_TOKEN vide dans cette étape"
@@ -42,7 +44,7 @@ fetch() {  # $1 = tag, $2 = dossier
     return 0
   fi
   tmp=$(mktemp -d)
-  git clone -q --depth 1 -b "data-$1" "$DATA_REMOTE" "$tmp/d" && mkdir -p "data/$2" && \
+  git -c http.https://github.com/.extraheader= clone -q --depth 1 -b "data-$1" "$DATA_REMOTE" "$tmp/d" && mkdir -p "data/$2" && \
     for f in "$tmp"/d/*.csv.gz; do gunzip -c "$f" > "data/$2/$(basename "$f" .gz)"; done && \
     cp "$tmp"/d/quality_report.json "data/$2/" 2>/dev/null
   rm -rf "$tmp"
