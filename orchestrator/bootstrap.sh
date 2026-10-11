@@ -17,7 +17,19 @@ DATA_REMOTE="https://github.com/soso366/forex-data"
 [ -n "${DATA_REPO_TOKEN:-}" ] && DATA_REMOTE="https://x-access-token:${DATA_REPO_TOKEN}@github.com/soso366/forex-data"
 fetch() {  # $1 = tag, $2 = dossier
   [ -f "data/$2/EURUSD.csv" ] && return 0
-  git ls-remote --exit-code --heads "$DATA_REMOTE" "data-$1" >/dev/null 2>&1 || { echo "données $1 : indisponibles (pas publiées ou pas d'accès à forex-data)"; return 0; }
+  local err rc
+  err=$(git ls-remote --exit-code --heads "$DATA_REMOTE" "data-$1" 2>&1 >/dev/null); rc=$?
+  if [ $rc -ne 0 ]; then
+    # Diagnostic sans jamais afficher le jeton : on classe seulement l'erreur.
+    if [ -z "${DATA_REPO_TOKEN:-}" ]; then why="DATA_REPO_TOKEN vide dans cette étape"
+    elif [ $rc -eq 2 ]; then why="accès OK mais branche data-$1 absente de forex-data"
+    elif echo "$err" | grep -qi "authentication\|403\|401\|invalid username or password\|could not read"; then why="jeton refusé (invalide, expiré ou sans accès Contents: Read à forex-data)"
+    elif echo "$err" | grep -qi "not found\|404"; then why="dépôt forex-data introuvable avec ce jeton (dépôt non sélectionné dans le jeton ?)"
+    else why="erreur git code $rc"; fi
+    echo "données $1 : indisponibles — $why"
+    [ -n "${GITHUB_ACTIONS:-}" ] && echo "::warning title=Données $1::$why"
+    return 0
+  fi
   tmp=$(mktemp -d)
   git clone -q --depth 1 -b "data-$1" "$DATA_REMOTE" "$tmp/d" && mkdir -p "data/$2" && \
     for f in "$tmp"/d/*.csv.gz; do gunzip -c "$f" > "data/$2/$(basename "$f" .gz)"; done && \
