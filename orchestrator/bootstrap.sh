@@ -48,7 +48,9 @@ fetch() {  # $1 = tag, $2 = dossier
     for f in "$tmp"/d/*.csv.gz; do gunzip -c "$f" > "data/$2/$(basename "$f" .gz)"; done && \
     cp "$tmp"/d/quality_report.json "data/$2/" 2>/dev/null
   rm -rf "$tmp"
-  echo "données $1 → data/$2"
+  n=$(ls "data/$2"/*.csv 2>/dev/null | wc -l)
+  echo "données $1 → data/$2 ($n fichiers)"
+  [ -n "${GITHUB_ACTIONS:-}" ] && echo "::notice title=Données $1::reçues ($n fichiers CSV)"
 }
 fetch 2025sep-2026feb m1_2025
 fetch 2026mar-aug m1
