@@ -5,10 +5,10 @@ la conversation qui l'a produite n'est pas nécessaire.
 
 ## Le projet en 10 lignes
 - Agent de trading Forex autonome en **PAPER TRADING uniquement** (aucun broker réel, aucun argent réel).
-- Paires : **EURUSD, GBPUSD, USDJPY**. Scan **toutes les 5 minutes**. Trades de **5 à 30 minutes maximum**.
-- Capital de référence **50 €**, risque 1 % par trade, **max 2 positions**, Risk Manager déterministe (`forex_agent/risk/manager.py`).
+- Paires : **EURUSD, GBPUSD, USDJPY**. Scan **toutes les 5 minutes**. Trades de **5 à 60 minutes maximum** (recherche, décision utilisateur du 11/10/2026).
+- Capital de référence **150 €** (recherche, décision du 11/10/2026 ; la baseline V2 reste mesurée à 50 €), risque 1 % par trade, **max 2 positions**, Risk Manager déterministe (`forex_agent/risk/manager.py`).
 - Données : Dukascopy M1 **bid + ask** réelles (spread réel inclus dans toutes les mesures).
-- Objectif actuel : **trouver un avantage robuste** à 5–30 min. Aucun n'est démontré à ce jour (voir `memory/STRATEGIES.md`).
+- Objectif actuel : **trouver un avantage robuste** à 5–60 min. Aucun n'est démontré à ce jour (voir `memory/STRATEGIES.md`).
 - Langue de travail et des rapports : **français**. L'utilisateur n'est pas développeur : rapports courts, sans jargon inutile.
 
 ## Système multi-agents (branche `multi-agent-research`)

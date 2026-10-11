@@ -31,7 +31,7 @@ Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès
   sont CONTAMINÉS : utilisables en Train / Validation, jamais comme OOS.
 
 ## Contraintes permanentes
-5–30 min · scan 5 min · EURUSD/GBPUSD/USDJPY · 50 € · paper · max 2 positions · risque 1 %/trade, 2 % total,
+5–60 min (depuis le 11/10/2026) · scan 5 min · EURUSD/GBPUSD/USDJPY · 150 € (depuis le 11/10/2026) · paper · max 2 positions · risque 1 %/trade, 2 % total,
 perte jour 3 %, drawdown 20 % = kill switch, 3 pertes = pause 60 min, pas de martingale, stop obligatoire jamais élargi,
 min R:R 1,5 (baseline), pas deux positions avec la même devise dans le même sens.
 
