@@ -25,6 +25,5 @@
   }
  ],
  "protocol_sha": "d43d2b5cc181ae4fb1d05e507bbb63fded54a259e7318f3a5af3051415c764a2",
- "protocol_commit": "7b277ef",
- "blocked_by": "données Train indisponibles dans la session (DATA_REPO_TOKEN) — lancer `bash orchestrator/bootstrap.sh`, puis `run.py count` (commit) et `run.py train`"
+ "protocol_commit": "7b277ef"
 }
