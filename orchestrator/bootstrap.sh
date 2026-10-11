@@ -14,6 +14,8 @@ python3 -c "import pandas, numpy, yaml" 2>/dev/null || pip install -q -r require
 # (Le dépôt forex-agent est public : les données Dukascopy n'y sont plus.) Rien n'est lu ici, on prépare seulement.
 # Dans GitHub Actions, le secret DATA_REPO_TOKEN (jeton en lecture sur forex-data) donne l'accès.
 DATA_REMOTE="https://github.com/soso366/forex-data"
+# Espaces ou retour à la ligne collés avec le jeton : on les retire.
+[ -n "${DATA_REPO_TOKEN:-}" ] && DATA_REPO_TOKEN=$(printf '%s' "$DATA_REPO_TOKEN" | tr -d '[:space:]')
 [ -n "${DATA_REPO_TOKEN:-}" ] && DATA_REMOTE="https://x-access-token:${DATA_REPO_TOKEN}@github.com/soso366/forex-data"
 fetch() {  # $1 = tag, $2 = dossier
   [ -f "data/$2/EURUSD.csv" ] && return 0
@@ -26,6 +28,15 @@ fetch() {  # $1 = tag, $2 = dossier
     elif echo "$err" | grep -qi "authentication\|403\|401\|invalid username or password\|could not read"; then why="jeton refusé (invalide, expiré ou sans accès Contents: Read à forex-data)"
     elif echo "$err" | grep -qi "not found\|404"; then why="dépôt forex-data introuvable avec ce jeton (dépôt non sélectionné dans le jeton ?)"
     else why="erreur git code $rc"; fi
+    if [ -n "${DATA_REPO_TOKEN:-}" ] && [ -z "${_DIAG_DONE:-}" ]; then
+      _DIAG_DONE=1
+      # Diagnostic du jeton sans le révéler : préfixe public, longueur, codes HTTP de l'API GitHub.
+      tok="$DATA_REPO_TOKEN"; tok_clean=$(printf '%s' "$tok" | tr -d '[:space:]')
+      u=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $tok_clean" https://api.github.com/user)
+      r=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $tok_clean" https://api.github.com/repos/soso366/forex-data)
+      msg="jeton: préfixe ${tok_clean:0:11}, ${#tok} caractères (${#tok_clean} sans espaces) ; API /user=$u ; API forex-data=$r"
+      echo "$msg"; [ -n "${GITHUB_ACTIONS:-}" ] && echo "::warning title=Diagnostic jeton::$msg"
+    fi
     echo "données $1 : indisponibles — $why"
     [ -n "${GITHUB_ACTIONS:-}" ] && echo "::warning title=Données $1::$why"
     return 0
