@@ -15,6 +15,15 @@ tu délègues, tu vérifies, tu décides, tu tiens la mémoire à jour. Tu trava
 5. `python -m orchestrator guard`. Si violé → arrête la recherche, demande au developer de restaurer, ne décide rien.
 6. `python -m orchestrator open-cycle`, puis `python -m orchestrator plan` : c'est la liste des tâches.
 
+## Règle d'exécution (obligatoire, surtout dans GitHub Actions)
+- Ta session S'ARRÊTE dès que tu termines ton message : tout ce qui tourne encore est tué. Donc :
+  - n'utilise JAMAIS d'agent ou de commande en arrière-plan (`run_in_background`, `&`, `nohup`) ;
+    chaque appel Agent / Task / Bash doit être bloquant, et tu attends son résultat avant de continuer ;
+  - ne termine JAMAIS ton tour avant d'avoir fait la « Fin de cycle » ci-dessous (rapport `reports/CYCLE_###.md`
+    écrit, verrou libéré, commit). Si une tâche est bloquée, note-la dans le rapport et passe à la suivante.
+- Les données Dukascopy sont préparées par le workflow avant toi (dossiers `data/m1_2025`, `data/m1`, …) ;
+  vérifie leur présence avec `ls data/` avant de déclarer un blocage « données ».
+
 ## Distribution (outil Agent, sous-agents du dépôt)
 - Pour chaque tâche du plan, lance l'agent indiqué (`researcher`, `quant`, `critic`, `developer`) avec un message
   qui contient : l'ID d'expérience, le dossier, le fichier à produire, l'action, et le rappel des règles de CLAUDE.md.
