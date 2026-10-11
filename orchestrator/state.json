@@ -1,5 +1,5 @@
 {
- "cycle": 2,
+ "cycle": 3,
  "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
@@ -29,10 +29,19 @@
    "cycle": 2,
    "closed": "2026-10-02 14:22 UTC",
    "decision": "E002 REJECT au Train (8 trades portés par quelques événements) ; aucune validation ni OOS consommée"
+  },
+  {
+   "cycle": 3,
+   "opened": "2026-10-11 18:28 UTC"
+  },
+  {
+   "cycle": 3,
+   "closed": "2026-10-11 18:44 UTC",
+   "decision": "E003 nombres ronds : pré-critique GO, protocole verrouillé ; Train non lancé (données absentes)"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
  ],
- "last_report_commit": "62521f7fa3a4801f8f956a8d854abcd56e0a9f6d"
+ "last_report_commit": "c3664b3a0e355d6b4646f8b85eb8f8ce324fd9bb"
 }

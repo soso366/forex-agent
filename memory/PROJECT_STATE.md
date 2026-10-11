@@ -1,7 +1,7 @@
 # État du projet (mis à jour par le Manager à chaque cycle)
 
-Dernière mise à jour : 2026-10-02 (cycle 2)
-Dernier cycle : cycle 1 (2026-10-02, session interactive de test — agents réellement invoqués, voir reports/CYCLE_001.md)
+Dernière mise à jour : 2026-10-11 (cycle 3)
+Dernier cycle : cycle 3 (2026-10-11, premier cycle lancé par GitHub Actions, voir reports/CYCLE_003.md)
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
 Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès au dépôt privé). Remplaçant prêt : GitHub Actions `agents-cycle.yml` (en attente d'un secret API et de l'accord pour main). Les cycles tournent pour l'instant en session interactive.
 
@@ -26,6 +26,7 @@ Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès
 - **Aucune stratégie validée pour le paper trading.**
 - **Cycle 1** : E001 (divergence EURUSD-GBPUSD) REJECT au Train.
 - **Cycle 2** : E002 (choc de spread) REJECT au Train (8 trades, portés par quelques événements). Aucune donnée de validation ni OOS consommée.
+- **Cycle 3** (GitHub Actions, 11 oct.) : E003 (nombres ronds, retournement au premier contact) → pré-critique GO, protocole + code VERROUILLÉS (commit 7b277ef). Train NON lancé : la session GitHub Actions n'avait pas le secret `DATA_REPO_TOKEN` → aucune donnée (dossier `data/` absent). À corriger par l'utilisateur.
 - **OOS vierge en préparation** : sept. 2023 → août 2024 (voir memory/DATA_REQUESTS.md). Les 24 mois sept. 2024 → août 2026
   sont CONTAMINÉS : utilisables en Train / Validation, jamais comme OOS.
 

@@ -14,7 +14,7 @@
 ## Candidates
 | ID | Statut | Règle | Prochaine étape |
 |---|---|---|---|
-| — | Aucune candidate validée | — | nouvelle hypothèse au cycle 3 |
+| E003 nombres ronds | Protocole verrouillé, Train non lancé | — | Train dès que les données sont accessibles |
 
 ## Archivées
 | ID | Verdict | Résumé |
