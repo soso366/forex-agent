@@ -2,7 +2,7 @@
  "id": "E005",
  "title": "Saisonnalité horaire du dollar (devise de base se déprécie pendant ses heures locales)",
  "family": "saisonnalite",
- "stage": "PRECRITIQUED",
+ "stage": "PROTOCOL_LOCKED",
  "created": "2026-10-12 19:12 UTC",
  "cycle": 5,
  "history": [
@@ -16,6 +16,14 @@
    "at": "2026-10-12 19:14 UTC",
    "by": "critic",
    "note": ""
+  },
+  {
+   "stage": "PROTOCOL_LOCKED",
+   "at": "2026-10-12 19:16 UTC",
+   "by": "quant",
+   "note": ""
   }
- ]
+ ],
+ "protocol_sha": "6127d63615ea354e82baefd46f55ffc08d2e07351a781379472a51c5903b15d6",
+ "protocol_commit": "d18fffc"
 }
