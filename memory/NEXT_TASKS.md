@@ -20,3 +20,6 @@
 - E003 REJECT (Train) ; E004 archivée (volume absent des CSV). Les données sont présentes en session depuis ce cycle (data/m1_2025, m1, m1_locked*). OOS vierge 2023-24 absent.
 - Pour rouvrir E004 : script hors fichiers protégés extrayant le volume M1 (bid/ask) des .bi5 Train ; ≤ 8 variantes ; conditions de experiments/E004-*/precritique.md.
 - Le Researcher doit privilégier des hypothèses testables avec les colonnes déjà présentes (bid/ask OHLC) ou la piste conférences banques centrales (nécessite historique).
+
+## Mise à jour cycle 5
+- E005 et E006 REJECT au Train. Researcher : éviter les filtres empilés (tester d'abord la distribution du signal pour garantir ≥150 trades) ; piste conférences banques centrales toujours bloquée par l'historique.

@@ -21,3 +21,5 @@
 {"cycle": 5, "agent": "researcher", "task": "hypotheses cycle 5", "produced": "E005,E006 hypothesis.md", "start": "19:12", "end": "19:14", "result": "2 hypotheses", "next": "critic pre-critique"}
 {"cycle": 5, "agent": "critic", "task": "precritique E005", "produced": "E005/precritique.md", "start": "19:14", "end": "19:16", "result": "GO", "next": "quant"}
 {"cycle": 5, "agent": "critic", "task": "precritique E006", "produced": "E006/precritique.md", "start": "19:14", "end": "19:16", "result": "GO", "next": "quant"}
+{"cycle": 5, "agent": "quant", "task": "protocole+Train E005/E006", "produced": "protocol.md, train.json", "start": "19:17", "end": "19:20", "result": "2 REJECT Train", "next": "critic"}
+{"cycle": 5, "agent": "critic", "task": "audit Train E005/E006", "produced": "audit_train.md", "start": "19:20", "end": "19:21", "result": "REJECT confirmé", "next": "rapport"}
