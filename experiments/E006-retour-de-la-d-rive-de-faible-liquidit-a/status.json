@@ -2,7 +2,7 @@
  "id": "E006",
  "title": "Retour de la dérive de faible liquidité asiatique à l'ouverture de Londres",
  "family": "liquidite",
- "stage": "PRECRITIQUED",
+ "stage": "PROTOCOL_LOCKED",
  "created": "2026-10-12 19:12 UTC",
  "cycle": 5,
  "history": [
@@ -16,6 +16,14 @@
    "at": "2026-10-12 19:14 UTC",
    "by": "critic",
    "note": ""
+  },
+  {
+   "stage": "PROTOCOL_LOCKED",
+   "at": "2026-10-12 19:16 UTC",
+   "by": "quant",
+   "note": ""
   }
- ]
+ ],
+ "protocol_sha": "b3624a7e807751923db204db8412ce5371b34bbdd05eb6f1373f7a8a3ec30be9",
+ "protocol_commit": "cdf842d"
 }
