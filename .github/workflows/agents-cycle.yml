@@ -18,7 +18,7 @@ name: Agents — cycle Manager
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 */6 * * *"   # toutes les 6 h (minute décalée pour éviter la saturation de :00)
+    - cron: "17 1 * * *"     # 1 cycle par nuit : 01:17 UTC = 03:17 Paris (heure d'été), 02:17 (heure d'hiver)
 
 concurrency:
   group: agents-cycle
@@ -97,6 +97,7 @@ jobs:
           claude_code_oauth_token: ${{ steps.secrets.outputs.has_api_key != 'true' && secrets.CLAUDE_CODE_OAUTH_TOKEN || '' }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           claude_args: >-
+            --model claude-sonnet-5-5
             --max-turns 200
             --allowedTools "Bash,Read,Write,Edit,Glob,Grep,Task,Agent"
           prompt: |
