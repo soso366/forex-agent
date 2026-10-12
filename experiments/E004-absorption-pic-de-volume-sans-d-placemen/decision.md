@@ -1,0 +1,2 @@
+# Décision E004 — INCONCLUSIVE (intestable, volume absent des CSV)
+RESEARCHER : idée nouvelle ; CRITIC : REJECT « intestable » (volume non conservé, 12 variantes > 8) ; DATA : aucune mesure possible, pas un rejet de fond. Archivée sans verdict DECIDED formel (l'orchestrateur exige un protocole). Réouverture : script d'extraction du volume M1 hors fichiers protégés, ≤ 8 variantes, conditions du précritique.
