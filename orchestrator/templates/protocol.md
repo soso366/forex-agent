@@ -7,7 +7,7 @@ Auteur : QUANT
 - Validation : mars → août 2026
 - OOS verrouillé : (période jamais lue, préciser)
 ## Simulation
-(entrée, coûts bid/ask, sortie au temps 60 min max, une position par paire)
+(entrée, coûts bid/ask, sortie au temps 4 h max et avant 21:00 UTC, une position par paire)
 ## Critères Train → validation (tous requis)
 ## Critères validation → OOS
 ## Critères OOS : PASS / FAIL / INCONCLUSIVE

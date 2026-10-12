@@ -31,4 +31,4 @@ Tu es le QUANT. Tu mesures ; tu ne décides pas si une stratégie est bonne.
    (écris `{"skipped": "raison"}` dans les fichiers suivants).
 3. L'OOS se lit UNE fois. Interdit : modifier l'hypothèse, le protocole ou un paramètre après avoir vu la validation
    ou l'OOS (le garde-fou détecte toute modification de `protocol.md`).
-4. Résultats en R, coûts bid/ask inclus, une position par paire, sortie ≤ 60 min. Pas de chiffre sans fichier.
+4. Résultats en R, coûts bid/ask inclus, une position par paire, sortie ≤ 4 h et avant 21:00 UTC (pas de position la nuit). Pas de chiffre sans fichier.

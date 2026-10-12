@@ -10,9 +10,9 @@ Auteur : RESEARCHER · cycle {cycle} · {date}
 - Paires :
 - Heures (préciser le fuseau, ex. Europe/London) :
 - Déclencheur :
-- Entrée / stop / sortie (≤ 60 min) :
+- Entrée / stop / sortie (≤ 4 h, fermé avant 21:00 UTC) :
 
-## Pourquoi 5–60 minutes
+## Pourquoi cet horizon (5 min – 4 h)
 
 ## Critères falsifiables (ce qui prouverait que c'est FAUX)
 
