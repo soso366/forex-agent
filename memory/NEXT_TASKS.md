@@ -15,3 +15,8 @@
    (a) secret `ANTHROPIC_API_KEY` ou `CLAUDE_CODE_OAUTH_TOKEN` à ajouter par l'utilisateur ;
    (b) accord utilisateur pour copier CE SEUL fichier sur `main` (GitHub n'exécute les tâches planifiées que depuis main).
 5. Tâche planifiée Claude externe « Forex — cycle Manager » : DÉSACTIVÉE (pas d'accès au dépôt privé).
+
+## Mise à jour cycle 4
+- E003 REJECT (Train) ; E004 archivée (volume absent des CSV). Les données sont présentes en session depuis ce cycle (data/m1_2025, m1, m1_locked*). OOS vierge 2023-24 absent.
+- Pour rouvrir E004 : script hors fichiers protégés extrayant le volume M1 (bid/ask) des .bi5 Train ; ≤ 8 variantes ; conditions de experiments/E004-*/precritique.md.
+- Le Researcher doit privilégier des hypothèses testables avec les colonnes déjà présentes (bid/ask OHLC) ou la piste conférences banques centrales (nécessite historique).

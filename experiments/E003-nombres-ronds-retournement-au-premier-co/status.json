@@ -2,7 +2,7 @@
  "id": "E003",
  "title": "Nombres ronds : retournement au premier contact (ordres take-profit groupés)",
  "family": "order-clustering",
- "stage": "PROTOCOL_LOCKED",
+ "stage": "ARCHIVED",
  "created": "2026-10-11 18:30 UTC",
  "cycle": 3,
  "history": [
@@ -22,8 +22,22 @@
    "at": "2026-10-11 18:43 UTC",
    "by": "quant",
    "note": ""
+  },
+  {
+   "stage": "DECIDED",
+   "at": "2026-10-12 19:02 UTC",
+   "by": "manager",
+   "note": "",
+   "verdict": "REJECT"
+  },
+  {
+   "stage": "ARCHIVED",
+   "at": "2026-10-12 19:02 UTC",
+   "by": "manager",
+   "note": ""
   }
  ],
  "protocol_sha": "d43d2b5cc181ae4fb1d05e507bbb63fded54a259e7318f3a5af3051415c764a2",
- "protocol_commit": "7b277ef"
+ "protocol_commit": "7b277ef",
+ "verdict": "REJECT"
 }

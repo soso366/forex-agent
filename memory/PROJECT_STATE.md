@@ -1,7 +1,7 @@
 # État du projet (mis à jour par le Manager à chaque cycle)
 
-Dernière mise à jour : 2026-10-11 (cycle 3)
-Dernier cycle : cycle 3 (2026-10-11, premier cycle lancé par GitHub Actions, voir reports/CYCLE_003.md)
+Dernière mise à jour : 2026-10-12 (cycle 4)
+Dernier cycle : cycle 4 (2026-10-12, GitHub Actions, voir reports/CYCLE_004.md) : E003 REJECT (Train), E004 INCONCLUSIVE (volume absent). Aucun OOS consommé.
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
 Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès au dépôt privé). Remplaçant prêt : GitHub Actions `agents-cycle.yml` (en attente d'un secret API et de l'accord pour main). Les cycles tournent pour l'instant en session interactive.
 

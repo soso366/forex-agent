@@ -1,6 +1,6 @@
 {
  "cycle": 4,
- "cycle_open": true,
+ "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -42,10 +42,15 @@
   {
    "cycle": 4,
    "opened": "2026-10-11 18:46 UTC"
+  },
+  {
+   "cycle": 4,
+   "closed": "2026-10-12 19:03 UTC",
+   "decision": "E003 REJECT (Train, audit CONFIRM_REJECT) ; E004 INCONCLUSIVE/archivée (volume absent)"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
  ],
- "last_report_commit": "c3664b3a0e355d6b4646f8b85eb8f8ce324fd9bb"
+ "last_report_commit": "c3c2adffcebf39485a91970fe11d17f13b0816b4"
 }
