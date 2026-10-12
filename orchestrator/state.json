@@ -1,6 +1,6 @@
 {
- "cycle": 4,
- "cycle_open": false,
+ "cycle": 5,
+ "cycle_open": true,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -47,6 +47,10 @@
    "cycle": 4,
    "closed": "2026-10-12 19:03 UTC",
    "decision": "E003 REJECT (Train, audit CONFIRM_REJECT) ; E004 INCONCLUSIVE/archivée (volume absent)"
+  },
+  {
+   "cycle": 5,
+   "opened": "2026-10-12 19:12 UTC"
   }
  ],
  "notes": [
