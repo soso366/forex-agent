@@ -1,0 +1,21 @@
+{
+ "id": "E007",
+ "title": "Momentum inter-sessions : matin Londres vers apres-midi NY (4 h)",
+ "family": "intraday-momentum",
+ "stage": "PRECRITIQUED",
+ "created": "2026-10-13 07:44 UTC",
+ "cycle": 6,
+ "history": [
+  {
+   "stage": "PROPOSED",
+   "at": "2026-10-13 07:44 UTC",
+   "by": "researcher"
+  },
+  {
+   "stage": "PRECRITIQUED",
+   "at": "2026-10-13 07:45 UTC",
+   "by": "critic",
+   "note": ""
+  }
+ ]
+}
