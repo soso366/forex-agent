@@ -1,0 +1,21 @@
+{
+ "id": "E008",
+ "title": "Epuisement du range journalier : fade apres 13h Londres (4 h)",
+ "family": "mean-reversion",
+ "stage": "PRECRITIQUED",
+ "created": "2026-10-13 07:44 UTC",
+ "cycle": 6,
+ "history": [
+  {
+   "stage": "PROPOSED",
+   "at": "2026-10-13 07:44 UTC",
+   "by": "researcher"
+  },
+  {
+   "stage": "PRECRITIQUED",
+   "at": "2026-10-13 07:45 UTC",
+   "by": "critic",
+   "note": ""
+  }
+ ]
+}
