@@ -2,7 +2,7 @@
  "id": "E007",
  "title": "Momentum inter-sessions : matin Londres vers apres-midi NY (4 h)",
  "family": "intraday-momentum",
- "stage": "TRAIN_DONE",
+ "stage": "ARCHIVED",
  "created": "2026-10-13 07:44 UTC",
  "cycle": 6,
  "history": [
@@ -28,8 +28,31 @@
    "at": "2026-10-13 07:47 UTC",
    "by": "quant",
    "note": ""
+  },
+  {
+   "stage": "AUDITED",
+   "at": "2026-10-13 07:48 UTC",
+   "by": "critic",
+   "note": "étape non exécutée : Train échoué"
+  },
+  {
+   "stage": "DECIDED",
+   "at": "2026-10-13 07:48 UTC",
+   "by": "manager",
+   "note": "",
+   "verdict": "REJECT"
+  },
+  {
+   "stage": "ARCHIVED",
+   "at": "2026-10-13 07:48 UTC",
+   "by": "manager",
+   "note": ""
   }
  ],
  "protocol_sha": "a6228254400a1fb51716537ee4c91a90fd81f48acb200dedf6eb90ac2551a332",
- "protocol_commit": "c0135f1"
+ "protocol_commit": "c0135f1",
+ "skipped_stages": [
+  "VALIDATED"
+ ],
+ "verdict": "REJECT"
 }

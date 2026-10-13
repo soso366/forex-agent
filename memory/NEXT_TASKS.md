@@ -23,3 +23,7 @@
 
 ## Mise à jour cycle 5
 - E005 et E006 REJECT au Train. Researcher : éviter les filtres empilés (tester d'abord la distribution du signal pour garantir ≥150 trades) ; piste conférences banques centrales toujours bloquée par l'historique.
+
+## Mise à jour cycle 6
+- E007 et E008 REJECT au Train (intraday 4 h, 13→17 Londres). Les familles « momentum/fade de mouvement journalier » sont épuisées sur ce Train ; biais USD constant à connaître pour toute hypothèse 13-17 h.
+- Researcher : explorer des familles différentes (événements calendrier avec historique long, structure inter-marchés) ; toujours compter les signaux avant R.

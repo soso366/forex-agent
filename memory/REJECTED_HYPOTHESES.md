@@ -18,3 +18,5 @@
 | E003 — nombres ronds (00/50) : retournement au premier contact (toutes variantes A/B/C, EURUSD seul, niveau 00 seul) | Train : 360 trades, −0,010 R (t −0,19), −0,112 R à +0,5 pip ; grille décalée +17 meilleure ; 14/18 critères ratés ; B/EURUSD = bruit post hoc | aucun pour cette forme |
 | E005 — saisonnalité horaire du dollar (fenêtres London 08–12 / 14–18, toutes paires) | Train : 372 trades, t jour 0,22, placebo horaire rang 3/11, négatif à +0,5 pip | aucun pour cette forme ; la fenêtre B (+0,40 R) est post hoc |
 | E006 — retour de la dérive asiatique à 07:05 UTC (4 h) | Train : 11 trades seulement (|z|≥1 rare + filtre de range) | nouvelle hypothèse avec seuils calibrés sur la distribution de z AVANT tout calcul de R |
+| E007 — momentum inter-sessions (signe 08:00→13:00 Londres, tenue jusqu'à 17:00, 3 paires) | Train : 371 trades, −0,012 R, t jour −0,35 ; l'effet apparent = biais USD constant | aucun pour cette forme |
+| E008 — épuisement du range journalier (fade après 13:00 si mouvement ≥ 0,30 ADR20) | Train : 164 trades, +0,016 R, t 0,14, −0,020 R à +0,5 pip, 1 paire/3 positive | aucun pour cette forme |

@@ -28,3 +28,4 @@
 - La famille **retour à la moyenne à heure précise** (H3) a échoué hors-échantillon : les résultats positifs Train/Validation étaient du bruit de sélection et de période.
 - Cibles structurelles de swing incompatibles avec 30 min : préférer sortie au temps ou cible ≤ 1–1,5 R.
 - L'avantage éventuel est petit (≈ 1 pip) : toujours tester +0,2 à +1 pip de coût.
+- 2026-10-13 cycle 6 : E007, E008 REJECT (Train). Aucun avantage démontré.

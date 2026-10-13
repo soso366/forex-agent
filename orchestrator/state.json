@@ -1,5 +1,5 @@
 {
- "cycle": 5,
+ "cycle": 6,
  "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
@@ -56,10 +56,19 @@
    "cycle": 5,
    "closed": "2026-10-12 19:18 UTC",
    "decision": "E005 REJECT (Train), E006 REJECT (Train, échantillon insuffisant)"
+  },
+  {
+   "cycle": 6,
+   "opened": "2026-10-13 07:43 UTC"
+  },
+  {
+   "cycle": 6,
+   "closed": "2026-10-13 07:48 UTC",
+   "decision": "E007 REJECT, E008 REJECT (Train)"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
  ],
- "last_report_commit": "64886032a20fa54d5c9cf622afdbc6ca0b4c3319"
+ "last_report_commit": "31f95fa736b1a07dc71cd890b70cc63d067d3540"
 }
