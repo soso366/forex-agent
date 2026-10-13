@@ -1,6 +1,6 @@
 {
- "cycle": 6,
- "cycle_open": false,
+ "cycle": 7,
+ "cycle_open": true,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -65,6 +65,10 @@
    "cycle": 6,
    "closed": "2026-10-13 07:48 UTC",
    "decision": "E007 REJECT, E008 REJECT (Train)"
+  },
+  {
+   "cycle": 7,
+   "opened": "2026-10-13 19:53 UTC"
   }
  ],
  "notes": [

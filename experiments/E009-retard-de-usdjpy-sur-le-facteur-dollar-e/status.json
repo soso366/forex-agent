@@ -2,7 +2,7 @@
  "id": "E009",
  "title": "Retard de USDJPY sur le facteur dollar EURUSD/GBPUSD (rattrapage 2 h)",
  "family": "structure-inter-paires",
- "stage": "PRECRITIQUED",
+ "stage": "TRAIN_DONE",
  "created": "2026-10-13 19:53 UTC",
  "cycle": 7,
  "history": [
@@ -16,6 +16,20 @@
    "at": "2026-10-13 19:55 UTC",
    "by": "critic",
    "note": ""
+  },
+  {
+   "stage": "PROTOCOL_LOCKED",
+   "at": "2026-10-13 19:58 UTC",
+   "by": "quant",
+   "note": ""
+  },
+  {
+   "stage": "TRAIN_DONE",
+   "at": "2026-10-13 19:58 UTC",
+   "by": "quant",
+   "note": ""
   }
- ]
+ ],
+ "protocol_sha": "f21d026a63d8f1c4c247b6c61ce22ef89c9dd8a3cee5db4d1955c38201ba1d86",
+ "protocol_commit": "71b2d41"
 }

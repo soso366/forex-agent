@@ -29,3 +29,5 @@
 {"cycle": 6, "agent": "quant", "task": "protocole+Train E007", "produced": "E007/protocol.md,results/train.json", "start": "07:49", "end": "07:52", "result": "Train échoué", "next": "audit critic"}
 {"cycle": 6, "agent": "quant", "task": "protocole+Train E008", "produced": "E008/protocol.md,results/train.json", "start": "07:49", "end": "07:52", "result": "Train échoué", "next": "audit critic"}
 {"cycle": 6, "agent": "critic", "task": "audit E007,E008", "produced": "audit.md x2", "start": "07:52", "end": "07:53", "result": "REJECT confirmé", "next": "décision"}
+{"cycle": 7, "agent": "researcher", "task": "hypothèse cycle 7", "produced": "E009 hypothesis.md", "start": "19:53", "end": "19:55", "result": "1 hypothèse", "next": "pré-critique"}
+{"cycle": 7, "agent": "critic", "task": "pré-critique E009", "produced": "E009/precritique.md", "start": "19:54", "end": "19:56", "result": "GO sous conditions", "next": "protocole quant"}
