@@ -27,3 +27,6 @@
 ## Mise à jour cycle 6
 - E007 et E008 REJECT au Train (intraday 4 h, 13→17 Londres). Les familles « momentum/fade de mouvement journalier » sont épuisées sur ce Train ; biais USD constant à connaître pour toute hypothèse 13-17 h.
 - Researcher : explorer des familles différentes (événements calendrier avec historique long, structure inter-marchés) ; toujours compter les signaux avant R.
+
+## Mise à jour cycle 7
+- E009 REJECT au Train (inter-paires USDJPY vs facteur dollar : pas de mécanisme, équivalent à un fade d'USDJPY seul). Le Researcher n'a trouvé qu'une hypothèse : l'espace testable avec bid/ask M1 seul s'épuise. Envisager avec l'utilisateur : nouvelles données (calendrier économique, historique long, volume) pour de nouvelles familles.

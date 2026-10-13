@@ -1,6 +1,6 @@
 {
  "cycle": 7,
- "cycle_open": true,
+ "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
   {
@@ -69,10 +69,15 @@
   {
    "cycle": 7,
    "opened": "2026-10-13 19:53 UTC"
+  },
+  {
+   "cycle": 7,
+   "closed": "2026-10-13 19:59 UTC",
+   "decision": "E009 REJECT (Train)"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
  ],
- "last_report_commit": "31f95fa736b1a07dc71cd890b70cc63d067d3540"
+ "last_report_commit": "e3909425f71dcdbba425db1c4c6f9630163c3b19"
 }

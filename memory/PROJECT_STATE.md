@@ -1,7 +1,7 @@
 # État du projet (mis à jour par le Manager à chaque cycle)
 
-Dernière mise à jour : 2026-10-13 (cycle 6)
-Dernier cycle : cycle 6 (2026-10-13, GitHub Actions, voir reports/CYCLE_006.md) : E007 REJECT (Train, 371 trades), E008 REJECT (Train, 164 trades). Aucun OOS consommé.
+Dernière mise à jour : 2026-10-13 (cycle 7)
+Dernier cycle : cycle 7 (2026-10-13, GitHub Actions, voir reports/CYCLE_007.md) : E009 (retard USDJPY / facteur dollar) REJECT au Train (160 trades, −0,046 R). Aucun OOS consommé.
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
 Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès au dépôt privé). Remplaçant prêt : GitHub Actions `agents-cycle.yml` (en attente d'un secret API et de l'accord pour main). Les cycles tournent pour l'instant en session interactive.
 

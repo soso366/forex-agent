@@ -20,3 +20,4 @@
 | E006 — retour de la dérive asiatique à 07:05 UTC (4 h) | Train : 11 trades seulement (|z|≥1 rare + filtre de range) | nouvelle hypothèse avec seuils calibrés sur la distribution de z AVANT tout calcul de R |
 | E007 — momentum inter-sessions (signe 08:00→13:00 Londres, tenue jusqu'à 17:00, 3 paires) | Train : 371 trades, −0,012 R, t jour −0,35 ; l'effet apparent = biais USD constant | aucun pour cette forme |
 | E008 — épuisement du range journalier (fade après 13:00 si mouvement ≥ 0,30 ADR20) | Train : 164 trades, +0,016 R, t 0,14, −0,020 R à +0,5 pip, 1 paire/3 positive | aucun pour cette forme |
+| E009 — retard d'USDJPY sur le facteur dollar EURUSD/GBPUSD (rattrapage ≤ 2 h, seuil 2,0 σ) | Train : 160 trades, −0,046 R, t jour −0,84, −0,072 R à +0,5 pip, placebo USDJPY seul identique ; le sens inverse (+0,03 R) est du bruit | aucun pour cette forme |
