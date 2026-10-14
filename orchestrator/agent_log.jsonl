@@ -34,3 +34,4 @@
 {"cycle": 7, "agent": "quant", "task": "protocole+Train E009", "produced": "E009 protocol.md,results/train.json", "start": "19:56", "end": "20:00", "result": "Train échoué (-0,046 R)", "next": "audit critic"}
 {"cycle": 7, "agent": "critic", "task": "audit Train E009", "produced": "E009/audit.md", "start": "19:58", "end": "19:59", "result": "REJECT confirmé", "next": "décision"}
 {"cycle": 8, "agent": "researcher", "task": "hypothèse cycle 8", "produced": "aucun (aucune hypothèse honnête)", "start": "06:09", "end": "06:10", "result": "0 hypothèse", "next": "données utilisateur"}
+{"cycle": 9, "agent": "researcher", "task": "hypothèses cycle 9", "produced": "aucune (0 hypothèse)", "start": "18:02", "end": "18:03", "result": "0 hypothèse : espace bid/ask M1 épuisé, besoin calendrier/historique/volume", "next": "attente décision utilisateur sur données"}

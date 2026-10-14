@@ -33,3 +33,6 @@
 
 ## Mise à jour cycle 8
 - Researcher : 0 hypothèse (fin de mois = ~18 trades au Train ; volatilité = retombe sur cassure rejetée ; macro/conférences = besoin calendrier + historique ; volume absent). BLOQUANT utilisateur : fournir calendrier économique daté + historique 3–5 ans, et/ou autoriser l'extraction du volume M1 des .bi5 (rouvre E004). Sans cela, les cycles suivants n'ont rien à tester.
+
+## Mise à jour cycle 9
+- Researcher : 0 hypothèse (vendredi après-midi ~78 signaux, fin de mois ~18 : insuffisant). Recommandation : ne pas relancer de cycle avant décision utilisateur (calendrier économique + historique 3-5 ans, ou extraction du volume M1).
