@@ -30,3 +30,6 @@
 
 ## Mise à jour cycle 7
 - E009 REJECT au Train (inter-paires USDJPY vs facteur dollar : pas de mécanisme, équivalent à un fade d'USDJPY seul). Le Researcher n'a trouvé qu'une hypothèse : l'espace testable avec bid/ask M1 seul s'épuise. Envisager avec l'utilisateur : nouvelles données (calendrier économique, historique long, volume) pour de nouvelles familles.
+
+## Mise à jour cycle 8
+- Researcher : 0 hypothèse (fin de mois = ~18 trades au Train ; volatilité = retombe sur cassure rejetée ; macro/conférences = besoin calendrier + historique ; volume absent). BLOQUANT utilisateur : fournir calendrier économique daté + historique 3–5 ans, et/ou autoriser l'extraction du volume M1 des .bi5 (rouvre E004). Sans cela, les cycles suivants n'ont rien à tester.
