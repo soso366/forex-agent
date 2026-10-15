@@ -39,3 +39,6 @@
 
 ## Mise à jour cycle 10
 - Researcher : 0 hypothèse (3e cycle consécutif). Même blocage : calendrier économique daté + historique 3–5 ans, ou autorisation d'extraire le volume M1 des .bi5 (rouvre E004). Ne pas relancer de cycle avant décision utilisateur.
+
+## Mise à jour cycle 11
+- Researcher : 0 hypothèse (4e cycle consécutif). Même blocage utilisateur : calendrier économique + historique 3–5 ans, ou autorisation d'extraire le volume M1. Suspendre les cycles planifiés jusque-là.
