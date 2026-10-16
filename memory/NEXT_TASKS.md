@@ -45,3 +45,6 @@
 
 ## Mise à jour cycle 12
 - Researcher : 0 hypothèse (5e cycle consécutif). Même blocage utilisateur ; suspendre les cycles planifiés tant que ni calendrier+historique ni extraction du volume M1 ne sont fournis.
+
+## Mise à jour cycle 13
+- Researcher : 0 hypothèse (6e cycle consécutif). Même blocage utilisateur ; suspendre les cycles planifiés (passer control.yaml en PAUSED) jusqu'à calendrier+historique ou autorisation d'extraction du volume M1.
