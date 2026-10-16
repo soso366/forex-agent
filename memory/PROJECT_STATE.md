@@ -1,7 +1,7 @@
 # État du projet (mis à jour par le Manager à chaque cycle)
 
-Dernière mise à jour : 2026-10-15 (cycle 11)
-Dernier cycle : cycle 11 (2026-10-15) : 0 hypothèse (4e cycle consécutif, même blocage). Précédent : cycle 10 (2026-10-15) : 0 hypothèse (3e cycle consécutif, même blocage données). Précédent : cycle 9 (2026-10-14) : 0 hypothèse (Researcher confirme l'épuisement ; recommande de ne pas relancer de cycle sans nouvelles données). Précédent : cycle 8 (2026-10-14, GitHub Actions) : aucune hypothèse proposée (espace testable épuisé avec bid/ask M1 seul). Aucun OOS consommé. Besoin : calendrier économique / historique / volume.
+Dernière mise à jour : 2026-10-16 (cycle 12)
+Dernier cycle : cycle 12 (2026-10-16) : 0 hypothèse (5e cycle consécutif, même blocage). Précédent : cycle 11 (2026-10-15) : 0 hypothèse (4e cycle consécutif, même blocage). Précédent : cycle 10 (2026-10-15) : 0 hypothèse (3e cycle consécutif, même blocage données). Précédent : cycle 9 (2026-10-14) : 0 hypothèse (Researcher confirme l'épuisement ; recommande de ne pas relancer de cycle sans nouvelles données). Précédent : cycle 8 (2026-10-14, GitHub Actions) : aucune hypothèse proposée (espace testable épuisé avec bid/ask M1 seul). Aucun OOS consommé. Besoin : calendrier économique / historique / volume.
 Contrôle : voir `orchestrator/control.yaml` (RUNNING / PAUSED)
 Moteur d'autonomie : tâche planifiée Claude externe DÉSACTIVÉE (aucun accès au dépôt privé). Remplaçant prêt : GitHub Actions `agents-cycle.yml` (en attente d'un secret API et de l'accord pour main). Les cycles tournent pour l'instant en session interactive.
 

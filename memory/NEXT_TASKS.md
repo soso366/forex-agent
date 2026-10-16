@@ -42,3 +42,6 @@
 
 ## Mise à jour cycle 11
 - Researcher : 0 hypothèse (4e cycle consécutif). Même blocage utilisateur : calendrier économique + historique 3–5 ans, ou autorisation d'extraire le volume M1. Suspendre les cycles planifiés jusque-là.
+
+## Mise à jour cycle 12
+- Researcher : 0 hypothèse (5e cycle consécutif). Même blocage utilisateur ; suspendre les cycles planifiés tant que ni calendrier+historique ni extraction du volume M1 ne sont fournis.
