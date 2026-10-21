@@ -1,0 +1,80 @@
+2026-10-21 22:34:41,626 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:41,626 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:42,076 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-01-20 14:30:00 (20 days).
+2026-10-21 22:34:42,128 - freqtrade.data.dataprovider - INFO - Loading data for XRP/USDT 1h from 2024-12-23 16:00:00 to 2025-01-20 14:30:00
+2026-10-21 22:34:42,403 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:42,403 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:42,404 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:42,404 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:42,863 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-01-20 12:25:00 (20 days).
+2026-10-21 22:34:42,916 - freqtrade.data.dataprovider - INFO - Loading data for BTC/USDT 1h from 2024-12-23 16:00:00 to 2025-01-20 12:25:00
+2026-10-21 22:34:43,094 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:43,095 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:43,095 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:43,095 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:43,565 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-01-20 14:35:00 (20 days).
+2026-10-21 22:34:43,618 - freqtrade.data.dataprovider - INFO - Loading data for BTC/USDT 1h from 2024-12-23 16:00:00 to 2025-01-20 14:35:00
+2026-10-21 22:34:43,834 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:43,834 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:43,835 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:43,835 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:44,285 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-02-13 14:45:00 (44 days).
+2026-10-21 22:34:44,393 - freqtrade.data.dataprovider - INFO - Loading data for BNB/USDT 1h from 2024-12-23 16:00:00 to 2025-02-13 14:45:00
+2026-10-21 22:34:44,647 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:44,648 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:44,648 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:44,648 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:45,105 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-02-13 14:50:00 (44 days).
+2026-10-21 22:34:45,213 - freqtrade.data.dataprovider - INFO - Loading data for BNB/USDT 1h from 2024-12-23 16:00:00 to 2025-02-13 14:50:00
+2026-10-21 22:34:45,499 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:45,500 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:45,500 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:45,501 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:45,985 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-02-17 16:00:00 (48 days).
+2026-10-21 22:34:46,101 - freqtrade.data.dataprovider - INFO - Loading data for ETH/USDT 1h from 2024-12-23 16:00:00 to 2025-02-17 16:00:00
+2026-10-21 22:34:46,405 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:46,406 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:46,406 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:46,406 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:46,861 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-02-17 21:45:00 (48 days).
+2026-10-21 22:34:46,978 - freqtrade.data.dataprovider - INFO - Loading data for ETH/USDT 1h from 2024-12-23 16:00:00 to 2025-02-17 21:45:00
+2026-10-21 22:34:47,356 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:47,356 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:47,356 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:47,357 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:47,807 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-03-03 06:40:00 (61 days).
+2026-10-21 22:34:47,958 - freqtrade.data.dataprovider - INFO - Loading data for XRP/USDT 1h from 2024-12-23 16:00:00 to 2025-03-03 06:40:00
+2026-10-21 22:34:48,339 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:48,339 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:48,340 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:48,340 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:48,791 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-03-03 12:05:00 (62 days).
+2026-10-21 22:34:48,939 - freqtrade.data.dataprovider - INFO - Loading data for XRP/USDT 1h from 2024-12-23 16:00:00 to 2025-03-03 12:05:00
+2026-10-21 22:34:49,402 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:49,403 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:49,403 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:49,403 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:49,863 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-03-03 07:00:00 (61 days).
+2026-10-21 22:34:50,010 - freqtrade.data.dataprovider - INFO - Loading data for SOL/USDT 1h from 2024-12-23 16:00:00 to 2025-03-03 07:00:00
+2026-10-21 22:34:50,332 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:50,332 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:50,332 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:50,333 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:50,779 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-03-03 12:10:00 (62 days).
+2026-10-21 22:34:50,928 - freqtrade.data.dataprovider - INFO - Loading data for SOL/USDT 1h from 2024-12-23 16:00:00 to 2025-03-03 12:10:00
+2026-10-21 22:34:51,321 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:51,321 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:51,322 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:51,322 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:51,787 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-03-19 17:40:00 (78 days).
+2026-10-21 22:34:51,973 - freqtrade.data.dataprovider - INFO - Loading data for XRP/USDT 1h from 2024-12-23 16:00:00 to 2025-03-19 17:40:00
+2026-10-21 22:34:52,453 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:34:52,454 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:34:52,454 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:34:52,454 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:34:52,899 - freqtrade.optimize.backtesting - INFO - Loading data from 2024-12-31 07:20:00 up to 2025-03-19 19:20:00 (78 days).
+2026-10-21 22:34:53,085 - freqtrade.data.dataprovider - INFO - Loading data for XRP/USDT 1h from 2024-12-23 16:00:00 to 2025-03-19 19:20:00
+2026-10-21 22:34:53,618 - freqtrade.loggers.set_log_levels - INFO - Restoring log verbosity.
+2026-10-21 22:34:53,618 - freqtrade.optimize.analysis.lookahead - INFO - CombinedBinHAndClucV8: no bias detected
+2026-10-21 22:34:53,619 - freqtrade.optimize.analysis.lookahead_helpers - INFO - Checking look ahead bias via backtests of CombinedBinHAndClucV8.py took 29 seconds.
+Analyzing trades ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━            13/14  93% • 0:00:21 • 0:00:02

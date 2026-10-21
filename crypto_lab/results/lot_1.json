@@ -1,13 +1,18 @@
 {
- "lot": 1,
- "conditions": {
-  "paires": [
+ "label": "lot_1",
+ "plan": {
+  "label": "lot_1",
+  "batch": 1,
+  "pairs": [
    "BTC/USDT",
    "ETH/USDT",
    "SOL/USDT",
    "BNB/USDT",
    "XRP/USDT"
   ],
+  "audit": true
+ },
+ "conditions": {
   "mise_usdt": 50.0,
   "capital": 150.0,
   "positions_max": 2,
@@ -41,6 +46,8 @@
     "perdante sur au moins un bloc",
     "gain concentré (>50 % sur une paire ou un mois)"
    ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [],
    "mesures": {
     "global": {
      "trades": 293,
@@ -136,6 +143,8 @@
    "raisons": [
     "moins de 100 trades sur un bloc"
    ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [],
    "mesures": {
     "global": {
      "trades": 343,
@@ -231,6 +240,8 @@
    "raisons": [
     "moins de 100 trades sur un bloc"
    ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [],
    "mesures": {
     "global": {
      "trades": 331,
@@ -326,6 +337,8 @@
    "raisons": [
     "moins de 100 trades sur un bloc"
    ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [],
    "mesures": {
     "global": {
      "trades": 324,
@@ -418,24 +431,420 @@
    "strategie": "CombinedBinHAndClucV6H",
    "verdict": "ERREUR",
    "erreur": [
-    "    df['hlv'] = np.where(df['close'] > df['smaHigh'], 1, np.where(df['close'] < df['smaLow'], -1, np.NAN))",
-    "                                                                                                  ^^^^^^",
-    "  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/numpy/__init__.py\", line 769, in __getattr__",
-    "    raise AttributeError(f\"module {__name__!r} has no attribute {attr!r}\")",
-    "AttributeError: module 'numpy' has no attribute 'NAN'"
+    "    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)",
+    "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py\", line 468, in coerce_to_target_dtype",
+    "    raise TypeError(f\"Invalid value '{other}' for dtype '{self.values.dtype}'\")",
+    "TypeError: Invalid value '1' for dtype 'bool'"
    ]
   },
   {
    "id": "C03",
    "strategie": "CombinedBinHAndClucV8",
-   "verdict": "ERREUR",
-   "erreur": [
-    "    df['hlv'] = np.where(df['close'] > df['smaHigh'], 1, np.where(df['close'] < df['smaLow'], -1, np.NAN))",
-    "                                                                                                  ^^^^^^",
-    "  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/numpy/__init__.py\", line 769, in __getattr__",
-    "    raise AttributeError(f\"module {__name__!r} has no attribute {attr!r}\")",
-    "AttributeError: module 'numpy' has no attribute 'NAN'"
-   ]
+   "plafond_min": null,
+   "verdict": "FRAGILE",
+   "raisons": [
+    "moins de 100 trades sur un bloc",
+    "perdante sur au moins un bloc",
+    "gain concentré (>50 % sur une paire ou un mois)"
+   ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [
+    "np.NAN"
+   ],
+   "mesures": {
+    "global": {
+     "trades": 155,
+     "net_usdt_frais_seuls": 31.66,
+     "net_usdt": 23.91,
+     "gain_moyen_pct": 0.309,
+     "taux_gain_pct": 71.6,
+     "profit_factor": 1.58,
+     "t_stat": 2.31,
+     "drawdown_max_usdt": 6.52,
+     "duree_moy_min": 238.8,
+     "part_sortie_plafond_pct": 0.0,
+     "part_max_paire": 0.61,
+     "part_max_mois": 0.52,
+     "par_paire_usdt": {
+      "BNB/USDT": 1.08,
+      "BTC/USDT": -2.45,
+      "ETH/USDT": -3.49,
+      "SOL/USDT": 14.5,
+      "XRP/USDT": 14.27
+     }
+    },
+    "P1": {
+     "trades": 73,
+     "net_usdt_frais_seuls": 12.59,
+     "net_usdt": 8.94,
+     "gain_moyen_pct": 0.245,
+     "taux_gain_pct": 72.6,
+     "profit_factor": 1.47,
+     "t_stat": 1.31,
+     "drawdown_max_usdt": 6.37,
+     "duree_moy_min": 226.0,
+     "part_sortie_plafond_pct": 0.0,
+     "part_max_paire": 1.31,
+     "part_max_mois": 0.52,
+     "par_paire_usdt": {
+      "BNB/USDT": 2.18,
+      "BTC/USDT": -3.77,
+      "ETH/USDT": -2.28,
+      "SOL/USDT": 11.75,
+      "XRP/USDT": 1.05
+     }
+    },
+    "P2": {
+     "trades": 44,
+     "net_usdt_frais_seuls": 19.63,
+     "net_usdt": 17.43,
+     "gain_moyen_pct": 0.792,
+     "taux_gain_pct": 79.5,
+     "profit_factor": 2.86,
+     "t_stat": 2.95,
+     "drawdown_max_usdt": 2.4,
+     "duree_moy_min": 197.3,
+     "part_sortie_plafond_pct": 0.0,
+     "part_max_paire": 0.71,
+     "part_max_mois": 0.71,
+     "par_paire_usdt": {
+      "BNB/USDT": -0.04,
+      "BTC/USDT": 1.17,
+      "ETH/USDT": 2.81,
+      "SOL/USDT": 1.17,
+      "XRP/USDT": 12.33
+     }
+    },
+    "P3": {
+     "trades": 38,
+     "net_usdt_frais_seuls": -0.57,
+     "net_usdt": -2.47,
+     "gain_moyen_pct": -0.13,
+     "taux_gain_pct": 60.5,
+     "profit_factor": 0.81,
+     "t_stat": -0.52,
+     "drawdown_max_usdt": 5.23,
+     "duree_moy_min": 311.6,
+     "part_sortie_plafond_pct": 0.0,
+     "part_max_paire": null,
+     "part_max_mois": null,
+     "par_paire_usdt": {
+      "BNB/USDT": -1.06,
+      "BTC/USDT": 0.15,
+      "ETH/USDT": -4.01,
+      "SOL/USDT": 1.58,
+      "XRP/USDT": 0.88
+     }
+    }
+   }
+  },
+  {
+   "id": "C03",
+   "strategie": "CombinedBinHAndClucV8",
+   "plafond_min": 30,
+   "verdict": "FRAGILE",
+   "raisons": [
+    "moins de 100 trades sur un bloc",
+    "perdante sur au moins un bloc",
+    "profit factor < 1,15",
+    "t < 2 (pas distinguable du hasard)",
+    "gain concentré (>50 % sur une paire ou un mois)"
+   ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [
+    "np.NAN"
+   ],
+   "mesures": {
+    "global": {
+     "trades": 171,
+     "net_usdt_frais_seuls": 9.87,
+     "net_usdt": 1.32,
+     "gain_moyen_pct": 0.015,
+     "taux_gain_pct": 53.8,
+     "profit_factor": 1.04,
+     "t_stat": 0.17,
+     "drawdown_max_usdt": 7.95,
+     "duree_moy_min": 25.9,
+     "part_sortie_plafond_pct": 74.9,
+     "part_max_paire": 6.24,
+     "part_max_mois": 3.17,
+     "par_paire_usdt": {
+      "BNB/USDT": -3.4,
+      "BTC/USDT": -4.41,
+      "ETH/USDT": -0.78,
+      "SOL/USDT": 8.22,
+      "XRP/USDT": 1.69
+     }
+    },
+    "P1": {
+     "trades": 80,
+     "net_usdt_frais_seuls": 4.56,
+     "net_usdt": 0.56,
+     "gain_moyen_pct": 0.014,
+     "taux_gain_pct": 52.5,
+     "profit_factor": 1.03,
+     "t_stat": 0.1,
+     "drawdown_max_usdt": 7.95,
+     "duree_moy_min": 25.0,
+     "part_sortie_plafond_pct": 66.2,
+     "part_max_paire": 11.18,
+     "part_max_mois": 7.44,
+     "par_paire_usdt": {
+      "BNB/USDT": -2.75,
+      "BTC/USDT": -4.63,
+      "ETH/USDT": 0.11,
+      "SOL/USDT": 6.24,
+      "XRP/USDT": 1.59
+     }
+    },
+    "P2": {
+     "trades": 46,
+     "net_usdt_frais_seuls": 6.83,
+     "net_usdt": 4.53,
+     "gain_moyen_pct": 0.197,
+     "taux_gain_pct": 73.9,
+     "profit_factor": 1.49,
+     "t_stat": 0.99,
+     "drawdown_max_usdt": 2.77,
+     "duree_moy_min": 24.2,
+     "part_sortie_plafond_pct": 71.7,
+     "part_max_paire": 0.25,
+     "part_max_mois": 0.92,
+     "par_paire_usdt": {
+      "BNB/USDT": 0.26,
+      "BTC/USDT": 0.99,
+      "ETH/USDT": 1.12,
+      "SOL/USDT": 1.08,
+      "XRP/USDT": 1.08
+     }
+    },
+    "P3": {
+     "trades": 45,
+     "net_usdt_frais_seuls": -1.52,
+     "net_usdt": -3.77,
+     "gain_moyen_pct": -0.168,
+     "taux_gain_pct": 35.6,
+     "profit_factor": 0.54,
+     "t_stat": -1.63,
+     "drawdown_max_usdt": 4.75,
+     "duree_moy_min": 29.2,
+     "part_sortie_plafond_pct": 93.3,
+     "part_max_paire": null,
+     "part_max_mois": null,
+     "par_paire_usdt": {
+      "BNB/USDT": -0.9,
+      "BTC/USDT": -0.78,
+      "ETH/USDT": -2.01,
+      "SOL/USDT": 0.9,
+      "XRP/USDT": -0.99
+     }
+    }
+   }
+  },
+  {
+   "id": "C03",
+   "strategie": "CombinedBinHAndClucV8",
+   "plafond_min": 45,
+   "verdict": "FRAGILE",
+   "raisons": [
+    "moins de 100 trades sur un bloc",
+    "perdante sur au moins un bloc",
+    "t < 2 (pas distinguable du hasard)",
+    "gain concentré (>50 % sur une paire ou un mois)"
+   ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [
+    "np.NAN"
+   ],
+   "mesures": {
+    "global": {
+     "trades": 163,
+     "net_usdt_frais_seuls": 15.25,
+     "net_usdt": 7.1,
+     "gain_moyen_pct": 0.087,
+     "taux_gain_pct": 56.4,
+     "profit_factor": 1.2,
+     "t_stat": 0.79,
+     "drawdown_max_usdt": 9.31,
+     "duree_moy_min": 36.3,
+     "part_sortie_plafond_pct": 68.7,
+     "part_max_paire": 1.17,
+     "part_max_mois": 0.75,
+     "par_paire_usdt": {
+      "BNB/USDT": -0.14,
+      "BTC/USDT": -5.43,
+      "ETH/USDT": -0.47,
+      "SOL/USDT": 8.3,
+      "XRP/USDT": 4.84
+     }
+    },
+    "P1": {
+     "trades": 77,
+     "net_usdt_frais_seuls": 3.99,
+     "net_usdt": 0.14,
+     "gain_moyen_pct": 0.004,
+     "taux_gain_pct": 57.1,
+     "profit_factor": 1.01,
+     "t_stat": 0.02,
+     "drawdown_max_usdt": 9.31,
+     "duree_moy_min": 34.1,
+     "part_sortie_plafond_pct": 59.7,
+     "part_max_paire": 39.76,
+     "part_max_mois": 31.19,
+     "par_paire_usdt": {
+      "BNB/USDT": -0.27,
+      "BTC/USDT": -5.06,
+      "ETH/USDT": -0.1,
+      "SOL/USDT": 5.58,
+      "XRP/USDT": -0.01
+     }
+    },
+    "P2": {
+     "trades": 46,
+     "net_usdt_frais_seuls": 9.89,
+     "net_usdt": 7.59,
+     "gain_moyen_pct": 0.33,
+     "taux_gain_pct": 67.4,
+     "profit_factor": 1.97,
+     "t_stat": 1.73,
+     "drawdown_max_usdt": 2.06,
+     "duree_moy_min": 34.6,
+     "part_sortie_plafond_pct": 67.4,
+     "part_max_paire": 0.8,
+     "part_max_mois": 0.7,
+     "par_paire_usdt": {
+      "BNB/USDT": 0.3,
+      "BTC/USDT": 0.36,
+      "ETH/USDT": -0.07,
+      "SOL/USDT": 0.92,
+      "XRP/USDT": 6.07
+     }
+    },
+    "P3": {
+     "trades": 40,
+     "net_usdt_frais_seuls": 1.37,
+     "net_usdt": -0.63,
+     "gain_moyen_pct": -0.031,
+     "taux_gain_pct": 42.5,
+     "profit_factor": 0.92,
+     "t_stat": -0.2,
+     "drawdown_max_usdt": 3.54,
+     "duree_moy_min": 42.6,
+     "part_sortie_plafond_pct": 87.5,
+     "part_max_paire": null,
+     "part_max_mois": null,
+     "par_paire_usdt": {
+      "BNB/USDT": -0.17,
+      "BTC/USDT": -0.73,
+      "ETH/USDT": -0.29,
+      "SOL/USDT": 1.79,
+      "XRP/USDT": -1.22
+     }
+    }
+   }
+  },
+  {
+   "id": "C03",
+   "strategie": "CombinedBinHAndClucV8",
+   "plafond_min": 60,
+   "verdict": "FRAGILE",
+   "raisons": [
+    "moins de 100 trades sur un bloc",
+    "perdante sur au moins un bloc",
+    "t < 2 (pas distinguable du hasard)",
+    "gain concentré (>50 % sur une paire ou un mois)"
+   ],
+   "audit_biais": "aucun biais détecté",
+   "portage": [
+    "np.NAN"
+   ],
+   "mesures": {
+    "global": {
+     "trades": 160,
+     "net_usdt_frais_seuls": 14.61,
+     "net_usdt": 6.61,
+     "gain_moyen_pct": 0.083,
+     "taux_gain_pct": 60.0,
+     "profit_factor": 1.18,
+     "t_stat": 0.77,
+     "drawdown_max_usdt": 8.76,
+     "duree_moy_min": 46.4,
+     "part_sortie_plafond_pct": 66.2,
+     "part_max_paire": 1.44,
+     "part_max_mois": 0.97,
+     "par_paire_usdt": {
+      "BNB/USDT": -0.87,
+      "BTC/USDT": -4.65,
+      "ETH/USDT": -0.41,
+      "SOL/USDT": 9.49,
+      "XRP/USDT": 3.05
+     }
+    },
+    "P1": {
+     "trades": 75,
+     "net_usdt_frais_seuls": 4.33,
+     "net_usdt": 0.58,
+     "gain_moyen_pct": 0.015,
+     "taux_gain_pct": 58.7,
+     "profit_factor": 1.03,
+     "t_stat": 0.09,
+     "drawdown_max_usdt": 8.76,
+     "duree_moy_min": 42.7,
+     "part_sortie_plafond_pct": 56.0,
+     "part_max_paire": 12.03,
+     "part_max_mois": 8.04,
+     "par_paire_usdt": {
+      "BNB/USDT": -1.13,
+      "BTC/USDT": -4.7,
+      "ETH/USDT": -0.53,
+      "SOL/USDT": 6.96,
+      "XRP/USDT": -0.02
+     }
+    },
+    "P2": {
+     "trades": 45,
+     "net_usdt_frais_seuls": 9.49,
+     "net_usdt": 7.24,
+     "gain_moyen_pct": 0.322,
+     "taux_gain_pct": 71.1,
+     "profit_factor": 1.89,
+     "t_stat": 1.66,
+     "drawdown_max_usdt": 2.14,
+     "duree_moy_min": 44.3,
+     "part_sortie_plafond_pct": 66.7,
+     "part_max_paire": 0.64,
+     "part_max_mois": 0.88,
+     "par_paire_usdt": {
+      "BNB/USDT": 0.04,
+      "BTC/USDT": 0.98,
+      "ETH/USDT": 0.43,
+      "SOL/USDT": 1.12,
+      "XRP/USDT": 4.66
+     }
+    },
+    "P3": {
+     "trades": 40,
+     "net_usdt_frais_seuls": 0.79,
+     "net_usdt": -1.21,
+     "gain_moyen_pct": -0.061,
+     "taux_gain_pct": 50.0,
+     "profit_factor": 0.85,
+     "t_stat": -0.37,
+     "drawdown_max_usdt": 3.64,
+     "duree_moy_min": 55.8,
+     "part_sortie_plafond_pct": 85.0,
+     "part_max_paire": null,
+     "part_max_mois": null,
+     "par_paire_usdt": {
+      "BNB/USDT": 0.22,
+      "BTC/USDT": -0.94,
+      "ETH/USDT": -0.31,
+      "SOL/USDT": 1.4,
+      "XRP/USDT": -1.59
+     }
+    }
+   }
   }
  ]
 }

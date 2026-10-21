@@ -1,0 +1,80 @@
+2026-10-21 22:32:35,332 - freqtrade.strategy.hyper - INFO - Strategy Parameter: buy_minimum_conditions = 1
+2026-10-21 22:32:35,332 - freqtrade.strategy.hyper - INFO - Strategy Parameter: cstp_bail_time = 5
+2026-10-21 22:32:35,333 - freqtrade.strategy.hyper - INFO - Strategy Parameter: cstp_loss_threshold = 0
+2026-10-21 22:32:35,333 - freqtrade.strategy.hyper - INFO - Strategy Parameter: sell_roi_override_rsi_threshold = 50
+2026-10-21 22:32:35,348 - freqtrade.data.dataprovider - INFO - Loading data for BTC/USDT 1h from 2022-12-23 16:00:00 to 2026-10-01 00:00:00
+2026-10-21 22:32:35,383 - freqtrade.data.history.datahandlers.idatahandler - WARNING - BTC/USDT, spot, 1h, data ends at 2026-09-30 23:00:00
+2026-10-21 22:32:35,578 - freqtrade.data.dataprovider - INFO - Loading data for ETH/USDT 1h from 2022-12-23 16:00:00 to 2026-10-01 00:00:00
+2026-10-21 22:32:35,612 - freqtrade.data.history.datahandlers.idatahandler - WARNING - ETH/USDT, spot, 1h, data ends at 2026-09-30 23:00:00
+2026-10-21 22:32:35,765 - freqtrade.data.dataprovider - INFO - Loading data for SOL/USDT 1h from 2022-12-23 16:00:00 to 2026-10-01 00:00:00
+2026-10-21 22:32:35,798 - freqtrade.data.history.datahandlers.idatahandler - WARNING - SOL/USDT, spot, 1h, data ends at 2026-09-30 23:00:00
+2026-10-21 22:32:35,964 - freqtrade.data.dataprovider - INFO - Loading data for BNB/USDT 1h from 2022-12-23 16:00:00 to 2026-10-01 00:00:00
+2026-10-21 22:32:35,997 - freqtrade.data.history.datahandlers.idatahandler - WARNING - BNB/USDT, spot, 1h, data ends at 2026-09-30 23:00:00
+2026-10-21 22:32:36,155 - freqtrade.data.dataprovider - INFO - Loading data for XRP/USDT 1h from 2022-12-23 16:00:00 to 2026-10-01 00:00:00
+2026-10-21 22:32:36,189 - freqtrade.data.history.datahandlers.idatahandler - WARNING - XRP/USDT, spot, 1h, data ends at 2026-09-30 23:00:00
+2026-10-21 22:32:36,355 - freqtrade.optimize.backtesting - INFO - Backtesting with data from 2023-01-01 00:00:00 up to 2026-09-30 23:55:00 (1368 days).
+convert ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                                          3/4  75% • 0:00:19 • 0:00:10
+convert ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸                                                                                                                                   1/5  20% • 0:00:19 • -:--:--
+2026-10-21 22:32:36,371 - freqtrade - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 1115, in setitem
+    casted = np_can_hold_element(values.dtype, value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/dtypes/cast.py", line 1830, in np_can_hold_element
+    raise LossySetitemError
+pandas.errors.LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/main.py", line 52, in main
+    return_code = args["func"](args)
+                  ^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/commands/optimize_commands.py", line 61, in start_backtesting
+    backtesting.start()
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/optimize/backtesting.py", line 1928, in start
+    min_date, max_date = self.backtest_one_strategy(strat, data, timerange)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/optimize/backtesting.py", line 1853, in backtest_one_strategy
+    results = self.backtest(
+              ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/optimize/backtesting.py", line 1784, in backtest
+    data: dict = self._get_ohlcv_as_lists(processed)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/optimize/backtesting.py", line 539, in _get_ohlcv_as_lists
+    df_analyzed = self.strategy.ft_advise_signals(pair_data, {"pair": pair})
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/strategy/interface.py", line 1786, in ft_advise_signals
+    dataframe = self.advise_entry(dataframe, metadata)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/strategy/interface.py", line 1855, in advise_entry
+    df = self.populate_entry_trend(dataframe, metadata)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/freqtrade/strategy/interface.py", line 261, in populate_entry_trend
+    return self.populate_buy_trend(dataframe, metadata)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/forex-agent/forex-agent/user_data/strategies/CombinedBinHAndClucV6H.py", line 282, in populate_buy_trend
+    dataframe.loc[
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 938, in __setitem__
+    iloc._setitem_with_indexer(indexer, value, self.name)
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 1953, in _setitem_with_indexer
+    self._setitem_with_indexer_split_path(indexer, value, name)
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 2044, in _setitem_with_indexer_split_path
+    self._setitem_single_column(loc, value, pi)
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/indexing.py", line 2181, in _setitem_single_column
+    self.obj._mgr.column_setitem(loc, plane_indexer, value)
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 1541, in column_setitem
+    new_mgr = col_mgr.setitem((idx,), value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 620, in setitem
+    return self.apply("setitem", indexer=indexer, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 445, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 1118, in setitem
+    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 468, in coerce_to_target_dtype
+    raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
+TypeError: Invalid value '1' for dtype 'bool'

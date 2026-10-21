@@ -1,0 +1,82 @@
+{
+ "ADA/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "ADA/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "ATOM/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "ATOM/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "AVAX/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "AVAX/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "BCH/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "BCH/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "DOGE/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "DOGE/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "DOT/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "DOT/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "ETC/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "ETC/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "LINK/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "LINK/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "LTC/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "LTC/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ },
+ "TRX/USDT 5m": {
+  "bougies": 403184,
+  "mois_manquants": []
+ },
+ "TRX/USDT 1h": {
+  "bougies": 33599,
+  "mois_manquants": []
+ }
+}

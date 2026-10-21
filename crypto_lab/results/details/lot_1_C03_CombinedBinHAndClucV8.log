@@ -1,0 +1,80 @@
+2026-10-21 22:33:20,666 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_min_1 = 0.1
+2026-10-21 22:33:20,666 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_min_2 = 0.02
+2026-10-21 22:33:21,447 - freqtrade.optimize.backtesting - INFO - Backtesting with data from 2023-01-01 00:00:00 up to 2026-09-30 23:55:00 (1368 days).
+2026-10-21 22:33:37,579 - freqtrade.optimize.backtesting - INFO - Running backtesting for Strategy CombinedBinHAndClucV8_cap45
+2026-10-21 22:33:37,580 - freqtrade.strategy.hyper - INFO - No params for buy found, using default values.
+2026-10-21 22:33:37,580 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb20_close_bblowerband = 0.992
+2026-10-21 22:33:37,580 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb20_volume = 29
+2026-10-21 22:33:37,581 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb40_bbdelta_close = 0.031
+2026-10-21 22:33:37,581 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb40_closedelta_close = 0.021
+2026-10-21 22:33:37,581 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb40_tail_bbdelta = 0.264
+2026-10-21 22:33:37,582 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_0 = 0.015
+2026-10-21 22:33:37,582 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_1 = 0.12
+2026-10-21 22:33:37,582 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_2 = 0.28
+2026-10-21 22:33:37,583 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_3 = 0.36
+2026-10-21 22:33:37,583 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_ema_open_mult_1 = 0.02
+2026-10-21 22:33:37,583 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_mfi = 36.0
+2026-10-21 22:33:37,583 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_min_inc = 0.01
+2026-10-21 22:33:37,584 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi = 38.5
+2026-10-21 22:33:37,584 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi_1h = 67.0
+2026-10-21 22:33:37,584 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi_diff = 50.48
+2026-10-21 22:33:37,585 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_volume_1 = 2.0
+2026-10-21 22:33:37,585 - freqtrade.strategy.hyper - INFO - No params for sell found, using default values.
+2026-10-21 22:33:37,585 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_1 = 0.01
+2026-10-21 22:33:37,586 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_2 = 0.04
+2026-10-21 22:33:37,586 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_3 = 0.08
+2026-10-21 22:33:37,586 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_4 = 0.14
+2026-10-21 22:33:37,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_5 = 0.04
+2026-10-21 22:33:37,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_1 = 50
+2026-10-21 22:33:37,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_2 = 50
+2026-10-21 22:33:37,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_3 = 56
+2026-10-21 22:33:37,588 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_4 = 58
+2026-10-21 22:33:37,588 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_stoploss_1 = -0.05
+2026-10-21 22:33:37,588 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_rsi_main = 80
+2026-10-21 22:33:37,589 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_down_1 = 0.03
+2026-10-21 22:33:37,589 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_down_2 = 0.015
+2026-10-21 22:33:37,589 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_max_1 = 0.4
+2026-10-21 22:33:37,590 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_max_2 = 0.1
+2026-10-21 22:33:37,590 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_min_1 = 0.1
+2026-10-21 22:33:37,590 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_min_2 = 0.02
+2026-10-21 22:33:38,355 - freqtrade.optimize.backtesting - INFO - Backtesting with data from 2023-01-01 00:00:00 up to 2026-09-30 23:55:00 (1368 days).
+2026-10-21 22:33:54,582 - freqtrade.optimize.backtesting - INFO - Running backtesting for Strategy CombinedBinHAndClucV8_cap60
+2026-10-21 22:33:54,582 - freqtrade.strategy.hyper - INFO - No params for buy found, using default values.
+2026-10-21 22:33:54,583 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb20_close_bblowerband = 0.992
+2026-10-21 22:33:54,583 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb20_volume = 29
+2026-10-21 22:33:54,584 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb40_bbdelta_close = 0.031
+2026-10-21 22:33:54,584 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb40_closedelta_close = 0.021
+2026-10-21 22:33:54,584 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_bb40_tail_bbdelta = 0.264
+2026-10-21 22:33:54,585 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_0 = 0.015
+2026-10-21 22:33:54,585 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_1 = 0.12
+2026-10-21 22:33:54,585 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_2 = 0.28
+2026-10-21 22:33:54,586 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_dip_threshold_3 = 0.36
+2026-10-21 22:33:54,586 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_ema_open_mult_1 = 0.02
+2026-10-21 22:33:54,586 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_mfi = 36.0
+2026-10-21 22:33:54,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_min_inc = 0.01
+2026-10-21 22:33:54,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi = 38.5
+2026-10-21 22:33:54,587 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi_1h = 67.0
+2026-10-21 22:33:54,588 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi_diff = 50.48
+2026-10-21 22:33:54,588 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_volume_1 = 2.0
+2026-10-21 22:33:54,588 - freqtrade.strategy.hyper - INFO - No params for sell found, using default values.
+2026-10-21 22:33:54,589 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_1 = 0.01
+2026-10-21 22:33:54,589 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_2 = 0.04
+2026-10-21 22:33:54,589 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_3 = 0.08
+2026-10-21 22:33:54,590 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_4 = 0.14
+2026-10-21 22:33:54,590 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_profit_5 = 0.04
+2026-10-21 22:33:54,590 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_1 = 50
+2026-10-21 22:33:54,591 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_2 = 50
+2026-10-21 22:33:54,591 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_3 = 56
+2026-10-21 22:33:54,591 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_roi_rsi_4 = 58
+2026-10-21 22:33:54,592 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_custom_stoploss_1 = -0.05
+2026-10-21 22:33:54,592 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_rsi_main = 80
+2026-10-21 22:33:54,592 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_down_1 = 0.03
+2026-10-21 22:33:54,593 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_down_2 = 0.015
+2026-10-21 22:33:54,593 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_max_1 = 0.4
+2026-10-21 22:33:54,593 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_max_2 = 0.1
+2026-10-21 22:33:54,594 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_min_1 = 0.1
+2026-10-21 22:33:54,594 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_trail_profit_min_2 = 0.02
+2026-10-21 22:33:55,346 - freqtrade.optimize.backtesting - INFO - Backtesting with data from 2023-01-01 00:00:00 up to 2026-09-30 23:55:00 (1368 days).
+backtest ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4/4           100% • 0:00:23 • 0:00:00
+backtest ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 394271/394271 100% • 0:01:30 • 0:00:00
+2026-10-21 22:34:19,533 - freqtrade.misc - INFO - dumping json to "user_data/backtest_results/backtest-result-2026-10-21_22-34-19.meta.json"
