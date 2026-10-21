@@ -1,0 +1,80 @@
+2026-10-21 22:13:51,632 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2026-10-21 22:13:51,632 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 2
+2026-10-21 22:13:51,632 - freqtrade.configuration.config_validation - WARNING - DEPRECATED: Using 'buy' and 'sell' for order_types is deprecated.Please migrate your order_types settings to use 'entry'
+and 'exit' wording.
+2026-10-21 22:13:51,633 - freqtrade.configuration.deprecated_settings - WARNING - DEPRECATED: The `order_types.buy` setting is deprecated and will be removed in the next versions of Freqtrade. Please 
+use the `order_types.entry` setting in your configuration instead.
+2026-10-21 22:13:51,633 - freqtrade.configuration.deprecated_settings - WARNING - DEPRECATED: The `order_types.sell` setting is deprecated and will be removed in the next versions of Freqtrade. Please
+use the `order_types.exit` setting in your configuration instead.
+2026-10-21 22:13:51,633 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2026-10-21 22:13:51,635 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy CombinedBinHAndClucV8_cap45 from 
+'/home/runner/work/forex-agent/forex-agent/user_data/strategies/CombinedBinHAndClucV8_cap45.py'...
+2026-10-21 22:13:51,635 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value from the configuration: USDT.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value from the configuration: 50.0.
+2026-10-21 22:13:51,636 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value from the configuration: 2.
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'0': 10, '45': -1}
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.99
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive: 0.01
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.03
+2026-10-21 22:13:51,637 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: True
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: True
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'stoploss': 'market', 'stoploss_on_exchange': False, 'entry': 'limit', 'exit': 'limit', 
+'emergency_exit': 'market'}
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: 50.0
+2026-10-21 22:13:51,638 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: True
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.001
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2026-10-21 22:13:51,639 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2026-10-21 22:13:51,640 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 2
+2026-10-21 22:13:51,640 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2026-10-21 22:13:51,642 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy CombinedBinHAndClucV8_cap60 from 
+'/home/runner/work/forex-agent/forex-agent/user_data/strategies/CombinedBinHAndClucV8_cap60.py'...
+2026-10-21 22:13:51,642 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2026-10-21 22:13:51,642 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_only' moved to 'exit_profit_only'.
+2026-10-21 22:13:51,642 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'sell_profit_offset' moved to 'exit_profit_offset'.
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'use_sell_signal' moved to 'use_exit_signal'.
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - WARNING - DEPRECATED: Using 'ignore_roi_if_buy_signal' moved to 'ignore_roi_if_entry_signal'.
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value from the configuration: USDT.
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value from the configuration: 50.0.
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value from the configuration: 2.
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'0': 10, '60': -1}
+2026-10-21 22:13:51,643 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.99
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive: 0.01
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.03
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: True
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: True
+2026-10-21 22:13:51,644 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'stoploss': 'market', 'stoploss_on_exchange': False, 'entry': 'limit', 'exit': 'limit', 
+'emergency_exit': 'market'}
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: 50.0
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2026-10-21 22:13:51,645 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: True
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.001
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 2
+2026-10-21 22:13:51,646 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2026-10-21 22:13:51,647 - freqtrade - ERROR - Timeframe needs to be set in either configuration or as cli argument `--timeframe 5m`

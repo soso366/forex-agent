@@ -1,0 +1,71 @@
+{
+ "lot": 1,
+ "conditions": {
+  "paires": [
+   "BTC/USDT",
+   "ETH/USDT",
+   "SOL/USDT",
+   "BNB/USDT",
+   "XRP/USDT"
+  ],
+  "mise_usdt": 50.0,
+  "capital": 150.0,
+  "positions_max": 2,
+  "frais_par_ordre": 0.001,
+  "glissement_aller_retour": 0.001,
+  "periode": "20230101-20261001",
+  "blocs": {
+   "P1": [
+    "2023-01-01",
+    "2024-07-01"
+   ],
+   "P2": [
+    "2024-07-01",
+    "2025-07-01"
+   ],
+   "P3": [
+    "2025-07-01",
+    "2026-10-01"
+   ]
+  },
+  "exchange": "binance"
+ },
+ "resultats": [
+  {
+   "id": "C01",
+   "strategie": "CombinedBinHAndClucV5",
+   "verdict": "ERREUR",
+   "erreur": [
+    "2026-10-21 22:13:44,861 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False",
+    "2026-10-21 22:13:44,861 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1",
+    "2026-10-21 22:13:44,861 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 2",
+    "2026-10-21 22:13:44,861 - freqtrade.configuration.config_validation - INFO - Validating configuration ...",
+    "2026-10-21 22:13:44,862 - freqtrade - ERROR - Timeframe needs to be set in either configuration or as cli argument `--timeframe 5m`"
+   ]
+  },
+  {
+   "id": "C02",
+   "strategie": "CombinedBinHAndClucV6H",
+   "verdict": "ERREUR",
+   "erreur": [
+    "2026-10-21 22:13:48,294 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False",
+    "2026-10-21 22:13:48,294 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1",
+    "2026-10-21 22:13:48,294 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 2",
+    "2026-10-21 22:13:48,294 - freqtrade.configuration.config_validation - INFO - Validating configuration ...",
+    "2026-10-21 22:13:48,296 - freqtrade - ERROR - Timeframe needs to be set in either configuration or as cli argument `--timeframe 5m`"
+   ]
+  },
+  {
+   "id": "C03",
+   "strategie": "CombinedBinHAndClucV8",
+   "verdict": "ERREUR",
+   "erreur": [
+    "2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False",
+    "2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1",
+    "2026-10-21 22:13:51,646 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 2",
+    "2026-10-21 22:13:51,646 - freqtrade.configuration.config_validation - INFO - Validating configuration ...",
+    "2026-10-21 22:13:51,647 - freqtrade - ERROR - Timeframe needs to be set in either configuration or as cli argument `--timeframe 5m`"
+   ]
+  }
+ ]
+}
