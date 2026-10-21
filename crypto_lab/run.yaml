@@ -1,0 +1,5 @@
+# Ce que le workflow « Crypto Lab — backtests » exécute à chaque modification poussée dans crypto_lab/.
+# Chaque entrée : un lot (candidats de candidates.yaml) sur une liste de paires, avec un nom de sortie.
+runs:
+  - {label: lot_1, batch: 1, pairs: [BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT, XRP/USDT], audit: true}
+  - {label: confirmation_V5, ids: [C01], pairs: [ADA/USDT, DOGE/USDT, LTC/USDT, LINK/USDT, AVAX/USDT, TRX/USDT, DOT/USDT, BCH/USDT, ATOM/USDT, ETC/USDT], stress_slip_rt: 0.002}

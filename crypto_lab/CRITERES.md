@@ -27,3 +27,14 @@ Les paramètres ont pu être retouchés plus tard par les auteurs ; on exige don
 
 Sinon : ÉCHEC (perdante) ou FRAGILE (positive mais pas sur tous les critères). Aucune stratégie n'est retenue par défaut.
 Une stratégie ROBUSTE passe ensuite au paper trading, jamais directement à l'argent réel.
+
+## Test de confirmation (écrit le 22/10/2026 APRÈS le lot 1, AVANT tout test sur ces nouvelles paires)
+Au lot 1, seule CombinedBinHAndClucV5 est positive (FRAGILE : trop peu de trades par bloc). Le plafond de 45 min
+y donne le meilleur profit factor : le choisir est une sélection après coup, donc il doit être confirmé ailleurs.
+
+- Nouvelles paires, jamais testées : ADA, DOGE, LTC, LINK, AVAX, TRX, DOT, BCH, ATOM, ETC (/USDT). Mêmes périodes,
+  mêmes frais, même mise, même code (aucun réglage modifié).
+- **Confirmé** seulement si la version « plafond 45 min » de V5 sur ces 10 paires : est positive sur chacun des 3 blocs
+  avec glissement, a un profit factor ≥ 1,15 et t ≥ 2. Les autres plafonds sont rapportés pour information.
+- Stress supplémentaire : glissement 0,10 % par ordre (0,40 % aller-retour, frais compris) — doit rester positif au total.
+- Audit de biais : `freqtrade lookahead-analysis` sur chaque stratégie testée ; tout biais détecté = REJET.

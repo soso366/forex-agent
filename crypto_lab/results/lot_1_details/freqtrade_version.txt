@@ -1,5 +1,0 @@
-Operating System:	Linux-6.17.0-1022-azure-x86_64-with-glibc2.39
-Python Version:		Python 3.12.15
-CCXT Version:		4.5.89
-
-Freqtrade Version:	freqtrade 2026.9

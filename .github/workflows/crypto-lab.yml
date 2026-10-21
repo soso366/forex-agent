@@ -8,8 +8,6 @@ on:
     branches: [research-crypto]
     paths: ["crypto_lab/**", "!crypto_lab/results/**", ".github/workflows/crypto-lab.yml"]
   workflow_dispatch:
-    inputs:
-      batch: {description: "Numéro du lot", required: true, default: "1"}
 
 concurrency:
   group: crypto-lab
@@ -21,8 +19,6 @@ jobs:
     timeout-minutes: 300
     permissions:
       contents: read
-    env:
-      BATCH: ${{ inputs.batch || '1' }}
     steps:
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
@@ -34,27 +30,40 @@ jobs:
           freqtrade --version | tee freqtrade_version.txt
       - name: Choix de l'exchange (liste des marchés, sans clé)
         run: python crypto_lab/pick_exchange.py
+      - name: Liste des paires du plan
+        id: pairs
+        run: |
+          P=$(python -c "import yaml;print(' '.join(sorted({p for r in yaml.safe_load(open('crypto_lab/run.yaml'))['runs'] for p in r['pairs']})))")
+          echo "list=$P" >> "$GITHUB_OUTPUT"
+          echo "key=$(echo "$P" | md5sum | cut -c1-12)" >> "$GITHUB_OUTPUT"
       - name: Cache des données
         uses: actions/cache@v4
         with:
           path: user_data/data/binance
-          key: binance-spot-5m-1h-2022-12-2026-09-v1
+          key: binance-spot-5m-1h-2022-12-2026-09-${{ steps.pairs.outputs.key }}
+          restore-keys: binance-spot-5m-1h-2022-12-2026-09-
       - name: Données Binance publiques (5m, 1h)
         run: |
-          if [ ! -f user_data/data/binance/BTC_USDT-5m.json ]; then
-            python crypto_lab/fetch_data.py --pairs BTC/USDT ETH/USDT SOL/USDT BNB/USDT XRP/USDT \
-              --timeframes 5m 1h --start 2022-12 --end 2026-09 --out user_data/data/binance
+          MISSING=""
+          for P in ${{ steps.pairs.outputs.list }}; do
+            [ -f "user_data/data/binance/${P/\//_}-5m.json" ] || MISSING="$MISSING $P"
+          done
+          if [ -n "$MISSING" ]; then
+            python crypto_lab/fetch_data.py --pairs $MISSING --timeframes 5m 1h --start 2022-12 --end 2026-09 \
+              --out user_data/data/binance_new
+            mkdir -p user_data/data/binance && cp user_data/data/binance_new/*.json user_data/data/binance/
+            cp user_data/data/binance_new/_rapport_donnees.json user_data/data/binance/_rapport_donnees.json
           fi
           EX=$(python -c "import json;print(json.load(open('exchange_choice.json'))['name'])")
           [ "$EX" = binance ] || cp -r user_data/data/binance user_data/data/$EX
           cat user_data/data/binance/_rapport_donnees.json
-      - name: Backtests du lot
-        run: python crypto_lab/run_batch.py --batch "$BATCH"
+      - name: Backtests du plan (crypto_lab/run.yaml)
+        run: python crypto_lab/run_batch.py
       - name: Résumé
         if: always()
         run: |
-          [ -f crypto_lab/results/lot_${BATCH}.md ] && cat crypto_lab/results/lot_${BATCH}.md >> "$GITHUB_STEP_SUMMARY" || true
-          mkdir -p out && cp crypto_lab/results/lot_${BATCH}.* out/ 2>/dev/null || true
+          mkdir -p out && for f in crypto_lab/results/*.md; do [ -f "$f" ] && cat "$f" >> "$GITHUB_STEP_SUMMARY"; done; true
+          cp crypto_lab/results/*.md crypto_lab/results/*.json out/ 2>/dev/null || true
           cp freqtrade_version.txt exchange_choice.json user_data/data/binance/_rapport_donnees.json out/ 2>/dev/null || true
           mkdir -p out/logs && for f in logs/*.log; do [ -f "$f" ] && tail -n 80 "$f" > "out/logs/$(basename "$f")"; done; true
       - uses: actions/upload-artifact@v4
@@ -67,8 +76,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      BATCH: ${{ inputs.batch || '1' }}
     steps:
       - uses: actions/checkout@v4
         with: {ref: research-crypto}
@@ -77,13 +84,13 @@ jobs:
         continue-on-error: true
       - name: Enregistrer uniquement les résultats
         run: |
-          mkdir -p crypto_lab/results/lot_${BATCH}_details
-          # copie stricte : seulement des fichiers .json / .md / .txt / .log, vers un dossier fixe
+          mkdir -p crypto_lab/results/details
+          # copie stricte : seulement des fichiers .json / .md / .txt / .log, vers des dossiers fixes
           find out -type f \( -name '*.json' -o -name '*.md' -o -name '*.txt' -o -name '*.log' \) -print0 |
-            while IFS= read -r -d '' f; do cp "$f" "crypto_lab/results/lot_${BATCH}_details/$(basename "$f")"; done
-          [ -f out/lot_${BATCH}.md ] && cp out/lot_${BATCH}.md out/lot_${BATCH}.json crypto_lab/results/ || true
+            while IFS= read -r -d '' f; do cp "$f" "crypto_lab/results/details/$(basename "$f")"; done
+          for f in out/*.md out/*.json; do [ -f "$f" ] && cp "$f" crypto_lab/results/; done; true
           git config user.name "crypto-lab[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add crypto_lab/results
-          git diff --cached --quiet || git commit -qm "Crypto Lab : résultats du lot ${BATCH} (run ${{ github.run_id }})"
+          git diff --cached --quiet || git commit -qm "Crypto Lab : résultats (run ${{ github.run_id }})"
           git push -q origin HEAD:research-crypto

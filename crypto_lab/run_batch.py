@@ -78,18 +78,18 @@ def write_config(exchange):
     Path("config_lab.json").write_text(json.dumps(cfg, indent=1))
 
 
-def stats(trades, start=None, end=None):
+def stats(trades, start=None, end=None, slip=SLIP_RT):
     t = [x for x in trades if (start is None or x["open"] >= start) and (end is None or x["open"] < end)]
     n = len(t)
     if n == 0:
         return {"trades": 0}
-    r = [x["pr"] - SLIP_RT for x in t]          # rendement par trade, frais + glissement
+    r = [x["pr"] - slip for x in t]          # rendement par trade, frais + glissement
     pnl = [STAKE * v for v in r]
     gains, pertes = sum(v for v in pnl if v > 0), -sum(v for v in pnl if v < 0)
     mean = sum(r) / n
     sd = math.sqrt(sum((v - mean) ** 2 for v in r) / (n - 1)) if n > 1 else 0.0
     eq, peak, dd = 0.0, 0.0, 0.0
-    for v in [STAKE * (x["pr"] - SLIP_RT) for x in sorted(t, key=lambda x: x["close"])]:
+    for v in [STAKE * (x["pr"] - slip) for x in sorted(t, key=lambda x: x["close"])]:
         eq += v
         peak = max(peak, eq)
         dd = max(dd, peak - eq)
@@ -138,45 +138,60 @@ def verdict(s):
     return ("FRAGILE" if g["net_usdt"] > 0 else "ÉCHEC"), why
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--batch", type=int, required=True)
-    a = ap.parse_args()
-    cand = yaml.safe_load((LAB / "candidates.yaml").read_text())
-    todo = [c for c in cand["candidates"] if c.get("batch") == a.batch and c["verdict"] == "TEST" and c.get("file")]
-    ext = Path("ext")
+PORT = [("np.NAN", "np.nan")]   # portage mécanique NumPy 2 (même valeur), aucune logique modifiée
+
+
+def run_one(job, cand, exchange, logs):
+    """Un passage du plan run.yaml : backtests + audit éventuel. Renvoie la liste de résultats."""
+    ids = job.get("ids")
+    todo = [c for c in cand["candidates"] if c["verdict"] == "TEST" and c.get("file")
+            and ((ids and c["id"] in ids) or (not ids and c.get("batch") == job.get("batch")))]
+    ex = dict(exchange, pair_whitelist=job["pairs"])
+    write_config(ex)
     sdir = UD / "strategies"
     sdir.mkdir(parents=True, exist_ok=True)
-    exchange = json.loads(Path("exchange_choice.json").read_text())
-    write_config(exchange)
-    out = {"lot": a.batch, "conditions": {"paires": PAIRS, "mise_usdt": STAKE, "capital": WALLET, "positions_max": MAX_OPEN,
-           "frais_par_ordre": FEE, "glissement_aller_retour": SLIP_RT, "periode": TIMERANGE, "blocs": BLOCKS,
-           "exchange": exchange["name"]}, "resultats": []}
-    logs = Path("logs")
-    logs.mkdir(exist_ok=True)
+    out = []
     for c in todo:
-        repo = fetch_repo(c["repo"], cand["repos"][c["repo"]], ext)
+        repo = fetch_repo(c["repo"], cand["repos"][c["repo"]], Path("ext"))
         src = repo / c["file"]
-        mod = src.stem
-        shutil.copy(src, sdir / src.name)
+        code = src.read_text()
+        ports = [a for a, b in PORT if a in code]
+        for a, b in PORT:
+            code = code.replace(a, b)
+        (sdir / src.name).write_text(code)
         names = []
         for cap in CAPS:
             if cap is None:
                 names.append(c["name"])
                 continue
-            (sdir / f"{c['name']}_cap{cap}.py").write_text(WRAPPER.format(mod=mod, cls=c["name"], cap=cap))
+            (sdir / f"{c['name']}_cap{cap}.py").write_text(WRAPPER.format(mod=src.stem, cls=c["name"], cap=cap))
             names.append(f"{c['name']}_cap{cap}")
         res_dir = UD / "backtest_results"
         if res_dir.exists():
             shutil.rmtree(res_dir)
         res_dir.mkdir(parents=True)
+        tf = c.get("timeframe", "5m")
         r = sh(["freqtrade", "backtesting", "-c", "config_lab.json", "--userdir", str(UD), "--timerange", TIMERANGE,
-                "--fee", str(FEE), "--timeframe", c.get("timeframe", "5m"), "--export", "trades", "--cache", "none", "--strategy-list", *names],
-               log=logs / f"{c['id']}_{c['name']}.log", check=True)
+                "--fee", str(FEE), "--timeframe", tf, "--export", "trades", "--cache", "none", "--strategy-list", *names],
+               log=logs / f"{job['label']}_{c['id']}_{c['name']}.log")
         if r.returncode != 0:
             err = (r.stderr or r.stdout).strip().splitlines()[-5:]
-            out["resultats"].append({"id": c["id"], "strategie": c["name"], "verdict": "ERREUR", "erreur": err})
+            out.append({"id": c["id"], "strategie": c["name"], "verdict": "ERREUR", "erreur": err})
             continue
+        audit = None
+        if job.get("audit"):
+            ra = sh(["freqtrade", "lookahead-analysis", "-c", "config_lab.json", "--userdir", str(UD), "--strategy", c["name"],
+                     "--timeframe", tf, "--timerange", "20250101-20250401", "--fee", str(FEE)],
+                    log=logs / f"{job['label']}_{c['id']}_lookahead.log")
+            txt = (ra.stdout + ra.stderr)
+            low = txt.lower()
+            if ra.returncode != 0:
+                audit = "audit impossible (voir log)"
+            elif "has_bias" in low or "bias" in low:
+                rows = [l for l in txt.splitlines() if c["name"] in l and "|" in l]
+                audit = "BIAIS DÉTECTÉ" if any("true" in l.lower() for l in rows) else "aucun biais détecté"
+            else:
+                audit = "résultat non lu (voir log)"
         from freqtrade.data.btanalysis import load_backtest_data
         for name, cap in zip(names, CAPS):
             df = load_backtest_data(res_dir, strategy=name)
@@ -187,28 +202,55 @@ def main():
             s = {"global": stats(trades)}
             for b, (d0, d1) in BLOCKS.items():
                 s[b] = stats(trades, d0, d1)
+            if job.get("stress_slip_rt"):
+                s["stress"] = stats(trades, slip=job["stress_slip_rt"])
             v, why = verdict(s)
-            out["resultats"].append({"id": c["id"], "strategie": c["name"], "plafond_min": cap, "verdict": v,
-                                     "raisons": why, "mesures": s})
-            print(name, v, why, flush=True)
-    res = LAB / "results"
-    res.mkdir(exist_ok=True)
-    (res / f"lot_{a.batch}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
-    lines = [f"# Lot {a.batch} — résultats (frais 0,10 %/ordre + glissement 0,05 %/ordre)", "",
-             "| Stratégie | Plafond | Trades | Net USDT | Gain moyen % | Taux de gain | PF | t | DD max | P1 | P2 | P3 | Verdict |",
-             "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    for r in out["resultats"]:
+            if audit == "BIAIS DÉTECTÉ":
+                v, why = "ÉCHEC", ["biais d'anticipation détecté"] + why
+            out.append({"id": c["id"], "strategie": c["name"], "plafond_min": cap, "verdict": v, "raisons": why,
+                        "audit_biais": audit, "portage": ports, "mesures": s})
+            print(name, v, why, audit, flush=True)
+    return out
+
+
+def table(label, rows):
+    lines = [f"# {label} — résultats (frais 0,10 %/ordre + glissement 0,05 %/ordre)", "",
+             "| Stratégie | Plafond | Trades | Net USDT | Gain moyen % | Taux de gain | PF | t | DD max | P1 | P2 | P3 | Stress | Audit biais | Verdict |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    for r in rows:
         if r["verdict"] == "ERREUR":
-            lines.append(f"| {r['strategie']} | — | — | — | — | — | — | — | — | — | — | — | ERREUR : {' / '.join(r['erreur'])[:200]} |")
+            lines.append(f"| {r['strategie']} | — | — | — | — | — | — | — | — | — | — | — | — | — | ERREUR : {' / '.join(r['erreur'])[:200]} |")
             continue
         g, m = r["mesures"]["global"], r["mesures"]
         cap = f"{r['plafond_min']} min" if r["plafond_min"] else "origine"
+        stress = m.get("stress", {}).get("net_usdt", "—")
         lines.append(f"| {r['strategie']} | {cap} | {g.get('trades', 0)} | {g.get('net_usdt', 0)} | {g.get('gain_moyen_pct')} | "
                      f"{g.get('taux_gain_pct')} % | {g.get('profit_factor')} | {g.get('t_stat')} | {g.get('drawdown_max_usdt')} | "
-                     f"{m['P1'].get('net_usdt', 0)} | {m['P2'].get('net_usdt', 0)} | {m['P3'].get('net_usdt', 0)} | "
-                     f"**{r['verdict']}** {'; '.join(r['raisons'])} |")
-    (res / f"lot_{a.batch}.md").write_text("\n".join(lines) + "\n")
-    print("\n".join(lines))
+                     f"{m['P1'].get('net_usdt', 0)} | {m['P2'].get('net_usdt', 0)} | {m['P3'].get('net_usdt', 0)} | {stress} | "
+                     f"{r.get('audit_biais') or '—'} | **{r['verdict']}** {'; '.join(r['raisons'])} |")
+    return "\n".join(lines) + "\n"
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--plan", default=str(LAB / "run.yaml"))
+    a = ap.parse_args()
+    cand = yaml.safe_load((LAB / "candidates.yaml").read_text())
+    plan = yaml.safe_load(Path(a.plan).read_text())["runs"]
+    exchange = json.loads(Path("exchange_choice.json").read_text())
+    logs = Path("logs")
+    logs.mkdir(exist_ok=True)
+    res = LAB / "results"
+    res.mkdir(exist_ok=True)
+    for job in plan:
+        rows = run_one(job, cand, exchange, logs)
+        out = {"label": job["label"], "plan": job, "conditions": {"mise_usdt": STAKE, "capital": WALLET,
+               "positions_max": MAX_OPEN, "frais_par_ordre": FEE, "glissement_aller_retour": SLIP_RT,
+               "periode": TIMERANGE, "blocs": BLOCKS, "exchange": exchange["name"]}, "resultats": rows}
+        (res / f"{job['label']}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
+        md = table(job["label"], rows)
+        (res / f"{job['label']}.md").write_text(md)
+        print(md, flush=True)
 
 
 if __name__ == "__main__":
