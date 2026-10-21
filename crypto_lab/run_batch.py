@@ -171,7 +171,7 @@ def main():
             shutil.rmtree(res_dir)
         res_dir.mkdir(parents=True)
         r = sh(["freqtrade", "backtesting", "-c", "config_lab.json", "--userdir", str(UD), "--timerange", TIMERANGE,
-                "--fee", str(FEE), "--export", "trades", "--cache", "none", "--strategy-list", *names],
+                "--fee", str(FEE), "--timeframe", c.get("timeframe", "5m"), "--export", "trades", "--cache", "none", "--strategy-list", *names],
                log=logs / f"{c['id']}_{c['name']}.log", check=True)
         if r.returncode != 0:
             err = (r.stderr or r.stdout).strip().splitlines()[-5:]
