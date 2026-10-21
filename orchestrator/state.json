@@ -1,5 +1,5 @@
 {
- "cycle": 21,
+ "cycle": 22,
  "cycle_open": false,
  "created": "2026-10-01 19:39 UTC",
  "history": [
@@ -200,10 +200,19 @@
    "cycle": 21,
    "closed": "2026-10-20 17:59 UTC",
    "decision": "Aucune hypothèse (14e cycle consécutif)"
+  },
+  {
+   "cycle": 22,
+   "opened": "2026-10-21 06:02 UTC"
+  },
+  {
+   "cycle": 22,
+   "closed": "2026-10-21 06:03 UTC",
+   "decision": "Aucune hypothèse (15e cycle consécutif)"
   }
  ],
  "notes": [
   "cycle 0 = mise en place ; aucune nouvelle stratégie lancée"
  ],
- "last_report_commit": "c8b7f4dfcb2269f70831ba8d620e2ed69935c64b"
+ "last_report_commit": "1b7423ee55a5c88dd82a03bc5ebea1ea95879114"
 }

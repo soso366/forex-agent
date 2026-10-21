@@ -72,3 +72,6 @@
 
 ## Mise à jour cycle 21
 - Researcher : 0 hypothèse (14e cycle consécutif). Même blocage utilisateur ; passer control.yaml en PAUSED jusqu'à calendrier+historique ou autorisation du volume M1.
+
+## Mise à jour cycle 22
+- Researcher : 0 hypothèse (15e cycle consécutif). Même blocage utilisateur ; passer control.yaml en PAUSED jusqu'à calendrier+historique ou autorisation du volume M1.
