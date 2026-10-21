@@ -38,3 +38,11 @@ y donne le meilleur profit factor : le choisir est une sélection après coup, d
   avec glissement, a un profit factor ≥ 1,15 et t ≥ 2. Les autres plafonds sont rapportés pour information.
 - Stress supplémentaire : glissement 0,10 % par ordre (0,40 % aller-retour, frais compris) — doit rester positif au total.
 - Audit de biais : `freqtrade lookahead-analysis` sur chaque stratégie testée ; tout biais détecté = REJET.
+
+## Test de marché baissier (écrit le 22/10/2026 APRÈS la confirmation, AVANT tout test sur 2022)
+V5 « plafond 45 min » a passé la confirmation sur 10 nouvelles paires. Mais 2023-2026 est une période surtout haussière et
+la stratégie n'achète que des chutes : il faut savoir ce qu'elle fait dans un krach.
+- Période : année 2022 (effondrement LUNA, FTX), les 15 paires (5 du lot 1 + 10 de la confirmation), même code, mêmes frais.
+- **Acceptable** seulement si, avec glissement 0,05 %/ordre : perte nette ≤ 15 USDT (10 % du capital) ET drawdown max ≤ 30 USDT.
+  Un résultat positif n'est pas exigé (marché baissier), mais une perte plus forte = stratégie à n'utiliser qu'avec un
+  filtre de tendance, à tester séparément.

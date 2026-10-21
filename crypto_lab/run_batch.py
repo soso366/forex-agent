@@ -115,8 +115,8 @@ def stats(trades, start=None, end=None, slip=SLIP_RT):
     }
 
 
-def verdict(s):
-    blocks = [s[b] for b in BLOCKS]
+def verdict(s, block_names=BLOCKS):
+    blocks = [s[b] for b in block_names]
     g = s["global"]
     if g.get("trades", 0) == 0:
         return "ÉCHEC", ["aucun trade"]
@@ -147,6 +147,8 @@ def run_one(job, cand, exchange, logs):
     todo = [c for c in cand["candidates"] if c["verdict"] == "TEST" and c.get("file")
             and ((ids and c["id"] in ids) or (not ids and c.get("batch") == job.get("batch")))]
     ex = dict(exchange, pair_whitelist=job["pairs"])
+    trange = job.get("timerange", TIMERANGE)
+    blocks = job.get("blocks", BLOCKS)
     write_config(ex)
     sdir = UD / "strategies"
     sdir.mkdir(parents=True, exist_ok=True)
@@ -171,7 +173,7 @@ def run_one(job, cand, exchange, logs):
             shutil.rmtree(res_dir)
         res_dir.mkdir(parents=True)
         tf = c.get("timeframe", "5m")
-        r = sh(["freqtrade", "backtesting", "-c", "config_lab.json", "--userdir", str(UD), "--timerange", TIMERANGE,
+        r = sh(["freqtrade", "backtesting", "-c", "config_lab.json", "--userdir", str(UD), "--timerange", trange,
                 "--fee", str(FEE), "--timeframe", tf, "--export", "trades", "--cache", "none", "--strategy-list", *names],
                log=logs / f"{job['label']}_{c['id']}_{c['name']}.log")
         if r.returncode != 0:
@@ -200,11 +202,11 @@ def run_one(job, cand, exchange, logs):
                       for p, pr, o, cl, d, er in zip(df["pair"], df["profit_ratio"], df["open_date"], df["close_date"],
                                                      df["trade_duration"], df["exit_reason"])]
             s = {"global": stats(trades)}
-            for b, (d0, d1) in BLOCKS.items():
+            for b, (d0, d1) in blocks.items():
                 s[b] = stats(trades, d0, d1)
             if job.get("stress_slip_rt"):
                 s["stress"] = stats(trades, slip=job["stress_slip_rt"])
-            v, why = verdict(s)
+            v, why = verdict(s, blocks)
             if audit == "BIAIS DÉTECTÉ":
                 v, why = "ÉCHEC", ["biais d'anticipation détecté"] + why
             out.append({"id": c["id"], "strategie": c["name"], "plafond_min": cap, "verdict": v, "raisons": why,
@@ -213,20 +215,20 @@ def run_one(job, cand, exchange, logs):
     return out
 
 
-def table(label, rows):
+def table(label, rows, blocks=BLOCKS):
     lines = [f"# {label} — résultats (frais 0,10 %/ordre + glissement 0,05 %/ordre)", "",
-             "| Stratégie | Plafond | Trades | Net USDT | Gain moyen % | Taux de gain | PF | t | DD max | P1 | P2 | P3 | Stress | Audit biais | Verdict |",
-             "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+             "| Stratégie | Plafond | Trades | Net USDT | Gain moyen % | Taux de gain | PF | t | DD max | " + " | ".join(blocks) + " | Stress | Audit biais | Verdict |",
+             "|---|---|---|---|---|---|---|---|---|" + "---|" * len(blocks) + "---|---|---|"]
     for r in rows:
         if r["verdict"] == "ERREUR":
-            lines.append(f"| {r['strategie']} | — | — | — | — | — | — | — | — | — | — | — | — | — | ERREUR : {' / '.join(r['erreur'])[:200]} |")
+            lines.append(f"| {r['strategie']} | — | — | — | — | — | — | — | — | " + "— | " * len(blocks) + f"— | — | ERREUR : {' / '.join(r['erreur'])[:200]} |")
             continue
         g, m = r["mesures"]["global"], r["mesures"]
         cap = f"{r['plafond_min']} min" if r["plafond_min"] else "origine"
         stress = m.get("stress", {}).get("net_usdt", "—")
         lines.append(f"| {r['strategie']} | {cap} | {g.get('trades', 0)} | {g.get('net_usdt', 0)} | {g.get('gain_moyen_pct')} | "
                      f"{g.get('taux_gain_pct')} % | {g.get('profit_factor')} | {g.get('t_stat')} | {g.get('drawdown_max_usdt')} | "
-                     f"{m['P1'].get('net_usdt', 0)} | {m['P2'].get('net_usdt', 0)} | {m['P3'].get('net_usdt', 0)} | {stress} | "
+                     " | ".join(str(m[b].get('net_usdt', 0)) for b in blocks) + f" | {stress} | "
                      f"{r.get('audit_biais') or '—'} | **{r['verdict']}** {'; '.join(r['raisons'])} |")
     return "\n".join(lines) + "\n"
 
@@ -246,9 +248,9 @@ def main():
         rows = run_one(job, cand, exchange, logs)
         out = {"label": job["label"], "plan": job, "conditions": {"mise_usdt": STAKE, "capital": WALLET,
                "positions_max": MAX_OPEN, "frais_par_ordre": FEE, "glissement_aller_retour": SLIP_RT,
-               "periode": TIMERANGE, "blocs": BLOCKS, "exchange": exchange["name"]}, "resultats": rows}
+               "periode": job.get("timerange", TIMERANGE), "blocs": job.get("blocks", BLOCKS), "exchange": exchange["name"]}, "resultats": rows}
         (res / f"{job['label']}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
-        md = table(job["label"], rows)
+        md = table(job["label"], rows, job.get("blocks", BLOCKS))
         (res / f"{job['label']}.md").write_text(md)
         print(md, flush=True)
 

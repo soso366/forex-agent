@@ -1,5 +1,9 @@
 # Ce que le workflow « Crypto Lab — backtests » exécute à chaque modification poussée dans crypto_lab/.
-# Chaque entrée : un lot (candidats de candidates.yaml) sur une liste de paires, avec un nom de sortie.
+# Historique : lot_1 et confirmation_V5 ont été exécutés au run 39685764467 (résultats dans results/).
 runs:
-  - {label: lot_1, batch: 1, pairs: [BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT, XRP/USDT], audit: true}
-  - {label: confirmation_V5, ids: [C01], pairs: [ADA/USDT, DOGE/USDT, LTC/USDT, LINK/USDT, AVAX/USDT, TRX/USDT, DOT/USDT, BCH/USDT, ATOM/USDT, ETC/USDT], stress_slip_rt: 0.002}
+  - label: krach_2022_V5
+    ids: [C01]
+    pairs: [BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT, XRP/USDT, ADA/USDT, DOGE/USDT, LTC/USDT, LINK/USDT, AVAX/USDT, TRX/USDT, DOT/USDT, BCH/USDT, ATOM/USDT, ETC/USDT]
+    timerange: "20220101-20230101"
+    blocks: {S1: ["2022-01-01", "2022-07-01"], S2: ["2022-07-01", "2023-01-01"]}
+    stress_slip_rt: 0.002

@@ -40,8 +40,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: user_data/data/binance
-          key: binance-spot-5m-1h-2022-12-2026-09-${{ steps.pairs.outputs.key }}
-          restore-keys: binance-spot-5m-1h-2022-12-2026-09-
+          key: binance-spot-5m-1h-2021-12-2026-09-${{ steps.pairs.outputs.key }}
+          restore-keys: binance-spot-5m-1h-2021-12-2026-09-
       - name: Données Binance publiques (5m, 1h)
         run: |
           MISSING=""
@@ -49,7 +49,7 @@ jobs:
             [ -f "user_data/data/binance/${P/\//_}-5m.json" ] || MISSING="$MISSING $P"
           done
           if [ -n "$MISSING" ]; then
-            python crypto_lab/fetch_data.py --pairs $MISSING --timeframes 5m 1h --start 2022-12 --end 2026-09 \
+            python crypto_lab/fetch_data.py --pairs $MISSING --timeframes 5m 1h --start 2021-12 --end 2026-09 \
               --out user_data/data/binance_new
             mkdir -p user_data/data/binance && cp user_data/data/binance_new/*.json user_data/data/binance/
             cp user_data/data/binance_new/_rapport_donnees.json user_data/data/binance/_rapport_donnees.json
