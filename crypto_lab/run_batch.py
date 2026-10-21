@@ -228,7 +228,7 @@ def table(label, rows, blocks=BLOCKS):
         stress = m.get("stress", {}).get("net_usdt", "—")
         lines.append(f"| {r['strategie']} | {cap} | {g.get('trades', 0)} | {g.get('net_usdt', 0)} | {g.get('gain_moyen_pct')} | "
                      f"{g.get('taux_gain_pct')} % | {g.get('profit_factor')} | {g.get('t_stat')} | {g.get('drawdown_max_usdt')} | "
-                     " | ".join(str(m[b].get('net_usdt', 0)) for b in blocks) + f" | {stress} | "
+                     + " | ".join(str(m[b].get('net_usdt', 0)) for b in blocks) + f" | {stress} | "
                      f"{r.get('audit_biais') or '—'} | **{r['verdict']}** {'; '.join(r['raisons'])} |")
     return "\n".join(lines) + "\n"
 
