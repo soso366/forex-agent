@@ -1,4 +1,4 @@
-Operating System:	Linux-7.0.0-1017-azure-x86_64-with-glibc2.39
+Operating System:	Linux-6.17.0-1022-azure-x86_64-with-glibc2.39
 Python Version:		Python 3.12.15
 CCXT Version:		4.5.89
 
