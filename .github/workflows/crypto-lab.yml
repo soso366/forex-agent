@@ -1,0 +1,89 @@
+# Strategy Research Lab — backtests crypto (simulation uniquement, aucun ordre réel, aucune clé d'exchange).
+# Sécurité : le job qui exécute du code de stratégie externe n'a AUCUN secret et un jeton en lecture seule.
+# Un second job, sans code externe, enregistre uniquement les fichiers de résultats sur la branche research-crypto.
+name: Crypto Lab — backtests
+
+on:
+  push:
+    branches: [research-crypto]
+    paths: ["crypto_lab/**", "!crypto_lab/results/**", ".github/workflows/crypto-lab.yml"]
+  workflow_dispatch:
+    inputs:
+      batch: {description: "Numéro du lot", required: true, default: "1"}
+
+concurrency:
+  group: crypto-lab
+  cancel-in-progress: false
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: read
+    env:
+      BATCH: ${{ inputs.batch || '1' }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Installation de Freqtrade
+        run: |
+          pip install -q freqtrade pyyaml
+          freqtrade --version | tee freqtrade_version.txt
+      - name: Choix de l'exchange (liste des marchés, sans clé)
+        run: python crypto_lab/pick_exchange.py
+      - name: Cache des données
+        uses: actions/cache@v4
+        with:
+          path: user_data/data/binance
+          key: binance-spot-5m-1h-2022-12-2026-09-v1
+      - name: Données Binance publiques (5m, 1h)
+        run: |
+          if [ ! -f user_data/data/binance/BTC_USDT-5m.json ]; then
+            python crypto_lab/fetch_data.py --pairs BTC/USDT ETH/USDT SOL/USDT BNB/USDT XRP/USDT \
+              --timeframes 5m 1h --start 2022-12 --end 2026-09 --out user_data/data/binance
+          fi
+          EX=$(python -c "import json;print(json.load(open('exchange_choice.json'))['name'])")
+          [ "$EX" = binance ] || cp -r user_data/data/binance user_data/data/$EX
+          cat user_data/data/binance/_rapport_donnees.json
+      - name: Backtests du lot
+        run: python crypto_lab/run_batch.py --batch "$BATCH"
+      - name: Résumé
+        if: always()
+        run: |
+          [ -f crypto_lab/results/lot_${BATCH}.md ] && cat crypto_lab/results/lot_${BATCH}.md >> "$GITHUB_STEP_SUMMARY" || true
+          mkdir -p out && cp crypto_lab/results/lot_${BATCH}.* out/ 2>/dev/null || true
+          cp freqtrade_version.txt exchange_choice.json user_data/data/binance/_rapport_donnees.json out/ 2>/dev/null || true
+          mkdir -p out/logs && for f in logs/*.log; do [ -f "$f" ] && tail -n 80 "$f" > "out/logs/$(basename "$f")"; done; true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: resultats, path: out/, retention-days: 30}
+
+  enregistrer:
+    needs: backtest
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      BATCH: ${{ inputs.batch || '1' }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: research-crypto}
+      - uses: actions/download-artifact@v4
+        with: {name: resultats, path: out}
+        continue-on-error: true
+      - name: Enregistrer uniquement les résultats
+        run: |
+          mkdir -p crypto_lab/results/lot_${BATCH}_details
+          # copie stricte : seulement des fichiers .json / .md / .txt / .log, vers un dossier fixe
+          find out -type f \( -name '*.json' -o -name '*.md' -o -name '*.txt' -o -name '*.log' \) -print0 |
+            while IFS= read -r -d '' f; do cp "$f" "crypto_lab/results/lot_${BATCH}_details/$(basename "$f")"; done
+          [ -f out/lot_${BATCH}.md ] && cp out/lot_${BATCH}.md out/lot_${BATCH}.json crypto_lab/results/ || true
+          git config user.name "crypto-lab[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add crypto_lab/results
+          git diff --cached --quiet || git commit -qm "Crypto Lab : résultats du lot ${BATCH} (run ${{ github.run_id }})"
+          git push -q origin HEAD:research-crypto

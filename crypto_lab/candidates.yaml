@@ -1,0 +1,66 @@
+# Strategy Research Lab — candidats crypto (analyse du 22/10/2026)
+# Chaque stratégie externe est téléchargée AU MOMENT DU TEST, au commit indiqué (épinglé), jamais copiée dans ce dépôt.
+# verdict : TEST (lot indiqué) | REFERENCE (pas de code testable) | ECARTE (raison)
+
+repos:
+  p-zombie:      {url: https://github.com/p-zombie/freqtrade, commit: 9932f6c417f917027d91509a5f348562d7bc056c, licence: "aucune déclarée (fichiers repris de freqtrade-strategies, GPL-3.0)"}
+  ft-strategies: {url: https://github.com/freqtrade/freqtrade-strategies, commit: f3340ce11f5bdf62f598522e64d1f5638eaa13f5, licence: GPL-3.0}
+  nfi:           {url: https://github.com/iterativv/NostalgiaForInfinity, commit: 0fdb548731667c660a93fd2fb1ad56fd269fecc4, licence: GPL-3.0}
+  huge:          {url: https://github.com/keithorange/HUGE_FreqTrade_Strategy_Collection, commit: 0bd980ffe4f09063256a1df3d9c1250b2acda1a7, licence: "aucune déclarée"}
+
+candidates:
+  - id: C01
+    name: CombinedBinHAndClucV5
+    repo: p-zombie
+    file: user_data/strategies/CombinedBinHAndClucV5.py
+    verdict: TEST
+    batch: 1
+    notes: "Spot, achat seul, 5m. Achat sur cassure basse des Bandes de Bollinger (BinH) ou sous la BB basse avec volume faible (Cluc). Sortie : ROI, trailing, signal au-dessus de la BB haute. Stop -99 % (désactivé) + stop personnalisé."
+  - id: C02
+    name: CombinedBinHAndClucV6H
+    repo: p-zombie
+    file: user_data/strategies/CombinedBinHAndClucV6H.py
+    verdict: TEST
+    batch: 1
+    notes: "Variante V5 + filtres 1h (informative), paramètres hyperoptés par l'auteur. Spot, achat seul, 5m."
+  - id: C03
+    name: CombinedBinHAndClucV8
+    repo: p-zombie
+    file: user_data/strategies/CombinedBinHAndClucV8.py
+    verdict: TEST
+    batch: 1
+    notes: "Variante avec filtres 1h, plusieurs conditions d'achat, custom_sell. Spot, achat seul, 5m."
+  - id: C04
+    name: NostalgiaForInfinityX7
+    repo: nfi
+    file: NostalgiaForInfinityX7.py
+    verdict: TEST
+    batch: 2
+    notes: "≈ 80 000 lignes, 5m + 15m/1h/4h/1d, rachats (position adjustment), conçu pour des positions de plusieurs heures à plusieurs jours : le plafond de 60 min va contre sa logique. Test très coûteux."
+  - id: C05
+    name: "freqtrade-strategies (sélection)"
+    repo: ft-strategies
+    verdict: TEST
+    batch: 2
+    notes: "Collection officielle (GPL-3.0). À tester : 2 ou 3 stratégies courtes 5m/15m (ex. Supertrend, Strategy002, BbandRsi du dossier berlinguyinca), choisies AVANT de voir des résultats."
+  - id: C06
+    name: "HUGE_FreqTrade_Strategy_Collection"
+    repo: huge
+    verdict: ECARTE
+    notes: "≈ 480 fichiers sans licence déclarée, en grande partie des copies d'autres dépôts ; tester 480 stratégies et garder la meilleure = sur-apprentissage garanti (sélection après coup). Servira seulement de réservoir d'idées, une stratégie à la fois, pré-enregistrée."
+  - id: C07
+    name: "Momentum-Based-Crypto-Trading (SashRajj)"
+    verdict: ECARTE
+    notes: "Notebook unique, portefeuille pondéré par momentum (rotation), pas une stratégie d'entrée/sortie intraday ; incompatible avec des positions ≤ 60 min. Aucune licence déclarée."
+  - id: C08
+    name: "Backtest_Results_Berlinguyinca (nishu88)"
+    verdict: REFERENCE
+    notes: "Résultats de backtest de 2019-2020 sur des paires /BTC, sans code. Non reproductible tel quel ; ne prouve rien sur 2023-2026."
+  - id: C09
+    name: "awesome-systematic-trading"
+    verdict: REFERENCE
+    notes: "Liste de ressources (livres, articles, logiciels). Pas de stratégie testable directement ; source d'idées pour le Researcher."
+  - id: C10
+    name: "trading-backtest (haibingzhao)"
+    verdict: REFERENCE
+    notes: "Moteur de backtest (MIT), pas une stratégie. Freqtrade couvre déjà le besoin ; aucune raison technique démontrée de changer de moteur."
