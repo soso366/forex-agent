@@ -1,0 +1,12 @@
+# Paper trading « en avant » — décision de l'utilisateur du 22/10/2026 (version gratuite, rejeu quotidien sur GitHub).
+# Ne rien changer ici pendant le test : toute modification remet le compteur à zéro (nouveau départ).
+candidat: C01                 # CombinedBinHAndClucV5
+plafond_min: 45
+depart: "2026-10-22"          # 00:00 UTC — seules les bougies postérieures comptent
+duree_prevue_semaines: "4 à 8"
+paires: [BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT, XRP/USDT, ADA/USDT, DOGE/USDT, LTC/USDT, LINK/USDT, AVAX/USDT, TRX/USDT, DOT/USDT, BCH/USDT, ATOM/USDT, ETC/USDT]
+# Repères tirés des backtests (lot 1 + confirmation, plafond 45 min, glissement inclus) pour comparer chaque semaine
+attendu:
+  trades_par_jour: 0.69       # (331 + 609) trades / 15 paires / 3,75 ans ≈ 250 par an
+  taux_gain_pct: 68
+  gain_moyen_pct: 0.35        # gain moyen par trade, frais + glissement inclus

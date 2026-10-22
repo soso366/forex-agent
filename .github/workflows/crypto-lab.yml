@@ -6,7 +6,7 @@ name: Crypto Lab — backtests
 on:
   push:
     branches: [research-crypto]
-    paths: ["crypto_lab/**", "!crypto_lab/results/**", ".github/workflows/crypto-lab.yml"]
+    paths: ["crypto_lab/**", "!crypto_lab/results/**", "!crypto_lab/paper/**", "!crypto_lab/paper_run.py", "!crypto_lab/paper.yaml", ".github/workflows/crypto-lab.yml"]
   workflow_dispatch:
 
 concurrency:
