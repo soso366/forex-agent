@@ -143,4 +143,15 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BaseException as e:  # message lisible dans l'onglet Actions (les journaux bruts ne sont pas toujours accessibles)
+        import traceback
+        tb = traceback.format_exc().strip().splitlines()
+        log = Path("paper_backtest.log")
+        tail = log.read_text().strip().splitlines()[-6:] if log.exists() else []
+        for line in (tb[-6:] + tail):
+            print(f"::error::{line[:300]}")
+        Path(LAB / "paper").mkdir(exist_ok=True)
+        (LAB / "paper" / "derniere_erreur.txt").write_text("\n".join(tb[-15:] + ["--- freqtrade ---"] + tail) + "\n")
+        raise
