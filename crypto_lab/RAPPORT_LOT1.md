@@ -8,11 +8,20 @@ Critères écrits avant les tests : `CRITERES.md`. Tableaux complets : `results/
 
 | Rang | Stratégie | Meilleure durée max | Fiabilité | Résumé |
 |---|---|---|---|---|
-| 1 | **CombinedBinHAndClucV5** | **45 min** (60 min presque équivalent) | **Candidate au paper trading** | Positive sur 2023-2026 (5 paires), **confirmée sur 10 paires jamais testées** (ROBUSTE : PF 1,43, t 3,2, 609 trades), **positive en 2022** malgré le krach (PF 1,24, drawdown 26 USDT). Aucun biais d'anticipation détecté. |
+| 1 | **CombinedBinHAndClucV5** | **45 min** (60 min presque équivalent) | **Candidate au paper trading, confiance moyenne** | Positive sur 2023-2026 (5 paires), **confirmée sur 10 paires jamais testées** (ROBUSTE : PF 1,43, t 3,2, 609 trades), **positive en 2022** malgré le krach (PF 1,24, drawdown 26 USDT). Aucun biais d'anticipation détecté. |
 | 2 | CombinedBinHAndClucV8 | origine (sans plafond) | Faible | Légèrement positive sans plafond, mais perdante sur 2025-2026 ; avec 30/45/60 min, indistinguable du hasard. Non retenue. |
 | — | CombinedBinHAndClucV6H | — | Non testable | Plante avec les versions actuelles de pandas (conversion de type). Corriger demanderait de toucher à sa logique : écartée pour l'instant. |
 
 Une seule stratégie solide, pas trois : on ne force pas de sélection.
+
+## 2e confirmation sur 30 autres cryptos (22/10/2026) : ÉCHEC
+Critères écrits avant le test (`CRITERES.md`). Sur 30 cryptos moins importantes (NEAR, UNI, FIL, ICP, APT…), V5 / 45 min
+est à peine positive (+43 USDT, profit factor 1,06, t 0,86), **perdante sur 2023-mi-2024** et **perdante avec un glissement
+doublé**. Seules 16 cryptos sur 30 sont gagnantes. Le résultat ne se généralise donc pas à toutes les cryptos :
+il tient sur les 15 plus grosses (BTC, ETH, SOL… jusqu'à ETC), pas sur les plus petites, où les chutes rapides
+continuent plus souvent au lieu de rebondir.
+Conséquence (règle fixée avant le test) : le paper trading reste limité aux 15 cryptos actuelles ; pas de 2e suivi.
+Le paper trading devient le test décisif : la confiance dans V5 baisse d'un cran.
 
 ## Ce que montrent les durées
 - Pour V5, **imposer une sortie à 45-60 min améliore nettement le résultat** par rapport à la version d'origine

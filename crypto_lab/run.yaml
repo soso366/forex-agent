@@ -1,5 +1,5 @@
 # Ce que le workflow « Crypto Lab — backtests » exécute à chaque modification poussée dans crypto_lab/.
-# Historique : lot_1 et confirmation_V5 (run 39685764467), krach_2022_V5 (run 39688091935) — résultats dans results/.
+# Historique : lot_1 et confirmation_V5 (run 39685764467), krach_2022_V5 (run 39688091935), confirmation2_V5_30paires (run 39774472681) — résultats dans results/
 runs:
   - label: confirmation2_V5_30paires
     ids: [C01]
