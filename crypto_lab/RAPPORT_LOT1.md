@@ -18,8 +18,8 @@ Une seule stratégie solide, pas trois : on ne force pas de sélection.
 Critères écrits avant le test (`CRITERES.md`). Sur 30 cryptos moins importantes (NEAR, UNI, FIL, ICP, APT…), V5 / 45 min
 est à peine positive (+43 USDT, profit factor 1,06, t 0,86), **perdante sur 2023-mi-2024** et **perdante avec un glissement
 doublé**. Seules 16 cryptos sur 30 sont gagnantes. Le résultat ne se généralise donc pas à toutes les cryptos :
-il tient sur les 15 plus grosses (BTC, ETH, SOL… jusqu'à ETC), pas sur les plus petites, où les chutes rapides
-continuent plus souvent au lieu de rebondir.
+il tient sur les 15 cryptos déjà testées (surtout de grosses cryptos), pas sur ce groupe plus petit. Explication possible,
+non démontrée : sur les petites cryptos, les chutes rapides continuent plus souvent au lieu de rebondir.
 Conséquence (règle fixée avant le test) : le paper trading reste limité aux 15 cryptos actuelles ; pas de 2e suivi.
 Le paper trading devient le test décisif : la confiance dans V5 baisse d'un cran.
 
