@@ -141,6 +141,7 @@ def main():
     if not trades:
         lines.append("| — | aucun trade pour l'instant | | | | | |")
     (pdir / "JOURNAL.md").write_text("\n".join(lines) + "\n")
+    (pdir / "derniere_erreur.txt").unlink(missing_ok=True)
     print("\n".join(lines[:14]))
 
 

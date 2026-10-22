@@ -57,6 +57,7 @@ jobs:
       - name: Enregistrer uniquement le journal
         run: |
           mkdir -p crypto_lab/paper
+          [ -f out/derniere_erreur.txt ] || rm -f crypto_lab/paper/derniere_erreur.txt
           for f in out/JOURNAL.md out/etat.json out/trades.json out/derniere_erreur.txt; do [ -f "$f" ] && cp "$f" crypto_lab/paper/; done
           git config user.name "crypto-paper[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
