@@ -88,6 +88,8 @@ def main():
         from freqtrade.data.btanalysis import load_backtest_data
         try:
             df = load_backtest_data(res_dir, strategy=name)
+            if df.empty or "pair" not in df.columns:
+                raise ValueError("aucun trade")
             trades = [{"paire": p, "ouverture": str(o)[:16], "fermeture": str(cl)[:16], "duree_min": int(d),
                        "resultat_pct": round(100 * float(pr), 2), "resultat_usdt": round(float(pa), 2),
                        "sortie": str(er)}
