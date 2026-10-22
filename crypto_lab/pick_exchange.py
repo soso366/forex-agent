@@ -28,6 +28,7 @@ for name, extra in TRIES:
         choice = {"name": name, "key": "", "secret": "", "pair_whitelist": ok, "pair_blacklist": [],
                   "ccxt_config": extra, "ccxt_async_config": extra}
         json.dump(choice, open("exchange_choice.json", "w"), indent=1)
+        json.dump(sorted(k for k, v in mk.items() if v.get("spot") and v.get("active", True)), open("markets.json", "w"))
         print(f"exchange retenu : {name} {extra or ''} — paires {ok}")
         sys.exit(0)
     except Exception as e:  # on passe à l'essai suivant

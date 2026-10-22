@@ -1,9 +1,7 @@
 # Ce que le workflow « Crypto Lab — backtests » exécute à chaque modification poussée dans crypto_lab/.
-# Historique : lot_1 et confirmation_V5 (run 39685764467), krach_2022_V5 (run 39688091935) — résultats dans results/
+# Historique : lot_1 et confirmation_V5 (run 39685764467), krach_2022_V5 (run 39688091935) — résultats dans results/.
 runs:
-  - label: krach_2022_V5
+  - label: confirmation2_V5_30paires
     ids: [C01]
-    pairs: [BTC/USDT, ETH/USDT, SOL/USDT, BNB/USDT, XRP/USDT, ADA/USDT, DOGE/USDT, LTC/USDT, LINK/USDT, AVAX/USDT, TRX/USDT, DOT/USDT, BCH/USDT, ATOM/USDT, ETC/USDT]
-    timerange: "20220101-20230101"
-    blocks: {S1: ["2022-01-01", "2022-07-01"], S2: ["2022-07-01", "2023-01-01"]}
+    pairs: [NEAR/USDT, UNI/USDT, FIL/USDT, ICP/USDT, APT/USDT, XLM/USDT, HBAR/USDT, VET/USDT, ALGO/USDT, AAVE/USDT, SAND/USDT, MANA/USDT, AXS/USDT, GRT/USDT, EGLD/USDT, THETA/USDT, XTZ/USDT, CHZ/USDT, INJ/USDT, RUNE/USDT, QNT/USDT, CRV/USDT, KAVA/USDT, ZEC/USDT, DASH/USDT, NEO/USDT, IOTA/USDT, COMP/USDT, SUSHI/USDT, 1INCH/USDT]
     stress_slip_rt: 0.002

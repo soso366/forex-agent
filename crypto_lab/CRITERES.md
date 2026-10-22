@@ -46,3 +46,14 @@ la stratégie n'achète que des chutes : il faut savoir ce qu'elle fait dans un 
 - **Acceptable** seulement si, avec glissement 0,05 %/ordre : perte nette ≤ 15 USDT (10 % du capital) ET drawdown max ≤ 30 USDT.
   Un résultat positif n'est pas exigé (marché baissier), mais une perte plus forte = stratégie à n'utiliser qu'avec un
   filtre de tendance, à tester séparément.
+
+## 2e confirmation : 30 nouvelles paires (écrit le 22/10/2026, AVANT tout test sur ces paires)
+But : vérifier V5 « plafond 45 min » sur un univers plus large avant de l'ajouter au paper trading (plus de trades par jour).
+- Paires (USDT, choisies parmi les plus échangées et cotées avant déc. 2022, jamais testées) : NEAR, UNI, FIL, ICP, APT, XLM,
+  HBAR, VET, ALGO, AAVE, SAND, MANA, AXS, GRT, EGLD, THETA, XTZ, CHZ, INJ, RUNE, QNT, CRV, KAVA, ZEC, DASH, NEO, IOTA, COMP,
+  SUSHI, 1INCH.
+- Une paire sans données suffisantes (moins de 1 000 bougies 5m) ou qui n'est plus cotée (retirée, renommée) est exclue automatiquement,
+  sans regarder ses résultats.
+- Mêmes périodes P1/P2/P3, mêmes frais, même mise, même code, aucun réglage modifié.
+- **Confirmé** seulement si V5 « plafond 45 min » : positive sur chacun des 3 blocs avec glissement, profit factor ≥ 1,15,
+  t ≥ 2, et positive au stress 0,10 %/ordre. Sinon, le paper trading reste limité aux 15 paires actuelles.

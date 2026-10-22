@@ -146,7 +146,20 @@ def run_one(job, cand, exchange, logs):
     ids = job.get("ids")
     todo = [c for c in cand["candidates"] if c["verdict"] == "TEST" and c.get("file")
             and ((ids and c["id"] in ids) or (not ids and c.get("batch") == job.get("batch")))]
-    ex = dict(exchange, pair_whitelist=job["pairs"])
+    # exclusion automatique (règle écrite avant les tests) : paires sans données suffisantes ou absentes des marchés
+    ddir = UD / "data" / exchange["name"]
+    pairs, exclues = [], []
+    marches = set(json.loads(Path("markets.json").read_text())) if Path("markets.json").exists() else None
+    for p in job["pairs"]:
+        if marches is not None and p not in marches:
+            exclues.append(p)
+            continue
+        f = ddir / f"{p.replace('/', '_')}-5m.json"
+        n = len(json.loads(f.read_text())) if f.exists() else 0
+        (pairs if n >= 1000 else exclues).append(p)
+    job["paires_exclues"] = exclues
+    job["pairs"] = pairs
+    ex = dict(exchange, pair_whitelist=pairs)
     trange = job.get("timerange", TIMERANGE)
     blocks = job.get("blocks", BLOCKS)
     write_config(ex)
