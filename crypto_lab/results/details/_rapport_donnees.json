@@ -1,121 +1,263 @@
 {
- "ADA/USDT 5m": {
+ "1INCH/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "ADA/USDT 1h": {
+ "1INCH/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "ATOM/USDT 5m": {
+ "AAVE/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "ATOM/USDT 1h": {
+ "AAVE/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "AVAX/USDT 5m": {
+ "ALGO/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "AVAX/USDT 1h": {
+ "ALGO/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "BCH/USDT 5m": {
+ "APT/USDT 5m": {
+  "bougies": 415556,
+  "mois_manquants": [
+   "2021-12",
+   "2022-01",
+   "2022-02",
+   "2022-03",
+   "2022-04",
+   "2022-05",
+   "2022-06",
+   "2022-07",
+   "2022-08",
+   "2022-09"
+  ]
+ },
+ "APT/USDT 1h": {
+  "bougies": 34630,
+  "mois_manquants": [
+   "2021-12",
+   "2022-01",
+   "2022-02",
+   "2022-03",
+   "2022-04",
+   "2022-05",
+   "2022-06",
+   "2022-07",
+   "2022-08",
+   "2022-09"
+  ]
+ },
+ "AXS/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "BCH/USDT 1h": {
+ "AXS/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "BNB/USDT 5m": {
+ "CHZ/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "BNB/USDT 1h": {
+ "CHZ/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "BTC/USDT 5m": {
+ "COMP/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "BTC/USDT 1h": {
+ "COMP/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "DOGE/USDT 5m": {
+ "CRV/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "DOGE/USDT 1h": {
+ "CRV/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "DOT/USDT 5m": {
+ "DASH/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "DOT/USDT 1h": {
+ "DASH/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "ETC/USDT 5m": {
+ "EGLD/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "ETC/USDT 1h": {
+ "EGLD/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "ETH/USDT 5m": {
+ "FIL/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "ETH/USDT 1h": {
+ "FIL/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "LINK/USDT 5m": {
+ "GRT/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "LINK/USDT 1h": {
+ "GRT/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "LTC/USDT 5m": {
+ "HBAR/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "LTC/USDT 1h": {
+ "HBAR/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "SOL/USDT 5m": {
+ "ICP/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "SOL/USDT 1h": {
+ "ICP/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "TRX/USDT 5m": {
+ "INJ/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "TRX/USDT 1h": {
+ "INJ/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  },
- "XRP/USDT 5m": {
+ "IOTA/USDT 5m": {
   "bougies": 508304,
   "mois_manquants": []
  },
- "XRP/USDT 1h": {
+ "IOTA/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "KAVA/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "KAVA/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "MANA/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "MANA/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "NEAR/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "NEAR/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "NEO/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "NEO/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "QNT/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "QNT/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "RUNE/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "RUNE/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "SAND/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "SAND/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "SUSHI/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "SUSHI/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "THETA/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "THETA/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "UNI/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "UNI/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "VET/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "VET/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "XLM/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "XLM/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "XTZ/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "XTZ/USDT 1h": {
+  "bougies": 42359,
+  "mois_manquants": []
+ },
+ "ZEC/USDT 5m": {
+  "bougies": 508304,
+  "mois_manquants": []
+ },
+ "ZEC/USDT 1h": {
   "bougies": 42359,
   "mois_manquants": []
  }
