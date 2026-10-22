@@ -26,9 +26,9 @@ jobs:
     timeout-minutes: 350
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 2
       matrix:
-        job: ${{ fromJSON(github.event_name == 'push' && '[0,1,2,3]' || '[0]') }}
+        job: ${{ fromJSON(github.event_name == 'push' && '[0,1,2,3,4,5,6,7,8,9,10,11]' || '[0]') }}
     steps:
       - uses: actions/checkout@v4
       - name: Paramètres de l'export
@@ -59,6 +59,12 @@ jobs:
         if: steps.p.outputs.skip != '1'
         env: {PYTHONUNBUFFERED: "1"}
         run: python -m forex_agent data-download --start ${{ steps.p.outputs.start }} --end ${{ steps.p.outputs.end }} --time-budget-min 300
+      - name: Ajouter les volumes (bid_volume, ask_volume)
+        if: steps.p.outputs.skip != '1'
+        run: |
+          if [ "$(head -1 data/download_status.txt 2>/dev/null)" = "COMPLETE" ]; then
+            python -m forex_agent.lab.volume --start ${{ steps.p.outputs.start }} --end ${{ steps.p.outputs.end }}
+          fi
       - name: Sauvegarder le cache
         if: always() && steps.p.outputs.skip != '1'
         uses: actions/cache/save@v4
@@ -69,7 +75,8 @@ jobs:
         if: always() && steps.p.outputs.skip != '1'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+          # jeton en ÉCRITURE sur forex-data (DATA_WRITE_TOKEN) ; DATA_REPO_TOKEN est en lecture seule
+          DATA_TOKEN: ${{ secrets.DATA_WRITE_TOKEN || secrets.DATA_REPO_TOKEN }}
         run: |
           STATUS=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
           echo "Statut : $STATUS"
@@ -80,7 +87,7 @@ jobs:
             git init -q && git checkout -q -b "data-${{ steps.p.outputs.tag }}"
             git add -A && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "M1 ${{ steps.p.outputs.start }} → ${{ steps.p.outputs.end }}"
             # Les données vont dans le dépôt PRIVÉ soso366/forex-data (forex-agent est public).
-            [ -n "${DATA_TOKEN}" ] || { echo "::error::Secret DATA_REPO_TOKEN absent : publication des données impossible"; exit 1; }
+            [ -n "${DATA_TOKEN}" ] || { echo "::error::Secret DATA_WRITE_TOKEN absent : publication des données impossible"; exit 1; }
             git push -qf "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git" "data-${{ steps.p.outputs.tag }}"
             echo "Publié sur soso366/forex-data, branche data-${{ steps.p.outputs.tag }}"
           elif [ "$STATUS" = "INCOMPLETE" ] && [ "${{ steps.p.outputs.attempt }}" -lt 8 ]; then
