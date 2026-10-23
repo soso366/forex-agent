@@ -1,8 +1,8 @@
 {
- "mis_a_jour_utc": "2026-10-22 11:26",
- "derniere_bougie_utc": "2026-10-22 11:20",
+ "mis_a_jour_utc": "2026-10-23 05:04",
+ "derniere_bougie_utc": "2026-10-23 04:55",
  "depart": "2026-10-22",
- "jours": 0.5,
+ "jours": 1.2,
  "strategie": "CombinedBinHAndClucV5_cap45",
  "paires": [
   "BTC/USDT",

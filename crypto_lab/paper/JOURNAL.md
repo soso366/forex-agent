@@ -1,6 +1,6 @@
 # Paper trading — CombinedBinHAndClucV5_cap45
 
-Départ : 2026-10-22 · mis à jour : 2026-10-22 11:26 UTC (dernière bougie 2026-10-22 11:20) · 0.5 jours
+Départ : 2026-10-22 · mis à jour : 2026-10-23 05:04 UTC (dernière bougie 2026-10-23 04:55) · 1.2 jours
 
 Simulation uniquement, aucun ordre réel. Capital 150 USDT, 2 positions max, mise 50 USDT, frais 0,10 %/ordre.
 
