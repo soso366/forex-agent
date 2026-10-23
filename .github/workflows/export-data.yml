@@ -17,7 +17,8 @@ permissions:
   actions: write
 
 concurrency:
-  group: dukascopy-cache
+  # une file par période : les relances d'une période n'annulent plus celles des autres
+  group: dukascopy-${{ inputs.tag || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -53,8 +54,8 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: data/dukascopy_raw
-          key: dukascopy-${{ github.run_id }}
-          restore-keys: dukascopy-
+          key: dukascopy-${{ steps.p.outputs.tag }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: dukascopy-${{ steps.p.outputs.tag }}-
       - name: Télécharger / préparer
         if: steps.p.outputs.skip != '1'
         env: {PYTHONUNBUFFERED: "1"}
@@ -70,7 +71,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: data/dukascopy_raw
-          key: dukascopy-${{ github.run_id }}
+          key: dukascopy-${{ steps.p.outputs.tag }}-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Publier les CSV (si complet) ou relancer
         if: always() && steps.p.outputs.skip != '1'
         env:
@@ -90,8 +91,8 @@ jobs:
             [ -n "${DATA_TOKEN}" ] || { echo "::error::Secret DATA_WRITE_TOKEN absent : publication des données impossible"; exit 1; }
             git push -qf "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git" "data-${{ steps.p.outputs.tag }}"
             echo "Publié sur soso366/forex-data, branche data-${{ steps.p.outputs.tag }}"
-          elif [ "$STATUS" = "INCOMPLETE" ] && [ "${{ steps.p.outputs.attempt }}" -lt 8 ]; then
-            gh workflow run export-data.yml --repo "$GITHUB_REPOSITORY" --ref main \
+          elif [ "$STATUS" = "INCOMPLETE" ] && [ "${{ steps.p.outputs.attempt }}" -lt 12 ]; then
+            gh workflow run export-data.yml --repo "$GITHUB_REPOSITORY" --ref "${{ github.ref_name }}" \
               -f start=${{ steps.p.outputs.start }} -f end=${{ steps.p.outputs.end }} -f tag=${{ steps.p.outputs.tag }} -f attempt=$(( ${{ steps.p.outputs.attempt }} + 1 ))
             echo "Suite relancée."
           else

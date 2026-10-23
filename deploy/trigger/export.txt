@@ -1,5 +1,5 @@
 # début fin tag — modifier ce fichier relance les exports (12 lignes max, 2 en parallèle)
-# 22/10/2026 : historique étendu (sept. 2020 → août 2023) + volumes sur toutes les périodes (tags « -vol »).
+# 23/10/2026 (relance, cache par période) : historique étendu (sept. 2020 → août 2023) + volumes sur toutes les périodes (tags « -vol »).
 # Les branches existantes (sans volume) ne sont pas écrasées.
 2020-09-01 2021-02-28 2020sep-2021feb-vol
 2021-03-01 2021-08-31 2021mar-aug-vol
