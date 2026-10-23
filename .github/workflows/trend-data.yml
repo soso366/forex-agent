@@ -1,0 +1,47 @@
+# Télécharge les données publiques gratuites (FRED, Réserve fédérale de St. Louis) du test D01 « suivi de tendance »
+# et les enregistre dans forex_lab/trend/data/. Aucune clé, aucun secret, aucun code externe exécuté.
+name: Forex — données du test tendance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [research-forex-oss]
+    paths: [".github/workflows/trend-data.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trend-data
+  cancel-in-progress: false
+
+jobs:
+  telecharger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: research-forex-oss}
+      - name: Téléchargement FRED
+        run: |
+          set -euo pipefail
+          mkdir -p forex_lab/trend/data
+          for s in DEXUSEU DEXUSUK DEXJPUS TB3MS IR3TIB01EZM156N IR3TIB01GBM156N IR3TIB01JPM156N; do
+            ok=0
+            for i in 1 2 3 4 5; do
+              if curl -fsSL --retry 3 -m 60 -A "Mozilla/5.0" "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s" -o "forex_lab/trend/data/$s.csv"; then
+                if head -1 "forex_lab/trend/data/$s.csv" | grep -q "$s"; then ok=1; break; fi
+              fi
+              sleep 10
+            done
+            [ "$ok" = 1 ] || { echo "::error::échec du téléchargement $s"; exit 1; }
+            echo "::notice::$s : $(wc -l < forex_lab/trend/data/$s.csv) lignes, $(head -2 forex_lab/trend/data/$s.csv | tail -1) → $(tail -1 forex_lab/trend/data/$s.csv)"
+          done
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > forex_lab/trend/data/TELECHARGE_LE.txt
+      - name: Enregistrement
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add forex_lab/trend/data
+          git commit -m "data(trend): données FRED du test D01 [skip ci]" || exit 0
+          git push origin HEAD:research-forex-oss
