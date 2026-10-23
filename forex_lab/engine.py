@@ -55,6 +55,26 @@ class Rules:
 
 
 @dataclass
+class Costs:
+    """Coûts en plus du spread bid/ask réel (audit V3, 23/10/2026).
+
+    commission_usd_per_lot_side : commission d'un compte ECN (≈ 3 $ par lot et par côté, soit ≈ 0,6 pip aller-retour
+    sur EURUSD/GBPUSD et ≈ 0,9 pip sur USDJPY). slippage_pips : glissement défavorable sur chaque ordre au marché
+    (entrée, stop, sortie à l'heure ou sur signal) ; pas sur l'objectif (ordre limite)."""
+    commission_usd_per_lot_side: float = 0.0
+    slippage_pips: float = 0.0
+
+
+REALISTIC = Costs(commission_usd_per_lot_side=3.0, slippage_pips=0.1)
+
+
+def pip_value_usd_per_lot(symbol: str, price: float) -> float:
+    if symbol.endswith("USD"):          # EURUSD, GBPUSD : 1 pip = 10 $ par lot
+        return 10.0
+    return 100_000 * pip(symbol) / price   # USDJPY : 1 000 ¥ par lot convertis en $
+
+
+@dataclass
 class Trade:
     pair: str
     side: int
@@ -63,12 +83,16 @@ class Trade:
     exit_time: pd.Timestamp
     exit: float
     reason: str
-    pips: float = field(default=0.0)
+    pips: float = field(default=0.0)       # net : spread + commission + glissement déduits
+    gross_pips: float = 0.0                # spread bid/ask seul
+    cost_pips: float = 0.0
+    ambiguous: bool = False                # stop et objectif touchés dans la même minute (stop retenu)
 
 
 class Simulator:
-    def __init__(self, symbol: str, m1: pd.DataFrame):
+    def __init__(self, symbol: str, m1: pd.DataFrame, costs: Costs | None = None):
         self.symbol, self.p = symbol, pip(symbol)
+        self.costs = costs or Costs()
         self.t = m1.index
         self.tns = m1.index.as_unit("ns").asi8          # pandas 3 : unité explicite (ns)
         self.bo, self.bh, self.bl, self.bc = (m1[c].to_numpy() for c in ("bid_open", "bid_high", "bid_low", "bid_close"))
@@ -121,7 +145,8 @@ class Simulator:
             if side > 0:
                 lo, hi, op = self.bl[k], self.bh[k], self.bo[k]
                 if sl is not None and lo <= sl:
-                    return self._close(side, j, entry, k, min(op, sl) if k > j else sl, "stop")
+                    amb = tp is not None and hi >= tp
+                    return self._close(side, j, entry, k, min(op, sl) if k > j else sl, "stop", amb)
                 if tp is not None and hi >= tp:
                     return self._close(side, j, entry, k, max(op, tp) if k > j else tp, "objectif")
                 if rules.trail_pips and self.bc[k] - entry > rules.trail_pips * self.p:
@@ -130,18 +155,28 @@ class Simulator:
             else:
                 lo, hi, op = self.al[k], self.ah[k], self.ao[k]
                 if sl is not None and hi >= sl:
-                    return self._close(side, j, entry, k, max(op, sl) if k > j else sl, "stop")
+                    amb = tp is not None and lo <= tp
+                    return self._close(side, j, entry, k, max(op, sl) if k > j else sl, "stop", amb)
                 if tp is not None and lo <= tp:
                     return self._close(side, j, entry, k, min(op, tp) if k > j else tp, "objectif")
                 if rules.trail_pips and entry - self.ac[k] > rules.trail_pips * self.p:
                     ns = self.ac[k] + rules.trail_pips * self.p
                     sl = ns if sl is None or ns < sl else sl
             k += 1
-        return None   # position encore ouverte en fin de données : ignorée
+        # position encore ouverte en fin de données : clôturée au dernier prix connu (audit V3 : ne plus l'ignorer)
+        last = n - 1
+        if last <= j:
+            return None
+        return self._close(side, j, entry, last, self.bc[last] if side > 0 else self.ac[last], "fin")
 
-    def _close(self, side, j, entry, k, px, reason) -> Trade:
+    def _close(self, side, j, entry, k, px, reason, ambiguous=False) -> Trade:
+        gross = side * (px - entry) / self.p
+        c = self.costs
+        comm = 2 * c.commission_usd_per_lot_side / pip_value_usd_per_lot(self.symbol, entry) if c.commission_usd_per_lot_side else 0.0
+        slip = c.slippage_pips * (1 if reason == "objectif" else 2)
+        cost = comm + slip
         return Trade(self.symbol, side, pd.Timestamp(self.tns[j], tz="UTC"), entry, pd.Timestamp(self.tns[k], tz="UTC"),
-                     px, reason, side * (px - entry) / self.p)
+                     px, reason, gross - cost, gross, cost, ambiguous)
 
 
 def run_bar_strategy(sim: Simulator, bars: pd.DataFrame, long_sig, short_sig, rules: Rules, tf_min: int,
@@ -169,6 +204,59 @@ def run_bar_strategy(sim: Simulator, bars: pd.DataFrame, long_sig, short_sig, ru
             continue
         trades.append(tr)
         busy_until = tr.exit_time.value
+    return trades
+
+
+@dataclass
+class Event:
+    """Ordre candidat : entrée à `time` sur `pair` (sens `side`), avec ses règles de sortie."""
+    time: pd.Timestamp
+    pair: str
+    side: int
+    rules: Rules
+    tf_min: int | None = None
+    exit_times: np.ndarray | None = None
+    hard_exit: pd.Timestamp | None = None
+    tag: str = ""
+
+
+def signal_events(pair: str, bars: pd.DataFrame, long_sig, short_sig, rules: Rules, tf_min: int,
+                  exit_long=None, exit_short=None, tag: str = "") -> list[Event]:
+    """Signaux évalués à la clôture de la bougie i → ordre candidat à l'ouverture de la bougie i+1."""
+    idx = bars.index
+    starts = idx.as_unit("ns").asi8
+    ex_l = np.sort(starts[1:][np.asarray(exit_long, dtype=bool)[:-1]]) if exit_long is not None else None
+    ex_s = np.sort(starts[1:][np.asarray(exit_short, dtype=bool)[:-1]]) if exit_short is not None else None
+    L, S = np.asarray(long_sig, dtype=bool), np.asarray(short_sig, dtype=bool)
+    out = []
+    for i in np.flatnonzero(L[:-1] ^ S[:-1]):
+        t_in = idx[i + 1]
+        if rules.weekdays_only and t_in.weekday() >= 5:
+            continue
+        if rules.entry_hours_utc and not (rules.entry_hours_utc[0] <= t_in.hour < rules.entry_hours_utc[1]):
+            continue
+        side = 1 if L[i] else -1
+        out.append(Event(t_in, pair, side, rules, tf_min, ex_l if side > 0 else ex_s, None, tag))
+    return out
+
+
+def run_portfolio(events: list[Event], sims: dict, max_open: int | None = 2) -> list[Trade]:
+    """Exécute les ordres dans l'ordre chronologique : une position par paire et au plus `max_open` positions
+    ouvertes en même temps, toutes paires confondues (contrainte du projet : 2)."""
+    trades, open_exits, pair_busy = [], [], {}
+    for ev in sorted(events, key=lambda e: (e.time.value, e.pair)):
+        tv = ev.time.value
+        open_exits = [x for x in open_exits if x > tv]
+        if pair_busy.get(ev.pair, -1) >= tv:
+            continue
+        if max_open is not None and len(open_exits) >= max_open:
+            continue
+        tr = sims[ev.pair].run_position(ev.side, ev.time, ev.rules, ev.tf_min, ev.exit_times, ev.hard_exit)
+        if tr is None:
+            continue
+        trades.append(tr)
+        open_exits.append(tr.exit_time.value)
+        pair_busy[ev.pair] = tr.exit_time.value
     return trades
 
 

@@ -106,3 +106,18 @@ def f03_trades(sim, start: pd.Timestamp, end: pd.Timestamp, version: str):
             if tr is not None and tr.entry_time < t1:
                 trades.append(tr)
     return trades
+
+
+def f03_events(pair: str, start: pd.Timestamp, end: pd.Timestamp, version: str):
+    """Mêmes horaires que f03_trades, sous forme d'ordres candidats pour le simulateur de portefeuille."""
+    from .engine import Event, Rules as R
+    out = []
+    for day in pd.date_range(start.tz_convert("America/New_York").normalize(), end.tz_convert("America/New_York").normalize(), freq="D"):
+        if day.weekday() >= 5:
+            continue
+        for h0, h1, side in F03_SCHEDULE[version]:
+            t0 = (day + pd.Timedelta(hours=h0)).tz_convert("UTC")
+            t1 = (day + pd.Timedelta(hours=h1)).tz_convert("UTC")
+            if t0 >= start and t1 <= end:
+                out.append(Event(t0, pair, side, R(), None, None, t1, "F03"))
+    return out

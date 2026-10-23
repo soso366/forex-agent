@@ -1,0 +1,24 @@
+# Tests automatiques du Forex Strategy Research Lab (moteur de backtest, coûts, portefeuille, absence de look-ahead).
+name: Forex Lab — tests
+
+on:
+  push:
+    branches: [research-forex-oss]
+    paths: ["forex_lab/**", ".github/workflows/forex-lab-tests.yml"]
+  pull_request:
+    paths: ["forex_lab/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q pandas numpy pyyaml pytest
+      - run: python -m pytest -q forex_lab/tests

@@ -14,8 +14,8 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from .engine import Simulator, load_m1, resample, run_bar_strategy
-from .strategies import BAR_STRATEGIES, f03_trades
+from .engine import REALISTIC, Costs, Simulator, load_m1, resample, run_portfolio, signal_events
+from .strategies import BAR_STRATEGIES, f03_events
 
 LAB = Path(__file__).resolve().parent
 BLOCKS = {"B1": ("2024-09-01", "2025-03-01"), "B2": ("2025-03-01", "2025-09-01"),
@@ -78,6 +78,9 @@ def main():
     ap.add_argument("--data", required=True)
     ap.add_argument("--only", nargs="*")
     ap.add_argument("--label", default="lot_1")
+    ap.add_argument("--costs", choices=["spread", "realistic"], default="realistic",
+                    help="spread : spread bid/ask seul (lot 1 d'origine) ; realistic : + commission 3 $/lot/côté + 0,1 pip de glissement")
+    ap.add_argument("--max-open", type=int, default=2, help="positions simultanées max, toutes paires (0 = sans limite)")
     a = ap.parse_args()
     cand = {c["id"]: c for c in yaml.safe_load((LAB / "candidates.yaml").read_text())["candidates"]}
     todo = [i for i in cand if cand[i]["verdict"] == "TEST" and (not a.only or i in a.only)]
@@ -86,7 +89,7 @@ def main():
     for p in pairs:
         t0 = time.time()
         m1[p] = load_m1(Path(a.data), p)
-        sims[p] = Simulator(p, m1[p])
+        sims[p] = Simulator(p, m1[p], REALISTIC if a.costs == "realistic" else Costs())
         print(f"{p}: {len(m1[p]):,} minutes ({time.time() - t0:.0f} s)", flush=True)
     start = max(m.index[0] for m in m1.values())
     end = min(m.index[-1] for m in m1.values())
@@ -95,10 +98,10 @@ def main():
         c = cand[cid]
         for version in ("exact", "projet"):
             t0 = time.time()
-            trades = []
+            events = []
             for p in c["paires"]:
                 if cid == "F03":
-                    trades += f03_trades(sims[p], start, end, version)
+                    events += f03_events(p, start, end, version)
                 else:
                     fn, tf, r_exact, r_projet = BAR_STRATEGIES[cid]
                     key = (p, tf)
@@ -106,10 +109,11 @@ def main():
                         bars[key] = resample(m1[p], tf)
                     b = bars[key]
                     lg, sh, el, es = fn(b, p)
-                    trades += run_bar_strategy(sims[p], b, lg.fillna(False).to_numpy(), sh.fillna(False).to_numpy(),
-                                               r_exact if version == "exact" else r_projet, tf,
-                                               None if el is None else el.fillna(False).to_numpy(),
-                                               None if es is None else es.fillna(False).to_numpy())
+                    events += signal_events(p, b, lg.fillna(False).to_numpy(), sh.fillna(False).to_numpy(),
+                                            r_exact if version == "exact" else r_projet, tf,
+                                            None if el is None else el.fillna(False).to_numpy(),
+                                            None if es is None else es.fillna(False).to_numpy(), cid)
+            trades = run_portfolio(events, sims, a.max_open or None)
             s = stats(trades)
             v, why = verdict(s)
             results.append({"id": cid, "nom": c["nom"], "version": version, "verdict": v, "raisons": why, "mesures": s})
@@ -117,7 +121,7 @@ def main():
                   f"t {s.get('t_trades')}/{s.get('t_jours')} → {v} ({time.time() - t0:.0f} s)", flush=True)
     out = LAB / "results"
     out.mkdir(exist_ok=True)
-    meta = {"label": a.label, "periode": [str(start), str(end)], "blocs": BLOCKS, "stress_pips": STRESS, "resultats": results}
+    meta = {"label": a.label, "couts": a.costs, "positions_max": a.max_open, "periode": [str(start), str(end)], "blocs": BLOCKS, "stress_pips": STRESS, "resultats": results}
     (out / f"{a.label}.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False, default=str))
     lines = [f"# {a.label} — stratégies Forex open source (Dukascopy bid/ask, sept. 2024 → août 2026)", "",
              "| ID | Stratégie | Version | Trades | Pips/trade | Taux de gain | PF | t (trades / jours) | B1 | B2 | B3 | B4 | Stress +0,5 | Verdict |",

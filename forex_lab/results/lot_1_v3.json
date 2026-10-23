@@ -1,0 +1,822 @@
+{
+ "label": "lot_1_v3",
+ "couts": "realistic",
+ "positions_max": 2,
+ "periode": [
+  "2024-09-01 21:04:00+00:00",
+  "2026-08-31 23:59:00+00:00"
+ ],
+ "blocs": {
+  "B1": [
+   "2024-09-01",
+   "2025-03-01"
+  ],
+  "B2": [
+   "2025-03-01",
+   "2025-09-01"
+  ],
+  "B3": [
+   "2025-09-01",
+   "2026-03-01"
+  ],
+  "B4": [
+   "2026-03-01",
+   "2026-09-01"
+  ]
+ },
+ "stress_pips": 0.5,
+ "resultats": [
+  {
+   "id": "F01",
+   "nom": "MACD Sample (MetaQuotes)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 251,
+    "pips_total": -237.2,
+    "pips_moyen": -0.945,
+    "taux_gain_pct": 69.7,
+    "profit_factor": 0.96,
+    "t_trades": -0.22,
+    "t_jours": -0.22,
+    "jours": 205,
+    "pips_moyen_stress": -1.445,
+    "duree_moy_min": 2914.6,
+    "sorties": {
+     "signal": 109,
+     "objectif": 80,
+     "stop": 60,
+     "fin": 2
+    },
+    "par_paire_pips": {
+     "EURUSD": 70.4,
+     "GBPUSD": 208.4,
+     "USDJPY": -516.0
+    },
+    "B1": {
+     "trades": 64,
+     "pips_moyen": -9.681
+    },
+    "B2": {
+     "trades": 63,
+     "pips_moyen": -1.95
+    },
+    "B3": {
+     "trades": 65,
+     "pips_moyen": -4.562
+    },
+    "B4": {
+     "trades": 59,
+     "pips_moyen": 13.589
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F01",
+   "nom": "MACD Sample (MetaQuotes)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 306,
+    "pips_total": -967.1,
+    "pips_moyen": -3.161,
+    "taux_gain_pct": 45.1,
+    "profit_factor": 0.73,
+    "t_trades": -1.99,
+    "t_jours": -1.91,
+    "jours": 224,
+    "pips_moyen_stress": -3.661,
+    "duree_moy_min": 314.7,
+    "sorties": {
+     "temps": 272,
+     "objectif": 24,
+     "stop": 10
+    },
+    "par_paire_pips": {
+     "EURUSD": -174.0,
+     "GBPUSD": -186.0,
+     "USDJPY": -607.1
+    },
+    "B1": {
+     "trades": 87,
+     "pips_moyen": -6.872
+    },
+    "B2": {
+     "trades": 79,
+     "pips_moyen": 0.079
+    },
+    "B3": {
+     "trades": 73,
+     "pips_moyen": -4.28
+    },
+    "B4": {
+     "trades": 67,
+     "pips_moyen": -0.941
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F02",
+   "nom": "Moving Average (MetaQuotes)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 1436,
+    "pips_total": -2454.8,
+    "pips_moyen": -1.709,
+    "taux_gain_pct": 27.7,
+    "profit_factor": 0.87,
+    "t_trades": -1.57,
+    "t_jours": -1.55,
+    "jours": 510,
+    "pips_moyen_stress": -2.209,
+    "duree_moy_min": 1056.9,
+    "sorties": {
+     "signal": 1435,
+     "fin": 1
+    },
+    "par_paire_pips": {
+     "EURUSD": -481.3,
+     "GBPUSD": 0.0,
+     "USDJPY": -1973.5
+    },
+    "B1": {
+     "trades": 342,
+     "pips_moyen": -4.338
+    },
+    "B2": {
+     "trades": 370,
+     "pips_moyen": -1.4
+    },
+    "B3": {
+     "trades": 372,
+     "pips_moyen": -2.39
+    },
+    "B4": {
+     "trades": 352,
+     "pips_moyen": 1.239
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F02",
+   "nom": "Moving Average (MetaQuotes)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 2278,
+    "pips_total": -5747.5,
+    "pips_moyen": -2.523,
+    "taux_gain_pct": 37.6,
+    "profit_factor": 0.73,
+    "t_trades": -5.41,
+    "t_jours": -4.91,
+    "jours": 511,
+    "pips_moyen_stress": -3.023,
+    "duree_moy_min": 203.6,
+    "sorties": {
+     "temps": 1390,
+     "signal": 888
+    },
+    "par_paire_pips": {
+     "EURUSD": -819.9,
+     "GBPUSD": -1818.7,
+     "USDJPY": -3108.9
+    },
+    "B1": {
+     "trades": 567,
+     "pips_moyen": -2.907
+    },
+    "B2": {
+     "trades": 576,
+     "pips_moyen": -1.99
+    },
+    "B3": {
+     "trades": 578,
+     "pips_moyen": -3.154
+    },
+    "B4": {
+     "trades": 557,
+     "pips_moyen": -2.029
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F03",
+   "nom": "Business day FX (Breedon-Ranaldo / QuantRocket)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 1034,
+    "pips_total": -3298.9,
+    "pips_moyen": -3.19,
+    "taux_gain_pct": 46.5,
+    "profit_factor": 0.8,
+    "t_trades": -2.71,
+    "t_jours": -2.05,
+    "jours": 517,
+    "pips_moyen_stress": -3.69,
+    "duree_moy_min": 480.0,
+    "sorties": {
+     "temps": 1034
+    },
+    "par_paire_pips": {
+     "EURUSD": -1351.6,
+     "GBPUSD": -1947.3
+    },
+    "B1": {
+     "trades": 256,
+     "pips_moyen": -0.82
+    },
+    "B2": {
+     "trades": 260,
+     "pips_moyen": -5.403
+    },
+    "B3": {
+     "trades": 256,
+     "pips_moyen": -1.861
+    },
+    "B4": {
+     "trades": 262,
+     "pips_moyen": -4.61
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F03",
+   "nom": "Business day FX (Breedon-Ranaldo / QuantRocket)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 1034,
+    "pips_total": -3262.2,
+    "pips_moyen": -3.155,
+    "taux_gain_pct": 44.9,
+    "profit_factor": 0.76,
+    "t_trades": -3.3,
+    "t_jours": -2.47,
+    "jours": 517,
+    "pips_moyen_stress": -3.655,
+    "duree_moy_min": 240.0,
+    "sorties": {
+     "temps": 1034
+    },
+    "par_paire_pips": {
+     "EURUSD": -1236.5,
+     "GBPUSD": -2025.7
+    },
+    "B1": {
+     "trades": 256,
+     "pips_moyen": -0.212
+    },
+    "B2": {
+     "trades": 260,
+     "pips_moyen": -3.915
+    },
+    "B3": {
+     "trades": 256,
+     "pips_moyen": -3.702
+    },
+    "B4": {
+     "trades": 262,
+     "pips_moyen": -4.742
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F04",
+   "nom": "EA31337 RSI (signal d'entrée)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 668,
+    "pips_total": -2604.6,
+    "pips_moyen": -3.899,
+    "taux_gain_pct": 48.5,
+    "profit_factor": 0.76,
+    "t_trades": -2.32,
+    "t_jours": -2.36,
+    "jours": 372,
+    "pips_moyen_stress": -4.399,
+    "duree_moy_min": 606.2,
+    "sorties": {
+     "temps": 668
+    },
+    "par_paire_pips": {
+     "EURUSD": -540.1,
+     "GBPUSD": -316.7,
+     "USDJPY": -1747.8
+    },
+    "B1": {
+     "trades": 174,
+     "pips_moyen": -0.758
+    },
+    "B2": {
+     "trades": 172,
+     "pips_moyen": -7.51
+    },
+    "B3": {
+     "trades": 162,
+     "pips_moyen": -2.635
+    },
+    "B4": {
+     "trades": 160,
+     "pips_moyen": -4.714
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F04",
+   "nom": "EA31337 RSI (signal d'entrée)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 689,
+    "pips_total": -1925.2,
+    "pips_moyen": -2.794,
+    "taux_gain_pct": 47.2,
+    "profit_factor": 0.77,
+    "t_trades": -2.09,
+    "t_jours": -1.93,
+    "jours": 350,
+    "pips_moyen_stress": -3.294,
+    "duree_moy_min": 263.5,
+    "sorties": {
+     "temps": 689
+    },
+    "par_paire_pips": {
+     "EURUSD": -388.8,
+     "GBPUSD": -13.1,
+     "USDJPY": -1523.3
+    },
+    "B1": {
+     "trades": 184,
+     "pips_moyen": 1.597
+    },
+    "B2": {
+     "trades": 178,
+     "pips_moyen": -5.489
+    },
+    "B3": {
+     "trades": 168,
+     "pips_moyen": -0.988
+    },
+    "B4": {
+     "trades": 159,
+     "pips_moyen": -6.768
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F05",
+   "nom": "EA31337 CCI (signal d'entrée)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 2654,
+    "pips_total": -7686.9,
+    "pips_moyen": -2.896,
+    "taux_gain_pct": 47.5,
+    "profit_factor": 0.79,
+    "t_trades": -4.05,
+    "t_jours": -3.68,
+    "jours": 612,
+    "pips_moyen_stress": -3.396,
+    "duree_moy_min": 597.1,
+    "sorties": {
+     "temps": 2654
+    },
+    "par_paire_pips": {
+     "EURUSD": -1121.6,
+     "GBPUSD": -1940.7,
+     "USDJPY": -4624.6
+    },
+    "B1": {
+     "trades": 657,
+     "pips_moyen": -2.971
+    },
+    "B2": {
+     "trades": 672,
+     "pips_moyen": -4.093
+    },
+    "B3": {
+     "trades": 659,
+     "pips_moyen": -1.117
+    },
+    "B4": {
+     "trades": 666,
+     "pips_moyen": -3.376
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F05",
+   "nom": "EA31337 CCI (signal d'entrée)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 3578,
+    "pips_total": -6620.4,
+    "pips_moyen": -1.85,
+    "taux_gain_pct": 45.6,
+    "profit_factor": 0.82,
+    "t_trades": -4.07,
+    "t_jours": -3.78,
+    "jours": 519,
+    "pips_moyen_stress": -2.35,
+    "duree_moy_min": 272.7,
+    "sorties": {
+     "temps": 3578
+    },
+    "par_paire_pips": {
+     "EURUSD": -1053.1,
+     "GBPUSD": -2638.7,
+     "USDJPY": -2928.6
+    },
+    "B1": {
+     "trades": 890,
+     "pips_moyen": -0.858
+    },
+    "B2": {
+     "trades": 898,
+     "pips_moyen": -1.954
+    },
+    "B3": {
+     "trades": 886,
+     "pips_moyen": -1.476
+    },
+    "B4": {
+     "trades": 904,
+     "pips_moyen": -3.091
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F06",
+   "nom": "EA31337 WPR (signal d'entrée)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 2934,
+    "pips_total": -6136.1,
+    "pips_moyen": -2.091,
+    "taux_gain_pct": 47.5,
+    "profit_factor": 0.85,
+    "t_trades": -3.06,
+    "t_jours": -3.05,
+    "jours": 618,
+    "pips_moyen_stress": -2.591,
+    "duree_moy_min": 606.8,
+    "sorties": {
+     "temps": 2932,
+     "fin": 2
+    },
+    "par_paire_pips": {
+     "EURUSD": -2190.3,
+     "GBPUSD": -1665.0,
+     "USDJPY": -2280.8
+    },
+    "B1": {
+     "trades": 734,
+     "pips_moyen": -3.003
+    },
+    "B2": {
+     "trades": 741,
+     "pips_moyen": -3.582
+    },
+    "B3": {
+     "trades": 722,
+     "pips_moyen": -0.388
+    },
+    "B4": {
+     "trades": 737,
+     "pips_moyen": -1.354
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F06",
+   "nom": "EA31337 WPR (signal d'entrée)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 4260,
+    "pips_total": -9133.7,
+    "pips_moyen": -2.144,
+    "taux_gain_pct": 45.0,
+    "profit_factor": 0.79,
+    "t_trades": -5.04,
+    "t_jours": -4.46,
+    "jours": 519,
+    "pips_moyen_stress": -2.644,
+    "duree_moy_min": 280.4,
+    "sorties": {
+     "temps": 4260
+    },
+    "par_paire_pips": {
+     "EURUSD": -2290.2,
+     "GBPUSD": -1494.4,
+     "USDJPY": -5349.1
+    },
+    "B1": {
+     "trades": 1053,
+     "pips_moyen": -1.865
+    },
+    "B2": {
+     "trades": 1080,
+     "pips_moyen": -3.297
+    },
+    "B3": {
+     "trades": 1056,
+     "pips_moyen": -1.332
+    },
+    "B4": {
+     "trades": 1071,
+     "pips_moyen": -2.057
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F07",
+   "nom": "EA31337 Stochastic (signal d'entrée)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 2173,
+    "pips_total": -7276.2,
+    "pips_moyen": -3.348,
+    "taux_gain_pct": 46.0,
+    "profit_factor": 0.76,
+    "t_trades": -4.26,
+    "t_jours": -3.95,
+    "jours": 586,
+    "pips_moyen_stress": -3.848,
+    "duree_moy_min": 596.4,
+    "sorties": {
+     "temps": 2172,
+     "fin": 1
+    },
+    "par_paire_pips": {
+     "EURUSD": -1647.9,
+     "GBPUSD": -2337.9,
+     "USDJPY": -3290.4
+    },
+    "B1": {
+     "trades": 559,
+     "pips_moyen": -2.739
+    },
+    "B2": {
+     "trades": 549,
+     "pips_moyen": -3.347
+    },
+    "B3": {
+     "trades": 529,
+     "pips_moyen": -5.143
+    },
+    "B4": {
+     "trades": 536,
+     "pips_moyen": -2.214
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F07",
+   "nom": "EA31337 Stochastic (signal d'entrée)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 2583,
+    "pips_total": -5397.1,
+    "pips_moyen": -2.089,
+    "taux_gain_pct": 45.0,
+    "profit_factor": 0.8,
+    "t_trades": -3.76,
+    "t_jours": -3.55,
+    "jours": 517,
+    "pips_moyen_stress": -2.589,
+    "duree_moy_min": 284.1,
+    "sorties": {
+     "temps": 2583
+    },
+    "par_paire_pips": {
+     "EURUSD": -1458.0,
+     "GBPUSD": -2118.1,
+     "USDJPY": -1821.0
+    },
+    "B1": {
+     "trades": 673,
+     "pips_moyen": -1.479
+    },
+    "B2": {
+     "trades": 652,
+     "pips_moyen": -0.507
+    },
+    "B3": {
+     "trades": 625,
+     "pips_moyen": -2.779
+    },
+    "B4": {
+     "trades": 633,
+     "pips_moyen": -3.688
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F08",
+   "nom": "EA31337 Bands (signal d'entrée)",
+   "version": "exact",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 3312,
+    "pips_total": -7200.6,
+    "pips_moyen": -2.174,
+    "taux_gain_pct": 46.6,
+    "profit_factor": 0.84,
+    "t_trades": -3.38,
+    "t_jours": -3.21,
+    "jours": 625,
+    "pips_moyen_stress": -2.674,
+    "duree_moy_min": 619.9,
+    "sorties": {
+     "temps": 3310,
+     "fin": 2
+    },
+    "par_paire_pips": {
+     "EURUSD": -1395.9,
+     "GBPUSD": -832.6,
+     "USDJPY": -4972.1
+    },
+    "B1": {
+     "trades": 821,
+     "pips_moyen": -2.346
+    },
+    "B2": {
+     "trades": 833,
+     "pips_moyen": -3.263
+    },
+    "B3": {
+     "trades": 821,
+     "pips_moyen": -2.026
+    },
+    "B4": {
+     "trades": 837,
+     "pips_moyen": -1.067
+    },
+    "part_max_paire": null
+   }
+  },
+  {
+   "id": "F08",
+   "nom": "EA31337 Bands (signal d'entrée)",
+   "version": "projet",
+   "verdict": "ÉCHEC",
+   "raisons": [
+    "positive sur moins de 3 blocs sur 4",
+    "profit factor < 1,15",
+    "pas distinguable du hasard (t)",
+    "négative avec +0,5 pip de coût"
+   ],
+   "mesures": {
+    "trades": 5168,
+    "pips_total": -5722.9,
+    "pips_moyen": -1.107,
+    "taux_gain_pct": 49.0,
+    "profit_factor": 0.89,
+    "t_trades": -2.88,
+    "t_jours": -2.53,
+    "jours": 519,
+    "pips_moyen_stress": -1.607,
+    "duree_moy_min": 257.9,
+    "sorties": {
+     "temps": 5168
+    },
+    "par_paire_pips": {
+     "EURUSD": -276.9,
+     "GBPUSD": -827.6,
+     "USDJPY": -4618.4
+    },
+    "B1": {
+     "trades": 1282,
+     "pips_moyen": -0.887
+    },
+    "B2": {
+     "trades": 1298,
+     "pips_moyen": -1.897
+    },
+    "B3": {
+     "trades": 1282,
+     "pips_moyen": -0.061
+    },
+    "B4": {
+     "trades": 1306,
+     "pips_moyen": -1.566
+    },
+    "part_max_paire": null
+   }
+  }
+ ]
+}
