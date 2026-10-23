@@ -1,0 +1,180 @@
+# Strategy Discovery — registre des fiches (23/10/2026). Scores selon GRILLE.md, fixée avant la recherche.
+# Les résultats cités sont ceux PUBLIÉS par les sources ; aucun backtest du projet n'a été lancé pour ce classement.
+fiches:
+  - id: D01
+    nom: "Suivi de tendance / momentum de série temporelle (12 mois)"
+    famille: tendance
+    sources:
+      - "Moskowitz, Ooi, Pedersen (2012), Time Series Momentum, Journal of Financial Economics 104"
+      - "Hurst, Ooi, Pedersen (2017), A Century of Evidence on Trend-Following Investing, Journal of Portfolio Management (AQR)"
+      - "AQR, Trends Everywhere (2018) : test hors échantillon sur de nouveaux actifs, dont devises émergentes"
+      - "AQR, You Can't Always Trend When You Want (2019) : indice SG Trend Sharpe 0,05 sur 2010-2018 contre 0,28 depuis 2000"
+    regles: "Chaque fin de mois : signe du rendement de la paire sur 12 mois (ou 1, 3 et 12 mois combinés) ; achat si positif, vente si négatif ; taille inverse de la volatilité ; position tenue 1 mois."
+    resultats_publies: "Rentable sur plus d'un siècle et sur 67 marchés dont les devises du G10 ; après frais estimés ; nettement affaibli depuis 2010 (Sharpe de l'indice SG Trend ≈ 0,05 sur 2010-2018)."
+    limites: "Horizon mensuel (positions de plusieurs semaines, nuits et week-ends) ; l'avantage vient de la diversification sur des dizaines de marchés, pas de 3 paires ; affaiblissement récent signalé par l'auteur lui-même ; peu de trades par an (≈ 12 par paire)."
+    scores: {S: 3, H: 3, C: 2, R: 2, I: 3, F: 3, P: 2}
+    penalites: {effet_en_declin: true}
+    compatibilite: {horizon: "mensuel (incompatible ≤ 4 h)", paires: "oui, mais preuve sur panier large", donnees: "oui (Dukascopy journalier)", cout_sensibilite: "faible (gain par trade de centaines de pips)"}
+    doublon_de: null
+    fait_nouveau: "Distinct de X03 Turtle (cassure Donchian 20/55 jours, rejetée surtout pour l'horizon) et de F02 (moyenne mobile H1) : signal 12 mois, preuve académique sur un siècle."
+    mots_cles: [["momentum", "12 mois"], ["time series momentum"]]
+
+  - id: D02
+    nom: "Portage (carry) des devises du G10"
+    famille: portage
+    sources:
+      - "Hsu, Taylor, Wang (2024), The Out-of-Sample Performance of Carry Trades, Journal of International Money and Finance (CEPR DP15052)"
+    regles: "Chaque mois : acheter les devises à taux d'intérêt élevé, vendre celles à taux bas (tri sur le différentiel de taux)."
+    resultats_publies: "Après correction de la recherche de données (data snooping), pas rentable hors échantillon sur 1983-2015, sauf autour de 2001-2005."
+    limites: "Preuve hors échantillon NÉGATIVE ; positions de plusieurs semaines ; besoin des taux d'intérêt ; krachs violents (2008)."
+    scores: {S: 3, H: 0, C: 2, R: 2, I: 2, F: 2, P: 2}
+    penalites: {effet_en_declin: true}
+    compatibilite: {horizon: "mensuel (incompatible ≤ 4 h)", paires: "partiel (portage entre EUR, GBP, JPY, USD)", donnees: "oui (taux publics BCE, Fed, BoE, BoJ)", cout_sensibilite: "faible"}
+    doublon_de: null
+    mots_cles: [["carry"]]
+
+  - id: D03
+    nom: "Dollar avant les changements de taux de la Fed (FOMC)"
+    famille: evenement
+    sources:
+      - "Karnaukh (2018), The Dollar Ahead of FOMC Target Rate Changes, document de travail SSRN"
+    regles: "3 jours avant le FOMC, changement attendu du taux d'après les contrats à terme sur fed funds du mois suivant : ≥ +12,5 pb → acheter USD, ≤ −12,5 pb → vendre USD ; entrée 14:00 (heure de New York) deux jours avant, sortie 14:00 le jour de l'annonce ; panier EUR, GBP, CHF, JPY contre USD."
+    resultats_publies: "1994-2014 : 57 trades, +25 pb par trade, Sharpe 0,93 (t 2,8) avant coûts ; après coûts estimés +15 pb, Sharpe 0,57."
+    limites: "Pas de test hors échantillon formel ; données s'arrêtant en 2014 ; peu de trades (≈ 3 par an) ; demande les contrats à terme sur fed funds (disponibilité gratuite incertaine) ; positions de 2 jours."
+    scores: {S: 2, H: 0, C: 2, R: 1, I: 0, F: 2, P: 2}
+    compatibilite: {horizon: "2 jours (incompatible ≤ 4 h)", paires: "oui (EUR, GBP, JPY dans le panier)", donnees: "incertain (fed funds futures)", cout_sensibilite: "faible (≈ 25 pips par trade)"}
+    doublon_de: null
+    mots_cles: [["fomc", "fed funds"]]
+
+  - id: D04
+    nom: "Vente du dollar les jours d'annonce FOMC"
+    famille: evenement
+    sources:
+      - "Mueller, Tahbaz-Salehi, Vedolin (2017), Exchange Rates and Monetary Policy Uncertainty, Journal of Finance 72"
+    regles: "Vendre le dollar contre les autres devises le jour d'une annonce FOMC programmée ; effet plus fort pour les devises à taux élevé et en période de baisse des taux."
+    resultats_publies: "Rendement excédentaire significatif les jours FOMC sur environ 20 ans (fin des données vers 2014) ; coûts non déduits."
+    limites: "Coûts ignorés ; ≈ 8 trades par an ; données anciennes ; paramètres d'horaire non fixés pour une version intrajournalière ; l'annonce (≈ 18:00-19:00 UTC) tombe avant notre clôture de 21:00 UTC."
+    scores: {S: 3, H: 0, C: 0, R: 1, I: 1, F: 2, P: 2}
+    compatibilite: {horizon: "1 jour (adaptable en intrajournalier, sortie avant 21:00 UTC)", paires: "oui", donnees: "oui (calendrier FOMC public + Dukascopy)", cout_sensibilite: "inconnue"}
+    doublon_de: null
+    mots_cles: [["fomc", "vente"]]
+
+  - id: D05
+    nom: "Couverture actions avant le fix de Londres de fin de mois"
+    famille: flux
+    sources:
+      - "Melvin, Prins (2015), Equity Hedging and Exchange Rates at the London 4 p.m. Fix, Journal of Financial Markets 22"
+      - "Notes mensuelles de praticiens (Barclays, BNY iFlow, Crédit Agricole) — sans historique audité"
+    regles: "Si les actions étrangères ont fortement monté sur le mois, la devise étrangère tend à baisser avant le fix de 16:00 Londres du dernier jour ouvré (rééquilibrage des couvertures). Règles détaillées non récupérées."
+    resultats_publies: "Effet statistiquement significatif dans l'étude ; ampleur, période et coûts non récupérés ici."
+    limites: "12 occasions par an ; détails de la fenêtre manquants ; effet connu de tous les desks depuis 2015 ; les notes de praticiens n'ont pas d'historique vérifiable."
+    scores: {S: 3, H: 0, C: 0, R: 1, I: 1, F: 1, P: 1}
+    compatibilite: {horizon: "intrajournalier (≤ 4 h avant 16:00 Londres)", paires: "oui", donnees: "oui (Dukascopy + indices actions)", cout_sensibilite: "inconnue"}
+    doublon_de: null
+    fait_nouveau: "E000 rejette le fade APRÈS le fix ; ici le pari est directionnel AVANT le fix, fin de mois seulement, piloté par les actions."
+    mots_cles: [["fix", "fin de mois"], ["fixing", "fade"]]
+
+  - id: D06
+    nom: "Stratégie actions → devises autour du fix WM (Sheth-Teeple)"
+    famille: flux
+    sources:
+      - "Sheth, Teeple, Connecting equity and foreign exchange markets through the WM 'Fix': a trading strategy, Journal of Investment Strategies (Risk.net)"
+    regles: "Prévision statistique du mouvement autour du fix WM/Reuters à partir des actions ; mécanique non publiée dans le résumé."
+    resultats_publies: "Hors échantillon : +4,02 % par an, Sharpe annualisé 3,43 ; les auteurs précisent « à titre d'illustration seulement »."
+    limites: "Coûts non discutés ; règles non publiques ; période non indiquée ; les mêmes auteurs parlent ailleurs d'un « petit profit positif »."
+    scores: {S: 3, H: 1, C: 0, R: 1, I: 0, F: 1, P: 0}
+    compatibilite: {horizon: "intrajournalier", paires: "inconnu", donnees: "oui", cout_sensibilite: "inconnue"}
+    doublon_de: null
+    fait_nouveau: "Directionnel avant le fix, pas un fade."
+    mots_cles: [["fix", "wm", "actions"]]
+
+  - id: D07
+    nom: "Momentum transversal des devises (1 à 12 mois)"
+    famille: momentum
+    sources:
+      - "Menkhoff, Sarno, Schmeling, Schrimpf (2012), Currency Momentum Strategies, Journal of Financial Economics 106"
+      - "CEPR DP15653, Currency Anomalies : les profits des anomalies de change baissent nettement après leur publication"
+    regles: "Chaque mois : acheter les devises qui ont le plus monté sur 1 à 12 mois, vendre celles qui ont le plus baissé, parmi ≈ 40 devises."
+    resultats_publies: "Jusqu'à ≈ 10 % par an avant coûts sur 1976-2010 ; fortement réduit par les coûts (devises peu liquides) ; baisse après publication."
+    limites: "Besoin de dizaines de devises (pas nos 3 paires) ; horizon mensuel ; déclin après publication."
+    scores: {S: 3, H: 1, C: 2, R: 1, I: 2, F: 3, P: 3}
+    penalites: {effet_en_declin: true, hors_paires: true}
+    compatibilite: {horizon: "mensuel (incompatible ≤ 4 h)", paires: "non (≈ 40 devises)", donnees: "partiel", cout_sensibilite: "élevée sur devises émergentes"}
+    doublon_de: null
+    mots_cles: [["momentum", "transversal"]]
+
+  - id: D08
+    nom: "Dérive après annonce macro (réaction des 15 premières minutes)"
+    famille: evenement
+    sources:
+      - "LSE Financial Markets Group, Discussion Paper 258 (DEM/USD 1992-1994)"
+    regles: "Le sens du mouvement des 15 minutes après une statistique américaine prédit le sens des 6 à 24 heures suivantes."
+    resultats_publies: "Effet faible, sans coûts, sur 2 ans de données des années 1990."
+    limites: "Très ancien, une seule paire disparue (DEM), pas de coûts, pas de réplication récente trouvée."
+    scores: {S: 2, H: 0, C: 0, R: 0, I: 0, F: 1, P: 1}
+    compatibilite: {horizon: "intrajournalier", paires: "oui (EURUSD)", donnees: "oui (calendrier BLS + Dukascopy)", cout_sensibilite: "élevée"}
+    doublon_de: null
+    mots_cles: [["derive post-annonce"], ["announcement drift"]]
+
+  # ---- Doublons des registres d'échecs (écartés sans score utile) ----
+  - id: D09
+    nom: "Règles techniques simples (moyennes mobiles, filtres) sur le Forex"
+    famille: technique
+    sources: ["Neely, Weller : rentables dans les années 1970-80, disparues au début des années 1990"]
+    regles: "Croisements de moyennes mobiles, filtres de pourcentage."
+    resultats_publies: "Disparition documentée après 1990."
+    limites: "Effet disparu."
+    scores: {S: 3, H: 3, C: 2, R: 0, I: 2, F: 2, P: 2}
+    penalites: {effet_en_declin: true}
+    compatibilite: {horizon: "journalier", paires: "oui", donnees: "oui", cout_sensibilite: "élevée"}
+    doublon_de: "F01 MACD Sample, F02 Moving Average, X04 MACD + RSI"
+    mots_cles: [["moving average"]]
+
+  - id: D10
+    nom: "Saisonnalité horaire du dollar (fenêtres européennes / américaines)"
+    famille: horaire
+    sources: ["Breedon, Ranaldo ; Krohn, Mueller, Whelan (fenêtre européenne nette négative après coûts)"]
+    regles: "Vendre la devise locale pendant ses heures de bureau."
+    resultats_publies: "Négatif après coûts pour les preneurs de liquidité (Krohn-Mueller-Whelan)."
+    limites: "Effet inversé dans nos données 2024-2026."
+    scores: {S: 3, H: 1, C: 2, R: 2, I: 2, F: 2, P: 3}
+    compatibilite: {horizon: "intrajournalier", paires: "oui", donnees: "oui", cout_sensibilite: "élevée"}
+    doublon_de: "F03 Business day, X12 / E005"
+    mots_cles: [["business day"]]
+
+  - id: D11
+    nom: "Vente du yen après le fix de Tokyo"
+    famille: flux
+    sources: ["Krohn, Mueller, Whelan ; Ito, Yamada"]
+    regles: "Vendre USDJPY après le fix de 00:55 UTC."
+    resultats_publies: "Effet 1999-2019."
+    limites: "0/18 variantes positives en validation 2025-2026."
+    scores: {S: 3, H: 1, C: 1, R: 2, I: 2, F: 2, P: 3}
+    compatibilite: {horizon: "intrajournalier", paires: "oui (USDJPY)", donnees: "oui", cout_sensibilite: "moyenne"}
+    doublon_de: "V3-H1 Fix de Tokyo"
+    mots_cles: [["tokyo"]]
+
+  - id: D12
+    nom: "Momentum intrajournalier (première demi-heure → fin de journée)"
+    famille: momentum
+    sources: ["Gao, Han, Li, Zhou (2018), JFE — actions"]
+    regles: "Le rendement du début de séance prédit la dernière demi-heure."
+    resultats_publies: "Prouvé sur indices actions."
+    limites: "Rejeté deux fois sur le Forex dans le projet."
+    scores: {S: 3, H: 1, C: 1, R: 2, I: 1, F: 2, P: 3}
+    penalites: {hors_paires: true}
+    compatibilite: {horizon: "intrajournalier", paires: "oui", donnees: "oui", cout_sensibilite: "élevée"}
+    doublon_de: "V3-H2, X11, E007"
+    mots_cles: [["momentum intrajournalier"]]
+
+  - id: D13
+    nom: "Cassure d'ouverture (range asiatique / Londres)"
+    famille: cassure
+    sources: ["Crabel ; TradingView ; Backtrex"]
+    regles: "Acheter / vendre la cassure du range asiatique à l'ouverture de Londres."
+    resultats_publies: "Promotionnel ou négatif."
+    limites: "Rejeté trois fois."
+    scores: {S: 0, H: 0, C: 0, R: 2, I: 0, F: 0, P: 2}
+    compatibilite: {horizon: "intrajournalier", paires: "oui", donnees: "oui", cout_sensibilite: "élevée"}
+    doublon_de: "V3-H3, V4-H2, X01"
+    mots_cles: [["range asiatique"]]
