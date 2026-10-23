@@ -22,22 +22,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {ref: research-forex-oss}
-      - name: Téléchargement FRED
+      - name: Téléchargement FRED (plusieurs adresses, diagnostic des erreurs)
         run: |
-          set -euo pipefail
-          mkdir -p forex_lab/trend/data
+          set -uo pipefail
+          D=forex_lab/trend/data; mkdir -p $D
+          get() {  # $1 = fichier, $2 = adresse
+            code=$(curl -sSL -m 90 -A "curl/8 (research; github-actions)" -w "%{http_code}" -o "$1" "$2" 2>/tmp/err) || true
+            echo "::notice::$(basename $1) HTTP $code $(head -c 120 "$1" 2>/dev/null | tr '\n' ' ') $(cat /tmp/err | head -c 150)"
+            [ "$code" = 200 ]
+          }
           for s in DEXUSEU DEXUSUK DEXJPUS TB3MS IR3TIB01EZM156N IR3TIB01GBM156N IR3TIB01JPM156N; do
-            ok=0
-            for i in 1 2 3 4 5; do
-              if curl -fsSL --retry 3 -m 60 -A "Mozilla/5.0" "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s" -o "forex_lab/trend/data/$s.csv"; then
-                if head -1 "forex_lab/trend/data/$s.csv" | grep -q "$s"; then ok=1; break; fi
-              fi
-              sleep 10
-            done
-            [ "$ok" = 1 ] || { echo "::error::échec du téléchargement $s"; exit 1; }
-            echo "::notice::$s : $(wc -l < forex_lab/trend/data/$s.csv) lignes, $(head -2 forex_lab/trend/data/$s.csv | tail -1) → $(tail -1 forex_lab/trend/data/$s.csv)"
+            get $D/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s" && head -1 $D/$s.csv | grep -q "$s" && continue
+            sleep 5
+            get $D/$s.csv "https://fred.stlouisfed.org/graph/fredgraph.csv?id=$s&cosd=1971-01-01" && head -1 $D/$s.csv | grep -q "$s" && continue
+            rm -f $D/$s.csv
           done
-          date -u +"%Y-%m-%dT%H:%M:%SZ" > forex_lab/trend/data/TELECHARGE_LE.txt
+          # Sources de secours, gratuites : BCE (cours de référence depuis 1999), Stooq (historique long)
+          for c in USD GBP JPY; do
+            get $D/ECB_$c.csv "https://data-api.ecb.europa.eu/service/data/EXR/D.$c.EUR.SP00.A?format=csvdata" || rm -f $D/ECB_$c.csv
+          done
+          get $D/ECB_EURIBOR3M.csv "https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR3MD_.HSTA?format=csvdata" || rm -f $D/ECB_EURIBOR3M.csv
+          for s in eurusd gbpusd usdjpy; do
+            get $D/STOOQ_$s.csv "https://stooq.com/q/d/l/?s=$s&i=d" || rm -f $D/STOOQ_$s.csv
+          done
+          ls -la $D
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > $D/TELECHARGE_LE.txt
       - name: Enregistrement
         run: |
           git config user.name "github-actions[bot]"
