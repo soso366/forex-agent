@@ -68,3 +68,9 @@ candidates:
   - {id: X11, nom: "Momentum intrajournalier (1re demi-heure → dernière)", verdict: ELIMINE,
      raison: "Prouvé sur des indices actions, pas sur le Forex ; la version Forex du projet (E007) est rejetée."}
   - {id: X12, nom: "Saisonnalité horaire du dollar, fenêtres Londres 08-12 / 14-18", verdict: ELIMINE, raison: "E005 rejetée (seule la version QuantRocket F03, fenêtres différentes, est testée)."}
+  - {id: X13, nom: "geraked/metatrader5 (648 étoiles, 11 robots MT5)", verdict: ELIMINE,
+     raison: "Résultats (PF 1,9 à 4,4) obtenus avec une grille qui ignore le stop et rajoute des positions de plus en plus grosses (×1,0 à ×1,5, jusqu'à 20-50 niveaux) : martingale interdite par nos règles ; pertes max 19 à 64 % ; une seule paire choisie par robot ; aucun test hors période (Fwd=0)."}
+  - {id: X14, nom: "nyao_scalper_mt5 (181 étoiles, or M5 + USDJPY)", verdict: ELIMINE,
+     raison: "Résultats de l'auteur seulement (or, jan.-sept. 2026, +94 %), frais non indiqués, règles retouchées en cours de route, M1 +24 % contre M5 +94 % (très sensible) ; surtout de l'or, absent de nos données."}
+  - {id: X15, nom: "GOLD_ORB (296 étoiles, cassure d'ouverture sur l'or)", verdict: ELIMINE,
+     raison: "Cassure d'ouverture (famille rejetée trois fois : X01, V4-H2, V3-H3), or seulement, résultats en images sans chiffres ni frais."}
