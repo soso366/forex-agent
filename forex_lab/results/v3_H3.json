@@ -1,0 +1,461 @@
+{
+ "hypothese": "H3 cassure du range asiatique",
+ "grille_IS": [
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 10,
+    "stop": "milieu",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 575,
+    "pips_moyen": -1.637,
+    "pips_total": -941.2,
+    "taux_gain_pct": 47.0,
+    "profit_factor": 0.84,
+    "t_trades": -1.74,
+    "t_jours": -1.56,
+    "jours": 253,
+    "brut_moyen": -0.8,
+    "cout_moyen": 0.837,
+    "duree_moy_min": 111.5,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -382.3,
+     "GBPUSD": -371.3,
+     "USDJPY": -187.5
+    },
+    "drawdown_max_pips": 1578.3
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 10,
+    "stop": "milieu",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 553,
+    "pips_moyen": -0.44,
+    "pips_total": -243.0,
+    "taux_gain_pct": 40.5,
+    "profit_factor": 0.96,
+    "t_trades": -0.38,
+    "t_jours": -0.33,
+    "jours": 253,
+    "brut_moyen": 0.414,
+    "cout_moyen": 0.853,
+    "duree_moy_min": 142.2,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -189.5,
+     "GBPUSD": -10.1,
+     "USDJPY": -43.3
+    },
+    "drawdown_max_pips": 1202.4
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 10,
+    "stop": "oppose",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 519,
+    "pips_moyen": -0.731,
+    "pips_total": -379.5,
+    "taux_gain_pct": 48.2,
+    "profit_factor": 0.94,
+    "t_trades": -0.56,
+    "t_jours": -0.49,
+    "jours": 253,
+    "brut_moyen": 0.114,
+    "cout_moyen": 0.845,
+    "duree_moy_min": 185.1,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -363.9,
+     "GBPUSD": 45.9,
+     "USDJPY": -61.5
+    },
+    "drawdown_max_pips": 1275.9
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 10,
+    "stop": "oppose",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 498,
+    "pips_moyen": 0.011,
+    "pips_total": 5.3,
+    "taux_gain_pct": 46.4,
+    "profit_factor": 1.0,
+    "t_trades": 0.01,
+    "t_jours": 0.01,
+    "jours": 253,
+    "brut_moyen": 0.868,
+    "cout_moyen": 0.857,
+    "duree_moy_min": 209.8,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -139.9,
+     "GBPUSD": 100.2,
+     "USDJPY": 45.0
+    },
+    "drawdown_max_pips": 1021.0
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 12,
+    "stop": "milieu",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 607,
+    "pips_moyen": -1.873,
+    "pips_total": -1137.1,
+    "taux_gain_pct": 46.3,
+    "profit_factor": 0.82,
+    "t_trades": -2.03,
+    "t_jours": -1.85,
+    "jours": 254,
+    "brut_moyen": -1.032,
+    "cout_moyen": 0.841,
+    "duree_moy_min": 112.3,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -464.4,
+     "GBPUSD": -419.1,
+     "USDJPY": -253.6
+    },
+    "drawdown_max_pips": 1634.7
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 12,
+    "stop": "milieu",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 583,
+    "pips_moyen": -0.542,
+    "pips_total": -315.9,
+    "taux_gain_pct": 40.0,
+    "profit_factor": 0.95,
+    "t_trades": -0.47,
+    "t_jours": -0.42,
+    "jours": 254,
+    "brut_moyen": 0.316,
+    "cout_moyen": 0.857,
+    "duree_moy_min": 142.8,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -240.4,
+     "GBPUSD": -82.1,
+     "USDJPY": 6.6
+    },
+    "drawdown_max_pips": 1200.8
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 12,
+    "stop": "oppose",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 545,
+    "pips_moyen": -0.781,
+    "pips_total": -425.7,
+    "taux_gain_pct": 47.7,
+    "profit_factor": 0.94,
+    "t_trades": -0.61,
+    "t_jours": -0.54,
+    "jours": 254,
+    "brut_moyen": 0.068,
+    "cout_moyen": 0.849,
+    "duree_moy_min": 185.2,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -435.8,
+     "GBPUSD": -48.0,
+     "USDJPY": 58.1
+    },
+    "drawdown_max_pips": 1369.8
+   }
+  },
+  {
+   "config": {
+    "r_end": 6,
+    "w_end": 12,
+    "stop": "oppose",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 521,
+    "pips_moyen": -0.163,
+    "pips_total": -85.0,
+    "taux_gain_pct": 45.9,
+    "profit_factor": 0.99,
+    "t_trades": -0.11,
+    "t_jours": -0.1,
+    "jours": 254,
+    "brut_moyen": 0.696,
+    "cout_moyen": 0.859,
+    "duree_moy_min": 209.1,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -193.2,
+     "GBPUSD": 6.3,
+     "USDJPY": 101.9
+    },
+    "drawdown_max_pips": 1101.6
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 10,
+    "stop": "milieu",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 510,
+    "pips_moyen": -1.122,
+    "pips_total": -572.1,
+    "taux_gain_pct": 47.8,
+    "profit_factor": 0.89,
+    "t_trades": -1.1,
+    "t_jours": -1.02,
+    "jours": 243,
+    "brut_moyen": -0.287,
+    "cout_moyen": 0.834,
+    "duree_moy_min": 125.5,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -105.9,
+     "GBPUSD": -244.3,
+     "USDJPY": -221.9
+    },
+    "drawdown_max_pips": 780.6
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 10,
+    "stop": "milieu",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 488,
+    "pips_moyen": -0.446,
+    "pips_total": -217.7,
+    "taux_gain_pct": 42.2,
+    "profit_factor": 0.96,
+    "t_trades": -0.37,
+    "t_jours": -0.34,
+    "jours": 243,
+    "brut_moyen": 0.406,
+    "cout_moyen": 0.853,
+    "duree_moy_min": 158.4,
+    "ambigus": 1,
+    "par_paire": {
+     "EURUSD": 31.6,
+     "GBPUSD": -110.9,
+     "USDJPY": -138.5
+    },
+    "drawdown_max_pips": 573.3
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 10,
+    "stop": "oppose",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 471,
+    "pips_moyen": -1.485,
+    "pips_total": -699.6,
+    "taux_gain_pct": 47.3,
+    "profit_factor": 0.88,
+    "t_trades": -1.12,
+    "t_jours": -1.03,
+    "jours": 243,
+    "brut_moyen": -0.641,
+    "cout_moyen": 0.845,
+    "duree_moy_min": 193.7,
+    "ambigus": 1,
+    "par_paire": {
+     "EURUSD": -53.4,
+     "GBPUSD": -328.9,
+     "USDJPY": -317.3
+    },
+    "drawdown_max_pips": 971.8
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 10,
+    "stop": "oppose",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 460,
+    "pips_moyen": -1.242,
+    "pips_total": -571.3,
+    "taux_gain_pct": 45.7,
+    "profit_factor": 0.9,
+    "t_trades": -0.91,
+    "t_jours": -0.8,
+    "jours": 243,
+    "brut_moyen": -0.387,
+    "cout_moyen": 0.854,
+    "duree_moy_min": 214.0,
+    "ambigus": 1,
+    "par_paire": {
+     "EURUSD": -114.6,
+     "GBPUSD": -229.7,
+     "USDJPY": -227.0
+    },
+    "drawdown_max_pips": 699.1
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 12,
+    "stop": "milieu",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 566,
+    "pips_moyen": -1.492,
+    "pips_total": -844.6,
+    "taux_gain_pct": 47.0,
+    "profit_factor": 0.86,
+    "t_trades": -1.53,
+    "t_jours": -1.44,
+    "jours": 248,
+    "brut_moyen": -0.653,
+    "cout_moyen": 0.84,
+    "duree_moy_min": 126.6,
+    "ambigus": 0,
+    "par_paire": {
+     "EURUSD": -251.0,
+     "GBPUSD": -314.2,
+     "USDJPY": -279.3
+    },
+    "drawdown_max_pips": 867.6
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 12,
+    "stop": "milieu",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 538,
+    "pips_moyen": -0.633,
+    "pips_total": -340.4,
+    "taux_gain_pct": 41.6,
+    "profit_factor": 0.94,
+    "t_trades": -0.55,
+    "t_jours": -0.51,
+    "jours": 248,
+    "brut_moyen": 0.225,
+    "cout_moyen": 0.858,
+    "duree_moy_min": 158.8,
+    "ambigus": 1,
+    "par_paire": {
+     "EURUSD": -19.4,
+     "GBPUSD": -203.4,
+     "USDJPY": -117.6
+    },
+    "drawdown_max_pips": 540.0
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 12,
+    "stop": "oppose",
+    "k": 1.0
+   },
+   "IS": {
+    "trades": 513,
+    "pips_moyen": -1.705,
+    "pips_total": -874.5,
+    "taux_gain_pct": 46.8,
+    "profit_factor": 0.86,
+    "t_trades": -1.33,
+    "t_jours": -1.26,
+    "jours": 248,
+    "brut_moyen": -0.857,
+    "cout_moyen": 0.848,
+    "duree_moy_min": 193.8,
+    "ambigus": 1,
+    "par_paire": {
+     "EURUSD": -135.1,
+     "GBPUSD": -416.6,
+     "USDJPY": -322.8
+    },
+    "drawdown_max_pips": 1073.7
+   }
+  },
+  {
+   "config": {
+    "r_end": 7,
+    "w_end": 12,
+    "stop": "oppose",
+    "k": 2.0
+   },
+   "IS": {
+    "trades": 498,
+    "pips_moyen": -1.456,
+    "pips_total": -725.0,
+    "taux_gain_pct": 45.0,
+    "profit_factor": 0.88,
+    "t_trades": -1.08,
+    "t_jours": -1.0,
+    "jours": 248,
+    "brut_moyen": -0.599,
+    "cout_moyen": 0.857,
+    "duree_moy_min": 213.4,
+    "ambigus": 1,
+    "par_paire": {
+     "EURUSD": -125.1,
+     "GBPUSD": -317.4,
+     "USDJPY": -282.5
+    },
+    "drawdown_max_pips": 817.5
+   }
+  }
+ ],
+ "choix": {
+  "r_end": 6,
+  "w_end": 10,
+  "stop": "oppose",
+  "k": 2.0
+ },
+ "verdict": "ÉCHEC (optimisation)",
+ "raison": "aucune configuration avec t journalière ≥ 1,5 sur IS : validation non consommée"
+}

@@ -119,5 +119,5 @@ def f03_events(pair: str, start: pd.Timestamp, end: pd.Timestamp, version: str):
             t0 = (day + pd.Timedelta(hours=h0)).tz_convert("UTC")
             t1 = (day + pd.Timedelta(hours=h1)).tz_convert("UTC")
             if t0 >= start and t1 <= end:
-                out.append(Event(t0, pair, side, R(), None, None, t1, "F03"))
+                out.append(Event(t0, pair, side, R(), None, None, t1, "F03", chain=True))
     return out

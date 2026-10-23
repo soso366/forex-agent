@@ -1,0 +1,1106 @@
+{
+ "hypothese": "H1 fix de Tokyo USDJPY",
+ "grille_IS": [
+  {
+   "config": {
+    "d": 1,
+    "h": 2,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": -0.658,
+    "pips_total": -170.3,
+    "taux_gain_pct": 49.0,
+    "profit_factor": 0.94,
+    "t_trades": -0.4,
+    "t_jours": -0.4,
+    "jours": 259,
+    "brut_moyen": 0.435,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -170.3
+    },
+    "drawdown_max_pips": 578.1
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 2,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 6.489,
+    "pips_total": 499.6,
+    "taux_gain_pct": 58.4,
+    "profit_factor": 2.09,
+    "t_trades": 2.43,
+    "t_jours": 2.43,
+    "jours": 77,
+    "brut_moyen": 7.583,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 499.6
+    },
+    "drawdown_max_pips": 100.2
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 3,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": 0.253,
+    "pips_total": 65.5,
+    "taux_gain_pct": 50.6,
+    "profit_factor": 1.02,
+    "t_trades": 0.14,
+    "t_jours": 0.14,
+    "jours": 259,
+    "brut_moyen": 1.346,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 65.5
+    },
+    "drawdown_max_pips": 484.1
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 3,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 8.419,
+    "pips_total": 648.2,
+    "taux_gain_pct": 57.1,
+    "profit_factor": 2.13,
+    "t_trades": 2.65,
+    "t_jours": 2.65,
+    "jours": 77,
+    "brut_moyen": 9.513,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 648.2
+    },
+    "drawdown_max_pips": 138.8
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 4,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": 0.61,
+    "pips_total": 158.0,
+    "taux_gain_pct": 50.2,
+    "profit_factor": 1.05,
+    "t_trades": 0.29,
+    "t_jours": 0.29,
+    "jours": 259,
+    "brut_moyen": 1.703,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 158.0
+    },
+    "drawdown_max_pips": 518.7
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 4,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 11.144,
+    "pips_total": 858.1,
+    "taux_gain_pct": 58.4,
+    "profit_factor": 2.38,
+    "t_trades": 2.96,
+    "t_jours": 2.96,
+    "jours": 77,
+    "brut_moyen": 12.239,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 858.1
+    },
+    "drawdown_max_pips": 159.5
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 2,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": -0.747,
+    "pips_total": -193.4,
+    "taux_gain_pct": 48.3,
+    "profit_factor": 0.92,
+    "t_trades": -0.48,
+    "t_jours": -0.48,
+    "jours": 259,
+    "brut_moyen": 0.346,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -193.4
+    },
+    "drawdown_max_pips": 479.9
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 2,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 4.815,
+    "pips_total": 370.7,
+    "taux_gain_pct": 54.5,
+    "profit_factor": 1.79,
+    "t_trades": 1.94,
+    "t_jours": 1.94,
+    "jours": 77,
+    "brut_moyen": 5.909,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 120.1,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 370.7
+    },
+    "drawdown_max_pips": 109.5
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 3,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": 0.51,
+    "pips_total": 132.1,
+    "taux_gain_pct": 49.0,
+    "profit_factor": 1.05,
+    "t_trades": 0.29,
+    "t_jours": 0.29,
+    "jours": 259,
+    "brut_moyen": 1.603,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 132.1
+    },
+    "drawdown_max_pips": 471.4
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 3,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 6.964,
+    "pips_total": 536.2,
+    "taux_gain_pct": 54.5,
+    "profit_factor": 1.92,
+    "t_trades": 2.24,
+    "t_jours": 2.24,
+    "jours": 77,
+    "brut_moyen": 8.058,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 536.2
+    },
+    "drawdown_max_pips": 163.2
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 4,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": 0.906,
+    "pips_total": 234.7,
+    "taux_gain_pct": 48.6,
+    "profit_factor": 1.07,
+    "t_trades": 0.45,
+    "t_jours": 0.45,
+    "jours": 259,
+    "brut_moyen": 1.999,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 234.7
+    },
+    "drawdown_max_pips": 502.1
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 4,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 9.686,
+    "pips_total": 745.8,
+    "taux_gain_pct": 54.5,
+    "profit_factor": 2.17,
+    "t_trades": 2.68,
+    "t_jours": 2.68,
+    "jours": 77,
+    "brut_moyen": 10.781,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 745.8
+    },
+    "drawdown_max_pips": 164.9
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 2,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": 0.344,
+    "pips_total": 89.1,
+    "taux_gain_pct": 52.1,
+    "profit_factor": 1.04,
+    "t_trades": 0.24,
+    "t_jours": 0.24,
+    "jours": 259,
+    "brut_moyen": 1.437,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 89.1
+    },
+    "drawdown_max_pips": 365.6
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 2,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 3.781,
+    "pips_total": 291.1,
+    "taux_gain_pct": 59.7,
+    "profit_factor": 1.69,
+    "t_trades": 1.73,
+    "t_jours": 1.73,
+    "jours": 77,
+    "brut_moyen": 4.875,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 291.1
+    },
+    "drawdown_max_pips": 106.4
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 3,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": -0.031,
+    "pips_total": -8.0,
+    "taux_gain_pct": 53.3,
+    "profit_factor": 1.0,
+    "t_trades": -0.02,
+    "t_jours": -0.02,
+    "jours": 259,
+    "brut_moyen": 1.062,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -8.0
+    },
+    "drawdown_max_pips": 470.5
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 3,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 5.21,
+    "pips_total": 401.1,
+    "taux_gain_pct": 61.0,
+    "profit_factor": 1.63,
+    "t_trades": 1.68,
+    "t_jours": 1.68,
+    "jours": 77,
+    "brut_moyen": 6.304,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 401.1
+    },
+    "drawdown_max_pips": 153.4
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 4,
+    "days": "tous"
+   },
+   "IS": {
+    "trades": 259,
+    "pips_moyen": -0.163,
+    "pips_total": -42.3,
+    "taux_gain_pct": 49.0,
+    "profit_factor": 0.99,
+    "t_trades": -0.08,
+    "t_jours": -0.08,
+    "jours": 259,
+    "brut_moyen": 0.929,
+    "cout_moyen": 1.093,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -42.3
+    },
+    "drawdown_max_pips": 472.1
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 4,
+    "days": "gotobi"
+   },
+   "IS": {
+    "trades": 77,
+    "pips_moyen": 7.107,
+    "pips_total": 547.2,
+    "taux_gain_pct": 54.5,
+    "profit_factor": 1.78,
+    "t_trades": 1.93,
+    "t_jours": 1.93,
+    "jours": 77,
+    "brut_moyen": 8.201,
+    "cout_moyen": 1.094,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": 547.2
+    },
+    "drawdown_max_pips": 187.8
+   }
+  }
+ ],
+ "choix": {
+  "d": 1,
+  "h": 4,
+  "days": "gotobi"
+ },
+ "VAL": {
+  "trades": 77,
+  "pips_moyen": -2.894,
+  "pips_total": -222.9,
+  "taux_gain_pct": 41.6,
+  "profit_factor": 0.71,
+  "t_trades": -1.06,
+  "t_jours": -1.06,
+  "jours": 77,
+  "brut_moyen": -1.753,
+  "cout_moyen": 1.141,
+  "duree_moy_min": 240.0,
+  "ambigus": 0,
+  "par_paire": {
+   "USDJPY": -222.9
+  },
+  "drawdown_max_pips": 438.4
+ },
+ "VAL_semestres": [
+  {
+   "trades": 38,
+   "pips_moyen": 2.75,
+   "pips_total": 104.5,
+   "taux_gain_pct": 50.0,
+   "profit_factor": 1.3,
+   "t_trades": 0.61,
+   "t_jours": 0.61,
+   "jours": 38,
+   "brut_moyen": 3.874,
+   "cout_moyen": 1.124,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": 104.5
+   },
+   "drawdown_max_pips": 131.2
+  },
+  {
+   "trades": 39,
+   "pips_moyen": -8.394,
+   "pips_total": -327.4,
+   "taux_gain_pct": 33.3,
+   "profit_factor": 0.25,
+   "t_trades": -2.89,
+   "t_jours": -2.89,
+   "jours": 39,
+   "brut_moyen": -7.236,
+   "cout_moyen": 1.158,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -327.4
+   },
+   "drawdown_max_pips": 294.7
+  }
+ ],
+ "VAL_sensibilite": {
+  "commission_0": {
+   "trades": 77,
+   "pips_moyen": -1.953,
+   "pips_total": -150.4,
+   "taux_gain_pct": 46.8,
+   "profit_factor": 0.8,
+   "t_trades": -0.72,
+   "t_jours": -0.72,
+   "jours": 77,
+   "brut_moyen": -1.753,
+   "cout_moyen": 0.2,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -150.4
+   },
+   "drawdown_max_pips": 387.0
+  },
+  "commission_5": {
+   "trades": 77,
+   "pips_moyen": -3.522,
+   "pips_total": -271.2,
+   "taux_gain_pct": 40.3,
+   "profit_factor": 0.66,
+   "t_trades": -1.29,
+   "t_jours": -1.29,
+   "jours": 77,
+   "brut_moyen": -1.753,
+   "cout_moyen": 1.769,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -271.2
+   },
+   "drawdown_max_pips": 472.7
+  },
+  "glissement_0.3": {
+   "trades": 77,
+   "pips_moyen": -3.294,
+   "pips_total": -253.7,
+   "taux_gain_pct": 41.6,
+   "profit_factor": 0.68,
+   "t_trades": -1.21,
+   "t_jours": -1.21,
+   "jours": 77,
+   "brut_moyen": -1.753,
+   "cout_moyen": 1.541,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -253.7
+   },
+   "drawdown_max_pips": 460.0
+  },
+  "plus_0.5_pip": {
+   "trades": 77,
+   "pips_moyen": -3.394,
+   "pips_total": -261.4,
+   "taux_gain_pct": 41.6,
+   "profit_factor": 0.67,
+   "t_trades": -1.24,
+   "t_jours": -1.24,
+   "jours": 77,
+   "brut_moyen": -1.753,
+   "cout_moyen": 1.641,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -261.4
+   },
+   "drawdown_max_pips": 465.4
+  },
+  "plus_1.0_pip": {
+   "trades": 77,
+   "pips_moyen": -3.894,
+   "pips_total": -299.9,
+   "taux_gain_pct": 39.0,
+   "profit_factor": 0.64,
+   "t_trades": -1.43,
+   "t_jours": -1.43,
+   "jours": 77,
+   "brut_moyen": -1.753,
+   "cout_moyen": 2.141,
+   "duree_moy_min": 240.0,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -299.9
+   },
+   "drawdown_max_pips": 492.4
+  }
+ },
+ "verdict": "ÉCHEC (validation)",
+ "raisons": [
+  "négative sur un semestre de validation",
+  "profit factor < 1,10",
+  "t journalière < 1,65",
+  "négative avec +0,5 pip",
+  "négative avec commission 5 $"
+ ],
+ "version_exacte_source": {
+  "IS": {
+   "trades": 518,
+   "pips_moyen": -2.067,
+   "pips_total": -1070.5,
+   "taux_gain_pct": 46.5,
+   "profit_factor": 0.86,
+   "t_trades": -1.24,
+   "t_jours": -1.26,
+   "jours": 312,
+   "brut_moyen": -0.974,
+   "cout_moyen": 1.093,
+   "duree_moy_min": 269.5,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -1070.5
+   },
+   "drawdown_max_pips": 1803.9
+  },
+  "VAL": {
+   "trades": 518,
+   "pips_moyen": -3.639,
+   "pips_total": -1884.9,
+   "taux_gain_pct": 45.2,
+   "profit_factor": 0.68,
+   "t_trades": -3.1,
+   "t_jours": -3.23,
+   "jours": 313,
+   "brut_moyen": -2.498,
+   "cout_moyen": 1.14,
+   "duree_moy_min": 269.7,
+   "ambigus": 0,
+   "par_paire": {
+    "USDJPY": -1884.9
+   },
+   "drawdown_max_pips": 1954.0
+  }
+ },
+ "grille_VAL_information_apres_decision": [
+  {
+   "config": {
+    "d": 1,
+    "h": 2,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -1.582,
+    "pips_total": -411.2,
+    "taux_gain_pct": 46.2,
+    "profit_factor": 0.8,
+    "t_trades": -1.3,
+    "t_jours": -1.3,
+    "jours": 260,
+    "brut_moyen": -0.442,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -411.2
+    },
+    "drawdown_max_pips": 587.0
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 2,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -1.172,
+    "pips_total": -90.3,
+    "taux_gain_pct": 44.2,
+    "profit_factor": 0.84,
+    "t_trades": -0.53,
+    "t_jours": -0.53,
+    "jours": 77,
+    "brut_moyen": -0.031,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -90.3
+    },
+    "drawdown_max_pips": 246.6
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 3,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -1.406,
+    "pips_total": -365.6,
+    "taux_gain_pct": 45.4,
+    "profit_factor": 0.84,
+    "t_trades": -1.04,
+    "t_jours": -1.04,
+    "jours": 260,
+    "brut_moyen": -0.266,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -365.6
+    },
+    "drawdown_max_pips": 588.6
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 3,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -2.493,
+    "pips_total": -192.0,
+    "taux_gain_pct": 37.7,
+    "profit_factor": 0.72,
+    "t_trades": -1.04,
+    "t_jours": -1.04,
+    "jours": 77,
+    "brut_moyen": -1.352,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -192.0
+    },
+    "drawdown_max_pips": 351.3
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 4,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -0.89,
+    "pips_total": -231.5,
+    "taux_gain_pct": 48.8,
+    "profit_factor": 0.91,
+    "t_trades": -0.5,
+    "t_jours": -0.5,
+    "jours": 260,
+    "brut_moyen": 0.25,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -231.5
+    },
+    "drawdown_max_pips": 498.2
+   }
+  },
+  {
+   "config": {
+    "d": 1,
+    "h": 4,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -2.894,
+    "pips_total": -222.9,
+    "taux_gain_pct": 41.6,
+    "profit_factor": 0.71,
+    "t_trades": -1.06,
+    "t_jours": -1.06,
+    "jours": 77,
+    "brut_moyen": -1.753,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -222.9
+    },
+    "drawdown_max_pips": 438.4
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 2,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -2.437,
+    "pips_total": -633.7,
+    "taux_gain_pct": 41.5,
+    "profit_factor": 0.69,
+    "t_trades": -2.07,
+    "t_jours": -2.07,
+    "jours": 260,
+    "brut_moyen": -1.297,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -633.7
+    },
+    "drawdown_max_pips": 683.8
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 2,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -2.639,
+    "pips_total": -203.2,
+    "taux_gain_pct": 39.0,
+    "profit_factor": 0.67,
+    "t_trades": -1.2,
+    "t_jours": -1.2,
+    "jours": 77,
+    "brut_moyen": -1.497,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -203.2
+    },
+    "drawdown_max_pips": 273.0
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 3,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -2.375,
+    "pips_total": -617.6,
+    "taux_gain_pct": 41.9,
+    "profit_factor": 0.73,
+    "t_trades": -1.82,
+    "t_jours": -1.82,
+    "jours": 260,
+    "brut_moyen": -1.235,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -617.6
+    },
+    "drawdown_max_pips": 714.1
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 3,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -3.675,
+    "pips_total": -283.0,
+    "taux_gain_pct": 33.8,
+    "profit_factor": 0.62,
+    "t_trades": -1.54,
+    "t_jours": -1.54,
+    "jours": 77,
+    "brut_moyen": -2.534,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -283.0
+    },
+    "drawdown_max_pips": 417.3
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 4,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -1.69,
+    "pips_total": -439.5,
+    "taux_gain_pct": 44.2,
+    "profit_factor": 0.83,
+    "t_trades": -1.05,
+    "t_jours": -1.05,
+    "jours": 260,
+    "brut_moyen": -0.55,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -439.5
+    },
+    "drawdown_max_pips": 616.7
+   }
+  },
+  {
+   "config": {
+    "d": 5,
+    "h": 4,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -4.416,
+    "pips_total": -340.1,
+    "taux_gain_pct": 35.1,
+    "profit_factor": 0.61,
+    "t_trades": -1.61,
+    "t_jours": -1.61,
+    "jours": 77,
+    "brut_moyen": -3.275,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -340.1
+    },
+    "drawdown_max_pips": 490.6
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 2,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -1.95,
+    "pips_total": -507.1,
+    "taux_gain_pct": 39.6,
+    "profit_factor": 0.74,
+    "t_trades": -1.75,
+    "t_jours": -1.75,
+    "jours": 260,
+    "brut_moyen": -0.81,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -507.1
+    },
+    "drawdown_max_pips": 558.0
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 2,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -2.133,
+    "pips_total": -164.3,
+    "taux_gain_pct": 36.4,
+    "profit_factor": 0.72,
+    "t_trades": -1.02,
+    "t_jours": -1.02,
+    "jours": 77,
+    "brut_moyen": -0.992,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 120.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -164.3
+    },
+    "drawdown_max_pips": 219.6
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 3,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -2.051,
+    "pips_total": -533.3,
+    "taux_gain_pct": 46.2,
+    "profit_factor": 0.76,
+    "t_trades": -1.59,
+    "t_jours": -1.59,
+    "jours": 260,
+    "brut_moyen": -0.911,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -533.3
+    },
+    "drawdown_max_pips": 663.1
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 3,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -3.09,
+    "pips_total": -238.0,
+    "taux_gain_pct": 40.3,
+    "profit_factor": 0.67,
+    "t_trades": -1.29,
+    "t_jours": -1.29,
+    "jours": 77,
+    "brut_moyen": -1.949,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 180.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -238.0
+    },
+    "drawdown_max_pips": 393.5
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 4,
+    "days": "tous"
+   },
+   "VAL": {
+    "trades": 260,
+    "pips_moyen": -1.728,
+    "pips_total": -449.2,
+    "taux_gain_pct": 43.8,
+    "profit_factor": 0.82,
+    "t_trades": -1.1,
+    "t_jours": -1.1,
+    "jours": 260,
+    "brut_moyen": -0.588,
+    "cout_moyen": 1.14,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -449.2
+    },
+    "drawdown_max_pips": 641.3
+   }
+  },
+  {
+   "config": {
+    "d": 15,
+    "h": 4,
+    "days": "gotobi"
+   },
+   "VAL": {
+    "trades": 77,
+    "pips_moyen": -4.288,
+    "pips_total": -330.2,
+    "taux_gain_pct": 33.8,
+    "profit_factor": 0.61,
+    "t_trades": -1.63,
+    "t_jours": -1.63,
+    "jours": 77,
+    "brut_moyen": -3.147,
+    "cout_moyen": 1.141,
+    "duree_moy_min": 240.0,
+    "ambigus": 0,
+    "par_paire": {
+     "USDJPY": -330.2
+    },
+    "drawdown_max_pips": 483.6
+   }
+  }
+ ]
+}

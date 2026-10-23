@@ -38,7 +38,16 @@ et par semestre ; trous > 30 min en semaine uniquement à Noël et au 1er janvie
 Toutes les configurations restent en ÉCHEC ; la seule positive (F01 exact, +2,0 pips/trade) devient −0,9 pip/trade.
 Les coûts réalistes retirent ≈ 0,8 à 1,0 pip par trade. Détail : `results/lot_1_v3.md`.
 
-## 5. Limites qui restent
+## 5. Bugs trouvés et corrigés pendant la phase V3 (tests ajoutés)
+- **Ordres enchaînés dans la même minute** : la limite « une position par paire » refusait l'ordre qui s'ouvre à la minute
+  exacte où le précédent se ferme. Cela coupait de moitié les stratégies à horaires fixes (F03, version papier du fix de
+  Tokyo). Corrigé (ordres programmés « chain ») ; les signaux sur bougie restent refusés dans la minute de sortie, comme un EA
+  MetaTrader. F03 relancée : 2 068 trades, −3,0 pips/trade, toujours ÉCHEC. Test : `test_scheduled_reversal_in_same_minute_is_kept`.
+- **Fenêtres de la version papier du fix de Tokyo** : dates décalées d'un jour. Corrigé avant toute conclusion. Test :
+  `test_tokyo_paper_windows`.
+Total : 15 tests automatiques, exécutés sur GitHub à chaque modification (`.github/workflows/forex-lab-tests.yml`).
+
+## 6. Limites qui restent
 - Données Dukascopy ≠ prix d'un broker de détail (spreads souvent plus larges) : d'où la commission et le stress.
 - Pas de file d'attente, ni de refus d'ordre, ni de swap (sans objet : aucune position la nuit en version projet).
 - Les minutes n'ont qu'un OHLC : l'ordre réel des ticks dans une minute est inconnu (stop retenu en cas de doute).

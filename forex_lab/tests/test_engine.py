@@ -138,3 +138,33 @@ def test_new_york_schedule_follows_dst():
     shorts = {tr.entry_time.date(): tr.entry_time.hour for tr in trades if tr.side < 0}
     assert shorts[pd.Timestamp("2025-03-07").date()] == 8                # 03:00 New York = 08:00 UTC (hiver)
     assert shorts[pd.Timestamp("2025-03-10").date()] == 7                # 03:00 New York = 07:00 UTC (été)
+
+
+def test_fixed_price_stop_and_r_multiple_target():
+    path = np.r_[np.full(100, 1.1000), np.linspace(1.1000, 1.1050, 200)]
+    sim = Simulator("EURUSD", m1_frame(n=300, path=path))
+    t = pd.Timestamp("2025-03-03 01:00", tz="UTC")
+    tr = sim.run_position(1, t, Rules(cap_min=240), sl_price=1.0980, tp_r=1.0)
+    risk = tr.entry - 1.0980
+    assert tr.reason == "objectif" and abs((tr.exit - tr.entry) - risk) < 1e-12
+    assert sim.run_position(1, t, Rules(cap_min=240), sl_price=1.1050) is None   # entrée déjà sous le « stop »
+
+
+def test_scheduled_reversal_in_same_minute_is_kept():
+    sims = {"EURUSD": Simulator("EURUSD", m1_frame())}
+    t0, t1, t2 = (pd.Timestamp(x, tz="UTC") for x in ("2025-03-03 01:00", "2025-03-03 02:00", "2025-03-03 03:00"))
+    evs = [Event(t0, "EURUSD", -1, Rules(), hard_exit=t1, chain=True), Event(t1, "EURUSD", 1, Rules(), hard_exit=t2, chain=True)]
+    trades = run_portfolio(evs, sims, 2)
+    assert len(trades) == 2 and trades[1].entry_time == t1
+    # sans « chain », un signal dans la minute de sortie reste refusé (comportement des EA MetaTrader)
+    evs2 = [Event(t0, "EURUSD", -1, Rules(), hard_exit=t1), Event(t1, "EURUSD", 1, Rules(), hard_exit=t2)]
+    assert len(run_portfolio(evs2, sims, 2)) == 1
+
+
+def test_tokyo_paper_windows():
+    from forex_lab.v3 import h1_exact_events
+    ev = h1_exact_events(pd.Timestamp("2025-01-05", tz="UTC"), pd.Timestamp("2025-01-08", tz="UTC"))
+    buy, sell = ev[0], ev[1]
+    assert buy.time == pd.Timestamp("2025-01-05 22:00", tz="UTC")       # 17:00 New York (hiver) la veille
+    assert buy.hard_exit == sell.time == pd.Timestamp("2025-01-06 00:55", tz="UTC")
+    assert sell.hard_exit == pd.Timestamp("2025-01-06 07:00", tz="UTC")  # 02:00 New York (hiver)

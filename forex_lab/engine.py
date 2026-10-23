@@ -116,7 +116,10 @@ class Simulator:
         return d
 
     def run_position(self, side: int, entry_time: pd.Timestamp, rules: Rules, tf_min: int | None = None,
-                     exit_times: np.ndarray | None = None, hard_exit: pd.Timestamp | None = None) -> Trade | None:
+                     exit_times: np.ndarray | None = None, hard_exit: pd.Timestamp | None = None,
+                     sl_price: float | None = None, tp_r: float | None = None) -> Trade | None:
+        """sl_price : stop à un niveau de prix fixe (ex. milieu du range) ; tp_r : objectif = tp_r × risque réel
+        (distance entre le prix d'entrée exécuté et le stop). Si l'entrée est déjà au-delà du stop : pas de trade."""
         j = self.idx(entry_time)
         n = len(self.tns)
         if j >= n:
@@ -126,6 +129,13 @@ class Simulator:
         entry = self.ao[j] if side > 0 else self.bo[j]
         sl = entry - side * rules.sl_pips * self.p if rules.sl_pips else None
         tp = entry + side * rules.tp_pips * self.p if rules.tp_pips else None
+        if sl_price is not None:
+            risk = side * (entry - sl_price)
+            if risk <= 0:
+                return None
+            sl = sl_price
+            if tp_r:
+                tp = entry + side * tp_r * risk
         deadline = self._deadline(pd.Timestamp(self.tns[j], tz="UTC"), rules, tf_min)
         if hard_exit is not None:
             deadline = min(deadline, hard_exit.value)
@@ -218,6 +228,9 @@ class Event:
     exit_times: np.ndarray | None = None
     hard_exit: pd.Timestamp | None = None
     tag: str = ""
+    sl_price: float | None = None
+    tp_r: float | None = None
+    chain: bool = False          # ordre programmé : autorisé dans la minute même où la position précédente se ferme
 
 
 def signal_events(pair: str, bars: pd.DataFrame, long_sig, short_sig, rules: Rules, tf_min: int,
@@ -246,12 +259,14 @@ def run_portfolio(events: list[Event], sims: dict, max_open: int | None = 2) -> 
     trades, open_exits, pair_busy = [], [], {}
     for ev in sorted(events, key=lambda e: (e.time.value, e.pair)):
         tv = ev.time.value
-        open_exits = [x for x in open_exits if x > tv]
-        if pair_busy.get(ev.pair, -1) >= tv:
+        open_exits = [x for x in open_exits if x > tv or (x == tv and not ev.chain)]
+        busy = pair_busy.get(ev.pair, -1)
+        if busy > tv or (busy == tv and not ev.chain):
             continue
         if max_open is not None and len(open_exits) >= max_open:
             continue
-        tr = sims[ev.pair].run_position(ev.side, ev.time, ev.rules, ev.tf_min, ev.exit_times, ev.hard_exit)
+        tr = sims[ev.pair].run_position(ev.side, ev.time, ev.rules, ev.tf_min, ev.exit_times, ev.hard_exit,
+                                        ev.sl_price, ev.tp_r)
         if tr is None:
             continue
         trades.append(tr)
