@@ -1,0 +1,70 @@
+# Forex Strategy Research Lab — candidats open source / documentés (recherche du 23/10/2026)
+# verdict : TEST (lot) | ELIMINE (raison, sans test) | PLUS_TARD (condition)
+# « exact » = règles d'origine (aucune limite de durée) ; « projet » = mêmes entrées, mais sortie au plus tard après 4 h,
+# aucune position après 21:00 UTC, entrées seulement 00:00–20:00 UTC du lundi au vendredi (contraintes du projet).
+
+sources:
+  EA31337: {url: https://github.com/EA31337/EA31337, commit: 9b9bd38c4e49dd6916f4fe3936e50e97fca7a692, licence: GPL-3.0,
+            strategies_commit: 3da76f4bd8d5e8a53a348c525486fd1430de82f2, classes_commit: 35a2814b2543987e3dc33b6ede70e864160df3c1,
+            note: "≈ 67 stratégies MQL4/5. Les signaux d'entrée sont lisibles et reproductibles avec les paramètres par défaut ;
+                   la gestion de sortie (price stop, filtres, fermeture par perte/profit) dépend du framework EA31337-classes et
+                   des fichiers SET optimisés → reproduction partielle. Le projet ne publie AUCUN résultat chiffré
+                   (FAQ : « results have been discarded as insignificant »). Paramètres par défaut optimisés pour EURUSD."}
+  MetaQuotes: {url: https://forge.mql5.io/1morty/mql5/src/branch/main/Experts/Examples, licence: "exemples fournis avec MetaTrader 5",
+               note: "EA d'exemple livrés avec MetaTrader : règles complètes dans le code, aucun résultat publié."}
+  QuantRocket: {url: https://www.quantrocket.com/blog/business-day-fx-patterns/, papier: "Breedon & Ranaldo, Intraday Patterns in FX Returns and Order Flow (SNB WP 2011-04)",
+                note: "Résultat publié : EURUSD 2005-2019, CAGR 6,2 %, Sharpe 0,70, coûts IB modélisés."}
+  Backtrex: {url: https://backtrex.com/en/backtests, note: "Backtests publics indépendants à règles explicites, 2016-2026."}
+
+candidates:
+  # ---------- Lot 1 : testées ----------
+  - {id: F01, nom: "MACD Sample (MetaQuotes)", source: MetaQuotes, verdict: TEST, lot: 1, tf: H1, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "MACD(12,26,9 SMA) sur clôture bid, EMA26. Achat : MACD<0, croise au-dessus du signal, |MACD|>3 pips, EMA montante.
+              Vente : MACD>0, croise sous le signal, MACD>3 pips, EMA descendante. Sortie achat : MACD>0 croise sous le signal et >2 pips
+              (inverse pour la vente). TP 50 pips, trailing 30 pips, pas de stop initial.",
+     approximation: "évalué à la clôture de la bougie H1, exécution à l'ouverture suivante (le code d'origine lit la bougie en cours)."}
+  - {id: F02, nom: "Moving Average (MetaQuotes)", source: MetaQuotes, verdict: TEST, lot: 1, tf: H1, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "SMA12 décalée de 6 bougies. Achat si la dernière bougie close ouvre sous la moyenne et clôture au-dessus ; vente inverse.
+              Sortie sur croisement inverse. Pas de stop ni d'objectif. Une position à la fois."}
+  - {id: F03, nom: "Business day FX (Breedon-Ranaldo / QuantRocket)", source: QuantRocket, verdict: TEST, lot: 1, paires: [EURUSD, GBPUSD],
+     regles: "Exact : vendre EURUSD de 03:00 à 11:00 (New York), l'acheter de 11:00 à 16:00 (New York), chaque jour ouvré. GBPUSD : annoncé « similaire ».
+              Projet (≤ 4 h) : vendre 07:00-11:00, acheter 11:00-15:00 (New York).",
+     lien_echecs: "E005 (rejetée) testait d'autres fenêtres (08-12 et 14-18 Londres) ; ici fenêtres publiées par une source externe = fait nouveau."}
+  - {id: F04, nom: "EA31337 RSI (signal d'entrée)", source: EA31337, verdict: TEST, lot: 1, tf: M15, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "RSI(16, prix pondéré (H+L+2C)/4). Achat : RSI<26, RSI monte sur 1 bougie, variation sur 2 bougies > +2,4 %. Vente : RSI>74, RSI baisse,
+              variation sur 2 bougies < +2,4 %. Sortie : 30 bougies (OrderCloseTime=-30)."}
+  - {id: F05, nom: "EA31337 CCI (signal d'entrée)", source: EA31337, verdict: TEST, lot: 1, tf: M15, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "CCI(20, prix typique). Achat : CCI<-90 et en hausse 2 bougies de suite. Vente : CCI>90 et en baisse 2 bougies. Sortie : 30 bougies."}
+  - {id: F06, nom: "EA31337 WPR (signal d'entrée)", source: EA31337, verdict: TEST, lot: 1, tf: M15, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "Williams %R(18). Achat : %R>-90, minimum des 4 dernières <-90, en hausse, variation sur 3 bougies > +4 %. Vente symétrique (-10). Sortie : 30 bougies."}
+  - {id: F07, nom: "EA31337 Stochastic (signal d'entrée)", source: EA31337, verdict: TEST, lot: 1, tf: M15, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "Stochastique K8 D12 lissage 12 (EMA, high/low). Achat : min des 4 dernières valeurs <26, signal<principale, les deux montent,
+              variation du signal sur 3 bougies > +2,4 %. Vente symétrique (>74). Sortie : 30 bougies."}
+  - {id: F08, nom: "EA31337 Bands (signal d'entrée)", source: EA31337, verdict: TEST, lot: 1, tf: M15, paires: [EURUSD, GBPUSD, USDJPY],
+     regles: "Bollinger(24, 1,0 écart-type, prix d'ouverture). Achat : plus bas des 3 dernières bougies + 2 pips < plus haut de la bande basse
+              sur 3 bougies. Vente symétrique sur la bande haute. Sortie : 30 bougies."}
+
+  # ---------- Plus tard ----------
+  - {id: F09, nom: "Fix de Tokyo USDJPY les jours « gotobi » (Ito & Yamada)", verdict: PLUS_TARD,
+     raison: "V4-H4 : +0,16 R mais trop peu de trades ; registre des échecs : « plus de données (≥ 3 ans) ». À tester dès que
+              l'historique 2020-2023 en cours de téléchargement est disponible."}
+  - {id: F10, nom: "EA31337 — autres stratégies (≈ 60)", verdict: PLUS_TARD,
+     raison: "Tester 67 stratégies et garder la meilleure = sur-apprentissage garanti. Lot 1 : 5 stratégies d'oscillateurs choisies
+              AVANT les tests (règles d'entrée les plus simples). D'autres seulement si une famille montre un avantage."}
+
+  # ---------- Éliminées sans test (résultats publics négatifs et/ou déjà rejetées par le projet) ----------
+  - {id: X01, nom: "London breakout (range Asie, TradingView « London BreakOut Classic » / Backtrex)", verdict: ELIMINE,
+     raison: "Backtrex EURUSD H1 2016-2026 : 1 230 trades, PF 0,87, −28 % ; GBPUSD M15 : −60 %. Auteur TradingView : « pas très concluant ».
+              Projet : V4-H2 (opening range breakout) déjà rejetée."}
+  - {id: X02, nom: "Connors RSI(2)", verdict: ELIMINE, raison: "Journalier (incompatible ≤ 4 h) ; Backtrex EURUSD : 75 trades, PF 0,78, −4,5 %."}
+  - {id: X03, nom: "Turtle (Donchian)", verdict: ELIMINE, raison: "Journalier (positions de plusieurs jours) ; Backtrex EURUSD : −2,7 %."}
+  - {id: X04, nom: "MACD + RSI (H1)", verdict: ELIMINE, raison: "Backtrex EURUSD H1 : −53,4 %."}
+  - {id: X05, nom: "Cassure du plus haut / plus bas de la veille", verdict: ELIMINE, raison: "Backtrex GBPUSD H1 : −65,6 % ; projet : V4-H1 (PDH/PDL) rejetée."}
+  - {id: X06, nom: "Order block / ICT kill zone + FVG", verdict: ELIMINE, raison: "Backtrex GBPUSD : −15,3 % et −30,3 % ; projet : SweepMSS V2 sans avantage."}
+  - {id: X07, nom: "MACD + EMA 200 (H4)", verdict: ELIMINE, raison: "Backtrex USDJPY H4 : −22,1 % (achat-conservation +55 %)."}
+  - {id: X08, nom: "Three white soldiers", verdict: ELIMINE, raison: "Backtrex USDJPY H1 : −68,6 %."}
+  - {id: X09, nom: "Double top / double bottom", verdict: ELIMINE, raison: "Backtrex AUDUSD H4 : +0,2 % (nul) ; projet : DoubleTopBottom V2 négative."}
+  - {id: X10, nom: "Bollinger + stochastique (H1)", verdict: ELIMINE, raison: "Backtrex USDCAD H1 : −42,5 %."}
+  - {id: X11, nom: "Momentum intrajournalier (1re demi-heure → dernière)", verdict: ELIMINE,
+     raison: "Prouvé sur des indices actions, pas sur le Forex ; la version Forex du projet (E007) est rejetée."}
+  - {id: X12, nom: "Saisonnalité horaire du dollar, fenêtres Londres 08-12 / 14-18", verdict: ELIMINE, raison: "E005 rejetée (seule la version QuantRocket F03, fenêtres différentes, est testée)."}
