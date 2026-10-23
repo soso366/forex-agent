@@ -1,0 +1,3700 @@
+{
+ "protocole": "forex_lab/trend/PROTOCOLE.md",
+ "donnees": {
+  "EURUSD": [
+   "1999-01-04",
+   "2026-10-16"
+  ],
+  "GBPUSD": [
+   "1971-01-04",
+   "2026-10-16"
+  ],
+  "USDJPY": [
+   "1971-01-04",
+   "2026-10-16"
+  ]
+ },
+ "officiel_2_positions": {
+  "standard": {
+   "developpement": {
+    "mois": 619,
+    "debut": "1972-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": -0.04,
+    "moyenne_mensuelle_pct": 0.015,
+    "sharpe": 0.03,
+    "t": 0.19,
+    "perte_max_pct": -42.0,
+    "mois_gagnants_pct": 50.9
+   },
+   "developpement_brut": {
+    "mois": 619,
+    "debut": "1972-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": 0.71,
+    "moyenne_mensuelle_pct": 0.077,
+    "sharpe": 0.14,
+    "t": 1.0,
+    "perte_max_pct": -39.9,
+    "mois_gagnants_pct": 51.7
+   },
+   "part_portage_pct_par_mois": 0.013,
+   "sous_periodes": {
+    "avant 2000": {
+     "mois": 335,
+     "debut": "1972-02",
+     "fin": "1999-12",
+     "rendement_annuel_pct": -0.0,
+     "moyenne_mensuelle_pct": 0.012,
+     "sharpe": 0.03,
+     "t": 0.14,
+     "perte_max_pct": -27.2,
+     "mois_gagnants_pct": 51.9
+    },
+    "2000-2009": {
+     "mois": 120,
+     "debut": "2000-01",
+     "fin": "2009-12",
+     "rendement_annuel_pct": 1.06,
+     "moyenne_mensuelle_pct": 0.118,
+     "sharpe": 0.17,
+     "t": 0.52,
+     "perte_max_pct": -20.9,
+     "mois_gagnants_pct": 50.8
+    },
+    "2010-2023/08": {
+     "mois": 164,
+     "debut": "2010-01",
+     "fin": "2023-08",
+     "rendement_annuel_pct": -0.92,
+     "moyenne_mensuelle_pct": -0.056,
+     "sharpe": -0.09,
+     "t": -0.34,
+     "perte_max_pct": -25.0,
+     "mois_gagnants_pct": 48.8
+    }
+   },
+   "recent_indicatif": {
+    "mois": 26,
+    "debut": "2024-09",
+    "fin": "2026-10",
+    "rendement_annuel_pct": -1.37,
+    "moyenne_mensuelle_pct": -0.097,
+    "sharpe": -0.17,
+    "t": -0.26,
+    "perte_max_pct": -7.4,
+    "mois_gagnants_pct": 53.8
+   }
+  },
+  "stress": {
+   "developpement": {
+    "mois": 619,
+    "debut": "1972-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": -0.78,
+    "moyenne_mensuelle_pct": -0.047,
+    "sharpe": -0.09,
+    "t": -0.61,
+    "perte_max_pct": -50.3,
+    "mois_gagnants_pct": 49.4
+   },
+   "developpement_brut": {
+    "mois": 619,
+    "debut": "1972-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": 0.71,
+    "moyenne_mensuelle_pct": 0.077,
+    "sharpe": 0.14,
+    "t": 1.0,
+    "perte_max_pct": -39.9,
+    "mois_gagnants_pct": 51.7
+   },
+   "part_portage_pct_par_mois": 0.013,
+   "sous_periodes": {
+    "avant 2000": {
+     "mois": 335,
+     "debut": "1972-02",
+     "fin": "1999-12",
+     "rendement_annuel_pct": -0.51,
+     "moyenne_mensuelle_pct": -0.03,
+     "sharpe": -0.07,
+     "t": -0.35,
+     "perte_max_pct": -30.4,
+     "mois_gagnants_pct": 50.4
+    },
+    "2000-2009": {
+     "mois": 120,
+     "debut": "2000-01",
+     "fin": "2009-12",
+     "rendement_annuel_pct": 0.04,
+     "moyenne_mensuelle_pct": 0.033,
+     "sharpe": 0.05,
+     "t": 0.15,
+     "perte_max_pct": -21.9,
+     "mois_gagnants_pct": 50.0
+    },
+    "2010-2023/08": {
+     "mois": 164,
+     "debut": "2010-01",
+     "fin": "2023-08",
+     "rendement_annuel_pct": -1.94,
+     "moyenne_mensuelle_pct": -0.142,
+     "sharpe": -0.23,
+     "t": -0.86,
+     "perte_max_pct": -27.7,
+     "mois_gagnants_pct": 47.0
+    }
+   },
+   "recent_indicatif": {
+    "mois": 26,
+    "debut": "2024-09",
+    "fin": "2026-10",
+    "rendement_annuel_pct": -2.38,
+    "moyenne_mensuelle_pct": -0.183,
+    "sharpe": -0.33,
+    "t": -0.49,
+    "perte_max_pct": -7.9,
+    "mois_gagnants_pct": 53.8
+   }
+  },
+  "criteres": {
+   "C1 Sharpe ≥ 0,3 et t ≥ 2": false,
+   "C2 2010-2023/08 > 0": false,
+   "C3 stress > 0": false,
+   "C4 ≥ 2 sous-périodes sur 3 > 0": true
+  },
+  "verdict": "ÉCHEC"
+ },
+ "info_3_paires": {
+  "developpement": {
+   "mois": 619,
+   "debut": "1972-02",
+   "fin": "2023-08",
+   "rendement_annuel_pct": 0.16,
+   "moyenne_mensuelle_pct": 0.024,
+   "sharpe": 0.06,
+   "t": 0.41,
+   "perte_max_pct": -33.5,
+   "mois_gagnants_pct": 50.2
+  },
+  "developpement_brut": {
+   "mois": 619,
+   "debut": "1972-02",
+   "fin": "2023-08",
+   "rendement_annuel_pct": 0.8,
+   "moyenne_mensuelle_pct": 0.077,
+   "sharpe": 0.18,
+   "t": 1.3,
+   "perte_max_pct": -30.5,
+   "mois_gagnants_pct": 51.1
+  },
+  "part_portage_pct_par_mois": 0.009,
+  "sous_periodes": {
+   "avant 2000": {
+    "mois": 335,
+    "debut": "1972-02",
+    "fin": "1999-12",
+    "rendement_annuel_pct": 0.03,
+    "moyenne_mensuelle_pct": 0.008,
+    "sharpe": 0.03,
+    "t": 0.14,
+    "perte_max_pct": -18.9,
+    "mois_gagnants_pct": 51.9
+   },
+   "2000-2009": {
+    "mois": 120,
+    "debut": "2000-01",
+    "fin": "2009-12",
+    "rendement_annuel_pct": 2.66,
+    "moyenne_mensuelle_pct": 0.237,
+    "sharpe": 0.43,
+    "t": 1.35,
+    "perte_max_pct": -12.7,
+    "mois_gagnants_pct": 55.0
+   },
+   "2010-2023/08": {
+    "mois": 164,
+    "debut": "2010-01",
+    "fin": "2023-08",
+    "rendement_annuel_pct": -1.38,
+    "moyenne_mensuelle_pct": -0.1,
+    "sharpe": -0.2,
+    "t": -0.73,
+    "perte_max_pct": -21.9,
+    "mois_gagnants_pct": 43.3
+   }
+  },
+  "recent_indicatif": {
+   "mois": 26,
+   "debut": "2024-09",
+   "fin": "2026-10",
+   "rendement_annuel_pct": -2.59,
+   "moyenne_mensuelle_pct": -0.203,
+   "sharpe": -0.39,
+   "t": -0.58,
+   "perte_max_pct": -8.3,
+   "mois_gagnants_pct": 53.8
+  }
+ },
+ "info_par_paire": {
+  "EURUSD": {
+   "developpement": {
+    "mois": 283,
+    "debut": "2000-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": -1.53,
+    "moyenne_mensuelle_pct": -0.092,
+    "sharpe": -0.12,
+    "t": -0.57,
+    "perte_max_pct": -54.2,
+    "mois_gagnants_pct": 48.8
+   },
+   "developpement_brut": {
+    "mois": 283,
+    "debut": "2000-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": -0.52,
+    "moyenne_mensuelle_pct": -0.007,
+    "sharpe": -0.01,
+    "t": -0.04,
+    "perte_max_pct": -49.4,
+    "mois_gagnants_pct": 50.5
+   },
+   "part_portage_pct_par_mois": 0.029,
+   "sous_periodes": {
+    "avant 2000": {
+     "mois": 0
+    },
+    "2000-2009": {
+     "mois": 119,
+     "debut": "2000-02",
+     "fin": "2009-12",
+     "rendement_annuel_pct": 1.78,
+     "moyenne_mensuelle_pct": 0.192,
+     "sharpe": 0.22,
+     "t": 0.69,
+     "perte_max_pct": -21.4,
+     "mois_gagnants_pct": 50.4
+    },
+    "2010-2023/08": {
+     "mois": 164,
+     "debut": "2010-01",
+     "fin": "2023-08",
+     "rendement_annuel_pct": -3.87,
+     "moyenne_mensuelle_pct": -0.298,
+     "sharpe": -0.42,
+     "t": -1.55,
+     "perte_max_pct": -39.7,
+     "mois_gagnants_pct": 47.6
+    }
+   },
+   "recent_indicatif": {
+    "mois": 26,
+    "debut": "2024-09",
+    "fin": "2026-10",
+    "rendement_annuel_pct": -1.13,
+    "moyenne_mensuelle_pct": -0.072,
+    "sharpe": -0.12,
+    "t": -0.17,
+    "perte_max_pct": -7.9,
+    "mois_gagnants_pct": 53.8
+   }
+  },
+  "GBPUSD": {
+   "developpement": {
+    "mois": 619,
+    "debut": "1972-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": -0.39,
+    "moyenne_mensuelle_pct": 0.009,
+    "sharpe": 0.01,
+    "t": 0.07,
+    "perte_max_pct": -54.0,
+    "mois_gagnants_pct": 51.5
+   },
+   "developpement_brut": {
+    "mois": 619,
+    "debut": "1972-02",
+    "fin": "2023-08",
+    "rendement_annuel_pct": 0.62,
+    "moyenne_mensuelle_pct": 0.093,
+    "sharpe": 0.11,
+    "t": 0.81,
+    "perte_max_pct": -49.1,
+    "mois_gagnants_pct": 52.0
+   },
+   "part_portage_pct_par_mois": 0.001,
+   "sous_periodes": {
+    "avant 2000": {
+     "mois": 335,
+     "debut": "1972-02",
+     "fin": "1999-12",
+     "rendement_annuel_pct": -0.3,
+     "moyenne_mensuelle_pct": 0.025,
+     "sharpe": 0.03,
+     "t": 0.14,
+     "perte_max_pct": -48.2,
+     "mois_gagnants_pct": 51.9
+    },
+    "2000-2009": {
+     "mois": 120,
+     "debut": "2000-01",
+     "fin": "2009-12",
+     "rendement_annuel_pct": 4.79,
+     "moyenne_mensuelle_pct": 0.422,
+     "sharpe": 0.58,
+     "t": 1.84,
+     "perte_max_pct": -17.3,
+     "mois_gagnants_pct": 60.0
+    },
+    "2010-2023/08": {
+     "mois": 164,
+     "debut": "2010-01",
+     "fin": "2023-08",
+     "rendement_annuel_pct": -4.2,
+     "moyenne_mensuelle_pct": -0.326,
+     "sharpe": -0.46,
+     "t": -1.7,
+     "perte_max_pct": -43.8,
+     "mois_gagnants_pct": 44.5
+    }
+   },
+   "recent_indicatif": {
+    "mois": 26,
+    "debut": "2024-09",
+    "fin": "2026-10",
+    "rendement_annuel_pct": -4.87,
+    "moyenne_mensuelle_pct": -0.395,
+    "sharpe": -0.67,
+    "t": -0.99,
+    "perte_max_pct": -12.0,
+    "mois_gagnants_pct": 42.3
+   }
+  },
+  "USDJPY": {
+   "developpement": {
+    "mois": 256,
+    "debut": "2002-05",
+    "fin": "2023-08",
+    "rendement_annuel_pct": 2.67,
+    "moyenne_mensuelle_pct": 0.254,
+    "sharpe": 0.33,
+    "t": 1.54,
+    "perte_max_pct": -26.6,
+    "mois_gagnants_pct": 52.3
+   },
+   "developpement_brut": {
+    "mois": 256,
+    "debut": "2002-05",
+    "fin": "2023-08",
+    "rendement_annuel_pct": 3.71,
+    "moyenne_mensuelle_pct": 0.339,
+    "sharpe": 0.44,
+    "t": 2.05,
+    "perte_max_pct": -22.3,
+    "mois_gagnants_pct": 55.1
+   },
+   "part_portage_pct_par_mois": 0.029,
+   "sous_periodes": {
+    "avant 2000": {
+     "mois": 0
+    },
+    "2000-2009": {
+     "mois": 92,
+     "debut": "2002-05",
+     "fin": "2009-12",
+     "rendement_annuel_pct": 1.12,
+     "moyenne_mensuelle_pct": 0.13,
+     "sharpe": 0.16,
+     "t": 0.45,
+     "perte_max_pct": -14.1,
+     "mois_gagnants_pct": 51.1
+    },
+    "2010-2023/08": {
+     "mois": 164,
+     "debut": "2010-01",
+     "fin": "2023-08",
+     "rendement_annuel_pct": 3.55,
+     "moyenne_mensuelle_pct": 0.324,
+     "sharpe": 0.43,
+     "t": 1.6,
+     "perte_max_pct": -26.6,
+     "mois_gagnants_pct": 53.0
+    }
+   },
+   "recent_indicatif": {
+    "mois": 26,
+    "debut": "2024-09",
+    "fin": "2026-10",
+    "rendement_annuel_pct": -2.1,
+    "moyenne_mensuelle_pct": -0.142,
+    "sharpe": -0.18,
+    "t": -0.27,
+    "perte_max_pct": -11.5,
+    "mois_gagnants_pct": 46.2
+   }
+  }
+ },
+ "info_durees": {
+  "1 mois": {
+   "mois": 630,
+   "debut": "1971-03",
+   "fin": "2023-08",
+   "rendement_annuel_pct": 0.34,
+   "moyenne_mensuelle_pct": 0.044,
+   "sharpe": 0.09,
+   "t": 0.63,
+   "perte_max_pct": -44.7,
+   "mois_gagnants_pct": 50.2
+  },
+  "3 mois": {
+   "mois": 628,
+   "debut": "1971-05",
+   "fin": "2023-08",
+   "rendement_annuel_pct": 0.82,
+   "moyenne_mensuelle_pct": 0.085,
+   "sharpe": 0.16,
+   "t": 1.16,
+   "perte_max_pct": -27.1,
+   "mois_gagnants_pct": 52.1
+  },
+  "6 mois": {
+   "mois": 625,
+   "debut": "1971-08",
+   "fin": "2023-08",
+   "rendement_annuel_pct": 0.86,
+   "moyenne_mensuelle_pct": 0.088,
+   "sharpe": 0.17,
+   "t": 1.21,
+   "perte_max_pct": -27.6,
+   "mois_gagnants_pct": 53.1
+  }
+ },
+ "serie_mensuelle": [
+  {
+   "mois": "1972-02",
+   "net_pct": 0.234,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-03",
+   "net_pct": 0.227,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-04",
+   "net_pct": -0.099,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-05",
+   "net_pct": 0.035,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-06",
+   "net_pct": -3.294,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-07",
+   "net_pct": 0.214,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-08",
+   "net_pct": 0.045,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1972-09",
+   "net_pct": 0.416,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1972-10",
+   "net_pct": 1.488,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1972-11",
+   "net_pct": -0.4,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1972-12",
+   "net_pct": -0.08,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-01",
+   "net_pct": -0.885,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-02",
+   "net_pct": -2.454,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-03",
+   "net_pct": 0.093,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-04",
+   "net_pct": -0.468,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-05",
+   "net_pct": -1.693,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-06",
+   "net_pct": -0.419,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-07",
+   "net_pct": -1.596,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1973-08",
+   "net_pct": -0.832,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1973-09",
+   "net_pct": -0.785,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1973-10",
+   "net_pct": -0.742,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1973-11",
+   "net_pct": -1.805,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1973-12",
+   "net_pct": 0.202,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-01",
+   "net_pct": 0.481,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-02",
+   "net_pct": -0.629,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-03",
+   "net_pct": -2.301,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-04",
+   "net_pct": -0.958,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-05",
+   "net_pct": 0.303,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-06",
+   "net_pct": -0.14,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-07",
+   "net_pct": -0.164,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-08",
+   "net_pct": 1.205,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-09",
+   "net_pct": -0.554,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-10",
+   "net_pct": -0.274,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-11",
+   "net_pct": -0.015,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1974-12",
+   "net_pct": -0.696,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-01",
+   "net_pct": 0.952,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1975-02",
+   "net_pct": 1.192,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1975-03",
+   "net_pct": -0.289,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1975-04",
+   "net_pct": -0.981,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1975-05",
+   "net_pct": 0.536,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-06",
+   "net_pct": 2.4,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-07",
+   "net_pct": 0.678,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-08",
+   "net_pct": 0.821,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-09",
+   "net_pct": 1.376,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-10",
+   "net_pct": -1.066,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-11",
+   "net_pct": 1.127,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1975-12",
+   "net_pct": -0.366,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-01",
+   "net_pct": -0.417,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-02",
+   "net_pct": -0.151,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-03",
+   "net_pct": 2.486,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-04",
+   "net_pct": 1.791,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-05",
+   "net_pct": 1.972,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-06",
+   "net_pct": -0.978,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-07",
+   "net_pct": -0.278,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-08",
+   "net_pct": -0.072,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-09",
+   "net_pct": 3.021,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-10",
+   "net_pct": 1.84,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-11",
+   "net_pct": -2.414,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1976-12",
+   "net_pct": -1.954,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-01",
+   "net_pct": -0.851,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-02",
+   "net_pct": -0.333,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-03",
+   "net_pct": -0.523,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-04",
+   "net_pct": -0.243,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-05",
+   "net_pct": -0.198,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-06",
+   "net_pct": -0.167,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-07",
+   "net_pct": -0.643,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-08",
+   "net_pct": -0.324,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-09",
+   "net_pct": -0.237,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1977-10",
+   "net_pct": 2.588,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1977-11",
+   "net_pct": -0.709,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1977-12",
+   "net_pct": 2.67,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-01",
+   "net_pct": 0.775,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-02",
+   "net_pct": -0.226,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-03",
+   "net_pct": -2.078,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-04",
+   "net_pct": -1.082,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-05",
+   "net_pct": 0.29,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-06",
+   "net_pct": 0.81,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-07",
+   "net_pct": 1.96,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-08",
+   "net_pct": 0.387,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-09",
+   "net_pct": 0.877,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-10",
+   "net_pct": 2.574,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-11",
+   "net_pct": -3.125,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1978-12",
+   "net_pct": 2.6,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-01",
+   "net_pct": -1.188,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-02",
+   "net_pct": 0.934,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-03",
+   "net_pct": 1.073,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-04",
+   "net_pct": 0.183,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-05",
+   "net_pct": 0.093,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-06",
+   "net_pct": 2.721,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-07",
+   "net_pct": 1.644,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-08",
+   "net_pct": 0.26,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-09",
+   "net_pct": -0.966,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-10",
+   "net_pct": -2.799,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1979-11",
+   "net_pct": -3.144,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1979-12",
+   "net_pct": 0.575,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-01",
+   "net_pct": 1.236,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-02",
+   "net_pct": 0.293,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-03",
+   "net_pct": -2.338,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-04",
+   "net_pct": 2.337,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-05",
+   "net_pct": 1.98,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-06",
+   "net_pct": 0.569,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-07",
+   "net_pct": 0.067,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-08",
+   "net_pct": 1.397,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-09",
+   "net_pct": 0.045,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-10",
+   "net_pct": 1.202,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-11",
+   "net_pct": -1.51,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1980-12",
+   "net_pct": 0.685,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1981-01",
+   "net_pct": -0.594,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1981-02",
+   "net_pct": -3.52,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1981-03",
+   "net_pct": -0.588,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-04",
+   "net_pct": -2.197,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1981-05",
+   "net_pct": 1.669,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-06",
+   "net_pct": 3.537,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-07",
+   "net_pct": 2.398,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-08",
+   "net_pct": -0.108,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-09",
+   "net_pct": 1.178,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-10",
+   "net_pct": -1.655,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-11",
+   "net_pct": -2.622,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1981-12",
+   "net_pct": 0.84,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-01",
+   "net_pct": 0.744,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-02",
+   "net_pct": 1.44,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-03",
+   "net_pct": 1.021,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-04",
+   "net_pct": -0.421,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-05",
+   "net_pct": 0.044,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-06",
+   "net_pct": 1.483,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-07",
+   "net_pct": -0.109,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-08",
+   "net_pct": 0.446,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-09",
+   "net_pct": 0.636,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-10",
+   "net_pct": 0.383,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-11",
+   "net_pct": 1.233,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1982-12",
+   "net_pct": 0.351,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-01",
+   "net_pct": 2.89,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-02",
+   "net_pct": 0.127,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-03",
+   "net_pct": 0.802,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-04",
+   "net_pct": -2.655,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-05",
+   "net_pct": -1.499,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-06",
+   "net_pct": 1.998,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-07",
+   "net_pct": 0.351,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-08",
+   "net_pct": 0.798,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-09",
+   "net_pct": -0.17,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-10",
+   "net_pct": 0.032,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-11",
+   "net_pct": 1.024,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1983-12",
+   "net_pct": 0.346,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-01",
+   "net_pct": 1.695,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-02",
+   "net_pct": -3.229,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-03",
+   "net_pct": 1.745,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-04",
+   "net_pct": 1.377,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-05",
+   "net_pct": 0.459,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-06",
+   "net_pct": 1.002,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-07",
+   "net_pct": 1.843,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-08",
+   "net_pct": -0.087,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-09",
+   "net_pct": 2.769,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-10",
+   "net_pct": 0.596,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-11",
+   "net_pct": 0.827,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1984-12",
+   "net_pct": 1.557,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-01",
+   "net_pct": 1.1,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-02",
+   "net_pct": 2.099,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-03",
+   "net_pct": -7.524,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-04",
+   "net_pct": -0.435,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-05",
+   "net_pct": -2.03,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-06",
+   "net_pct": -1.144,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-07",
+   "net_pct": -4.125,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1985-08",
+   "net_pct": -0.571,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1985-09",
+   "net_pct": 0.75,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1985-10",
+   "net_pct": 1.261,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1985-11",
+   "net_pct": 1.807,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1985-12",
+   "net_pct": -1.357,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-01",
+   "net_pct": -1.013,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-02",
+   "net_pct": 1.404,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-03",
+   "net_pct": 1.145,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-04",
+   "net_pct": 2.805,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-05",
+   "net_pct": -2.391,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-06",
+   "net_pct": 2.157,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-07",
+   "net_pct": -1.213,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-08",
+   "net_pct": 0.016,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-09",
+   "net_pct": -1.244,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-10",
+   "net_pct": -1.261,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1986-11",
+   "net_pct": -1.292,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1986-12",
+   "net_pct": -1.996,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1987-01",
+   "net_pct": 1.26,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-02",
+   "net_pct": 1.251,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-03",
+   "net_pct": 2.152,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-04",
+   "net_pct": 1.807,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-05",
+   "net_pct": -0.8,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-06",
+   "net_pct": -0.42,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-07",
+   "net_pct": -0.581,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-08",
+   "net_pct": 1.42,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-09",
+   "net_pct": -0.117,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-10",
+   "net_pct": 3.092,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-11",
+   "net_pct": 3.144,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1987-12",
+   "net_pct": 1.75,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-01",
+   "net_pct": -3.049,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-02",
+   "net_pct": 0.211,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-03",
+   "net_pct": 3.295,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-04",
+   "net_pct": -0.12,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-05",
+   "net_pct": -1.012,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-06",
+   "net_pct": -3.494,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-07",
+   "net_pct": 0.107,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-08",
+   "net_pct": -0.686,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-09",
+   "net_pct": 0.394,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-10",
+   "net_pct": 2.471,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-11",
+   "net_pct": 2.424,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1988-12",
+   "net_pct": -0.955,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1989-01",
+   "net_pct": 1.36,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-02",
+   "net_pct": -0.074,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-03",
+   "net_pct": 1.455,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-04",
+   "net_pct": -0.331,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-05",
+   "net_pct": 3.248,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-06",
+   "net_pct": 0.475,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-07",
+   "net_pct": -4.07,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-08",
+   "net_pct": 2.496,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-09",
+   "net_pct": -1.611,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-10",
+   "net_pct": 0.841,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-11",
+   "net_pct": -0.098,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1989-12",
+   "net_pct": -1.786,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1990-01",
+   "net_pct": -2.365,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1990-02",
+   "net_pct": -0.648,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1990-03",
+   "net_pct": 0.869,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1990-04",
+   "net_pct": -0.075,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1990-05",
+   "net_pct": -1.501,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1990-06",
+   "net_pct": 2.307,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1990-07",
+   "net_pct": 3.557,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1990-08",
+   "net_pct": 1.125,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1990-09",
+   "net_pct": -0.215,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1990-10",
+   "net_pct": 2.156,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1990-11",
+   "net_pct": 0.122,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1990-12",
+   "net_pct": -0.042,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-01",
+   "net_pct": 1.202,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-02",
+   "net_pct": -1.117,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-03",
+   "net_pct": -3.963,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-04",
+   "net_pct": -0.512,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-05",
+   "net_pct": -0.488,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-06",
+   "net_pct": -2.143,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1991-07",
+   "net_pct": -2.34,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1991-08",
+   "net_pct": -0.139,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1991-09",
+   "net_pct": -2.418,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1991-10",
+   "net_pct": 0.016,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1991-11",
+   "net_pct": -0.929,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1991-12",
+   "net_pct": -3.137,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1992-01",
+   "net_pct": 1.739,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1992-02",
+   "net_pct": 0.592,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1992-03",
+   "net_pct": 0.245,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1992-04",
+   "net_pct": -1.432,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1992-05",
+   "net_pct": 1.763,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1992-06",
+   "net_pct": 2.265,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1992-07",
+   "net_pct": 0.658,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1992-08",
+   "net_pct": 2.054,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1992-09",
+   "net_pct": -5.024,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1992-10",
+   "net_pct": -5.83,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1992-11",
+   "net_pct": 1.291,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1992-12",
+   "net_pct": -0.198,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-01",
+   "net_pct": 0.7,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-02",
+   "net_pct": 1.947,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-03",
+   "net_pct": -3.257,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-04",
+   "net_pct": -2.175,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-05",
+   "net_pct": 0.114,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-06",
+   "net_pct": 1.993,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-07",
+   "net_pct": 0.106,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-08",
+   "net_pct": -0.226,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-09",
+   "net_pct": -0.472,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-10",
+   "net_pct": 0.094,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-11",
+   "net_pct": -0.057,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1993-12",
+   "net_pct": 0.113,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1994-01",
+   "net_pct": -0.917,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1994-02",
+   "net_pct": -0.377,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-03",
+   "net_pct": 0.059,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-04",
+   "net_pct": -0.918,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1994-05",
+   "net_pct": -0.115,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1994-06",
+   "net_pct": -1.287,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1994-07",
+   "net_pct": -0.222,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-08",
+   "net_pct": -0.175,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-09",
+   "net_pct": 1.332,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-10",
+   "net_pct": 1.845,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-11",
+   "net_pct": -2.078,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1994-12",
+   "net_pct": -0.023,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-01",
+   "net_pct": 0.472,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-02",
+   "net_pct": 0.076,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-03",
+   "net_pct": 1.106,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-04",
+   "net_pct": -0.306,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-05",
+   "net_pct": -0.699,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-06",
+   "net_pct": 0.13,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-07",
+   "net_pct": 0.246,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-08",
+   "net_pct": -1.436,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-09",
+   "net_pct": 0.922,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-10",
+   "net_pct": 0.059,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1995-11",
+   "net_pct": 1.487,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1995-12",
+   "net_pct": -0.86,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-01",
+   "net_pct": 1.313,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-02",
+   "net_pct": -0.844,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-03",
+   "net_pct": 0.089,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-04",
+   "net_pct": 0.604,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-05",
+   "net_pct": -1.567,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-06",
+   "net_pct": -0.197,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-07",
+   "net_pct": -0.164,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-08",
+   "net_pct": -0.25,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-09",
+   "net_pct": 0.118,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1996-10",
+   "net_pct": -2.075,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1996-11",
+   "net_pct": 1.661,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1996-12",
+   "net_pct": 0.916,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-01",
+   "net_pct": -3.222,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-02",
+   "net_pct": 0.875,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-03",
+   "net_pct": 0.506,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-04",
+   "net_pct": -0.747,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-05",
+   "net_pct": 0.506,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-06",
+   "net_pct": 0.906,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-07",
+   "net_pct": -0.756,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-08",
+   "net_pct": -0.523,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-09",
+   "net_pct": -0.219,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-10",
+   "net_pct": 2.132,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-11",
+   "net_pct": 0.353,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1997-12",
+   "net_pct": -1.294,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-01",
+   "net_pct": 0.158,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1998-02",
+   "net_pct": 0.452,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-03",
+   "net_pct": 1.009,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-04",
+   "net_pct": -0.049,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-05",
+   "net_pct": -1.186,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-06",
+   "net_pct": -1.336,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1998-07",
+   "net_pct": -0.968,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-08",
+   "net_pct": -1.422,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1998-09",
+   "net_pct": 0.773,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-10",
+   "net_pct": -0.688,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1998-11",
+   "net_pct": 0.565,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1998-12",
+   "net_pct": -0.582,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-01",
+   "net_pct": -0.474,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1999-02",
+   "net_pct": -1.282,
+   "positions": "GBPUSD+"
+  },
+  {
+   "mois": "1999-03",
+   "net_pct": -0.444,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-04",
+   "net_pct": 0.088,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-05",
+   "net_pct": 0.118,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-06",
+   "net_pct": 0.719,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-07",
+   "net_pct": -1.471,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-08",
+   "net_pct": 0.306,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-09",
+   "net_pct": -1.217,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-10",
+   "net_pct": 0.025,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-11",
+   "net_pct": 1.401,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "1999-12",
+   "net_pct": -0.75,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "2000-01",
+   "net_pct": -0.176,
+   "positions": "GBPUSD-"
+  },
+  {
+   "mois": "2000-02",
+   "net_pct": 1.784,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-03",
+   "net_pct": -0.12,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-04",
+   "net_pct": 3.645,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-05",
+   "net_pct": 0.55,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-06",
+   "net_pct": -1.75,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-07",
+   "net_pct": 1.891,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-08",
+   "net_pct": 3.62,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-09",
+   "net_pct": -0.74,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-10",
+   "net_pct": 2.895,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-11",
+   "net_pct": -0.25,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2000-12",
+   "net_pct": -6.648,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-01",
+   "net_pct": 1.513,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-02",
+   "net_pct": 1.035,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-03",
+   "net_pct": 2.996,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-04",
+   "net_pct": -1.006,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-05",
+   "net_pct": 2.638,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-06",
+   "net_pct": 0.04,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2001-07",
+   "net_pct": -2.459,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2001-08",
+   "net_pct": -3.032,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2001-09",
+   "net_pct": -0.693,
+   "positions": "EURUSD+ GBPUSD-"
+  },
+  {
+   "mois": "2001-10",
+   "net_pct": -0.163,
+   "positions": "EURUSD+ GBPUSD-"
+  },
+  {
+   "mois": "2001-11",
+   "net_pct": -1.088,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2001-12",
+   "net_pct": 0.76,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2002-01",
+   "net_pct": 2.915,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2002-02",
+   "net_pct": -0.658,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2002-03",
+   "net_pct": -1.018,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2002-04",
+   "net_pct": -0.587,
+   "positions": "EURUSD- GBPUSD+"
+  },
+  {
+   "mois": "2002-05",
+   "net_pct": -1.395,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2002-06",
+   "net_pct": 1.094,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2002-07",
+   "net_pct": 1.03,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2002-08",
+   "net_pct": -0.338,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2002-09",
+   "net_pct": 1.183,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2002-10",
+   "net_pct": -0.128,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2002-11",
+   "net_pct": 0.098,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2002-12",
+   "net_pct": 4.636,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2003-01",
+   "net_pct": 2.415,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-02",
+   "net_pct": -1.872,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-03",
+   "net_pct": 0.817,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-04",
+   "net_pct": 2.03,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-05",
+   "net_pct": 3.929,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-06",
+   "net_pct": -0.628,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-07",
+   "net_pct": -2.425,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-08",
+   "net_pct": -2.0,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-09",
+   "net_pct": 5.78,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2003-10",
+   "net_pct": 0.346,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2003-11",
+   "net_pct": 1.854,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2003-12",
+   "net_pct": 4.409,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2004-01",
+   "net_pct": 0.568,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2004-02",
+   "net_pct": -1.733,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2004-03",
+   "net_pct": -0.975,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2004-04",
+   "net_pct": -4.74,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2004-05",
+   "net_pct": 1.762,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2004-06",
+   "net_pct": -0.192,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2004-07",
+   "net_pct": -0.724,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2004-08",
+   "net_pct": 0.667,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2004-09",
+   "net_pct": 1.206,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2004-10",
+   "net_pct": 2.103,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2004-11",
+   "net_pct": 4.06,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2004-12",
+   "net_pct": 1.318,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2005-01",
+   "net_pct": -2.587,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2005-02",
+   "net_pct": 1.935,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2005-03",
+   "net_pct": -2.782,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2005-04",
+   "net_pct": 0.408,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2005-05",
+   "net_pct": -4.556,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2005-06",
+   "net_pct": -2.613,
+   "positions": "USDJPY- EURUSD+"
+  },
+  {
+   "mois": "2005-07",
+   "net_pct": 1.492,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2005-08",
+   "net_pct": -0.558,
+   "positions": "GBPUSD- EURUSD+"
+  },
+  {
+   "mois": "2005-09",
+   "net_pct": -0.003,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2005-10",
+   "net_pct": 1.719,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2005-11",
+   "net_pct": 2.403,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2005-12",
+   "net_pct": -0.826,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2006-01",
+   "net_pct": -1.625,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2006-02",
+   "net_pct": 0.666,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2006-03",
+   "net_pct": -0.008,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2006-04",
+   "net_pct": -3.856,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2006-05",
+   "net_pct": -1.976,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2006-06",
+   "net_pct": 0.812,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2006-07",
+   "net_pct": 0.301,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2006-08",
+   "net_pct": 0.851,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2006-09",
+   "net_pct": -0.439,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2006-10",
+   "net_pct": 1.18,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2006-11",
+   "net_pct": 3.372,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2006-12",
+   "net_pct": -0.64,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-01",
+   "net_pct": -0.804,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-02",
+   "net_pct": 0.784,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-03",
+   "net_pct": 0.616,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-04",
+   "net_pct": 1.768,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-05",
+   "net_pct": -1.353,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-06",
+   "net_pct": 1.464,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2007-07",
+   "net_pct": -0.845,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2007-08",
+   "net_pct": -0.808,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2007-09",
+   "net_pct": 2.697,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2007-10",
+   "net_pct": 1.894,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2007-11",
+   "net_pct": 0.303,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2007-12",
+   "net_pct": -1.945,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2008-01",
+   "net_pct": 2.937,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-02",
+   "net_pct": 2.27,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-03",
+   "net_pct": 4.075,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-04",
+   "net_pct": -3.055,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-05",
+   "net_pct": -0.427,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-06",
+   "net_pct": 0.277,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-07",
+   "net_pct": -1.41,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-08",
+   "net_pct": -3.201,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2008-09",
+   "net_pct": -1.064,
+   "positions": "GBPUSD- EURUSD+"
+  },
+  {
+   "mois": "2008-10",
+   "net_pct": 7.918,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2008-11",
+   "net_pct": 1.978,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2008-12",
+   "net_pct": -2.88,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2009-01",
+   "net_pct": 1.04,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2009-02",
+   "net_pct": -4.078,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2009-03",
+   "net_pct": -2.682,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2009-04",
+   "net_pct": -1.891,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2009-05",
+   "net_pct": -8.121,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2009-06",
+   "net_pct": -1.483,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2009-07",
+   "net_pct": -1.893,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2009-08",
+   "net_pct": 1.993,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2009-09",
+   "net_pct": 2.651,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2009-10",
+   "net_pct": -2.134,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2009-11",
+   "net_pct": 3.188,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2009-12",
+   "net_pct": -6.285,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2010-01",
+   "net_pct": -2.138,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2010-02",
+   "net_pct": -3.196,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2010-03",
+   "net_pct": -3.112,
+   "positions": "USDJPY- EURUSD+"
+  },
+  {
+   "mois": "2010-04",
+   "net_pct": -0.104,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2010-05",
+   "net_pct": -0.898,
+   "positions": "USDJPY- GBPUSD+"
+  },
+  {
+   "mois": "2010-06",
+   "net_pct": -1.393,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2010-07",
+   "net_pct": -5.865,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2010-08",
+   "net_pct": 2.632,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2010-09",
+   "net_pct": -3.297,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2010-10",
+   "net_pct": 0.644,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2010-11",
+   "net_pct": 1.063,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2010-12",
+   "net_pct": -0.447,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2011-01",
+   "net_pct": -1.985,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2011-02",
+   "net_pct": -0.378,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2011-03",
+   "net_pct": -1.164,
+   "positions": "USDJPY- GBPUSD+"
+  },
+  {
+   "mois": "2011-04",
+   "net_pct": 2.835,
+   "positions": "USDJPY- GBPUSD+"
+  },
+  {
+   "mois": "2011-05",
+   "net_pct": -1.513,
+   "positions": "USDJPY- EURUSD+"
+  },
+  {
+   "mois": "2011-06",
+   "net_pct": -0.618,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2011-07",
+   "net_pct": 1.66,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2011-08",
+   "net_pct": 0.497,
+   "positions": "USDJPY- EURUSD+"
+  },
+  {
+   "mois": "2011-09",
+   "net_pct": -3.681,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2011-10",
+   "net_pct": -2.594,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2011-11",
+   "net_pct": -1.136,
+   "positions": "USDJPY- GBPUSD+"
+  },
+  {
+   "mois": "2011-12",
+   "net_pct": -1.411,
+   "positions": "USDJPY- EURUSD+"
+  },
+  {
+   "mois": "2012-01",
+   "net_pct": -0.027,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2012-02",
+   "net_pct": -4.41,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2012-03",
+   "net_pct": -0.182,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2012-04",
+   "net_pct": 1.857,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2012-05",
+   "net_pct": 5.642,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2012-06",
+   "net_pct": -2.288,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2012-07",
+   "net_pct": 1.25,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2012-08",
+   "net_pct": -1.765,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2012-09",
+   "net_pct": -2.068,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2012-10",
+   "net_pct": -0.533,
+   "positions": "EURUSD- GBPUSD+"
+  },
+  {
+   "mois": "2012-11",
+   "net_pct": 1.319,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2012-12",
+   "net_pct": 1.71,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2013-01",
+   "net_pct": 1.35,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2013-02",
+   "net_pct": -1.36,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2013-03",
+   "net_pct": 0.859,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2013-04",
+   "net_pct": 0.538,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2013-05",
+   "net_pct": 2.727,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2013-06",
+   "net_pct": -0.809,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2013-07",
+   "net_pct": -0.44,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2013-08",
+   "net_pct": -0.479,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2013-09",
+   "net_pct": 1.237,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2013-10",
+   "net_pct": 0.038,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2013-11",
+   "net_pct": 2.178,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2013-12",
+   "net_pct": 1.919,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2014-01",
+   "net_pct": -2.504,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2014-02",
+   "net_pct": 0.739,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2014-03",
+   "net_pct": 0.147,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2014-04",
+   "net_pct": 0.903,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2014-05",
+   "net_pct": -1.232,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2014-06",
+   "net_pct": 1.15,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2014-07",
+   "net_pct": -1.781,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2014-08",
+   "net_pct": -0.368,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2014-09",
+   "net_pct": 1.552,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2014-10",
+   "net_pct": 1.396,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2014-11",
+   "net_pct": 3.223,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2014-12",
+   "net_pct": 1.747,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2015-01",
+   "net_pct": 2.254,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-02",
+   "net_pct": 1.292,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-03",
+   "net_pct": 2.046,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-04",
+   "net_pct": -2.091,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-05",
+   "net_pct": 2.382,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-06",
+   "net_pct": -1.574,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2015-07",
+   "net_pct": 1.23,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2015-08",
+   "net_pct": -1.921,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2015-09",
+   "net_pct": -0.538,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2015-10",
+   "net_pct": 0.822,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-11",
+   "net_pct": 3.131,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2015-12",
+   "net_pct": -0.514,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2016-01",
+   "net_pct": 1.947,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2016-02",
+   "net_pct": -2.556,
+   "positions": "GBPUSD- USDJPY+"
+  },
+  {
+   "mois": "2016-03",
+   "net_pct": -1.532,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2016-04",
+   "net_pct": 2.559,
+   "positions": "USDJPY- EURUSD+"
+  },
+  {
+   "mois": "2016-05",
+   "net_pct": -1.586,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2016-06",
+   "net_pct": 7.93,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2016-07",
+   "net_pct": 0.008,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2016-08",
+   "net_pct": -0.089,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2016-09",
+   "net_pct": 1.386,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2016-10",
+   "net_pct": 1.081,
+   "positions": "USDJPY- GBPUSD-"
+  },
+  {
+   "mois": "2016-11",
+   "net_pct": -5.61,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2016-12",
+   "net_pct": -0.588,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2017-01",
+   "net_pct": -2.202,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2017-02",
+   "net_pct": 0.818,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2017-03",
+   "net_pct": -0.868,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2017-04",
+   "net_pct": -2.542,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2017-05",
+   "net_pct": -1.454,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2017-06",
+   "net_pct": 0.313,
+   "positions": "GBPUSD- EURUSD+"
+  },
+  {
+   "mois": "2017-07",
+   "net_pct": 0.814,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2017-08",
+   "net_pct": 0.042,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2017-09",
+   "net_pct": 0.732,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2017-10",
+   "net_pct": -0.358,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2017-11",
+   "net_pct": 0.186,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2017-12",
+   "net_pct": 0.422,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-01",
+   "net_pct": 3.946,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-02",
+   "net_pct": -2.461,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-03",
+   "net_pct": 1.086,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-04",
+   "net_pct": -2.195,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-05",
+   "net_pct": -3.565,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-06",
+   "net_pct": -0.541,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2018-07",
+   "net_pct": -0.663,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2018-08",
+   "net_pct": 0.144,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2018-09",
+   "net_pct": 1.11,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2018-10",
+   "net_pct": 2.366,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2018-11",
+   "net_pct": 0.151,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2018-12",
+   "net_pct": -0.465,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-01",
+   "net_pct": -1.359,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2019-02",
+   "net_pct": -0.113,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-03",
+   "net_pct": 0.47,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2019-04",
+   "net_pct": 0.217,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-05",
+   "net_pct": 1.899,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-06",
+   "net_pct": -1.25,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-07",
+   "net_pct": 0.655,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2019-08",
+   "net_pct": 0.923,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-09",
+   "net_pct": -0.125,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2019-10",
+   "net_pct": -1.21,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2019-11",
+   "net_pct": -0.095,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2019-12",
+   "net_pct": -0.644,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2020-01",
+   "net_pct": 0.327,
+   "positions": "GBPUSD+ EURUSD-"
+  },
+  {
+   "mois": "2020-02",
+   "net_pct": 0.467,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2020-03",
+   "net_pct": 0.139,
+   "positions": "EURUSD- USDJPY-"
+  },
+  {
+   "mois": "2020-04",
+   "net_pct": -0.431,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2020-05",
+   "net_pct": -1.26,
+   "positions": "USDJPY- EURUSD-"
+  },
+  {
+   "mois": "2020-06",
+   "net_pct": -0.304,
+   "positions": "GBPUSD- USDJPY-"
+  },
+  {
+   "mois": "2020-07",
+   "net_pct": -5.76,
+   "positions": "GBPUSD- EURUSD-"
+  },
+  {
+   "mois": "2020-08",
+   "net_pct": 1.342,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2020-09",
+   "net_pct": -2.756,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2020-10",
+   "net_pct": -0.388,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2020-11",
+   "net_pct": 1.246,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2020-12",
+   "net_pct": 1.635,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2021-01",
+   "net_pct": -1.207,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2021-02",
+   "net_pct": -1.244,
+   "positions": "EURUSD+ USDJPY-"
+  },
+  {
+   "mois": "2021-03",
+   "net_pct": -2.105,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2021-04",
+   "net_pct": 1.273,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2021-05",
+   "net_pct": 1.843,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2021-06",
+   "net_pct": -2.869,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2021-07",
+   "net_pct": 0.349,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2021-08",
+   "net_pct": -0.521,
+   "positions": "GBPUSD+ USDJPY+"
+  },
+  {
+   "mois": "2021-09",
+   "net_pct": -0.426,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2021-10",
+   "net_pct": 1.859,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2021-11",
+   "net_pct": -2.014,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2021-12",
+   "net_pct": 0.665,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-01",
+   "net_pct": 0.438,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-02",
+   "net_pct": -0.147,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-03",
+   "net_pct": 3.301,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-04",
+   "net_pct": 5.941,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-05",
+   "net_pct": -1.424,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-06",
+   "net_pct": 4.023,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-07",
+   "net_pct": 0.427,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-08",
+   "net_pct": 2.815,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-09",
+   "net_pct": 3.691,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-10",
+   "net_pct": -0.306,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2022-11",
+   "net_pct": -5.191,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2022-12",
+   "net_pct": -4.321,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2023-01",
+   "net_pct": -1.537,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2023-02",
+   "net_pct": 3.339,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2023-03",
+   "net_pct": -2.24,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2023-04",
+   "net_pct": 0.487,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2023-05",
+   "net_pct": -0.313,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2023-06",
+   "net_pct": 0.558,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2023-07",
+   "net_pct": -0.277,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2023-08",
+   "net_pct": 0.479,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2024-09",
+   "net_pct": 1.243,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2024-10",
+   "net_pct": -3.459,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2024-11",
+   "net_pct": -2.159,
+   "positions": "GBPUSD+ EURUSD+"
+  },
+  {
+   "mois": "2024-12",
+   "net_pct": 3.375,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2025-01",
+   "net_pct": -0.879,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2025-02",
+   "net_pct": -1.265,
+   "positions": "EURUSD- USDJPY+"
+  },
+  {
+   "mois": "2025-03",
+   "net_pct": -3.133,
+   "positions": "EURUSD- GBPUSD-"
+  },
+  {
+   "mois": "2025-04",
+   "net_pct": 3.935,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2025-05",
+   "net_pct": -0.303,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2025-06",
+   "net_pct": 0.716,
+   "positions": "GBPUSD+ USDJPY-"
+  },
+  {
+   "mois": "2025-07",
+   "net_pct": -3.456,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2025-08",
+   "net_pct": 2.069,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2025-09",
+   "net_pct": -0.257,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2025-10",
+   "net_pct": 1.19,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2025-11",
+   "net_pct": 0.47,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2025-12",
+   "net_pct": 1.219,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2026-01",
+   "net_pct": 1.542,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2026-02",
+   "net_pct": -1.405,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2026-03",
+   "net_pct": -2.437,
+   "positions": "EURUSD+ GBPUSD+"
+  },
+  {
+   "mois": "2026-04",
+   "net_pct": 0.099,
+   "positions": "EURUSD+ USDJPY+"
+  },
+  {
+   "mois": "2026-05",
+   "net_pct": 0.557,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2026-06",
+   "net_pct": -0.112,
+   "positions": "USDJPY+ EURUSD+"
+  },
+  {
+   "mois": "2026-07",
+   "net_pct": -1.854,
+   "positions": "USDJPY+ GBPUSD-"
+  },
+  {
+   "mois": "2026-08",
+   "net_pct": 0.484,
+   "positions": "USDJPY+ GBPUSD+"
+  },
+  {
+   "mois": "2026-09",
+   "net_pct": 0.462,
+   "positions": "USDJPY+ EURUSD-"
+  },
+  {
+   "mois": "2026-10",
+   "net_pct": 0.836,
+   "positions": "USDJPY+ EURUSD-"
+  }
+ ]
+}
