@@ -1,0 +1,89 @@
+# Test séparé de 4 projets GitHub de stratégies EUR/USD — SIMULATION uniquement.
+# Ne touche pas au robot principal. Ne tourne que sur la branche test/oss-eurusd.
+# Se lance automatiquement à chaque modification de lab/oss_eurusd/ sur cette branche.
+# Vérifie : tests du moteur, sources au commit figé, paramètres identiques à l'origine,
+# puis rejoue les backtests et contrôle qu'ils redonnent exactement les résultats enregistrés.
+name: OSS EUR/USD — tests et backtests
+
+on:
+  push:
+    branches: [test/oss-eurusd]
+    paths:
+      - "lab/oss_eurusd/**"
+      - ".github/workflows/oss-eurusd-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: lab/oss_eurusd
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Dépendances (versions du projet)
+        run: pip install -r ../../requirements.txt
+
+      - name: Tests automatiques du moteur (indicateurs, coûts, stop d'abord, absence de look-ahead)
+        run: python -m unittest -v test_oss_eurusd
+
+      - name: Sources des 4 projets au commit figé + licences
+        run: python fetch_sources.py sources
+
+      - name: Paramètres identiques aux fichiers d'origine
+        run: python check_params.py sources
+
+      - name: Données EUR/USD réelles (dépôt privé forex-data, sept. 2024 → août 2026)
+        env:
+          DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+        run: |
+          [ -n "$DATA_TOKEN" ] || { echo "::error::Secret DATA_REPO_TOKEN absent"; exit 1; }
+          mkdir -p data && cd data && git init -q
+          git remote add origin "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git"
+          for b in data-2024sep-2025feb data-2025mar-aug data-2025sep-2026feb data-2026mar-aug; do
+            git fetch -q --depth 1 origin "$b"
+            git show FETCH_HEAD:EURUSD.csv.gz > "EURUSD_${b}.csv.gz"
+          done
+          ls -la
+
+      - name: Backtests (entraînement / validation, coûts de base et stressés)
+        run: python run.py data/EURUSD_*.csv.gz --out ci_results
+
+      - name: Les résultats enregistrés sont reproduits à l'identique
+        run: |
+          python - <<'EOF'
+          import json
+          a = json.load(open("../../results/oss_eurusd/results.json"))
+          b = json.load(open("ci_results/results.json"))
+          keys = ("strategie", "periode", "couts", "capital")
+          da = {tuple(r[k] for k in keys): r for r in a}
+          db = {tuple(r[k] for k in keys): r for r in b}
+          bad = [k for k in da if k not in db or any(da[k][m] != db[k][m] for m in ("trades", "profit_factor", "rentabilite_pct", "drawdown_max_pct"))]
+          print("Écarts :", bad or "aucun")
+          raise SystemExit(1 if bad else 0)
+          EOF
+
+      - name: Résumé
+        if: always()
+        run: |
+          [ -f ci_results/results.json ] || exit 0
+          python - >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          import json
+          print("| Stratégie | Période | Coûts | Trades | PF | Net % | DD max % |\n|---|---|---|---|---|---|---|")
+          for r in json.load(open("ci_results/results.json")):
+              print(f"| {r['strategie']} | {r['periode']} | {r['couts']} | {r['trades']} | {r['profit_factor']} | {r['rentabilite_pct']} | {r['drawdown_max_pct']} |")
+          EOF
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oss-eurusd-results
+          path: lab/oss_eurusd/ci_results

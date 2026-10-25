@@ -1,0 +1,73 @@
+# Backtests MetaTrader 5 (Windows) des 4 projets EUR/USD — COMPTE DÉMO uniquement, jamais de réel.
+# EXPÉRIMENTAL, PRÉPARÉ MAIS JAMAIS LANCÉ. Ne se déclenche que si lab/oss_eurusd/mt5/trigger.txt
+# est modifié sur la branche test/oss-eurusd.
+#
+# BLOQUANT tant que ces 3 secrets ne sont pas ajoutés (Settings → Secrets → Actions) :
+#   MT5_LOGIN, MT5_PASSWORD, MT5_SERVER  — identifiants d'un compte DÉMO MT5 (le script refuse
+#   tout serveur dont le nom ne contient pas « demo » ou « trial »).
+# Limites connues : l'historique « ticks réels » est téléchargé depuis le serveur du broker démo
+# (plusieurs Go, long) ; l'installation silencieuse de MT5 sur un runner GitHub n'a pas été vérifiée ;
+# l'EA NadirAli est une version d'essai qui peut être expirée.
+name: OSS EUR/USD — backtests MT5 (Windows, démo)
+
+on:
+  push:
+    branches: [test/oss-eurusd]
+    paths:
+      - "lab/oss_eurusd/mt5/trigger.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  mt5:
+    runs-on: windows-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier les secrets du compte DÉMO
+        shell: bash
+        env:
+          L: ${{ secrets.MT5_LOGIN }}
+          S: ${{ secrets.MT5_SERVER }}
+          P: ${{ secrets.MT5_PASSWORD }}
+        run: |
+          if [ -z "$L" ] || [ -z "$S" ] || [ -z "$P" ]; then
+            echo "::error::BLOQUÉ — secrets MT5_LOGIN / MT5_PASSWORD / MT5_SERVER (compte démo) absents."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sources des projets au commit figé
+        working-directory: lab/oss_eurusd
+        run: python fetch_sources.py sources
+
+      - name: Installer MetaTrader 5 (mode portable)
+        shell: pwsh
+        run: |
+          Invoke-WebRequest "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile mt5setup.exe
+          Start-Process .\mt5setup.exe -ArgumentList "/auto" -Wait
+          $t = Get-ChildItem "C:\Program Files" -Recurse -Filter terminal64.exe -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $t) { throw "MT5 non installé" }
+          "MT5_TERMINAL=$($t.FullName)" | Out-File -Append $env:GITHUB_ENV
+
+      - name: Backtests MT5 (ticks réels, entraînement et validation)
+        shell: pwsh
+        working-directory: lab/oss_eurusd/mt5
+        env:
+          MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
+          MT5_PASSWORD: ${{ secrets.MT5_PASSWORD }}
+          MT5_SERVER: ${{ secrets.MT5_SERVER }}
+        run: .\run_mt5_tests.ps1 -Terminal $env:MT5_TERMINAL -Sources ..\sources -Symbol EURUSD
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oss-eurusd-mt5-reports
+          path: |
+            C:\Program Files\MetaTrader 5\reports
+            C:\Program Files\MetaTrader 5\MQL5\Experts\OssEurusd\*.log

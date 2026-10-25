@@ -1,0 +1,4 @@
+sources/
+data/
+ci_results/
+__pycache__/

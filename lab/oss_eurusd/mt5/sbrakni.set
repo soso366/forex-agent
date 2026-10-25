@@ -1,0 +1,23 @@
+; sbrakni MeanReversionScalper (defauts de l EA) - valeurs d'origine (copie exacte des input du .mq5, verifiee par check_params.py)
+InpBBPeriod=20
+InpBBDeviation=1.75
+InpRSIPeriod=7
+InpRSIOversold=10.0
+InpRSIOverbought=90.0
+InpATRPeriod=14
+InpRiskPercent=1.0
+InpFixedLots=0.1
+InpSLMultiplier=1.5
+InpTPMode=0
+InpTPRRRatio=2.0
+InpMaxBarsInTrade=30
+InpMaxSpreadPips=3.0
+InpCooldownBars=3
+InpUseTimeFilter=true
+InpSessionStart=7
+InpSessionEnd=20
+InpUseBBWidthFilter=true
+InpBBWidthLookback=200
+InpBBWidthMinPctile=30.0
+InpRequireConfirmation=false
+InpMinRR=1.0

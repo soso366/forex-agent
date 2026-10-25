@@ -1,0 +1,10 @@
+; smizxe RsiLevel / RsiReversal - valeurs d'origine (copie exacte des input du .mq5, verifiee par check_params.py)
+InpRsiPeriod=14
+InpBuyLevel=30.0
+InpSellLevel=70.0
+InpRiskPercent=1.0
+InpStopLossPoints=300
+InpTakeProfitPoints=600
+InpMaxPositions=1
+InpMaxTradesPerDay=5
+InpMaxSpreadPoints=30
