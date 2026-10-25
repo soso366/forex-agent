@@ -1,0 +1,204 @@
+[
+  {
+    "trader": "TP TRADER",
+    "signal": "https://www.mql5.com/en/signals/1932739",
+    "trades_eurusd": 5110,
+    "pf_eurusd": 1.15,
+    "net_eurusd": 12369.13,
+    "dd_max_cumul_eurusd": 3689.27,
+    "dd_sur_net_pct": 29.8,
+    "annees": {
+      "2020": {
+        "trades": 442,
+        "pf": 0.27,
+        "net": -1036.33
+      },
+      "2021": {
+        "trades": 786,
+        "pf": 0.98,
+        "net": -61.46
+      },
+      "2022": {
+        "trades": 1352,
+        "pf": 0.87,
+        "net": -1022.6
+      },
+      "2023": {
+        "trades": 923,
+        "pf": 1.64,
+        "net": 1466.12
+      },
+      "2024": {
+        "trades": 508,
+        "pf": 1.06,
+        "net": 1553.89
+      },
+      "2025": {
+        "trades": 680,
+        "pf": 1.43,
+        "net": 11788.49
+      },
+      "2026": {
+        "trades": 419,
+        "pf": 0.98,
+        "net": -318.98
+      }
+    },
+    "annees_perdantes": [
+      2020,
+      2021,
+      2022,
+      2026
+    ],
+    "stop_pose_pct": 100.0,
+    "ajouts_a_prix_pire_pct": 2.6
+  },
+  {
+    "trader": "WolvesVN EU",
+    "signal": "https://www.mql5.com/en/signals/2385213",
+    "trades_eurusd": 1618,
+    "pf_eurusd": 1.55,
+    "net_eurusd": 30249.27,
+    "dd_max_cumul_eurusd": 9398.3,
+    "dd_sur_net_pct": 31.1,
+    "annees": {
+      "2020": {
+        "trades": 53,
+        "pf": 1.99,
+        "net": 7740.0
+      },
+      "2021": {
+        "trades": 189,
+        "pf": 1.66,
+        "net": 7316.95
+      },
+      "2022": {
+        "trades": 68,
+        "pf": 3.55,
+        "net": 6042.66
+      },
+      "2023": {
+        "trades": 42,
+        "pf": 2.17,
+        "net": 6453.6
+      },
+      "2024": {
+        "trades": 525,
+        "pf": 2.46,
+        "net": 5777.05
+      },
+      "2025": {
+        "trades": 288,
+        "pf": 1.11,
+        "net": 1349.51
+      },
+      "2026": {
+        "trades": 453,
+        "pf": 0.63,
+        "net": -4430.5
+      }
+    },
+    "annees_perdantes": [
+      2026
+    ],
+    "stop_pose_pct": 23.4,
+    "ajouts_a_prix_pire_pct": 53.0
+  },
+  {
+    "trader": "EUR Trader 2",
+    "signal": "https://www.mql5.com/en/signals/2367606",
+    "trades_eurusd": 280,
+    "pf_eurusd": 3.93,
+    "net_eurusd": 3563.57,
+    "dd_max_cumul_eurusd": 234.87,
+    "dd_sur_net_pct": 6.6,
+    "annees": {
+      "2025": {
+        "trades": 148,
+        "pf": 5.03,
+        "net": 2526.21
+      },
+      "2026": {
+        "trades": 132,
+        "pf": 2.76,
+        "net": 1037.36
+      }
+    },
+    "annees_perdantes": [],
+    "stop_pose_pct": 0.0,
+    "ajouts_a_prix_pire_pct": 41.4
+  },
+  {
+    "trader": "EansPRO V3 EURUSD",
+    "signal": "https://www.mql5.com/en/signals/2378489",
+    "trades_eurusd": 1519,
+    "pf_eurusd": 2.11,
+    "net_eurusd": 724.49,
+    "dd_max_cumul_eurusd": 136.82,
+    "dd_sur_net_pct": 18.9,
+    "annees": {
+      "2023": {
+        "trades": 453,
+        "pf": 2.44,
+        "net": 146.01
+      },
+      "2024": {
+        "trades": 359,
+        "pf": 2.77,
+        "net": 187.62
+      },
+      "2025": {
+        "trades": 468,
+        "pf": 2.26,
+        "net": 239.19
+      },
+      "2026": {
+        "trades": 239,
+        "pf": 1.59,
+        "net": 151.67
+      }
+    },
+    "annees_perdantes": [],
+    "stop_pose_pct": 0.1,
+    "ajouts_a_prix_pire_pct": 25.2
+  },
+  {
+    "trader": "Kosciuszko",
+    "signal": "https://www.mql5.com/en/signals/1750957",
+    "trades_eurusd": 2926,
+    "pf_eurusd": 2.2,
+    "net_eurusd": 6640.46,
+    "dd_max_cumul_eurusd": 1100.12,
+    "dd_sur_net_pct": 16.6,
+    "annees": {
+      "2022": {
+        "trades": 122,
+        "pf": 3.07,
+        "net": 164.27
+      },
+      "2023": {
+        "trades": 1063,
+        "pf": 1.89,
+        "net": 3671.63
+      },
+      "2024": {
+        "trades": 768,
+        "pf": 4.0,
+        "net": 1976.35
+      },
+      "2025": {
+        "trades": 529,
+        "pf": 2.05,
+        "net": 364.85
+      },
+      "2026": {
+        "trades": 444,
+        "pf": 2.6,
+        "net": 463.36
+      }
+    },
+    "annees_perdantes": [],
+    "stop_pose_pct": 91.9,
+    "ajouts_a_prix_pire_pct": 53.1
+  }
+]

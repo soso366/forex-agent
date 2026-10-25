@@ -88,3 +88,30 @@ de positions, aucun cas stop/objectif ambigu dans la même minute.
 1. Un compte MQL5 (gratuit) permettrait d'exporter l'historique trade par trade de ces signaux : on pourrait alors
    déduire des règles (heures, déclencheurs) avec un vrai échantillon. Je ne peux pas créer ce compte à votre place.
 2. Les backtests MT5 demandent Windows + un compte démo (workflow déjà préparé sur la branche `test/oss-eurusd`).
+
+## Mise à jour — historiques réels exportés (25/10/2026, 23 h 30)
+
+Les historiques trade par trade des 5 traders ont été exportés depuis MQL5 avec le compte de l'utilisateur.
+Les fichiers bruts ne sont **pas** versionnés (dépôt public) ; seuls les résultats agrégés le sont :
+`histories/profils.json` (comportement observé) et `histories/live_eurusd.json` (performance réelle EUR/USD).
+Heure serveur vérifiée en comparant les prix d'entrée aux données Dukascopy : UTC+2 / UTC+3 (heure d'été US).
+
+Ce qui est **observé** dans les historiques (partie EUR/USD uniquement) :
+
+| Trader | Trades EUR/USD | PF réel EUR/USD | Stop posé | Ajouts à un prix pire (moyenne à la baisse) | Autres constats | Verdict |
+|---|---|---|---|---|---|---|
+| Kosciuszko | 2 926 | 2,20 | 92 % (stops initiaux de 300 à 450 pips, resserrés ensuite) | **53 %** | jusqu'à 59 positions EUR/USD de même sens ouvertes en même temps | Grille cachée à stops très larges → exclu |
+| EUR Trader 2 | 280 | 3,93 | aucun stop initial visible | **41 %** (lot fixe 0,05) | jusqu'à 12 positions de même sens ; charge de dépôt publiée 87,77 % | Moyenne à la baisse sans stop → exclu |
+| EansPRO V3 | 1 519 | 2,11 | 0,1 % | 25 % | objectif ~8 pips, **volume croissant dans 219 paniers sur 219** | Martingale en grille sans stop → exclu |
+| WolvesVN EU | 1 618 | 1,55 | 23 % | **53 %** | volume croissant dans 202 paniers sur 314 ; 2026 perdante (PF 0,63) | Martingale en grille → exclu |
+| TP TRADER | 5 110 | 1,15 | 100 % (stop initial 15 pips, objectif 50 pips) | 3 % | ordres stop placés à :00, :05, :30 ; plusieurs robots (lots 0,01 / 0,1 / 1,14 / 2,16) | Gestion propre, mais 4 années perdantes sur 7 sur EUR/USD (2020, 2021, 2022, 2026) → pas d'avantage stable |
+
+Lecture : chez les 4 premiers, les pertes restent ouvertes et sont « moyennées » jusqu'à revenir en gain ; le profit
+factor des trades fermés paraît donc excellent, mais le risque réel se voit dans le drawdown sur equity publié
+(12 à 24 %) et peut exploser si l'EUR/USD part loin sans revenir. C'est exactement ce que vos critères excluent.
+
+Conséquence pour les backtests : aucune des 5 stratégies ne mérite d'être reproduite. Quatre reposent sur une
+moyenne à la baisse sans limite stricte, et la seule gestion « propre » (TP TRADER) a déjà été testée en réel sur
+6 ans par son auteur, avec un résultat EUR/USD faible et instable (PF 1,15, 4 années perdantes). Ses ordres stop ne
+suivent pas une règle unique identifiable (≈ 30 % seulement correspondent au plus haut/bas des 2 à 8 dernières heures).
+**Aucune stratégie n'a passé nos tests.**
