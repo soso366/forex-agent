@@ -1,0 +1,51 @@
+{
+  "_note": "Projets testés, figés sur un commit précis. Les sources ne sont PAS recopiées dans ce dépôt : elles sont téléchargées au moment du test (fetch_sources.py) pour respecter leurs licences.",
+  "projects": [
+    {
+      "id": "smizxe",
+      "repo": "smizxe/mt5-agent-toolkit",
+      "commit": "513f726166184da1502a93f1cfea3ea34b4808fa",
+      "license": "MIT",
+      "license_ok_for_test": true,
+      "files": ["src/Experts/RsiLevel.mq5", "src/Experts/RsiReversal.mq5", "strategies/RsiLevel.md", "strategies/RsiReversal.md"],
+      "strategies": ["smizxe_RsiLevel", "smizxe_RsiReversal"],
+      "symbol_tf_origin": "EURUSDm (Exness) H1",
+      "testable_here": true
+    },
+    {
+      "id": "nadirali",
+      "repo": "NadirAliOfficial/eurusd-scalper-ea",
+      "commit": "e4eb67306f611bf1566c79b1f71e95f127e96226",
+      "license": "Propriétaire (binaire .ex5 seul, évaluation personnelle, décompilation interdite)",
+      "license_ok_for_test": true,
+      "files": ["AutoLot20PipScalper_v2.ex5"],
+      "strategies": ["nadirali_AutoLot20PipScalper_v2"],
+      "symbol_tf_origin": "EURUSD M5",
+      "testable_here": false,
+      "blocker": "Pas de code source : le binaire .ex5 ne s'exécute que dans MetaTrader 5 (Windows). Règles d'entrée incomplètes dans le README (périodes EMA non publiées) : impossible à reproduire fidèlement en Python. Le README précise aussi que les versions de démo sont limitées dans le temps."
+    },
+    {
+      "id": "sbrakni",
+      "repo": "sbrakni/mean-reversion-mql5",
+      "commit": "c263c854dc6a26320c7001a4622c6cd25bdae90d",
+      "license": "Aucune licence (tous droits réservés par défaut)",
+      "license_ok_for_test": true,
+      "files": ["EA/MeanReversionScalper.mq5", "sets/MeanReversionScalper_Best.set"],
+      "strategies": ["sbrakni_MeanReversionScalper"],
+      "symbol_tf_origin": "EURUSD M5",
+      "testable_here": true
+    },
+    {
+      "id": "nyao",
+      "repo": "elrizwiraswara/nyao_scalper_mt5",
+      "commit": "bbb6d5b4910b0f9e08c73ea8ab44c963a2b5bb0f",
+      "license": "BSD 3-Clause",
+      "license_ok_for_test": true,
+      "files": ["nyao_scalper.mq5", "settings/xauusd-default.set", "settings/usdjpy-default.set"],
+      "strategies": ["nyao_scalper_v54"],
+      "symbol_tf_origin": "XAUUSD (or) M5 — aucun profil EUR/USD fourni",
+      "testable_here": false,
+      "blocker": "EA de 8 185 lignes géré au tick (trailing, couverture, sorties partielles) : une réécriture Python ne serait pas fidèle. Conçu et réglé pour l'or, pas pour EUR/USD. Nécessite le testeur MetaTrader 5 (Windows) avec ticks réels."
+    }
+  ]
+}
