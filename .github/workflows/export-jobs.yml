@@ -1,0 +1,74 @@
+# Téléchargement Dukascopy M1 BID/ASK générique (recherche, simulation uniquement).
+# Une ligne par lot dans deploy/trigger/export_jobs.txt : « SYMBOLES(virgule) DÉBUT FIN TAG »,
+# ex. « EURUSD 2015-01-01 2015-06-30 eurusd-2015h1 ». Les CSV compressés sont publiés en Artifacts.
+# Relancer (modifier le fichier) reprend grâce au cache.
+name: Export données (lots)
+
+on:
+  push:
+    branches: [research/calm-pairs, research/documented-strategies]
+    paths: [deploy/trigger/export_jobs.txt]
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          python3 - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json
+          rows = []
+          for line in open("deploy/trigger/export_jobs.txt"):
+              line = line.strip()
+              if not line or line.startswith("#"):
+                  continue
+              s, a, b, t = line.split()
+              rows.append({"symbols": s.replace(",", " "), "start": a, "end": b, "tag": t})
+          print("matrix=" + json.dumps({"job": rows}))
+          EOF
+  export:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/dukascopy_raw
+          key: jobs-${{ matrix.job.tag }}-${{ github.run_id }}
+          restore-keys: jobs-${{ matrix.job.tag }}-
+      - name: Télécharger / préparer
+        env: {PYTHONUNBUFFERED: "1"}
+        run: python -m forex_agent data-download --symbols ${{ matrix.job.symbols }} --start ${{ matrix.job.start }} --end ${{ matrix.job.end }} --time-budget-min 300
+      - if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/dukascopy_raw
+          key: jobs-${{ matrix.job.tag }}-${{ github.run_id }}
+      - id: out
+        run: |
+          STATUS=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          [ "$STATUS" = "COMPLETE" ] || { echo "::warning::Incomplet — relancer en modifiant le fichier déclencheur"; exit 0; }
+          mkdir -p out
+          for f in data/m1/*.csv; do gzip -9 -c "$f" > "out/$(basename "$f" .csv)_${{ matrix.job.tag }}.csv.gz"; done
+          cp data/m1/quality_report.json "out/quality_${{ matrix.job.tag }}.json"
+      - uses: actions/upload-artifact@v4
+        if: steps.out.outputs.status == 'COMPLETE'
+        with:
+          name: data-${{ matrix.job.tag }}
+          path: out
+          retention-days: 90
