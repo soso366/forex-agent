@@ -1,0 +1,64 @@
+# Données Dukascopy M1 BID/ASK des paires « calmes » AUDCAD, NZDCAD, AUDNZD (recherche, simulation uniquement).
+# Se lance quand deploy/trigger/export_crosses.txt est modifié sur la branche research/calm-pairs.
+# Les CSV compressés sont publiés comme « Artifacts » du run (données de marché publiques Dukascopy).
+# Reprise : relancer (modifier le fichier déclencheur) reprend là où le téléchargement s'est arrêté (cache).
+name: Export données paires calmes
+
+on:
+  push:
+    branches: [research/calm-pairs]
+    paths: [deploy/trigger/export_crosses.txt]
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        period:
+          - {start: "2024-09-01", end: "2025-02-28", tag: "2024sep-2025feb"}
+          - {start: "2025-03-01", end: "2025-08-31", tag: "2025mar-aug"}
+          - {start: "2025-09-01", end: "2026-02-28", tag: "2025sep-2026feb"}
+          - {start: "2026-03-01", end: "2026-08-31", tag: "2026mar-aug"}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - name: Restaurer le cache Dukascopy de cette période
+        uses: actions/cache/restore@v4
+        with:
+          path: data/dukascopy_raw
+          key: crosses-${{ matrix.period.tag }}-${{ github.run_id }}
+          restore-keys: crosses-${{ matrix.period.tag }}-
+      - name: Télécharger / préparer (AUDCAD NZDCAD AUDNZD)
+        env: {PYTHONUNBUFFERED: "1"}
+        run: python -m forex_agent data-download --symbols AUDCAD NZDCAD AUDNZD --start ${{ matrix.period.start }} --end ${{ matrix.period.end }} --time-budget-min 300
+      - name: Sauvegarder le cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/dukascopy_raw
+          key: crosses-${{ matrix.period.tag }}-${{ github.run_id }}
+      - name: Préparer les fichiers si complet
+        id: out
+        run: |
+          STATUS=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
+          echo "Statut : $STATUS"
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          [ "$STATUS" = "COMPLETE" ] || { echo "::warning::Incomplet — relancer en modifiant deploy/trigger/export_crosses.txt"; exit 0; }
+          mkdir -p out
+          for f in data/m1/*.csv; do gzip -9 -c "$f" > "out/$(basename "$f" .csv)_${{ matrix.period.tag }}.csv.gz"; done
+          cp data/m1/quality_report.json "out/quality_${{ matrix.period.tag }}.json"
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        if: steps.out.outputs.status == 'COMPLETE'
+        with:
+          name: crosses-${{ matrix.period.tag }}
+          path: out
+          retention-days: 90
