@@ -1,0 +1,68 @@
+# Recherche « 30 traders EUR/USD » — SIMULATION uniquement, branche research/traders-eurusd seulement.
+# Rejoue les tests anti look-ahead et tous les backtests, puis vérifie qu'ils redonnent les résultats enregistrés.
+name: Traders EUR/USD — tests et backtests
+
+on:
+  push:
+    branches: [research/traders-eurusd]
+    paths:
+      - "lab/traders_eurusd/**"
+      - "lab/oss_eurusd/engine.py"
+      - ".github/workflows/traders-eurusd-research.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: lab/traders_eurusd
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r ../../requirements.txt
+      - name: Tests (absence de look-ahead, journée à 17 h New York)
+        run: python -m unittest -v test_hypotheses
+      - name: Classement des 30 comptes (à partir des chiffres publiés)
+        run: python rank.py
+      - name: Données EUR/USD réelles 09/2024 → 08/2026 (dépôt privé forex-data)
+        env:
+          DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+        run: |
+          [ -n "$DATA_TOKEN" ] || { echo "::error::Secret DATA_REPO_TOKEN absent"; exit 1; }
+          mkdir -p data && cd data && git init -q
+          git remote add origin "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git"
+          for b in data-2024sep-2025feb data-2025mar-aug data-2025sep-2026feb data-2026mar-aug; do
+            git fetch -q --depth 1 origin "$b"
+            git show FETCH_HEAD:EURUSD.csv.gz > "EURUSD_${b}.csv.gz"
+          done
+      - name: Backtests (défaut + walk-forward, coûts de base et stressés)
+        run: python wf.py data/EURUSD_*.csv.gz --out ci_results
+      - name: Résultats enregistrés reproduits à l'identique
+        run: |
+          python - <<'EOF'
+          import json
+          a = json.load(open("../../results/traders_eurusd/results.json"))
+          b = json.load(open("ci_results/results.json"))
+          bad = []
+          for h in a:
+              for k in a[h]["defaut"]:
+                  for m in ("trades", "profit_factor", "rentabilite_pct"):
+                      if a[h]["defaut"][k][m] != b[h]["defaut"][k][m]: bad.append((h, k, m))
+              for c in a[h]["walk_forward"]:
+                  for m in ("trades", "pf", "rentabilite_pct"):
+                      if a[h]["walk_forward"][c][m] != b[h]["walk_forward"][c][m]: bad.append((h, c, m))
+              if a[h]["verdict"]["decision"] != b[h]["verdict"]["decision"]: bad.append((h, "verdict"))
+          print("Écarts :", bad or "aucun")
+          raise SystemExit(1 if bad else 0)
+          EOF
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: traders-eurusd-results
+          path: lab/traders_eurusd/ci_results
