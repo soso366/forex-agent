@@ -1,0 +1,430 @@
+[
+  {
+    "trader": "MySingalStart 2",
+    "positions": 9250,
+    "periode": "2020-02 → 2026-10",
+    "paires": {
+      "NZDCAD": 47.0,
+      "AUDCAD": 23.7,
+      "AUDNZD": 16.5,
+      "NZDCHF": 9.1,
+      "AUDCHF": 3.5
+    },
+    "stop_pose_pct": 99.9,
+    "stop_pips_mediane": 5000.0,
+    "objectif_pose_pct": 99.9,
+    "objectif_pips_mediane": 5000.0,
+    "duree_h_mediane": 9.9,
+    "duree_h_max": 2060.0,
+    "pf_trades_fermes": 1.77,
+    "reussite_pct": 84.1,
+    "ajouts_a_prix_pire_pct": 47.6,
+    "ajouts_a_prix_meilleur_pct": 0.7,
+    "max_positions_meme_sens_meme_paire": 65,
+    "paniers": 1081,
+    "paniers_volume_croissant": 117,
+    "pire_trade": -118.5,
+    "gain_moyen": 2.93,
+    "annees": {
+      "2020": {
+        "trades": 11,
+        "pf": null,
+        "net": 408.17
+      },
+      "2021": {
+        "trades": 1074,
+        "pf": 1.46,
+        "net": 405.29
+      },
+      "2022": {
+        "trades": 1329,
+        "pf": 1.74,
+        "net": 634.65
+      },
+      "2023": {
+        "trades": 2952,
+        "pf": 1.97,
+        "net": 3321.84
+      },
+      "2024": {
+        "trades": 2200,
+        "pf": 1.62,
+        "net": 2874.21
+      },
+      "2025": {
+        "trades": 961,
+        "pf": 1.63,
+        "net": 1220.4
+      },
+      "2026": {
+        "trades": 723,
+        "pf": 1.99,
+        "net": 1084.36
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/840474"
+  },
+  {
+    "trader": "Calm Waters",
+    "positions": 6636,
+    "periode": "2020-06 → 2026-10",
+    "paires": {
+      "AUDNZD": 35.3,
+      "NZDCAD": 25.5,
+      "AUDCAD": 24.4,
+      "GBPUSD": 4.0,
+      "EURCAD": 2.3
+    },
+    "stop_pose_pct": 40.4,
+    "stop_pips_mediane": 964.0,
+    "objectif_pose_pct": 40.2,
+    "objectif_pips_mediane": 24.4,
+    "duree_h_mediane": 11.2,
+    "duree_h_max": 948.0,
+    "pf_trades_fermes": 1.44,
+    "reussite_pct": 71.4,
+    "ajouts_a_prix_pire_pct": 44.6,
+    "ajouts_a_prix_meilleur_pct": 2.0,
+    "max_positions_meme_sens_meme_paire": 22,
+    "paniers": 696,
+    "paniers_volume_croissant": 143,
+    "pire_trade": -256.79,
+    "gain_moyen": 6.46,
+    "annees": {
+      "2020": {
+        "trades": 5,
+        "pf": 4.96,
+        "net": 567.52
+      },
+      "2021": {
+        "trades": 2,
+        "pf": null,
+        "net": 4.8
+      },
+      "2022": {
+        "trades": 1352,
+        "pf": 1.24,
+        "net": 820.81
+      },
+      "2023": {
+        "trades": 1235,
+        "pf": 1.39,
+        "net": 1428.57
+      },
+      "2024": {
+        "trades": 2009,
+        "pf": 1.41,
+        "net": 1775.99
+      },
+      "2025": {
+        "trades": 1025,
+        "pf": 1.73,
+        "net": 2624.94
+      },
+      "2026": {
+        "trades": 1008,
+        "pf": 1.37,
+        "net": 2203.52
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/2339857"
+  },
+  {
+    "trader": "LazyProV2 AUDCAD",
+    "positions": 974,
+    "periode": "2023-01 → 2026-10",
+    "paires": {
+      "AUDCAD": 100.0
+    },
+    "stop_pose_pct": 0.3,
+    "stop_pips_mediane": 3.4,
+    "objectif_pose_pct": 99.8,
+    "objectif_pips_mediane": 12.0,
+    "duree_h_mediane": 16.6,
+    "duree_h_max": 751.0,
+    "pf_trades_fermes": 3.98,
+    "reussite_pct": 77.2,
+    "ajouts_a_prix_pire_pct": 24.8,
+    "ajouts_a_prix_meilleur_pct": 0.0,
+    "max_positions_meme_sens_meme_paire": 9,
+    "paniers": 137,
+    "paniers_volume_croissant": 137,
+    "pire_trade": -58.43,
+    "gain_moyen": 1.6,
+    "annees": {
+      "2023": {
+        "trades": 352,
+        "pf": 3.91,
+        "net": 91.48
+      },
+      "2024": {
+        "trades": 208,
+        "pf": 3.31,
+        "net": 152.36
+      },
+      "2025": {
+        "trades": 256,
+        "pf": 4.16,
+        "net": 542.32
+      },
+      "2026": {
+        "trades": 158,
+        "pf": 4.45,
+        "net": 115.11
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/2378478"
+  },
+  {
+    "trader": "Cradle",
+    "positions": 5150,
+    "periode": "2022-05 → 2026-10",
+    "paires": {
+      "AUDCAD": 40.6,
+      "NZDCAD": 37.7,
+      "AUDNZD": 21.7
+    },
+    "stop_pose_pct": 45.5,
+    "stop_pips_mediane": 499.8,
+    "objectif_pose_pct": 66.8,
+    "objectif_pips_mediane": 25.7,
+    "duree_h_mediane": 21.9,
+    "duree_h_max": 1685.0,
+    "pf_trades_fermes": 2.56,
+    "reussite_pct": 69.7,
+    "ajouts_a_prix_pire_pct": 69.8,
+    "ajouts_a_prix_meilleur_pct": 1.0,
+    "max_positions_meme_sens_meme_paire": 51,
+    "paniers": 989,
+    "paniers_volume_croissant": 666,
+    "pire_trade": -154.72,
+    "gain_moyen": 10.76,
+    "annees": {
+      "2022": {
+        "trades": 992,
+        "pf": 3.12,
+        "net": 12044.16
+      },
+      "2023": {
+        "trades": 1624,
+        "pf": 2.46,
+        "net": 3879.51
+      },
+      "2024": {
+        "trades": 1019,
+        "pf": 2.77,
+        "net": 2510.26
+      },
+      "2025": {
+        "trades": 796,
+        "pf": 2.47,
+        "net": 2731.57
+      },
+      "2026": {
+        "trades": 719,
+        "pf": 1.69,
+        "net": 2377.77
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/1750952"
+  },
+  {
+    "trader": "Pinnacle Alpha",
+    "positions": 3144,
+    "periode": "2022-01 → 2026-10",
+    "paires": {
+      "AUDCAD": 38.9,
+      "NZDCAD": 35.7,
+      "AUDNZD": 25.5
+    },
+    "stop_pose_pct": 99.5,
+    "stop_pips_mediane": 1000.0,
+    "objectif_pose_pct": 100.0,
+    "objectif_pips_mediane": 11.3,
+    "duree_h_mediane": 8.3,
+    "duree_h_max": 690.0,
+    "pf_trades_fermes": 1.62,
+    "reussite_pct": 75.2,
+    "ajouts_a_prix_pire_pct": 26.6,
+    "ajouts_a_prix_meilleur_pct": 0.1,
+    "max_positions_meme_sens_meme_paire": 7,
+    "paniers": 484,
+    "paniers_volume_croissant": 185,
+    "pire_trade": -325.28,
+    "gain_moyen": 14.98,
+    "annees": {
+      "2022": {
+        "trades": 852,
+        "pf": 1.75,
+        "net": 1422.19
+      },
+      "2023": {
+        "trades": 805,
+        "pf": 1.62,
+        "net": 2510.16
+      },
+      "2024": {
+        "trades": 560,
+        "pf": 1.56,
+        "net": 2435.41
+      },
+      "2025": {
+        "trades": 474,
+        "pf": 1.85,
+        "net": 3418.45
+      },
+      "2026": {
+        "trades": 453,
+        "pf": 1.51,
+        "net": 3799.21
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/2274644"
+  },
+  {
+    "trader": "Ultimate AUDCAD HAWK",
+    "positions": 440,
+    "periode": "2025-10 → 2026-10",
+    "paires": {
+      "AUDCAD": 100.0
+    },
+    "stop_pose_pct": 0.0,
+    "stop_pips_mediane": null,
+    "objectif_pose_pct": 0.0,
+    "objectif_pips_mediane": null,
+    "duree_h_mediane": 8.0,
+    "duree_h_max": 275.0,
+    "pf_trades_fermes": 2.23,
+    "reussite_pct": 70.7,
+    "ajouts_a_prix_pire_pct": 40.9,
+    "ajouts_a_prix_meilleur_pct": 1.1,
+    "max_positions_meme_sens_meme_paire": 7,
+    "paniers": 61,
+    "paniers_volume_croissant": 20,
+    "pire_trade": -17.1,
+    "gain_moyen": 3.08,
+    "annees": {
+      "2025": {
+        "trades": 54,
+        "pf": 6.86,
+        "net": 44.33
+      },
+      "2026": {
+        "trades": 386,
+        "pf": 2.15,
+        "net": 483.28
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/2341479"
+  },
+  {
+    "trader": "Black Mountain",
+    "positions": 2711,
+    "periode": "2022-10 → 2026-10",
+    "paires": {
+      "AUDCAD": 50.9,
+      "NZDCAD": 49.0,
+      "AUDNZD": 0.1
+    },
+    "stop_pose_pct": 55.8,
+    "stop_pips_mediane": 500.0,
+    "objectif_pose_pct": 67.9,
+    "objectif_pips_mediane": 13.0,
+    "duree_h_mediane": 15.4,
+    "duree_h_max": 989.0,
+    "pf_trades_fermes": 1.82,
+    "reussite_pct": 72.3,
+    "ajouts_a_prix_pire_pct": 56.6,
+    "ajouts_a_prix_meilleur_pct": 1.2,
+    "max_positions_meme_sens_meme_paire": 46,
+    "paniers": 433,
+    "paniers_volume_croissant": 219,
+    "pire_trade": -124.39,
+    "gain_moyen": 5.05,
+    "annees": {
+      "2022": {
+        "trades": 146,
+        "pf": 2.2,
+        "net": 299.87
+      },
+      "2023": {
+        "trades": 673,
+        "pf": 2.77,
+        "net": 1209.12
+      },
+      "2024": {
+        "trades": 597,
+        "pf": 1.89,
+        "net": 1300.47
+      },
+      "2025": {
+        "trades": 572,
+        "pf": 2.12,
+        "net": 1076.12
+      },
+      "2026": {
+        "trades": 723,
+        "pf": 1.26,
+        "net": 555.24
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/1750918"
+  },
+  {
+    "trader": "Steady Long term",
+    "positions": 1998,
+    "periode": "2023-08 → 2026-10",
+    "paires": {
+      "AUDCAD": 39.2,
+      "NZDCAD": 32.6,
+      "AUDNZD": 28.0,
+      "NZDUSD": 0.1
+    },
+    "stop_pose_pct": 100.0,
+    "stop_pips_mediane": 1000.0,
+    "objectif_pose_pct": 100.0,
+    "objectif_pips_mediane": 11.4,
+    "duree_h_mediane": 10.8,
+    "duree_h_max": 690.0,
+    "pf_trades_fermes": 1.59,
+    "reussite_pct": 73.6,
+    "ajouts_a_prix_pire_pct": 27.7,
+    "ajouts_a_prix_meilleur_pct": 0.0,
+    "max_positions_meme_sens_meme_paire": 10,
+    "paniers": 299,
+    "paniers_volume_croissant": 128,
+    "pire_trade": -32.58,
+    "gain_moyen": 1.65,
+    "annees": {
+      "2023": {
+        "trades": 311,
+        "pf": 1.94,
+        "net": 164.14
+      },
+      "2024": {
+        "trades": 566,
+        "pf": 1.66,
+        "net": 266.87
+      },
+      "2025": {
+        "trades": 565,
+        "pf": 1.5,
+        "net": 238.91
+      },
+      "2026": {
+        "trades": 556,
+        "pf": 1.48,
+        "net": 223.28
+      }
+    },
+    "annees_perdantes": [],
+    "signal": "https://www.mql5.com/en/signals/2373736"
+  }
+]
