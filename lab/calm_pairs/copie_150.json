@@ -1,0 +1,122 @@
+{
+  "TP TRADER": {
+    "ignorer": {
+      "capital_initial": 150.0,
+      "capital_final": 2699.85,
+      "rentabilite_pct": 1699.9,
+      "drawdown_max_trades_fermes_pct": 9.2,
+      "trades_copies": 3735,
+      "trades_non_copies": 10985,
+      "lots_forces_a_0_01": 0,
+      "minimum_capital": 148.46,
+      "periode": "2019-12 → 2026-10"
+    },
+    "forcer_0.01": {
+      "capital_initial": 150.0,
+      "capital_final": -102.36,
+      "rentabilite_pct": -168.2,
+      "drawdown_max_trades_fermes_pct": 121.5,
+      "trades_copies": 431,
+      "trades_non_copies": 14289,
+      "lots_forces_a_0_01": 431,
+      "minimum_capital": -102.36,
+      "periode": "2019-12 → 2026-10"
+    }
+  },
+  "WolvesVN EU": {
+    "ignorer": {
+      "capital_initial": 150.0,
+      "capital_final": 182.76,
+      "rentabilite_pct": 21.8,
+      "drawdown_max_trades_fermes_pct": 45.0,
+      "trades_copies": 85,
+      "trades_non_copies": 2269,
+      "lots_forces_a_0_01": 0,
+      "minimum_capital": 151.1,
+      "periode": "2020-09 → 2026-10"
+    },
+    "forcer_0.01": {
+      "capital_initial": 150.0,
+      "capital_final": 988.49,
+      "rentabilite_pct": 559.0,
+      "drawdown_max_trades_fermes_pct": 57.6,
+      "trades_copies": 2354,
+      "trades_non_copies": 0,
+      "lots_forces_a_0_01": 2052,
+      "minimum_capital": 152.08,
+      "periode": "2020-09 → 2026-10"
+    }
+  },
+  "EUR Trader 2": {
+    "ignorer": {
+      "capital_initial": 150.0,
+      "capital_final": 4705.1,
+      "rentabilite_pct": 3036.7,
+      "drawdown_max_trades_fermes_pct": 12.5,
+      "trades_copies": 282,
+      "trades_non_copies": 6,
+      "lots_forces_a_0_01": 0,
+      "minimum_capital": 158.14,
+      "periode": "2025-03 → 2026-10"
+    },
+    "forcer_0.01": {
+      "capital_initial": 150.0,
+      "capital_final": 4781.81,
+      "rentabilite_pct": 3087.9,
+      "drawdown_max_trades_fermes_pct": 14.1,
+      "trades_copies": 288,
+      "trades_non_copies": 0,
+      "lots_forces_a_0_01": 6,
+      "minimum_capital": 158.14,
+      "periode": "2025-03 → 2026-10"
+    }
+  },
+  "EansPRO V3 EURUSD": {
+    "ignorer": {
+      "capital_initial": 150.0,
+      "capital_final": 533.35,
+      "rentabilite_pct": 255.6,
+      "drawdown_max_trades_fermes_pct": 19.3,
+      "trades_copies": 1519,
+      "trades_non_copies": 0,
+      "lots_forces_a_0_01": 0,
+      "minimum_capital": 141.24,
+      "periode": "2023-01 → 2026-10"
+    },
+    "forcer_0.01": {
+      "capital_initial": 150.0,
+      "capital_final": 533.35,
+      "rentabilite_pct": 255.6,
+      "drawdown_max_trades_fermes_pct": 19.3,
+      "trades_copies": 1519,
+      "trades_non_copies": 0,
+      "lots_forces_a_0_01": 0,
+      "minimum_capital": 141.24,
+      "periode": "2023-01 → 2026-10"
+    }
+  },
+  "Kosciuszko": {
+    "ignorer": {
+      "capital_initial": 150.0,
+      "capital_final": 150.0,
+      "rentabilite_pct": 0.0,
+      "drawdown_max_trades_fermes_pct": 0.0,
+      "trades_copies": 0,
+      "trades_non_copies": 6713,
+      "lots_forces_a_0_01": 0,
+      "minimum_capital": 150.0,
+      "periode": "2022-10 → 2026-10"
+    },
+    "forcer_0.01": {
+      "capital_initial": 150.0,
+      "capital_final": 5622.68,
+      "rentabilite_pct": 3648.5,
+      "drawdown_max_trades_fermes_pct": 15.6,
+      "trades_copies": 6713,
+      "trades_non_copies": 0,
+      "lots_forces_a_0_01": 6249,
+      "minimum_capital": 150.2,
+      "periode": "2022-10 → 2026-10"
+    }
+  }
+}
