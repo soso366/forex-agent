@@ -10,7 +10,7 @@ on:
     paths: [deploy/trigger/export_jobs.txt]
 
 permissions:
-  contents: read
+  contents: write   # pour enregistrer les RÉSULTATS des backtests (pas les données) dans la branche
 
 jobs:
   plan:
@@ -52,7 +52,15 @@ jobs:
           restore-keys: jobs-${{ matrix.job.tag }}-
       - name: Télécharger / préparer
         env: {PYTHONUNBUFFERED: "1"}
-        run: python -m forex_agent data-download --symbols ${{ matrix.job.symbols }} --start ${{ matrix.job.start }} --end ${{ matrix.job.end }} --time-budget-min 300
+        run: |
+          # Reprises dans le même job : Dukascopy renvoie parfois des erreurs passagères.
+          for i in 1 2 3 4 5 6; do
+            python -m forex_agent data-download --symbols ${{ matrix.job.symbols }} --start ${{ matrix.job.start }} --end ${{ matrix.job.end }} --time-budget-min 50 || true
+            S=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
+            echo "Essai $i : $S"
+            [ "$S" = "COMPLETE" ] && break
+            sleep 30
+          done
       - if: always()
         uses: actions/cache/save@v4
         with:
@@ -71,4 +79,58 @@ jobs:
         with:
           name: data-${{ matrix.job.tag }}
           path: out
-          retention-days: 90
+          retention-days: 7
+
+  backtest:
+    # Lance le protocole des 10 méthodes documentées sur toutes les données, puis enregistre les résultats.
+    needs: export
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: data-eurusd-*
+          path: lab/documented/data
+          merge-multiple: true
+      - name: Vérifier que les 19 lots EUR/USD 2015 → 08/2023 sont complets
+        run: |
+          N=$(ls lab/documented/data/EURUSD_eurusd-*.csv.gz 2>/dev/null | wc -l)
+          echo "Lots présents : $N / 19"
+          [ "$N" -eq 19 ] || { echo "::error::Données incomplètes ($N/19) : backtest non lancé. Relancer le fichier déclencheur."; exit 1; }
+      - name: Données EUR/USD 09/2024 → 08/2026 (dépôt privé forex-data)
+        env:
+          DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+        run: |
+          mkdir -p /tmp/fd && cd /tmp/fd && git init -q
+          git remote add origin "https://x-access-token:${DATA_TOKEN}@github.com/soso366/forex-data.git"
+          for b in data-2024sep-2025feb data-2025mar-aug data-2025sep-2026feb data-2026mar-aug; do
+            git fetch -q --depth 1 origin "$b"
+            git show FETCH_HEAD:EURUSD.csv.gz > "$GITHUB_WORKSPACE/lab/documented/data/EURUSD_${b}.csv.gz"
+          done
+          ls -la "$GITHUB_WORKSPACE/lab/documented/data" | tail -5
+      - name: Tests du moteur (marche aléatoire, absence de look-ahead)
+        working-directory: lab/documented
+        run: python -m unittest -v test_dsim
+      - name: Qualité des données (rapports Dukascopy)
+        run: |
+          python - <<'PY'
+          import glob, json
+          for f in sorted(glob.glob("lab/documented/data/quality_*.json")):
+              q = json.load(open(f)); s = q["symbols"]["EURUSD"]
+              print(f.split("/")[-1], s["first"], "->", s["last"], "lignes", s["rows"], "trous>15min", s["gaps_over_15min_weekdays"], "erreurs", len(q["download"]["errors"]))
+          PY
+      - name: Protocole des 10 méthodes (règles fixées à l'avance)
+        working-directory: lab/documented
+        run: python run_doc.py data/EURUSD_*.csv.gz --out ../../results/documented
+      - name: Enregistrer les résultats dans la branche
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f results/documented
+          git commit -qm "results(documented): backtests des 10 méthodes (run ${{ github.run_id }})" || exit 0
+          git pull -q --rebase origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}"

@@ -17,3 +17,4 @@ EURUSD 2022-01-01 2022-06-30 eurusd-2022h1
 EURUSD 2022-07-01 2022-12-31 eurusd-2022h2
 EURUSD 2023-01-01 2023-06-30 eurusd-2023h1
 EURUSD 2023-07-01 2023-08-31 eurusd-2023jul-aug
+# relance avec reprises et backtest intégré — 2026-10-26T03:31:55Z
