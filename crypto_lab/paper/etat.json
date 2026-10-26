@@ -1,8 +1,8 @@
 {
- "mis_a_jour_utc": "2026-10-25 04:57",
- "derniere_bougie_utc": "2026-10-25 04:50",
+ "mis_a_jour_utc": "2026-10-26 05:01",
+ "derniere_bougie_utc": "2026-10-26 04:55",
  "depart": "2026-10-22",
- "jours": 3.2,
+ "jours": 4.2,
  "strategie": "CombinedBinHAndClucV5_cap45",
  "paires": [
   "BTC/USDT",
@@ -28,7 +28,7 @@
  "trades_en_cours": 0,
  "taux_gain_pct": 0.0,
  "gain_moyen_pct": -0.21,
- "trades_par_jour": 0.31,
+ "trades_par_jour": 0.24,
  "attendu_backtest": {
   "trades_par_jour": 0.69,
   "taux_gain_pct": 68,
