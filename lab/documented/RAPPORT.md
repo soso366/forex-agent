@@ -64,11 +64,33 @@ traders de ces paires vient de leur moyenne à la baisse, pas d'un avantage d'en
 
 ### 10 méthodes documentées
 
-_Résultats en cours d'exécution sur GitHub (EUR/USD 2015 → 08/2023 + 09/2024 → 08/2026) — section complétée dès la fin du run._
+Exécuté sur GitHub (run 40278185796), EUR/USD Dukascopy M1 bid/ask, 01/2015 → 08/2023 et 09/2024 → 08/2026,
+coûts de base (spread réel, 7 $/lot, 0,2 pip). Paramètres de la source, aucune optimisation.
+Résultats bruts : `results/documented/results.json` et journaux `results/documented/trades/` (60 journaux recontrôlés
+indépendamment : 0 écart).
+
+| Méthode | Entraînement 2015-2020 | Validation 1 (2021-08/2023) | Validation 2 (09/2024-08/2026) | Validation réunie : trades / PF / t | DD max | Années + | Décision |
+|---|---|---|---|---|---|---|---|
+| Turtle Système 1 | PF 0,51, -39,84 % | PF 0,48, -21,49 % | PF 0,54, -13,92 % | 65 / 0,50 / -2,36 | 22,39 % | 1/12 | Rejetée (PF<1,30, perd avec coûts stressés, DD>15 %, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+| Turtle Système 2 | PF 0,69, -16,00 % | PF 0,23, -19,49 % | PF 0,81, -4,22 % | 32 / 0,50 / -1,32 | 22,70 % | 4/12 | Rejetée (PF<1,30, perd avec coûts stressés, <60 trades, DD>15 %, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+| Donchian 4 semaines | PF 0,53, -15,32 % | PF 0,42, -11,15 % | PF 2,17, 6,18 % | 47 / 0,80 / -0,59 | 12,88 % | 4/12 | Rejetée (PF<1,30, perd avec coûts stressés, <60 trades, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+| Momentum 12 mois | PF 0,94, -3,47 % | PF 1,02, 0,92 % | PF 0,48, -17,92 % | 58 / 0,77 / -0,85 | 20,76 % | 4/12 | Rejetée (PF<1,30, perd avec coûts stressés, <60 trades, DD>15 %, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+| SMA 50/200 | PF 1,12, 1,70 % | PF 2,04, 5,34 % | PF 0,32, -8,97 % | 9 / 0,80 / -0,25 | 16,39 % | 7/12 | Rejetée (PF<1,30, perd avec coûts stressés, <60 trades, DD>15 %, <60 % d'années positives, instable, t<2,6) |
+| RSI(2) Connors | PF 0,98, -0,31 % | PF 1,02, 0,23 % | PF 0,39, -4,78 % | 50 / 0,75 / -0,71 | 7,23 % | 6/12 | Rejetée (PF<1,30, perd avec coûts stressés, <60 trades, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+| Dual Thrust | PF 0,84, -16,96 % | PF 0,82, -9,99 % | PF 1,07, 2,36 % | 254 / 0,91 / -0,52 | 15,72 % | 4/12 | Rejetée (PF<1,30, perd avec coûts stressés, DD>15 %, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+| Effet de session | PF 1,05, 21,69 % | PF 0,95, -6,87 % | PF 0,85, -13,70 % | 2422 / 0,92 / -1,54 | 15,83 % | 4/12 | Rejetée (PF<1,30, perd avec coûts stressés, DD>15 %, <60 % d'années positives, t<2,6) |
+| NR7 (Crabel) | PF 1,04, 3,74 % | PF 0,98, -0,90 % | PF 0,97, -0,68 % | 182 / 0,97 / -0,14 | 6,97 % | 6/12 | Rejetée (PF<1,30, perd avec coûts stressés, <60 % d'années positives, t<2,6) |
+| Stretch (Crabel) | PF 0,82, -89,92 % | PF 0,89, -55,06 % | PF 0,77, -58,20 % | 1207 / 0,84 / -2,13 | 66,87 % | 0/12 | Rejetée (PF<1,30, perd avec coûts stressés, DD>15 %, <60 % d'années positives, entraînement négatif, instable, t<2,6) |
+
+Lecture : **aucune des 10 méthodes publiées ne gagne de façon fiable sur l'EUR/USD avec des coûts réalistes.**
+Les plus proches de l'équilibre (NR7, Dual Thrust en 2024-2026, effet de session sur 2015-2020) restent sous un PF de
+1,1 et redeviennent perdantes sur les autres périodes. L'effet de session de Breedon & Ranaldo, net en 1997-2007,
+ne survit plus après les coûts : légèrement positif en 2015-2020 (PF 1,06), négatif ensuite. Le Donchian gagne en
+2024-2026 (PF 2,17) mais perd sur 2015-2023 : instable.
 
 ## 5. Finalistes
 
-Aucun pour l'instant.
+**Aucun.** Aucune stratégie n'a passé les contrôles ; l'OOS vierge 09/2023 → 08/2024 reste fermé.
 
 ## 6. Compte démo MT5
 
@@ -78,7 +100,9 @@ test MT5 et workflow Windows, bloqués tant qu'aucun compte démo n'est fourni (
 
 ## 7. Prochaines actions
 
-1. Terminer la lecture des 10 méthodes documentées et appliquer les critères du protocole.
-2. Si une méthode passe : ouvrir l'OOS vierge 09/2023 → 08/2024 (un seul essai), puis écrire l'EA MT5.
+1. Ne pas programmer d'EA MT5 ni de compte démo : aucune stratégie ne le justifie.
+2. Pistes restantes, à décider : (a) EUR/USD n'offre pas d'avantage simple exploitable après coûts sur les méthodes
+   publiées testées — envisager des horizons plus longs ou d'autres actifs ; (b) laisser le robot crypto en simulation
+   comme prévu ; (c) toute nouvelle idée passe par le même protocole (règles écrites avant les données).
 3. Sites restant à lire avec l'autorisation de l'utilisateur dans le navigateur : eToro, Myfxbook (pages de comptes),
    Darwinex, FX Blue, Forex Factory.
