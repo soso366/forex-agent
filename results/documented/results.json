@@ -1,0 +1,2573 @@
+{
+  "M1_turtle_S1": {
+    "parametres": {
+      "n_in": 20,
+      "n_out": 10,
+      "n_atr": 20,
+      "skip": true,
+      "max_units": 4
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 82,
+        "rentabilite_pct": -39.84,
+        "drawdown_max_pct": 51.01,
+        "ambigus": 0,
+        "pf": 0.505,
+        "reussite_pct": 15.9,
+        "t_stat": -2.33,
+        "pertes_consecutives_max": 26
+      },
+      "entrainement_stress": {
+        "trades": 82,
+        "rentabilite_pct": -40.53,
+        "drawdown_max_pct": 51.38,
+        "ambigus": 0,
+        "pf": 0.498,
+        "reussite_pct": 15.9,
+        "t_stat": -2.38,
+        "pertes_consecutives_max": 26
+      },
+      "validation_1_base": {
+        "trades": 39,
+        "rentabilite_pct": -21.49,
+        "drawdown_max_pct": 22.39,
+        "ambigus": 0,
+        "pf": 0.481,
+        "reussite_pct": 20.5,
+        "t_stat": -1.87,
+        "pertes_consecutives_max": 7
+      },
+      "validation_1_stress": {
+        "trades": 39,
+        "rentabilite_pct": -21.72,
+        "drawdown_max_pct": 22.61,
+        "ambigus": 0,
+        "pf": 0.476,
+        "reussite_pct": 20.5,
+        "t_stat": -1.89,
+        "pertes_consecutives_max": 7
+      },
+      "validation_2_base": {
+        "trades": 26,
+        "rentabilite_pct": -13.92,
+        "drawdown_max_pct": 21.5,
+        "ambigus": 0,
+        "pf": 0.536,
+        "reussite_pct": 34.6,
+        "t_stat": -1.42,
+        "pertes_consecutives_max": 4
+      },
+      "validation_2_stress": {
+        "trades": 26,
+        "rentabilite_pct": -14.55,
+        "drawdown_max_pct": 21.75,
+        "ambigus": 0,
+        "pf": 0.519,
+        "reussite_pct": 34.6,
+        "t_stat": -1.49,
+        "pertes_consecutives_max": 4
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 9,
+        "rentabilite_pct": -2.18,
+        "drawdown_max_pct": 14.04,
+        "ambigus": 0,
+        "pf": 0.75,
+        "reussite_pct": 22.2,
+        "t_stat": -0.34,
+        "pertes_consecutives_max": 6
+      },
+      "2016": {
+        "trades": 17,
+        "rentabilite_pct": -15.83,
+        "drawdown_max_pct": 20.05,
+        "ambigus": 0,
+        "pf": 0.135,
+        "reussite_pct": 17.6,
+        "t_stat": -3.59,
+        "pertes_consecutives_max": 10
+      },
+      "2017": {
+        "trades": 14,
+        "rentabilite_pct": -3.99,
+        "drawdown_max_pct": 11.98,
+        "ambigus": 0,
+        "pf": 0.743,
+        "reussite_pct": 21.4,
+        "t_stat": -0.37,
+        "pertes_consecutives_max": 6
+      },
+      "2018": {
+        "trades": 15,
+        "rentabilite_pct": -7.08,
+        "drawdown_max_pct": 18.34,
+        "ambigus": 0,
+        "pf": 0.634,
+        "reussite_pct": 13.3,
+        "t_stat": -0.62,
+        "pertes_consecutives_max": 8
+      },
+      "2019": {
+        "trades": 18,
+        "rentabilite_pct": -24.05,
+        "drawdown_max_pct": 24.06,
+        "ambigus": 0,
+        "pf": 0.0,
+        "reussite_pct": 0.0,
+        "t_stat": -9.37,
+        "pertes_consecutives_max": 18
+      },
+      "2020": {
+        "trades": 12,
+        "rentabilite_pct": 2.61,
+        "drawdown_max_pct": 16.42,
+        "ambigus": 0,
+        "pf": 1.181,
+        "reussite_pct": 33.3,
+        "t_stat": 0.23,
+        "pertes_consecutives_max": 4
+      },
+      "2021": {
+        "trades": 14,
+        "rentabilite_pct": -3.78,
+        "drawdown_max_pct": 9.39,
+        "ambigus": 0,
+        "pf": 0.735,
+        "reussite_pct": 35.7,
+        "t_stat": -0.46,
+        "pertes_consecutives_max": 3
+      },
+      "2022": {
+        "trades": 15,
+        "rentabilite_pct": -6.64,
+        "drawdown_max_pct": 14.31,
+        "ambigus": 0,
+        "pf": 0.603,
+        "reussite_pct": 20.0,
+        "t_stat": -0.73,
+        "pertes_consecutives_max": 6
+      },
+      "2023 (jan-août)": {
+        "trades": 11,
+        "rentabilite_pct": -10.98,
+        "drawdown_max_pct": 13.54,
+        "ambigus": 0,
+        "pf": 0.11,
+        "reussite_pct": 9.1,
+        "t_stat": -3.39,
+        "pertes_consecutives_max": 7
+      },
+      "2024 (sept-déc)": {
+        "trades": 4,
+        "rentabilite_pct": -1.13,
+        "drawdown_max_pct": 4.96,
+        "ambigus": 0,
+        "pf": 0.689,
+        "reussite_pct": 50.0,
+        "t_stat": -0.3,
+        "pertes_consecutives_max": 1
+      },
+      "2025": {
+        "trades": 14,
+        "rentabilite_pct": -10.58,
+        "drawdown_max_pct": 12.94,
+        "ambigus": 0,
+        "pf": 0.471,
+        "reussite_pct": 28.6,
+        "t_stat": -1.29,
+        "pertes_consecutives_max": 4
+      },
+      "2026 (jan-août)": {
+        "trades": 8,
+        "rentabilite_pct": -1.26,
+        "drawdown_max_pct": 10.32,
+        "ambigus": 0,
+        "pf": 0.834,
+        "reussite_pct": 37.5,
+        "t_stat": -0.22,
+        "pertes_consecutives_max": 2
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": -566.05,
+      "2021T2": -262.71,
+      "2021T3": 40.04,
+      "2021T4": 407.65,
+      "2022T1": -827.31,
+      "2022T2": 89.33,
+      "2022T3": -246.82,
+      "2022T4": -341.97,
+      "2023T1": -70.69,
+      "2023T2": -122.14,
+      "2023T3": -248.06,
+      "2024T4": -113.35,
+      "2025T1": -291.68,
+      "2025T2": -332.72,
+      "2025T3": -180.24,
+      "2025T4": -377.99,
+      "2026T1": -388.26,
+      "2026T2": -35.94,
+      "2026T3": 327.96
+    },
+    "stabilite": {
+      "n_in×0.75": {
+        "trades": 70,
+        "pf": 0.649,
+        "t_stat": -1.49,
+        "net_usd": -2500.56
+      },
+      "n_in×1.25": {
+        "trades": 55,
+        "pf": 0.502,
+        "t_stat": -2.21,
+        "net_usd": -3142.58
+      },
+      "n_out×0.75": {
+        "trades": 68,
+        "pf": 0.536,
+        "t_stat": -2.19,
+        "net_usd": -3271.96
+      },
+      "n_out×1.25": {
+        "trades": 63,
+        "pf": 0.529,
+        "t_stat": -2.17,
+        "net_usd": -3234.61
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 65,
+      "pf": 0.504,
+      "t_stat": -2.36,
+      "net_usd": -3540.95,
+      "drawdown_max_pct": 22.39
+    },
+    "validation_reunie_stress": {
+      "trades": 65,
+      "pf": 0.494,
+      "t_stat": -2.43,
+      "net_usd": -3627.48
+    },
+    "annees_positives": "1/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": true,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M2_turtle_S2": {
+    "parametres": {
+      "n_in": 55,
+      "n_out": 20,
+      "n_atr": 20,
+      "skip": false,
+      "max_units": 4
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 39,
+        "rentabilite_pct": -16.0,
+        "drawdown_max_pct": 33.45,
+        "ambigus": 0,
+        "pf": 0.694,
+        "reussite_pct": 17.9,
+        "t_stat": -0.76,
+        "pertes_consecutives_max": 18
+      },
+      "entrainement_stress": {
+        "trades": 39,
+        "rentabilite_pct": -16.32,
+        "drawdown_max_pct": 33.65,
+        "ambigus": 0,
+        "pf": 0.69,
+        "reussite_pct": 17.9,
+        "t_stat": -0.78,
+        "pertes_consecutives_max": 18
+      },
+      "validation_1_base": {
+        "trades": 19,
+        "rentabilite_pct": -19.49,
+        "drawdown_max_pct": 21.81,
+        "ambigus": 0,
+        "pf": 0.229,
+        "reussite_pct": 15.8,
+        "t_stat": -2.94,
+        "pertes_consecutives_max": 6
+      },
+      "validation_1_stress": {
+        "trades": 19,
+        "rentabilite_pct": -19.61,
+        "drawdown_max_pct": 21.91,
+        "ambigus": 0,
+        "pf": 0.227,
+        "reussite_pct": 10.5,
+        "t_stat": -2.95,
+        "pertes_consecutives_max": 8
+      },
+      "validation_2_base": {
+        "trades": 13,
+        "rentabilite_pct": -4.22,
+        "drawdown_max_pct": 22.7,
+        "ambigus": 0,
+        "pf": 0.812,
+        "reussite_pct": 15.4,
+        "t_stat": -0.25,
+        "pertes_consecutives_max": 9
+      },
+      "validation_2_stress": {
+        "trades": 13,
+        "rentabilite_pct": -4.45,
+        "drawdown_max_pct": 22.86,
+        "ambigus": 0,
+        "pf": 0.804,
+        "reussite_pct": 15.4,
+        "t_stat": -0.26,
+        "pertes_consecutives_max": 9
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 4,
+        "rentabilite_pct": -4.55,
+        "drawdown_max_pct": 5.72,
+        "ambigus": 0,
+        "pf": 0.028,
+        "reussite_pct": 25.0,
+        "t_stat": -2.14,
+        "pertes_consecutives_max": 3
+      },
+      "2016": {
+        "trades": 7,
+        "rentabilite_pct": -8.04,
+        "drawdown_max_pct": 16.07,
+        "ambigus": 0,
+        "pf": 0.342,
+        "reussite_pct": 14.3,
+        "t_stat": -1.27,
+        "pertes_consecutives_max": 6
+      },
+      "2017": {
+        "trades": 6,
+        "rentabilite_pct": 11.14,
+        "drawdown_max_pct": 7.1,
+        "ambigus": 0,
+        "pf": 2.578,
+        "reussite_pct": 33.3,
+        "t_stat": 0.57,
+        "pertes_consecutives_max": 3
+      },
+      "2018": {
+        "trades": 7,
+        "rentabilite_pct": -0.96,
+        "drawdown_max_pct": 12.61,
+        "ambigus": 0,
+        "pf": 0.887,
+        "reussite_pct": 28.6,
+        "t_stat": -0.12,
+        "pertes_consecutives_max": 4
+      },
+      "2019": {
+        "trades": 11,
+        "rentabilite_pct": -16.57,
+        "drawdown_max_pct": 17.07,
+        "ambigus": 0,
+        "pf": 0.0,
+        "reussite_pct": 0.0,
+        "t_stat": -7.47,
+        "pertes_consecutives_max": 11
+      },
+      "2020": {
+        "trades": 6,
+        "rentabilite_pct": 8.29,
+        "drawdown_max_pct": 14.65,
+        "ambigus": 0,
+        "pf": 2.029,
+        "reussite_pct": 33.3,
+        "t_stat": 0.63,
+        "pertes_consecutives_max": 3
+      },
+      "2021": {
+        "trades": 7,
+        "rentabilite_pct": -8.55,
+        "drawdown_max_pct": 14.95,
+        "ambigus": 0,
+        "pf": 0.281,
+        "reussite_pct": 14.3,
+        "t_stat": -1.59,
+        "pertes_consecutives_max": 6
+      },
+      "2022": {
+        "trades": 9,
+        "rentabilite_pct": -4.61,
+        "drawdown_max_pct": 12.15,
+        "ambigus": 0,
+        "pf": 0.513,
+        "reussite_pct": 22.2,
+        "t_stat": -0.72,
+        "pertes_consecutives_max": 4
+      },
+      "2023 (jan-août)": {
+        "trades": 3,
+        "rentabilite_pct": -5.69,
+        "drawdown_max_pct": 9.26,
+        "ambigus": 0,
+        "pf": 0.0,
+        "reussite_pct": 0.0,
+        "t_stat": -8.19,
+        "pertes_consecutives_max": 3
+      },
+      "2024 (sept-déc)": {
+        "trades": 3,
+        "rentabilite_pct": 3.32,
+        "drawdown_max_pct": 4.83,
+        "ambigus": 0,
+        "pf": 2.042,
+        "reussite_pct": 33.3,
+        "t_stat": 0.41,
+        "pertes_consecutives_max": 2
+      },
+      "2025": {
+        "trades": 7,
+        "rentabilite_pct": 2.74,
+        "drawdown_max_pct": 13.64,
+        "ambigus": 0,
+        "pf": 1.25,
+        "reussite_pct": 14.3,
+        "t_stat": 0.18,
+        "pertes_consecutives_max": 4
+      },
+      "2026 (jan-août)": {
+        "trades": 5,
+        "rentabilite_pct": -9.81,
+        "drawdown_max_pct": 14.72,
+        "ambigus": 0,
+        "pf": 0.0,
+        "reussite_pct": 0.0,
+        "t_stat": -6.78,
+        "pertes_consecutives_max": 5
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": -156.24,
+      "2021T2": -441.36,
+      "2021T3": -433.2,
+      "2021T4": 175.72,
+      "2022T1": -530.39,
+      "2022T2": 0.12,
+      "2022T3": -176.92,
+      "2022T4": -168.49,
+      "2023T1": 85.86,
+      "2023T2": -116.85,
+      "2023T3": -187.44,
+      "2024T4": -318.25,
+      "2025T1": 399.46,
+      "2025T2": 1425.63,
+      "2025T3": -467.07,
+      "2025T4": -234.42,
+      "2026T1": -914.11,
+      "2026T3": -312.78
+    },
+    "stabilite": {
+      "n_in×0.75": {
+        "trades": 43,
+        "pf": 0.484,
+        "t_stat": -1.6,
+        "net_usd": -2953.15
+      },
+      "n_in×1.25": {
+        "trades": 28,
+        "pf": 0.504,
+        "t_stat": -1.25,
+        "net_usd": -1951.27
+      },
+      "n_out×0.75": {
+        "trades": 36,
+        "pf": 0.244,
+        "t_stat": -3.95,
+        "net_usd": -3589.46
+      },
+      "n_out×1.25": {
+        "trades": 29,
+        "pf": 0.879,
+        "t_stat": -0.21,
+        "net_usd": -568.6
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 32,
+      "pf": 0.504,
+      "t_stat": -1.32,
+      "net_usd": -2370.73,
+      "drawdown_max_pct": 22.7
+    },
+    "validation_reunie_stress": {
+      "trades": 32,
+      "pf": 0.499,
+      "t_stat": -1.34,
+      "net_usd": -2405.9
+    },
+    "annees_positives": "4/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": false,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M3_donchian_4_semaines": {
+    "parametres": {
+      "n": 20
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 50,
+        "rentabilite_pct": -15.32,
+        "drawdown_max_pct": 20.33,
+        "ambigus": 0,
+        "pf": 0.533,
+        "reussite_pct": 20.0,
+        "t_stat": -1.66,
+        "pertes_consecutives_max": 11
+      },
+      "entrainement_stress": {
+        "trades": 50,
+        "rentabilite_pct": -15.45,
+        "drawdown_max_pct": 20.51,
+        "ambigus": 0,
+        "pf": 0.531,
+        "reussite_pct": 20.0,
+        "t_stat": -1.67,
+        "pertes_consecutives_max": 11
+      },
+      "validation_1_base": {
+        "trades": 32,
+        "rentabilite_pct": -11.15,
+        "drawdown_max_pct": 12.88,
+        "ambigus": 0,
+        "pf": 0.417,
+        "reussite_pct": 37.5,
+        "t_stat": -2.07,
+        "pertes_consecutives_max": 5
+      },
+      "validation_1_stress": {
+        "trades": 32,
+        "rentabilite_pct": -11.3,
+        "drawdown_max_pct": 13.01,
+        "ambigus": 0,
+        "pf": 0.413,
+        "reussite_pct": 37.5,
+        "t_stat": -2.1,
+        "pertes_consecutives_max": 5
+      },
+      "validation_2_base": {
+        "trades": 15,
+        "rentabilite_pct": 6.18,
+        "drawdown_max_pct": 5.88,
+        "ambigus": 0,
+        "pf": 2.168,
+        "reussite_pct": 46.7,
+        "t_stat": 0.99,
+        "pertes_consecutives_max": 6
+      },
+      "validation_2_stress": {
+        "trades": 15,
+        "rentabilite_pct": 6.1,
+        "drawdown_max_pct": 5.92,
+        "ambigus": 0,
+        "pf": 2.142,
+        "reussite_pct": 46.7,
+        "t_stat": 0.98,
+        "pertes_consecutives_max": 6
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 8,
+        "rentabilite_pct": -2.42,
+        "drawdown_max_pct": 6.4,
+        "ambigus": 0,
+        "pf": 0.423,
+        "reussite_pct": 25.0,
+        "t_stat": -0.96,
+        "pertes_consecutives_max": 5
+      },
+      "2016": {
+        "trades": 11,
+        "rentabilite_pct": -6.67,
+        "drawdown_max_pct": 9.21,
+        "ambigus": 0,
+        "pf": 0.197,
+        "reussite_pct": 9.1,
+        "t_stat": -2.12,
+        "pertes_consecutives_max": 10
+      },
+      "2017": {
+        "trades": 8,
+        "rentabilite_pct": 2.06,
+        "drawdown_max_pct": 5.48,
+        "ambigus": 0,
+        "pf": 1.407,
+        "reussite_pct": 25.0,
+        "t_stat": 0.28,
+        "pertes_consecutives_max": 5
+      },
+      "2018": {
+        "trades": 9,
+        "rentabilite_pct": -2.51,
+        "drawdown_max_pct": 6.84,
+        "ambigus": 0,
+        "pf": 0.601,
+        "reussite_pct": 44.4,
+        "t_stat": -0.65,
+        "pertes_consecutives_max": 3
+      },
+      "2019": {
+        "trades": 9,
+        "rentabilite_pct": -4.45,
+        "drawdown_max_pct": 6.48,
+        "ambigus": 0,
+        "pf": 0.325,
+        "reussite_pct": 22.2,
+        "t_stat": -1.53,
+        "pertes_consecutives_max": 5
+      },
+      "2020": {
+        "trades": 8,
+        "rentabilite_pct": -1.72,
+        "drawdown_max_pct": 7.74,
+        "ambigus": 0,
+        "pf": 0.732,
+        "reussite_pct": 25.0,
+        "t_stat": -0.34,
+        "pertes_consecutives_max": 3
+      },
+      "2021": {
+        "trades": 13,
+        "rentabilite_pct": -4.31,
+        "drawdown_max_pct": 6.42,
+        "ambigus": 0,
+        "pf": 0.461,
+        "reussite_pct": 38.5,
+        "t_stat": -1.17,
+        "pertes_consecutives_max": 4
+      },
+      "2022": {
+        "trades": 11,
+        "rentabilite_pct": -4.28,
+        "drawdown_max_pct": 7.79,
+        "ambigus": 0,
+        "pf": 0.45,
+        "reussite_pct": 36.4,
+        "t_stat": -1.07,
+        "pertes_consecutives_max": 5
+      },
+      "2023 (jan-août)": {
+        "trades": 9,
+        "rentabilite_pct": -2.17,
+        "drawdown_max_pct": 4.03,
+        "ambigus": 0,
+        "pf": 0.432,
+        "reussite_pct": 44.4,
+        "t_stat": -0.97,
+        "pertes_consecutives_max": 5
+      },
+      "2024 (sept-déc)": {
+        "trades": 2,
+        "rentabilite_pct": 3.49,
+        "drawdown_max_pct": 1.22,
+        "ambigus": 0,
+        "pf": 10.023,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2025": {
+        "trades": 8,
+        "rentabilite_pct": 2.64,
+        "drawdown_max_pct": 4.2,
+        "ambigus": 0,
+        "pf": 1.82,
+        "reussite_pct": 37.5,
+        "t_stat": 0.53,
+        "pertes_consecutives_max": 3
+      },
+      "2026 (jan-août)": {
+        "trades": 6,
+        "rentabilite_pct": 0.93,
+        "drawdown_max_pct": 2.54,
+        "ambigus": 0,
+        "pf": 1.466,
+        "reussite_pct": 66.7,
+        "t_stat": 0.36,
+        "pertes_consecutives_max": 2
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": -300.71,
+      "2021T2": 48.68,
+      "2021T3": -206.65,
+      "2021T4": 24.43,
+      "2022T1": -443.2,
+      "2022T2": -178.16,
+      "2022T3": -37.72,
+      "2022T4": 38.32,
+      "2023T1": -203.8,
+      "2023T2": 80.99,
+      "2023T3": 62.45,
+      "2024T4": -38.7,
+      "2025T1": 325.26,
+      "2025T2": 346.16,
+      "2025T3": -43.97,
+      "2025T4": -67.37,
+      "2026T1": -219.02,
+      "2026T2": 75.66,
+      "2026T3": 240.3
+    },
+    "stabilite": {
+      "n×0.75": {
+        "trades": 57,
+        "pf": 0.996,
+        "t_stat": -0.01,
+        "net_usd": -8.51
+      },
+      "n×1.25": {
+        "trades": 33,
+        "pf": 1.314,
+        "t_stat": 0.54,
+        "net_usd": 609.16
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 47,
+      "pf": 0.797,
+      "t_stat": -0.59,
+      "net_usd": -497.05,
+      "drawdown_max_pct": 12.88
+    },
+    "validation_reunie_stress": {
+      "trades": 47,
+      "pf": 0.788,
+      "t_stat": -0.61,
+      "net_usd": -520.17
+    },
+    "annees_positives": "4/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": false,
+      "dd_15": true,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M4_momentum_12_mois": {
+    "parametres": {
+      "lookback_days": 252,
+      "target_vol": 0.1
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 60,
+        "rentabilite_pct": -3.47,
+        "drawdown_max_pct": 19.1,
+        "ambigus": 0,
+        "pf": 0.945,
+        "reussite_pct": 55.0,
+        "t_stat": -0.17,
+        "pertes_consecutives_max": 4
+      },
+      "entrainement_stress": {
+        "trades": 60,
+        "rentabilite_pct": -3.93,
+        "drawdown_max_pct": 19.44,
+        "ambigus": 0,
+        "pf": 0.937,
+        "reussite_pct": 55.0,
+        "t_stat": -0.19,
+        "pertes_consecutives_max": 4
+      },
+      "validation_1_base": {
+        "trades": 33,
+        "rentabilite_pct": 0.92,
+        "drawdown_max_pct": 16.9,
+        "ambigus": 0,
+        "pf": 1.024,
+        "reussite_pct": 51.5,
+        "t_stat": 0.06,
+        "pertes_consecutives_max": 4
+      },
+      "validation_1_stress": {
+        "trades": 33,
+        "rentabilite_pct": 0.31,
+        "drawdown_max_pct": 17.22,
+        "ambigus": 0,
+        "pf": 1.008,
+        "reussite_pct": 51.5,
+        "t_stat": 0.02,
+        "pertes_consecutives_max": 4
+      },
+      "validation_2_base": {
+        "trades": 25,
+        "rentabilite_pct": -17.92,
+        "drawdown_max_pct": 20.76,
+        "ambigus": 0,
+        "pf": 0.484,
+        "reussite_pct": 44.0,
+        "t_stat": -1.49,
+        "pertes_consecutives_max": 5
+      },
+      "validation_2_stress": {
+        "trades": 25,
+        "rentabilite_pct": -18.15,
+        "drawdown_max_pct": 20.97,
+        "ambigus": 0,
+        "pf": 0.479,
+        "reussite_pct": 44.0,
+        "t_stat": -1.51,
+        "pertes_consecutives_max": 5
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 0,
+        "rentabilite_pct": 0.0,
+        "drawdown_max_pct": 0.0,
+        "ambigus": 0,
+        "pf": null,
+        "reussite_pct": null,
+        "t_stat": null,
+        "pertes_consecutives_max": 0
+      },
+      "2016": {
+        "trades": 12,
+        "rentabilite_pct": 0.44,
+        "drawdown_max_pct": 12.13,
+        "ambigus": 0,
+        "pf": 1.04,
+        "reussite_pct": 58.3,
+        "t_stat": 0.04,
+        "pertes_consecutives_max": 2
+      },
+      "2017": {
+        "trades": 12,
+        "rentabilite_pct": -5.02,
+        "drawdown_max_pct": 12.98,
+        "ambigus": 0,
+        "pf": 0.675,
+        "reussite_pct": 41.7,
+        "t_stat": -0.58,
+        "pertes_consecutives_max": 4
+      },
+      "2018": {
+        "trades": 13,
+        "rentabilite_pct": -1.21,
+        "drawdown_max_pct": 11.39,
+        "ambigus": 0,
+        "pf": 0.902,
+        "reussite_pct": 38.5,
+        "t_stat": -0.13,
+        "pertes_consecutives_max": 3
+      },
+      "2019": {
+        "trades": 12,
+        "rentabilite_pct": 0.94,
+        "drawdown_max_pct": 7.0,
+        "ambigus": 0,
+        "pf": 1.069,
+        "reussite_pct": 75.0,
+        "t_stat": 0.09,
+        "pertes_consecutives_max": 1
+      },
+      "2020": {
+        "trades": 12,
+        "rentabilite_pct": 1.33,
+        "drawdown_max_pct": 16.21,
+        "ambigus": 0,
+        "pf": 1.103,
+        "reussite_pct": 58.3,
+        "t_stat": 0.13,
+        "pertes_consecutives_max": 3
+      },
+      "2021": {
+        "trades": 12,
+        "rentabilite_pct": -0.15,
+        "drawdown_max_pct": 9.94,
+        "ambigus": 0,
+        "pf": 0.989,
+        "reussite_pct": 50.0,
+        "t_stat": -0.01,
+        "pertes_consecutives_max": 3
+      },
+      "2022": {
+        "trades": 12,
+        "rentabilite_pct": 7.32,
+        "drawdown_max_pct": 9.83,
+        "ambigus": 0,
+        "pf": 1.659,
+        "reussite_pct": 66.7,
+        "t_stat": 0.73,
+        "pertes_consecutives_max": 3
+      },
+      "2023 (jan-août)": {
+        "trades": 9,
+        "rentabilite_pct": -5.6,
+        "drawdown_max_pct": 9.44,
+        "ambigus": 0,
+        "pf": 0.528,
+        "reussite_pct": 33.3,
+        "t_stat": -0.81,
+        "pertes_consecutives_max": 3
+      },
+      "2024 (sept-déc)": {
+        "trades": 4,
+        "rentabilite_pct": -3.52,
+        "drawdown_max_pct": 10.11,
+        "ambigus": 0,
+        "pf": 0.506,
+        "reussite_pct": 50.0,
+        "t_stat": -0.55,
+        "pertes_consecutives_max": 2
+      },
+      "2025": {
+        "trades": 12,
+        "rentabilite_pct": -7.34,
+        "drawdown_max_pct": 15.33,
+        "ambigus": 0,
+        "pf": 0.581,
+        "reussite_pct": 58.3,
+        "t_stat": -0.74,
+        "pertes_consecutives_max": 3
+      },
+      "2026 (jan-août)": {
+        "trades": 9,
+        "rentabilite_pct": -8.11,
+        "drawdown_max_pct": 14.7,
+        "ambigus": 0,
+        "pf": 0.325,
+        "reussite_pct": 22.2,
+        "t_stat": -1.42,
+        "pertes_consecutives_max": 5
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": -715.35,
+      "2021T2": 115.08,
+      "2021T3": 257.85,
+      "2021T4": 388.92,
+      "2022T1": 325.11,
+      "2022T2": 514.14,
+      "2022T3": 433.86,
+      "2022T4": -359.38,
+      "2023T1": -87.88,
+      "2023T2": -942.09,
+      "2023T3": 161.36,
+      "2024T3": 102.31,
+      "2024T4": -713.27,
+      "2025T1": -317.16,
+      "2025T2": -205.01,
+      "2025T3": 12.88,
+      "2025T4": -116.4,
+      "2026T1": -19.61,
+      "2026T2": -221.09,
+      "2026T3": -314.3
+    },
+    "stabilite": {
+      "lookback_days×0.75": {
+        "trades": 58,
+        "pf": 0.793,
+        "t_stat": -0.73,
+        "net_usd": -1474.69
+      },
+      "lookback_days×1.25": {
+        "trades": 58,
+        "pf": 0.667,
+        "t_stat": -1.29,
+        "net_usd": -2408.22
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 58,
+      "pf": 0.765,
+      "t_stat": -0.85,
+      "net_usd": -1700.03,
+      "drawdown_max_pct": 20.76
+    },
+    "validation_reunie_stress": {
+      "trades": 58,
+      "pf": 0.755,
+      "t_stat": -0.9,
+      "net_usd": -1784.25
+    },
+    "annees_positives": "4/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": false,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M5_sma_50_200": {
+    "parametres": {
+      "fast": 50,
+      "slow": 200
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 7,
+        "rentabilite_pct": 1.7,
+        "drawdown_max_pct": 16.69,
+        "ambigus": 0,
+        "pf": 1.117,
+        "reussite_pct": 42.9,
+        "t_stat": 0.13,
+        "pertes_consecutives_max": 4
+      },
+      "entrainement_stress": {
+        "trades": 7,
+        "rentabilite_pct": 1.66,
+        "drawdown_max_pct": 16.71,
+        "ambigus": 0,
+        "pf": 1.114,
+        "reussite_pct": 42.9,
+        "t_stat": 0.12,
+        "pertes_consecutives_max": 4
+      },
+      "validation_1_base": {
+        "trades": 5,
+        "rentabilite_pct": 5.34,
+        "drawdown_max_pct": 9.32,
+        "ambigus": 0,
+        "pf": 2.044,
+        "reussite_pct": 40.0,
+        "t_stat": 0.51,
+        "pertes_consecutives_max": 3
+      },
+      "validation_1_stress": {
+        "trades": 5,
+        "rentabilite_pct": 5.3,
+        "drawdown_max_pct": 9.33,
+        "ambigus": 0,
+        "pf": 2.034,
+        "reussite_pct": 40.0,
+        "t_stat": 0.51,
+        "pertes_consecutives_max": 3
+      },
+      "validation_2_base": {
+        "trades": 4,
+        "rentabilite_pct": -8.97,
+        "drawdown_max_pct": 16.39,
+        "ambigus": 0,
+        "pf": 0.321,
+        "reussite_pct": 50.0,
+        "t_stat": -0.86,
+        "pertes_consecutives_max": 2
+      },
+      "validation_2_stress": {
+        "trades": 4,
+        "rentabilite_pct": -9.0,
+        "drawdown_max_pct": 16.41,
+        "ambigus": 0,
+        "pf": 0.32,
+        "reussite_pct": 50.0,
+        "t_stat": -0.86,
+        "pertes_consecutives_max": 2
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 2,
+        "rentabilite_pct": -7.13,
+        "drawdown_max_pct": 10.19,
+        "ambigus": 0,
+        "pf": 0.0,
+        "reussite_pct": 0.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 2
+      },
+      "2016": {
+        "trades": 3,
+        "rentabilite_pct": -2.35,
+        "drawdown_max_pct": 9.6,
+        "ambigus": 0,
+        "pf": 0.549,
+        "reussite_pct": 33.3,
+        "t_stat": -0.43,
+        "pertes_consecutives_max": 2
+      },
+      "2017": {
+        "trades": 2,
+        "rentabilite_pct": 0.49,
+        "drawdown_max_pct": 7.77,
+        "ambigus": 0,
+        "pf": 1.082,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2018": {
+        "trades": 2,
+        "rentabilite_pct": 0.87,
+        "drawdown_max_pct": 7.84,
+        "ambigus": 0,
+        "pf": 1.499,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2019": {
+        "trades": 1,
+        "rentabilite_pct": 1.95,
+        "drawdown_max_pct": 2.73,
+        "ambigus": 0,
+        "pf": null,
+        "reussite_pct": 100.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 0
+      },
+      "2020": {
+        "trades": 2,
+        "rentabilite_pct": 7.85,
+        "drawdown_max_pct": 5.64,
+        "ambigus": 0,
+        "pf": 103.219,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2021": {
+        "trades": 4,
+        "rentabilite_pct": -1.98,
+        "drawdown_max_pct": 6.96,
+        "ambigus": 0,
+        "pf": 0.613,
+        "reussite_pct": 25.0,
+        "t_stat": -0.38,
+        "pertes_consecutives_max": 3
+      },
+      "2022": {
+        "trades": 2,
+        "rentabilite_pct": 6.0,
+        "drawdown_max_pct": 8.09,
+        "ambigus": 0,
+        "pf": null,
+        "reussite_pct": 100.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 0
+      },
+      "2023 (jan-août)": {
+        "trades": 1,
+        "rentabilite_pct": 1.19,
+        "drawdown_max_pct": 4.3,
+        "ambigus": 0,
+        "pf": null,
+        "reussite_pct": 100.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 0
+      },
+      "2024 (sept-déc)": {
+        "trades": 2,
+        "rentabilite_pct": -4.05,
+        "drawdown_max_pct": 7.55,
+        "ambigus": 0,
+        "pf": 0.218,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2025": {
+        "trades": 2,
+        "rentabilite_pct": -6.6,
+        "drawdown_max_pct": 12.49,
+        "ambigus": 0,
+        "pf": 0.283,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2026 (jan-août)": {
+        "trades": 2,
+        "rentabilite_pct": 1.79,
+        "drawdown_max_pct": 4.88,
+        "ambigus": 0,
+        "pf": null,
+        "reussite_pct": 100.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 0
+      }
+    },
+    "trimestres_validation": {
+      "2021T2": -207.92,
+      "2021T3": -303.2,
+      "2022T4": 883.76,
+      "2023T3": 161.1,
+      "2024T4": -517.59,
+      "2025T2": -803.07,
+      "2026T2": 298.13,
+      "2026T3": 125.44
+    },
+    "stabilite": {
+      "fast×0.75": {
+        "trades": 11,
+        "pf": 0.793,
+        "t_stat": -0.27,
+        "net_usd": -370.04
+      },
+      "fast×1.25": {
+        "trades": 7,
+        "pf": 0.911,
+        "t_stat": -0.09,
+        "net_usd": -129.94
+      },
+      "slow×0.75": {
+        "trades": 11,
+        "pf": 0.798,
+        "t_stat": -0.27,
+        "net_usd": -357.44
+      },
+      "slow×1.25": {
+        "trades": 7,
+        "pf": 0.692,
+        "t_stat": -0.36,
+        "net_usd": -506.72
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 9,
+      "pf": 0.802,
+      "t_stat": -0.25,
+      "net_usd": -363.35,
+      "drawdown_max_pct": 16.39
+    },
+    "validation_reunie_stress": {
+      "trades": 9,
+      "pf": 0.799,
+      "t_stat": -0.25,
+      "net_usd": -369.19
+    },
+    "annees_positives": "7/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": false,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": true,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M6_rsi2_connors": {
+    "parametres": {
+      "trend": 200,
+      "exit": 5,
+      "lo": 10
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 59,
+        "rentabilite_pct": -0.31,
+        "drawdown_max_pct": 7.23,
+        "ambigus": 0,
+        "pf": 0.983,
+        "reussite_pct": 72.9,
+        "t_stat": -0.04,
+        "pertes_consecutives_max": 2
+      },
+      "entrainement_stress": {
+        "trades": 59,
+        "rentabilite_pct": -0.72,
+        "drawdown_max_pct": 7.31,
+        "ambigus": 0,
+        "pf": 0.961,
+        "reussite_pct": 72.9,
+        "t_stat": -0.1,
+        "pertes_consecutives_max": 2
+      },
+      "validation_1_base": {
+        "trades": 28,
+        "rentabilite_pct": 0.23,
+        "drawdown_max_pct": 7.23,
+        "ambigus": 0,
+        "pf": 1.022,
+        "reussite_pct": 57.1,
+        "t_stat": 0.04,
+        "pertes_consecutives_max": 4
+      },
+      "validation_1_stress": {
+        "trades": 28,
+        "rentabilite_pct": 0.04,
+        "drawdown_max_pct": 7.27,
+        "ambigus": 0,
+        "pf": 1.003,
+        "reussite_pct": 57.1,
+        "t_stat": 0.01,
+        "pertes_consecutives_max": 4
+      },
+      "validation_2_base": {
+        "trades": 22,
+        "rentabilite_pct": -4.78,
+        "drawdown_max_pct": 5.28,
+        "ambigus": 0,
+        "pf": 0.39,
+        "reussite_pct": 45.5,
+        "t_stat": -1.4,
+        "pertes_consecutives_max": 2
+      },
+      "validation_2_stress": {
+        "trades": 22,
+        "rentabilite_pct": -4.93,
+        "drawdown_max_pct": 5.41,
+        "ambigus": 0,
+        "pf": 0.378,
+        "reussite_pct": 45.5,
+        "t_stat": -1.44,
+        "pertes_consecutives_max": 2
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 1,
+        "rentabilite_pct": 0.05,
+        "drawdown_max_pct": 2.18,
+        "ambigus": 0,
+        "pf": null,
+        "reussite_pct": 100.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 0
+      },
+      "2016": {
+        "trades": 13,
+        "rentabilite_pct": 0.07,
+        "drawdown_max_pct": 4.91,
+        "ambigus": 0,
+        "pf": 1.016,
+        "reussite_pct": 69.2,
+        "t_stat": 0.02,
+        "pertes_consecutives_max": 2
+      },
+      "2017": {
+        "trades": 8,
+        "rentabilite_pct": 0.27,
+        "drawdown_max_pct": 2.32,
+        "ambigus": 0,
+        "pf": 1.149,
+        "reussite_pct": 62.5,
+        "t_stat": 0.14,
+        "pertes_consecutives_max": 1
+      },
+      "2018": {
+        "trades": 14,
+        "rentabilite_pct": 1.18,
+        "drawdown_max_pct": 3.59,
+        "ambigus": 0,
+        "pf": 1.266,
+        "reussite_pct": 85.7,
+        "t_stat": 0.3,
+        "pertes_consecutives_max": 1
+      },
+      "2019": {
+        "trades": 12,
+        "rentabilite_pct": 0.97,
+        "drawdown_max_pct": 1.8,
+        "ambigus": 0,
+        "pf": 1.552,
+        "reussite_pct": 75.0,
+        "t_stat": 0.56,
+        "pertes_consecutives_max": 1
+      },
+      "2020": {
+        "trades": 11,
+        "rentabilite_pct": -2.89,
+        "drawdown_max_pct": 7.05,
+        "ambigus": 0,
+        "pf": 0.53,
+        "reussite_pct": 63.6,
+        "t_stat": -0.63,
+        "pertes_consecutives_max": 2
+      },
+      "2021": {
+        "trades": 11,
+        "rentabilite_pct": -2.71,
+        "drawdown_max_pct": 4.65,
+        "ambigus": 0,
+        "pf": 0.423,
+        "reussite_pct": 27.3,
+        "t_stat": -1.11,
+        "pertes_consecutives_max": 4
+      },
+      "2022": {
+        "trades": 12,
+        "rentabilite_pct": 6.37,
+        "drawdown_max_pct": 4.48,
+        "ambigus": 0,
+        "pf": 3.466,
+        "reussite_pct": 91.7,
+        "t_stat": 1.62,
+        "pertes_consecutives_max": 1
+      },
+      "2023 (jan-août)": {
+        "trades": 5,
+        "rentabilite_pct": -3.04,
+        "drawdown_max_pct": 4.35,
+        "ambigus": 0,
+        "pf": 0.024,
+        "reussite_pct": 40.0,
+        "t_stat": -1.49,
+        "pertes_consecutives_max": 3
+      },
+      "2024 (sept-déc)": {
+        "trades": 2,
+        "rentabilite_pct": -2.15,
+        "drawdown_max_pct": 2.81,
+        "ambigus": 0,
+        "pf": 0.015,
+        "reussite_pct": 50.0,
+        "t_stat": null,
+        "pertes_consecutives_max": 1
+      },
+      "2025": {
+        "trades": 12,
+        "rentabilite_pct": -0.85,
+        "drawdown_max_pct": 3.07,
+        "ambigus": 0,
+        "pf": 0.708,
+        "reussite_pct": 50.0,
+        "t_stat": -0.35,
+        "pertes_consecutives_max": 2
+      },
+      "2026 (jan-août)": {
+        "trades": 8,
+        "rentabilite_pct": -1.79,
+        "drawdown_max_pct": 2.58,
+        "ambigus": 0,
+        "pf": 0.345,
+        "reussite_pct": 37.5,
+        "t_stat": -1.39,
+        "pertes_consecutives_max": 2
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": -66.0,
+      "2021T2": -207.76,
+      "2021T3": -76.08,
+      "2021T4": 78.4,
+      "2022T1": 87.76,
+      "2022T2": 109.83,
+      "2022T3": 471.76,
+      "2022T4": -57.5,
+      "2023T1": 7.38,
+      "2023T2": -207.72,
+      "2023T3": -117.09,
+      "2024T4": -215.05,
+      "2025T1": -218.03,
+      "2025T2": 76.16,
+      "2025T3": 63.52,
+      "2025T4": -5.28,
+      "2026T1": -29.68,
+      "2026T2": -38.72,
+      "2026T3": -111.04
+    },
+    "stabilite": {
+      "trend×0.75": {
+        "trades": 48,
+        "pf": 0.813,
+        "t_stat": -0.51,
+        "net_usd": -334.22
+      },
+      "trend×1.25": {
+        "trades": 50,
+        "pf": 0.85,
+        "t_stat": -0.4,
+        "net_usd": -252.02
+      },
+      "exit×0.75": {
+        "trades": 55,
+        "pf": 0.869,
+        "t_stat": -0.36,
+        "net_usd": -192.39
+      },
+      "exit×1.25": {
+        "trades": 49,
+        "pf": 0.974,
+        "t_stat": -0.07,
+        "net_usd": -45.28
+      },
+      "lo×0.75": {
+        "trades": 44,
+        "pf": 1.102,
+        "t_stat": 0.23,
+        "net_usd": 113.16
+      },
+      "lo×1.25": {
+        "trades": 59,
+        "pf": 0.893,
+        "t_stat": -0.32,
+        "net_usd": -221.69
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 50,
+      "pf": 0.752,
+      "t_stat": -0.71,
+      "net_usd": -455.14,
+      "drawdown_max_pct": 7.23
+    },
+    "validation_reunie_stress": {
+      "trades": 50,
+      "pf": 0.736,
+      "t_stat": -0.76,
+      "net_usd": -488.9
+    },
+    "annees_positives": "6/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": false,
+      "dd_15": true,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M7_dual_thrust": {
+    "parametres": {
+      "n": 4,
+      "k": 0.5
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 319,
+        "rentabilite_pct": -16.96,
+        "drawdown_max_pct": 22.73,
+        "ambigus": 6,
+        "pf": 0.84,
+        "reussite_pct": 30.4,
+        "t_stat": -1.11,
+        "pertes_consecutives_max": 14
+      },
+      "entrainement_stress": {
+        "trades": 319,
+        "rentabilite_pct": -18.6,
+        "drawdown_max_pct": 24.1,
+        "ambigus": 6,
+        "pf": 0.826,
+        "reussite_pct": 30.4,
+        "t_stat": -1.22,
+        "pertes_consecutives_max": 14
+      },
+      "validation_1_base": {
+        "trades": 152,
+        "rentabilite_pct": -9.99,
+        "drawdown_max_pct": 15.72,
+        "ambigus": 1,
+        "pf": 0.818,
+        "reussite_pct": 27.6,
+        "t_stat": -0.9,
+        "pertes_consecutives_max": 15
+      },
+      "validation_1_stress": {
+        "trades": 152,
+        "rentabilite_pct": -10.85,
+        "drawdown_max_pct": 16.33,
+        "ambigus": 1,
+        "pf": 0.804,
+        "reussite_pct": 27.0,
+        "t_stat": -0.98,
+        "pertes_consecutives_max": 15
+      },
+      "validation_2_base": {
+        "trades": 102,
+        "rentabilite_pct": 2.36,
+        "drawdown_max_pct": 7.94,
+        "ambigus": 1,
+        "pf": 1.075,
+        "reussite_pct": 30.4,
+        "t_stat": 0.24,
+        "pertes_consecutives_max": 7
+      },
+      "validation_2_stress": {
+        "trades": 102,
+        "rentabilite_pct": 1.68,
+        "drawdown_max_pct": 8.03,
+        "ambigus": 1,
+        "pf": 1.053,
+        "reussite_pct": 30.4,
+        "t_stat": 0.17,
+        "pertes_consecutives_max": 7
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 53,
+        "rentabilite_pct": -5.79,
+        "drawdown_max_pct": 9.64,
+        "ambigus": 1,
+        "pf": 0.802,
+        "reussite_pct": 30.2,
+        "t_stat": -0.62,
+        "pertes_consecutives_max": 11
+      },
+      "2016": {
+        "trades": 65,
+        "rentabilite_pct": -10.96,
+        "drawdown_max_pct": 12.73,
+        "ambigus": 1,
+        "pf": 0.597,
+        "reussite_pct": 23.1,
+        "t_stat": -1.61,
+        "pertes_consecutives_max": 14
+      },
+      "2017": {
+        "trades": 49,
+        "rentabilite_pct": 1.3,
+        "drawdown_max_pct": 6.9,
+        "ambigus": 0,
+        "pf": 1.083,
+        "reussite_pct": 32.7,
+        "t_stat": 0.22,
+        "pertes_consecutives_max": 5
+      },
+      "2018": {
+        "trades": 52,
+        "rentabilite_pct": -1.41,
+        "drawdown_max_pct": 9.03,
+        "ambigus": 1,
+        "pf": 0.923,
+        "reussite_pct": 34.6,
+        "t_stat": -0.21,
+        "pertes_consecutives_max": 9
+      },
+      "2019": {
+        "trades": 56,
+        "rentabilite_pct": -5.13,
+        "drawdown_max_pct": 7.24,
+        "ambigus": 3,
+        "pf": 0.591,
+        "reussite_pct": 30.4,
+        "t_stat": -1.63,
+        "pertes_consecutives_max": 10
+      },
+      "2020": {
+        "trades": 45,
+        "rentabilite_pct": 5.05,
+        "drawdown_max_pct": 5.82,
+        "ambigus": 0,
+        "pf": 1.337,
+        "reussite_pct": 35.6,
+        "t_stat": 0.6,
+        "pertes_consecutives_max": 6
+      },
+      "2021": {
+        "trades": 61,
+        "rentabilite_pct": 0.4,
+        "drawdown_max_pct": 6.52,
+        "ambigus": 1,
+        "pf": 1.027,
+        "reussite_pct": 29.5,
+        "t_stat": 0.07,
+        "pertes_consecutives_max": 15
+      },
+      "2022": {
+        "trades": 50,
+        "rentabilite_pct": -0.91,
+        "drawdown_max_pct": 8.77,
+        "ambigus": 0,
+        "pf": 0.958,
+        "reussite_pct": 30.0,
+        "t_stat": -0.11,
+        "pertes_consecutives_max": 7
+      },
+      "2023 (jan-août)": {
+        "trades": 41,
+        "rentabilite_pct": -8.33,
+        "drawdown_max_pct": 11.83,
+        "ambigus": 0,
+        "pf": 0.543,
+        "reussite_pct": 24.4,
+        "t_stat": -1.46,
+        "pertes_consecutives_max": 10
+      },
+      "2024 (sept-déc)": {
+        "trades": 22,
+        "rentabilite_pct": -3.34,
+        "drawdown_max_pct": 5.6,
+        "ambigus": 1,
+        "pf": 0.615,
+        "reussite_pct": 22.7,
+        "t_stat": -0.81,
+        "pertes_consecutives_max": 7
+      },
+      "2025": {
+        "trades": 45,
+        "rentabilite_pct": 6.27,
+        "drawdown_max_pct": 4.35,
+        "ambigus": 0,
+        "pf": 1.448,
+        "reussite_pct": 42.2,
+        "t_stat": 0.81,
+        "pertes_consecutives_max": 5
+      },
+      "2026 (jan-août)": {
+        "trades": 36,
+        "rentabilite_pct": -0.6,
+        "drawdown_max_pct": 5.56,
+        "ambigus": 0,
+        "pf": 0.94,
+        "reussite_pct": 25.0,
+        "t_stat": -0.13,
+        "pertes_consecutives_max": 7
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": 65.6,
+      "2021T2": 221.56,
+      "2021T3": -407.64,
+      "2021T4": 156.67,
+      "2022T1": -206.77,
+      "2022T2": -220.94,
+      "2022T3": 191.63,
+      "2022T4": -169.12,
+      "2023T1": -476.95,
+      "2023T2": -17.0,
+      "2023T3": -136.4,
+      "2024T3": -290.72,
+      "2024T4": -72.94,
+      "2025T1": 364.49,
+      "2025T2": 269.93,
+      "2025T3": 48.96,
+      "2025T4": 13.52,
+      "2026T1": -40.04,
+      "2026T2": -103.4,
+      "2026T3": 46.44
+    },
+    "stabilite": {
+      "n×0.75": {
+        "trades": 342,
+        "pf": 0.948,
+        "t_stat": -0.34,
+        "net_usd": -517.46
+      },
+      "n×1.25": {
+        "trades": 194,
+        "pf": 0.953,
+        "t_stat": -0.24,
+        "net_usd": -343.46
+      },
+      "k×0.75": {
+        "trades": 419,
+        "pf": 0.842,
+        "t_stat": -1.16,
+        "net_usd": -1745.98
+      },
+      "k×1.25": {
+        "trades": 152,
+        "pf": 0.983,
+        "t_stat": -0.08,
+        "net_usd": -113.06
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 254,
+      "pf": 0.912,
+      "t_stat": -0.52,
+      "net_usd": -763.27,
+      "drawdown_max_pct": 15.72
+    },
+    "validation_reunie_stress": {
+      "trades": 254,
+      "pf": 0.895,
+      "t_stat": -0.62,
+      "net_usd": -917.22
+    },
+    "annees_positives": "4/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": true,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M8_effet_session": {
+    "parametres": {
+      "eu_start": 7,
+      "eu_end": 12,
+      "us_start": 8,
+      "us_end": 16
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 3112,
+        "rentabilite_pct": 21.69,
+        "drawdown_max_pct": 13.26,
+        "ambigus": 0,
+        "pf": 1.055,
+        "reussite_pct": 50.0,
+        "t_stat": 1.06,
+        "pertes_consecutives_max": 14
+      },
+      "entrainement_stress": {
+        "trades": 3112,
+        "rentabilite_pct": -0.97,
+        "drawdown_max_pct": 21.03,
+        "ambigus": 0,
+        "pf": 0.997,
+        "reussite_pct": 48.7,
+        "t_stat": -0.05,
+        "pertes_consecutives_max": 14
+      },
+      "validation_1_base": {
+        "trades": 1388,
+        "rentabilite_pct": -6.87,
+        "drawdown_max_pct": 15.83,
+        "ambigus": 0,
+        "pf": 0.955,
+        "reussite_pct": 47.9,
+        "t_stat": -0.62,
+        "pertes_consecutives_max": 12
+      },
+      "validation_1_stress": {
+        "trades": 1388,
+        "rentabilite_pct": -15.83,
+        "drawdown_max_pct": 20.17,
+        "ambigus": 0,
+        "pf": 0.895,
+        "reussite_pct": 46.7,
+        "t_stat": -1.49,
+        "pertes_consecutives_max": 12
+      },
+      "validation_2_base": {
+        "trades": 1034,
+        "rentabilite_pct": -13.7,
+        "drawdown_max_pct": 14.87,
+        "ambigus": 0,
+        "pf": 0.851,
+        "reussite_pct": 46.3,
+        "t_stat": -1.86,
+        "pertes_consecutives_max": 9
+      },
+      "validation_2_stress": {
+        "trades": 1034,
+        "rentabilite_pct": -19.82,
+        "drawdown_max_pct": 20.55,
+        "ambigus": 0,
+        "pf": 0.789,
+        "reussite_pct": 44.9,
+        "t_stat": -2.74,
+        "pertes_consecutives_max": 13
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 518,
+        "rentabilite_pct": 11.84,
+        "drawdown_max_pct": 7.9,
+        "ambigus": 0,
+        "pf": 1.144,
+        "reussite_pct": 51.9,
+        "t_stat": 1.11,
+        "pertes_consecutives_max": 8
+      },
+      "2016": {
+        "trades": 520,
+        "rentabilite_pct": 2.5,
+        "drawdown_max_pct": 10.55,
+        "ambigus": 0,
+        "pf": 1.043,
+        "reussite_pct": 48.8,
+        "t_stat": 0.32,
+        "pertes_consecutives_max": 8
+      },
+      "2017": {
+        "trades": 518,
+        "rentabilite_pct": 14.15,
+        "drawdown_max_pct": 4.92,
+        "ambigus": 0,
+        "pf": 1.293,
+        "reussite_pct": 55.0,
+        "t_stat": 2.17,
+        "pertes_consecutives_max": 7
+      },
+      "2018": {
+        "trades": 518,
+        "rentabilite_pct": -3.61,
+        "drawdown_max_pct": 4.38,
+        "ambigus": 0,
+        "pf": 0.934,
+        "reussite_pct": 47.9,
+        "t_stat": -0.61,
+        "pertes_consecutives_max": 6
+      },
+      "2019": {
+        "trades": 518,
+        "rentabilite_pct": -3.97,
+        "drawdown_max_pct": 5.66,
+        "ambigus": 0,
+        "pf": 0.892,
+        "reussite_pct": 46.9,
+        "t_stat": -0.93,
+        "pertes_consecutives_max": 14
+      },
+      "2020": {
+        "trades": 520,
+        "rentabilite_pct": 0.4,
+        "drawdown_max_pct": 7.52,
+        "ambigus": 0,
+        "pf": 1.007,
+        "reussite_pct": 49.4,
+        "t_stat": 0.06,
+        "pertes_consecutives_max": 11
+      },
+      "2021": {
+        "trades": 520,
+        "rentabilite_pct": -2.31,
+        "drawdown_max_pct": 6.17,
+        "ambigus": 0,
+        "pf": 0.946,
+        "reussite_pct": 49.6,
+        "t_stat": -0.47,
+        "pertes_consecutives_max": 7
+      },
+      "2022": {
+        "trades": 520,
+        "rentabilite_pct": -4.22,
+        "drawdown_max_pct": 12.98,
+        "ambigus": 0,
+        "pf": 0.942,
+        "reussite_pct": 46.2,
+        "t_stat": -0.49,
+        "pertes_consecutives_max": 12
+      },
+      "2023 (jan-août)": {
+        "trades": 348,
+        "rentabilite_pct": -0.8,
+        "drawdown_max_pct": 6.05,
+        "ambigus": 0,
+        "pf": 0.981,
+        "reussite_pct": 48.0,
+        "t_stat": -0.13,
+        "pertes_consecutives_max": 12
+      },
+      "2024 (sept-déc)": {
+        "trades": 172,
+        "rentabilite_pct": -5.84,
+        "drawdown_max_pct": 6.49,
+        "ambigus": 0,
+        "pf": 0.67,
+        "reussite_pct": 42.4,
+        "t_stat": -1.94,
+        "pertes_consecutives_max": 8
+      },
+      "2025": {
+        "trades": 518,
+        "rentabilite_pct": -3.91,
+        "drawdown_max_pct": 9.64,
+        "ambigus": 0,
+        "pf": 0.927,
+        "reussite_pct": 48.8,
+        "t_stat": -0.62,
+        "pertes_consecutives_max": 8
+      },
+      "2026 (jan-août)": {
+        "trades": 344,
+        "rentabilite_pct": -4.7,
+        "drawdown_max_pct": 6.83,
+        "ambigus": 0,
+        "pf": 0.838,
+        "reussite_pct": 44.5,
+        "t_stat": -1.19,
+        "pertes_consecutives_max": 9
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": 140.48,
+      "2021T2": -67.76,
+      "2021T3": -119.68,
+      "2021T4": -184.0,
+      "2022T1": -150.32,
+      "2022T2": -377.28,
+      "2022T3": -279.14,
+      "2022T4": 430.43,
+      "2023T1": 212.41,
+      "2023T2": -231.04,
+      "2023T3": -60.64,
+      "2024T3": -106.81,
+      "2024T4": -477.01,
+      "2025T1": -160.97,
+      "2025T2": -368.84,
+      "2025T3": 172.55,
+      "2025T4": -17.46,
+      "2026T1": 94.78,
+      "2026T2": -512.26,
+      "2026T3": 5.95
+    },
+    "stabilite": {},
+    "validation_reunie_base": {
+      "trades": 2422,
+      "pf": 0.916,
+      "t_stat": -1.54,
+      "net_usd": -2056.61,
+      "drawdown_max_pct": 15.83
+    },
+    "validation_reunie_stress": {
+      "trades": 2422,
+      "pf": 0.854,
+      "t_stat": -2.78,
+      "net_usd": -3565.08
+    },
+    "annees_positives": "4/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": true,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": true,
+      "stabilite_70pct": true,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M9_nr7_crabel": {
+    "parametres": {
+      "n": 7
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 241,
+        "rentabilite_pct": 3.74,
+        "drawdown_max_pct": 15.67,
+        "ambigus": 3,
+        "pf": 1.042,
+        "reussite_pct": 51.5,
+        "t_stat": 0.23,
+        "pertes_consecutives_max": 8
+      },
+      "entrainement_stress": {
+        "trades": 241,
+        "rentabilite_pct": -0.99,
+        "drawdown_max_pct": 17.85,
+        "ambigus": 3,
+        "pf": 0.989,
+        "reussite_pct": 48.5,
+        "t_stat": -0.06,
+        "pertes_consecutives_max": 8
+      },
+      "validation_1_base": {
+        "trades": 104,
+        "rentabilite_pct": -0.9,
+        "drawdown_max_pct": 6.27,
+        "ambigus": 1,
+        "pf": 0.977,
+        "reussite_pct": 44.2,
+        "t_stat": -0.1,
+        "pertes_consecutives_max": 6
+      },
+      "validation_1_stress": {
+        "trades": 104,
+        "rentabilite_pct": -2.39,
+        "drawdown_max_pct": 6.88,
+        "ambigus": 1,
+        "pf": 0.94,
+        "reussite_pct": 42.3,
+        "t_stat": -0.26,
+        "pertes_consecutives_max": 8
+      },
+      "validation_2_base": {
+        "trades": 78,
+        "rentabilite_pct": -0.68,
+        "drawdown_max_pct": 6.97,
+        "ambigus": 1,
+        "pf": 0.972,
+        "reussite_pct": 51.3,
+        "t_stat": -0.1,
+        "pertes_consecutives_max": 8
+      },
+      "validation_2_stress": {
+        "trades": 78,
+        "rentabilite_pct": -2.21,
+        "drawdown_max_pct": 7.15,
+        "ambigus": 1,
+        "pf": 0.912,
+        "reussite_pct": 47.4,
+        "t_stat": -0.32,
+        "pertes_consecutives_max": 8
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 40,
+        "rentabilite_pct": 12.16,
+        "drawdown_max_pct": 3.35,
+        "ambigus": 0,
+        "pf": 2.289,
+        "reussite_pct": 57.5,
+        "t_stat": 1.59,
+        "pertes_consecutives_max": 3
+      },
+      "2016": {
+        "trades": 35,
+        "rentabilite_pct": -8.05,
+        "drawdown_max_pct": 8.12,
+        "ambigus": 0,
+        "pf": 0.444,
+        "reussite_pct": 40.0,
+        "t_stat": -2.01,
+        "pertes_consecutives_max": 5
+      },
+      "2017": {
+        "trades": 41,
+        "rentabilite_pct": -0.19,
+        "drawdown_max_pct": 9.53,
+        "ambigus": 0,
+        "pf": 0.986,
+        "reussite_pct": 43.9,
+        "t_stat": -0.04,
+        "pertes_consecutives_max": 8
+      },
+      "2018": {
+        "trades": 44,
+        "rentabilite_pct": 6.05,
+        "drawdown_max_pct": 3.07,
+        "ambigus": 0,
+        "pf": 1.579,
+        "reussite_pct": 65.9,
+        "t_stat": 1.27,
+        "pertes_consecutives_max": 2
+      },
+      "2019": {
+        "trades": 47,
+        "rentabilite_pct": -6.68,
+        "drawdown_max_pct": 7.67,
+        "ambigus": 3,
+        "pf": 0.733,
+        "reussite_pct": 48.9,
+        "t_stat": -0.72,
+        "pertes_consecutives_max": 4
+      },
+      "2020": {
+        "trades": 34,
+        "rentabilite_pct": 1.66,
+        "drawdown_max_pct": 4.38,
+        "ambigus": 0,
+        "pf": 1.144,
+        "reussite_pct": 50.0,
+        "t_stat": 0.32,
+        "pertes_consecutives_max": 3
+      },
+      "2021": {
+        "trades": 33,
+        "rentabilite_pct": 1.29,
+        "drawdown_max_pct": 5.25,
+        "ambigus": 0,
+        "pf": 1.095,
+        "reussite_pct": 42.4,
+        "t_stat": 0.22,
+        "pertes_consecutives_max": 5
+      },
+      "2022": {
+        "trades": 42,
+        "rentabilite_pct": 0.35,
+        "drawdown_max_pct": 4.41,
+        "ambigus": 0,
+        "pf": 1.023,
+        "reussite_pct": 42.9,
+        "t_stat": 0.06,
+        "pertes_consecutives_max": 5
+      },
+      "2023 (jan-août)": {
+        "trades": 29,
+        "rentabilite_pct": -2.57,
+        "drawdown_max_pct": 5.67,
+        "ambigus": 1,
+        "pf": 0.74,
+        "reussite_pct": 48.3,
+        "t_stat": -0.67,
+        "pertes_consecutives_max": 3
+      },
+      "2024 (sept-déc)": {
+        "trades": 11,
+        "rentabilite_pct": -1.5,
+        "drawdown_max_pct": 3.04,
+        "ambigus": 0,
+        "pf": 0.595,
+        "reussite_pct": 54.5,
+        "t_stat": -0.68,
+        "pertes_consecutives_max": 2
+      },
+      "2025": {
+        "trades": 39,
+        "rentabilite_pct": 2.87,
+        "drawdown_max_pct": 7.08,
+        "ambigus": 1,
+        "pf": 1.24,
+        "reussite_pct": 56.4,
+        "t_stat": 0.52,
+        "pertes_consecutives_max": 8
+      },
+      "2026 (jan-août)": {
+        "trades": 28,
+        "rentabilite_pct": -2.09,
+        "drawdown_max_pct": 5.64,
+        "ambigus": 0,
+        "pf": 0.771,
+        "reussite_pct": 42.9,
+        "t_stat": -0.54,
+        "pertes_consecutives_max": 6
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": 418.83,
+      "2021T2": -328.74,
+      "2021T3": 152.66,
+      "2021T4": -113.37,
+      "2022T1": -156.08,
+      "2022T2": 157.54,
+      "2022T3": 112.29,
+      "2022T4": -71.88,
+      "2023T1": 208.69,
+      "2023T2": 77.2,
+      "2023T3": -546.89,
+      "2024T3": -7.36,
+      "2024T4": -142.88,
+      "2025T1": 56.48,
+      "2025T2": 189.23,
+      "2025T3": -158.75,
+      "2025T4": 207.65,
+      "2026T1": 90.96,
+      "2026T2": -198.24,
+      "2026T3": -105.36
+    },
+    "stabilite": {
+      "n×0.75": {
+        "trades": 251,
+        "pf": 1.047,
+        "t_stat": 0.29,
+        "net_usd": 411.87
+      },
+      "n×1.25": {
+        "trades": 140,
+        "pf": 1.015,
+        "t_stat": 0.07,
+        "net_usd": 72.66
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 182,
+      "pf": 0.975,
+      "t_stat": -0.14,
+      "net_usd": -158.02,
+      "drawdown_max_pct": 6.97
+    },
+    "validation_reunie_stress": {
+      "trades": 182,
+      "pf": 0.93,
+      "t_stat": -0.4,
+      "net_usd": -459.94
+    },
+    "annees_positives": "6/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": true,
+      "dd_15": true,
+      "60pct_annees_positives": false,
+      "entrainement_positif": true,
+      "stabilite_70pct": true,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  },
+  "M10_stretch_crabel": {
+    "parametres": {
+      "n": 10,
+      "mult": 1.0
+    },
+    "periodes": {
+      "entrainement_base": {
+        "trades": 1538,
+        "rentabilite_pct": -89.92,
+        "drawdown_max_pct": 90.7,
+        "ambigus": 23,
+        "pf": 0.82,
+        "reussite_pct": 27.6,
+        "t_stat": -2.44,
+        "pertes_consecutives_max": 15
+      },
+      "entrainement_stress": {
+        "trades": 1538,
+        "rentabilite_pct": -94.7,
+        "drawdown_max_pct": 95.02,
+        "ambigus": 23,
+        "pf": 0.778,
+        "reussite_pct": 27.2,
+        "t_stat": -2.9,
+        "pertes_consecutives_max": 17
+      },
+      "validation_1_base": {
+        "trades": 691,
+        "rentabilite_pct": -55.06,
+        "drawdown_max_pct": 66.87,
+        "ambigus": 5,
+        "pf": 0.885,
+        "reussite_pct": 26.5,
+        "t_stat": -1.17,
+        "pertes_consecutives_max": 16
+      },
+      "validation_1_stress": {
+        "trades": 691,
+        "rentabilite_pct": -67.76,
+        "drawdown_max_pct": 75.32,
+        "ambigus": 5,
+        "pf": 0.84,
+        "reussite_pct": 26.5,
+        "t_stat": -1.66,
+        "pertes_consecutives_max": 16
+      },
+      "validation_2_base": {
+        "trades": 516,
+        "rentabilite_pct": -58.2,
+        "drawdown_max_pct": 63.23,
+        "ambigus": 17,
+        "pf": 0.77,
+        "reussite_pct": 27.1,
+        "t_stat": -2.3,
+        "pertes_consecutives_max": 15
+      },
+      "validation_2_stress": {
+        "trades": 516,
+        "rentabilite_pct": -68.39,
+        "drawdown_max_pct": 71.48,
+        "ambigus": 17,
+        "pf": 0.713,
+        "reussite_pct": 27.1,
+        "t_stat": -2.98,
+        "pertes_consecutives_max": 15
+      }
+    },
+    "annees": {
+      "2015": {
+        "trades": 249,
+        "rentabilite_pct": -16.19,
+        "drawdown_max_pct": 25.82,
+        "ambigus": 1,
+        "pf": 0.902,
+        "reussite_pct": 28.5,
+        "t_stat": -0.62,
+        "pertes_consecutives_max": 15
+      },
+      "2016": {
+        "trades": 255,
+        "rentabilite_pct": -41.18,
+        "drawdown_max_pct": 46.7,
+        "ambigus": 2,
+        "pf": 0.724,
+        "reussite_pct": 26.7,
+        "t_stat": -1.86,
+        "pertes_consecutives_max": 10
+      },
+      "2017": {
+        "trades": 259,
+        "rentabilite_pct": -17.72,
+        "drawdown_max_pct": 32.5,
+        "ambigus": 4,
+        "pf": 0.903,
+        "reussite_pct": 27.4,
+        "t_stat": -0.6,
+        "pertes_consecutives_max": 15
+      },
+      "2018": {
+        "trades": 259,
+        "rentabilite_pct": -35.16,
+        "drawdown_max_pct": 39.23,
+        "ambigus": 4,
+        "pf": 0.772,
+        "reussite_pct": 28.6,
+        "t_stat": -1.53,
+        "pertes_consecutives_max": 15
+      },
+      "2019": {
+        "trades": 257,
+        "rentabilite_pct": -47.54,
+        "drawdown_max_pct": 53.08,
+        "ambigus": 8,
+        "pf": 0.668,
+        "reussite_pct": 25.7,
+        "t_stat": -2.52,
+        "pertes_consecutives_max": 11
+      },
+      "2020": {
+        "trades": 259,
+        "rentabilite_pct": -29.32,
+        "drawdown_max_pct": 33.82,
+        "ambigus": 4,
+        "pf": 0.817,
+        "reussite_pct": 29.0,
+        "t_stat": -1.3,
+        "pertes_consecutives_max": 11
+      },
+      "2021": {
+        "trades": 260,
+        "rentabilite_pct": -13.65,
+        "drawdown_max_pct": 37.58,
+        "ambigus": 3,
+        "pf": 0.937,
+        "reussite_pct": 26.9,
+        "t_stat": -0.41,
+        "pertes_consecutives_max": 16
+      },
+      "2022": {
+        "trades": 259,
+        "rentabilite_pct": -22.81,
+        "drawdown_max_pct": 47.14,
+        "ambigus": 1,
+        "pf": 0.894,
+        "reussite_pct": 26.3,
+        "t_stat": -0.64,
+        "pertes_consecutives_max": 14
+      },
+      "2023 (jan-août)": {
+        "trades": 172,
+        "rentabilite_pct": -32.58,
+        "drawdown_max_pct": 39.12,
+        "ambigus": 1,
+        "pf": 0.722,
+        "reussite_pct": 26.2,
+        "t_stat": -1.77,
+        "pertes_consecutives_max": 16
+      },
+      "2024 (sept-déc)": {
+        "trades": 87,
+        "rentabilite_pct": -20.83,
+        "drawdown_max_pct": 22.74,
+        "ambigus": 8,
+        "pf": 0.664,
+        "reussite_pct": 24.1,
+        "t_stat": -1.59,
+        "pertes_consecutives_max": 11
+      },
+      "2025": {
+        "trades": 258,
+        "rentabilite_pct": -36.45,
+        "drawdown_max_pct": 41.42,
+        "ambigus": 5,
+        "pf": 0.784,
+        "reussite_pct": 27.5,
+        "t_stat": -1.54,
+        "pertes_consecutives_max": 12
+      },
+      "2026 (jan-août)": {
+        "trades": 171,
+        "rentabilite_pct": -16.99,
+        "drawdown_max_pct": 26.46,
+        "ambigus": 4,
+        "pf": 0.855,
+        "reussite_pct": 28.1,
+        "t_stat": -0.78,
+        "pertes_consecutives_max": 15
+      }
+    },
+    "trimestres_validation": {
+      "2021T1": 3036.79,
+      "2021T2": -2370.18,
+      "2021T3": -1513.26,
+      "2021T4": -518.52,
+      "2022T1": 2325.87,
+      "2022T2": -928.18,
+      "2022T3": -1627.29,
+      "2022T4": -1762.03,
+      "2023T1": -482.49,
+      "2023T2": -735.38,
+      "2023T3": -931.3,
+      "2024T3": -207.62,
+      "2024T4": -1875.8,
+      "2025T1": -1282.38,
+      "2025T2": -364.61,
+      "2025T3": 405.35,
+      "2025T4": -1646.58,
+      "2026T1": -976.87,
+      "2026T2": 235.06,
+      "2026T3": -106.25
+    },
+    "stabilite": {
+      "n×0.75": {
+        "trades": 1206,
+        "pf": 0.825,
+        "t_stat": -2.39,
+        "net_usd": -12057.99
+      },
+      "n×1.25": {
+        "trades": 1205,
+        "pf": 0.865,
+        "t_stat": -1.83,
+        "net_usd": -10240.14
+      },
+      "mult×0.75": {
+        "trades": 1213,
+        "pf": 0.776,
+        "t_stat": -2.98,
+        "net_usd": -15204.52
+      },
+      "mult×1.25": {
+        "trades": 1187,
+        "pf": 0.849,
+        "t_stat": -2.13,
+        "net_usd": -9621.64
+      }
+    },
+    "validation_reunie_base": {
+      "trades": 1207,
+      "pf": 0.845,
+      "t_stat": -2.13,
+      "net_usd": -11326.09,
+      "drawdown_max_pct": 66.87
+    },
+    "validation_reunie_stress": {
+      "trades": 1207,
+      "pf": 0.795,
+      "t_stat": -2.91,
+      "net_usd": -13614.54
+    },
+    "annees_positives": "0/12",
+    "criteres": {
+      "pf_1_30": false,
+      "stress_positif": false,
+      "60_trades": true,
+      "dd_15": false,
+      "60pct_annees_positives": false,
+      "entrainement_positif": false,
+      "stabilite_70pct": false,
+      "t_stat_2_6": false
+    },
+    "decision": "REJETÉE"
+  }
+}
