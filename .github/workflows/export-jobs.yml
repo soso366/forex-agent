@@ -97,11 +97,12 @@ jobs:
           pattern: data-eurusd-*
           path: lab/documented/data
           merge-multiple: true
-      - name: Vérifier que les 19 lots EUR/USD 2015 → 08/2023 sont complets
+      - name: Vérifier que tous les lots EUR/USD demandés sont complets
         run: |
+          W=$(grep -v '^#' deploy/trigger/export_jobs.txt | grep -c 'eurusd-')
           N=$(ls lab/documented/data/EURUSD_eurusd-*.csv.gz 2>/dev/null | wc -l)
-          echo "Lots présents : $N / 19"
-          [ "$N" -eq 19 ] || { echo "::error::Données incomplètes ($N/19) : backtest non lancé. Relancer le fichier déclencheur."; exit 1; }
+          echo "Lots présents : $N / $W"
+          [ "$N" -eq "$W" ] || { echo "::error::Données incomplètes ($N/$W) : backtest non lancé. Relancer le fichier déclencheur."; exit 1; }
       - name: Données EUR/USD 09/2024 → 08/2026 (dépôt privé forex-data)
         env:
           DATA_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
