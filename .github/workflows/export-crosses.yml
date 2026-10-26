@@ -10,7 +10,7 @@ on:
     paths: [deploy/trigger/export_crosses.txt]
 
 permissions:
-  contents: read
+  contents: write   # pour enregistrer les RÉSULTATS (pas les données) dans la branche
 
 jobs:
   export:
@@ -38,7 +38,14 @@ jobs:
           restore-keys: crosses-${{ matrix.period.tag }}-
       - name: Télécharger / préparer (AUDCAD NZDCAD AUDNZD)
         env: {PYTHONUNBUFFERED: "1"}
-        run: python -m forex_agent data-download --symbols AUDCAD NZDCAD AUDNZD --start ${{ matrix.period.start }} --end ${{ matrix.period.end }} --time-budget-min 300
+        run: |
+          for i in 1 2 3 4 5 6; do
+            python -m forex_agent data-download --symbols AUDCAD NZDCAD AUDNZD --start ${{ matrix.period.start }} --end ${{ matrix.period.end }} --time-budget-min 50 || true
+            S=$(head -1 data/download_status.txt 2>/dev/null || echo "?")
+            echo "Essai $i : $S"
+            [ "$S" = "COMPLETE" ] && break
+            sleep 30
+          done
       - name: Sauvegarder le cache
         if: always()
         uses: actions/cache/save@v4
@@ -61,4 +68,35 @@ jobs:
         with:
           name: crosses-${{ matrix.period.tag }}
           path: out
-          retention-days: 90
+          retention-days: 7
+
+  backtest:
+    needs: export
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: crosses-*
+          path: lab/calm_pairs/data
+          merge-multiple: true
+      - name: Vérifier que les 4 périodes × 3 paires sont complètes
+        run: |
+          N=$(ls lab/calm_pairs/data/*_20*.csv.gz 2>/dev/null | wc -l)
+          echo "Fichiers : $N / 12"
+          [ "$N" -eq 12 ] || { echo "::error::Données incomplètes ($N/12) : backtest non lancé."; exit 1; }
+      - name: Protocole H-C (règles fixées à l'avance)
+        working-directory: lab/calm_pairs
+        run: python calm.py data --out ../../results/calm_pairs
+      - name: Enregistrer les résultats dans la branche
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f results/calm_pairs
+          git commit -qm "results(calm-pairs): backtests H-C (run ${{ github.run_id }})" || exit 0
+          git pull -q --rebase origin "${GITHUB_REF_NAME}" && git push -q origin "HEAD:${GITHUB_REF_NAME}"
