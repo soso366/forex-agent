@@ -6,7 +6,7 @@ import csv
 import json
 from pathlib import Path
 
-from catalog_data import COLLECTIVE2, CTRADER, MQL5_LIST, MYFXBOOK
+from catalog_data import COLLECTIVE2, CTRADER, MQL5_LIST, MYFXBOOK, ZULUTRADE
 
 ROOT = Path(__file__).resolve().parent.parent
 GRID_WORDS = ("martingale", "grille", "moyenne à la baisse", "renfort")
@@ -44,6 +44,12 @@ def main():
         rows[sid] = dict(source="MQL5 Signals (liste)", nom=name, url=f"https://www.mql5.com/en/signals/{sid}", niveau="C",
                          type_compte="non vérifié", anciennete=f"{weeks} semaines", instruments="non vérifié", trades=trades, pf=pf,
                          dd_pct=dd, rendement=f"+{growth} % (croissance totale)", regles_publiques="non lues", risque="", historique="non")
+    for zid, name, weeks, dd, roi, pairs, mgmt in ZULUTRADE:
+        risky = any(w in mgmt for w in ("grille", "martingale", "accumulation", "augmentation", "renforts", "positions multiples", "pas de stop", "jusqu'à"))
+        rows[f"zt-{zid}"] = dict(source="ZuluTrade", nom=name, url=f"https://www.zulutrade.com/trader/{zid}/trading", niveau="B",
+                                 type_compte="réel (indiqué par ZuluTrade)", anciennete=f"{weeks} semaines", instruments=pairs,
+                                 trades=None, pf=None, dd_pct=dd, rendement=(f"{roi} %/an" if roi is not None else ""),
+                                 regles_publiques=f"non publiées ({mgmt})", risque=(mgmt if risky else ""), historique="public sur ZuluTrade (non exporté)")
     for name, sym, roi, age in CTRADER:
         rows[f"ct-{name}"] = dict(source="cTrader Copy", nom=name, url="https://ctrader.com/copy/symbols/eurusd", niveau="D",
                                   type_compte="non indiqué", anciennete=age, instruments=sym, trades=None, pf=None, dd_pct=None,
