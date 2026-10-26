@@ -1,0 +1,698 @@
+{
+  "AUDCAD": {
+    "parametres_defaut": {
+      "k": 2.0,
+      "r": 30,
+      "s": 1.5
+    },
+    "defaut": {
+      "entrainement_base": {
+        "trades": 121,
+        "capital_initial": 10000.0,
+        "capital_final": 8432.01,
+        "rentabilite_pct": -15.68,
+        "drawdown_max_pct": 19.46,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.792,
+        "taux_reussite_pct": 31.4,
+        "gain_moyen_pips": -3.09,
+        "esperance_r": -0.132,
+        "achats": 74,
+        "ventes": 47,
+        "t_stat": -1.17,
+        "commissions": 562.55,
+        "sorties": {
+          "stop": 69,
+          "objectif": 34,
+          "sortie_48h": 18
+        }
+      },
+      "entrainement_stress": {
+        "trades": 121,
+        "capital_initial": 10000.0,
+        "capital_final": 8032.76,
+        "rentabilite_pct": -19.67,
+        "drawdown_max_pct": 22.67,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.744,
+        "taux_reussite_pct": 31.4,
+        "gain_moyen_pips": -3.61,
+        "esperance_r": -0.171,
+        "achats": 74,
+        "ventes": 47,
+        "t_stat": -1.5,
+        "commissions": 705.89,
+        "sorties": {
+          "stop": 69,
+          "objectif": 34,
+          "sortie_48h": 18
+        }
+      },
+      "validation_base": {
+        "trades": 133,
+        "capital_initial": 10000.0,
+        "capital_final": 7084.02,
+        "rentabilite_pct": -29.16,
+        "drawdown_max_pct": 32.16,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.669,
+        "taux_reussite_pct": 31.6,
+        "gain_moyen_pips": -3.4,
+        "esperance_r": -0.248,
+        "achats": 61,
+        "ventes": 72,
+        "t_stat": -2.16,
+        "commissions": 638.41,
+        "sorties": {
+          "stop": 73,
+          "objectif": 36,
+          "sortie_48h": 17,
+          "stop_gap": 7
+        }
+      },
+      "validation_stress": {
+        "trades": 133,
+        "capital_initial": 10000.0,
+        "capital_final": 6683.27,
+        "rentabilite_pct": -33.17,
+        "drawdown_max_pct": 35.55,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.629,
+        "taux_reussite_pct": 31.6,
+        "gain_moyen_pips": -3.91,
+        "esperance_r": -0.288,
+        "achats": 61,
+        "ventes": 72,
+        "t_stat": -2.51,
+        "commissions": 797.63,
+        "sorties": {
+          "stop": 73,
+          "objectif": 36,
+          "sortie_48h": 17,
+          "stop_gap": 7
+        }
+      }
+    },
+    "walk_forward": {
+      "base": {
+        "folds": [
+          {
+            "oos": "2025-09-01→2025-12-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 1.163,
+            "trades": 12,
+            "net": -19.58,
+            "pf": 0.9637400749562746
+          },
+          {
+            "oos": "2025-12-01→2026-03-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 1.21,
+            "trades": 13,
+            "net": -378.1,
+            "pf": 0.5336355442911566
+          },
+          {
+            "oos": "2026-03-01→2026-06-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.962,
+            "trades": 12,
+            "net": 532.81,
+            "pf": 3.1530427804050203
+          },
+          {
+            "oos": "2026-06-01→2026-09-01",
+            "params": {
+              "k": 2.0,
+              "r": 25,
+              "s": 1.5
+            },
+            "is_pf": 1.272,
+            "trades": 18,
+            "net": -856.64,
+            "pf": 0.48858079009441646
+          }
+        ],
+        "trades": 55,
+        "pf": 0.78,
+        "rentabilite_pct": -7.22,
+        "drawdown_max_pct": 10.09,
+        "t_stat": -0.84,
+        "trimestres_positifs": 1
+      },
+      "stress": {
+        "folds": [
+          {
+            "oos": "2025-09-01→2025-12-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 1.107,
+            "trades": 12,
+            "net": -51.88,
+            "pf": 0.9072323861563939
+          },
+          {
+            "oos": "2025-12-01→2026-03-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 1.143,
+            "trades": 13,
+            "net": -407.4,
+            "pf": 0.508905111671159
+          },
+          {
+            "oos": "2026-03-01→2026-06-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.913,
+            "trades": 12,
+            "net": 506.07,
+            "pf": 3.0023427478481906
+          },
+          {
+            "oos": "2026-06-01→2026-09-01",
+            "params": {
+              "k": 2.0,
+              "r": 25,
+              "s": 1.5
+            },
+            "is_pf": 1.191,
+            "trades": 18,
+            "net": -932.38,
+            "pf": 0.4598767618759801
+          }
+        ],
+        "trades": 55,
+        "pf": 0.737,
+        "rentabilite_pct": -8.86,
+        "drawdown_max_pct": 10.48,
+        "t_stat": -1.03,
+        "trimestres_positifs": 1
+      }
+    },
+    "verdict": {
+      "criteres": {
+        "wf_pf_1_20": false,
+        "wf_60_trades": false,
+        "wf_3_trimestres_sur_4": false,
+        "wf_dd_15": true,
+        "wf_t_stat_2": false,
+        "defaut_entrainement_positif": false,
+        "defaut_validation_positif": false,
+        "wf_stress_positif": false
+      },
+      "decision": "REJETÉE"
+    }
+  },
+  "NZDCAD": {
+    "parametres_defaut": {
+      "k": 2.0,
+      "r": 30,
+      "s": 1.5
+    },
+    "defaut": {
+      "entrainement_base": {
+        "trades": 139,
+        "capital_initial": 10000.0,
+        "capital_final": 5913.61,
+        "rentabilite_pct": -40.86,
+        "drawdown_max_pct": 42.72,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.516,
+        "taux_reussite_pct": 27.3,
+        "gain_moyen_pips": -5.73,
+        "esperance_r": -0.369,
+        "achats": 79,
+        "ventes": 60,
+        "t_stat": -3.62,
+        "commissions": 571.18,
+        "sorties": {
+          "stop": 83,
+          "objectif": 30,
+          "sortie_48h": 17,
+          "stop_gap": 9
+        }
+      },
+      "entrainement_stress": {
+        "trades": 139,
+        "capital_initial": 10000.0,
+        "capital_final": 5574.25,
+        "rentabilite_pct": -44.26,
+        "drawdown_max_pct": 45.87,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.484,
+        "taux_reussite_pct": 26.6,
+        "gain_moyen_pips": -6.26,
+        "esperance_r": -0.407,
+        "achats": 79,
+        "ventes": 60,
+        "t_stat": -3.98,
+        "commissions": 713.66,
+        "sorties": {
+          "stop": 83,
+          "objectif": 30,
+          "sortie_48h": 17,
+          "stop_gap": 9
+        }
+      },
+      "validation_base": {
+        "trades": 134,
+        "capital_initial": 10000.0,
+        "capital_final": 5109.81,
+        "rentabilite_pct": -48.9,
+        "drawdown_max_pct": 53.49,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.416,
+        "taux_reussite_pct": 22.4,
+        "gain_moyen_pips": -7.17,
+        "esperance_r": -0.493,
+        "achats": 69,
+        "ventes": 65,
+        "t_stat": -4.73,
+        "commissions": 563.6,
+        "sorties": {
+          "stop": 88,
+          "objectif": 23,
+          "sortie_48h": 12,
+          "stop_gap": 9,
+          "objectif_gap": 2
+        }
+      },
+      "validation_stress": {
+        "trades": 134,
+        "capital_initial": 10000.0,
+        "capital_final": 4771.33,
+        "rentabilite_pct": -52.29,
+        "drawdown_max_pct": 56.37,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.387,
+        "taux_reussite_pct": 22.4,
+        "gain_moyen_pips": -7.71,
+        "esperance_r": -0.533,
+        "achats": 69,
+        "ventes": 65,
+        "t_stat": -5.16,
+        "commissions": 703.92,
+        "sorties": {
+          "stop": 88,
+          "objectif": 23,
+          "sortie_48h": 12,
+          "stop_gap": 9,
+          "objectif_gap": 2
+        }
+      }
+    },
+    "walk_forward": {
+      "base": {
+        "folds": [
+          {
+            "oos": "2025-09-01→2025-12-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.836,
+            "trades": 17,
+            "net": -906.31,
+            "pf": 0.2869576348221418
+          },
+          {
+            "oos": "2025-12-01→2026-03-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.611,
+            "trades": 12,
+            "net": -701.95,
+            "pf": 0.17347480649545816
+          },
+          {
+            "oos": "2026-03-01→2026-06-01",
+            "params": {
+              "k": 2.0,
+              "r": 25,
+              "s": 2.5
+            },
+            "is_pf": 0.845,
+            "trades": 15,
+            "net": -286.52,
+            "pf": 0.630151776056074
+          },
+          {
+            "oos": "2026-06-01→2026-09-01",
+            "params": {
+              "k": 2.0,
+              "r": 25,
+              "s": 2.5
+            },
+            "is_pf": 0.824,
+            "trades": 12,
+            "net": -133.1,
+            "pf": 0.7703729684481736
+          }
+        ],
+        "trades": 56,
+        "pf": 0.416,
+        "rentabilite_pct": -20.28,
+        "drawdown_max_pct": 22.81,
+        "t_stat": -3.22,
+        "trimestres_positifs": 0
+      },
+      "stress": {
+        "folds": [
+          {
+            "oos": "2025-09-01→2025-12-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.796,
+            "trades": 17,
+            "net": -955.25,
+            "pf": 0.27120626534166736
+          },
+          {
+            "oos": "2025-12-01→2026-03-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.577,
+            "trades": 12,
+            "net": -732.24,
+            "pf": 0.1628630048375902
+          },
+          {
+            "oos": "2026-03-01→2026-06-01",
+            "params": {
+              "k": 2.0,
+              "r": 25,
+              "s": 2.5
+            },
+            "is_pf": 0.798,
+            "trades": 15,
+            "net": -319.0,
+            "pf": 0.5994803099206992
+          },
+          {
+            "oos": "2026-06-01→2026-09-01",
+            "params": {
+              "k": 2.0,
+              "r": 25,
+              "s": 2.5
+            },
+            "is_pf": 0.775,
+            "trades": 12,
+            "net": -150.29,
+            "pf": 0.742898706765677
+          }
+        ],
+        "trades": 56,
+        "pf": 0.395,
+        "rentabilite_pct": -21.57,
+        "drawdown_max_pct": 24.05,
+        "t_stat": -3.42,
+        "trimestres_positifs": 0
+      }
+    },
+    "verdict": {
+      "criteres": {
+        "wf_pf_1_20": false,
+        "wf_60_trades": false,
+        "wf_3_trimestres_sur_4": false,
+        "wf_dd_15": false,
+        "wf_t_stat_2": false,
+        "defaut_entrainement_positif": false,
+        "defaut_validation_positif": false,
+        "wf_stress_positif": false
+      },
+      "decision": "REJETÉE"
+    }
+  },
+  "AUDNZD": {
+    "parametres_defaut": {
+      "k": 2.0,
+      "r": 30,
+      "s": 1.5
+    },
+    "defaut": {
+      "entrainement_base": {
+        "trades": 92,
+        "capital_initial": 10000.0,
+        "capital_final": 6185.6,
+        "rentabilite_pct": -38.14,
+        "drawdown_max_pct": 40.8,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.391,
+        "taux_reussite_pct": 23.9,
+        "gain_moyen_pips": -7.48,
+        "esperance_r": -0.514,
+        "achats": 40,
+        "ventes": 52,
+        "t_stat": -4.3,
+        "commissions": 576.2,
+        "sorties": {
+          "stop": 49,
+          "objectif": 19,
+          "stop_gap": 12,
+          "sortie_48h": 12
+        }
+      },
+      "entrainement_stress": {
+        "trades": 92,
+        "capital_initial": 10000.0,
+        "capital_final": 5858.89,
+        "rentabilite_pct": -41.41,
+        "drawdown_max_pct": 43.84,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.358,
+        "taux_reussite_pct": 23.9,
+        "gain_moyen_pips": -8.02,
+        "esperance_r": -0.561,
+        "achats": 40,
+        "ventes": 52,
+        "t_stat": -4.74,
+        "commissions": 722.31,
+        "sorties": {
+          "stop": 49,
+          "objectif": 19,
+          "stop_gap": 12,
+          "sortie_48h": 12
+        }
+      },
+      "validation_base": {
+        "trades": 160,
+        "capital_initial": 10000.0,
+        "capital_final": 4071.73,
+        "rentabilite_pct": -59.28,
+        "drawdown_max_pct": 60.45,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.384,
+        "taux_reussite_pct": 21.2,
+        "gain_moyen_pips": -8.07,
+        "esperance_r": -0.553,
+        "achats": 59,
+        "ventes": 101,
+        "t_stat": -5.43,
+        "commissions": 781.71,
+        "sorties": {
+          "stop": 97,
+          "objectif": 27,
+          "stop_gap": 19,
+          "sortie_48h": 17
+        }
+      },
+      "validation_stress": {
+        "trades": 160,
+        "capital_initial": 10000.0,
+        "capital_final": 3738.25,
+        "rentabilite_pct": -62.62,
+        "drawdown_max_pct": 63.48,
+        "stop_objectif_meme_minute": 0,
+        "entrees_refusees_lot_trop_petit": 0,
+        "profit_factor": 0.357,
+        "taux_reussite_pct": 21.2,
+        "gain_moyen_pips": -8.62,
+        "esperance_r": -0.595,
+        "achats": 59,
+        "ventes": 101,
+        "t_stat": -5.86,
+        "commissions": 969.25,
+        "sorties": {
+          "stop": 97,
+          "objectif": 27,
+          "stop_gap": 19,
+          "sortie_48h": 17
+        }
+      }
+    },
+    "walk_forward": {
+      "base": {
+        "folds": [
+          {
+            "oos": "2025-09-01→2025-12-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.702,
+            "trades": 19,
+            "net": -823.25,
+            "pf": 0.33019443590159964
+          },
+          {
+            "oos": "2025-12-01→2026-03-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.561,
+            "trades": 22,
+            "net": -85.22,
+            "pf": 0.909769317184459
+          },
+          {
+            "oos": "2026-03-01→2026-06-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.585,
+            "trades": 10,
+            "net": -496.69,
+            "pf": 0.2639433079827942
+          },
+          {
+            "oos": "2026-06-01→2026-09-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.505,
+            "trades": 24,
+            "net": -1210.3,
+            "pf": 0.21589680365239544
+          }
+        ],
+        "trades": 75,
+        "pf": 0.404,
+        "rentabilite_pct": -26.15,
+        "drawdown_max_pct": 27.49,
+        "t_stat": -3.76,
+        "trimestres_positifs": 0
+      },
+      "stress": {
+        "folds": [
+          {
+            "oos": "2025-09-01→2025-12-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.649,
+            "trades": 19,
+            "net": -875.83,
+            "pf": 0.31114522837237696
+          },
+          {
+            "oos": "2025-12-01→2026-03-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.527,
+            "trades": 22,
+            "net": -137.03,
+            "pf": 0.8594825296589007
+          },
+          {
+            "oos": "2026-03-01→2026-06-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.546,
+            "trades": 10,
+            "net": -510.52,
+            "pf": 0.25357153822869805
+          },
+          {
+            "oos": "2026-06-01→2026-09-01",
+            "params": {
+              "k": 2.5,
+              "r": 30,
+              "s": 2.5
+            },
+            "is_pf": 0.475,
+            "trades": 24,
+            "net": -1246.54,
+            "pf": 0.20477198435236588
+          }
+        ],
+        "trades": 75,
+        "pf": 0.384,
+        "rentabilite_pct": -27.7,
+        "drawdown_max_pct": 28.85,
+        "t_stat": -4.0,
+        "trimestres_positifs": 0
+      }
+    },
+    "verdict": {
+      "criteres": {
+        "wf_pf_1_20": false,
+        "wf_60_trades": true,
+        "wf_3_trimestres_sur_4": false,
+        "wf_dd_15": false,
+        "wf_t_stat_2": false,
+        "defaut_entrainement_positif": false,
+        "defaut_validation_positif": false,
+        "wf_stress_positif": false
+      },
+      "decision": "REJETÉE"
+    }
+  }
+}
