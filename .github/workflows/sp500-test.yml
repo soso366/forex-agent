@@ -1,0 +1,73 @@
+# Test I01 « zone de bruit » sur le S&P 500 (forex_lab/indices/PROTOCOLE.md).
+# Télécharge les bougies 1 minute Dukascopy (gardées dans le cache d'Actions, jamais publiées), puis enregistre
+# uniquement les résultats calculés. Relance automatique tant que le téléchargement n'est pas complet.
+name: Indices — test zone de bruit S&P 500
+
+on:
+  workflow_dispatch:
+    inputs:
+      attempt: {description: "Numéro de lancement (auto)", required: false, default: "1"}
+  push:
+    branches: [research-forex-oss]
+    paths: [".github/workflows/sp500-test.yml", "forex_lab/indices/RUN"]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: sp500-test
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: research-forex-oss}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q pandas numpy
+      - name: Restaurer le cache Dukascopy
+        uses: actions/cache/restore@v4
+        with:
+          path: data/duka
+          key: duka-sp500-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: duka-sp500-
+      - name: Télécharger / préparer
+        env: {PYTHONUNBUFFERED: "1"}
+        run: python -m forex_lab.indices.duka --budget-min 290
+      - name: Sauvegarder le cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/duka
+          key: duka-sp500-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Calcul de la stratégie
+        id: calc
+        run: |
+          if [ "$(head -1 data/status.txt)" = "COMPLETE" ]; then
+            python -m forex_lab.indices.noise --session data/session.csv.gz | tee data/sortie.txt
+            echo "done=1" >> $GITHUB_OUTPUT
+          fi
+      - name: Enregistrer les résultats
+        if: steps.calc.outputs.done == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull -q --rebase origin research-forex-oss || true
+          git add forex_lab/indices/resultats.json
+          git commit -m "result(indices): test I01 zone de bruit S&P 500 [skip ci]" || exit 0
+          git push origin HEAD:research-forex-oss
+      - name: Relancer si incomplet
+        if: always() && steps.calc.outputs.done != '1'
+        env: {GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"}
+        run: |
+          n=${{ inputs.attempt || '1' }}
+          if [ "$n" -lt 8 ]; then
+            gh workflow run sp500-test.yml --repo "$GITHUB_REPOSITORY" --ref research-forex-oss -f attempt=$((n + 1))
+            echo "::notice::téléchargement incomplet, relance n° $((n + 1))"
+          else
+            echo "::error::téléchargement toujours incomplet après $n lancements"; exit 1
+          fi
