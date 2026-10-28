@@ -79,7 +79,7 @@ jobs:
         id: calc
         run: |
           ls out
-          n=$(cat out/status_*.txt 2>/dev/null | grep -c COMPLETE || true)
+          n=$(cat out/status_*.txt 2>/dev/null | grep -cx COMPLETE || true)
           echo "::notice::années complètes : $n / 12"
           if [ "$n" = 12 ]; then
             python - <<'EOF'

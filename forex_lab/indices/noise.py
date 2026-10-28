@@ -40,7 +40,8 @@ def last_valid(row: np.ndarray) -> float:
     return row[ok[-1]] if len(ok) else np.nan
 
 
-def simulate(days, A, slip: float):
+def simulate(days, A, slip: float, mid: bool = False):
+    """mid=True : diagnostic sans aucun frais (exécution au prix milieu), information seulement."""
     nd = len(days)
     open_ = A["mo"][:, 0]
     close = np.array([last_valid(A["mc"][i]) for i in range(nd)])
@@ -82,7 +83,10 @@ def simulate(days, A, slip: float):
                 continue
             s = sig_col.mean()
             ub, lb, vw = top * (1 + s), bot * (1 - s), vwap[i, T - 1]
-            buy_px, sell_px = A["ao"][i, T] + slip, A["bo"][i, T] - slip
+            if mid:
+                buy_px = sell_px = A["mo"][i, T]
+            else:
+                buy_px, sell_px = A["ao"][i, T] + slip, A["bo"][i, T] - slip
             stopped = 0
             if pos > 0 and p < max(ub, vw):
                 close_pos(sell_px); stopped = 1
@@ -96,7 +100,10 @@ def simulate(days, A, slip: float):
         if pos != 0:
             ok = np.where(~np.isnan(A["bc"][i]))[0]
             k = ok[-1]
-            close_pos(A["bc"][i, k] - slip if pos > 0 else A["ac"][i, k] + slip)
+            if mid:
+                close_pos(A["mc"][i, k])
+            else:
+                close_pos(A["bc"][i, k] - slip if pos > 0 else A["ac"][i, k] + slip)
         rec.update(r=float(sum(trades)), trades=len(trades), gagnants=int(sum(t > 0 for t in trades)))
         out.append(rec)
     res = pd.DataFrame(out).set_index("jour")
@@ -140,6 +147,8 @@ def run(session: Path) -> dict:
     for k, s in SLIP.items():
         sims[k], nov = simulate(days, A, s)
     std, stress = sims["standard"], sims["stress"]
+    g, _ = simulate(days, A, 0.0, mid=True)
+    gross = g[g["actif"]]
     act = std[std["actif"]]
     rep = {"repro": stats(window(act, *REPRO)["r"], window(act, *REPRO)["trades"], window(act, *REPRO)["gagnants"]),
            "post": stats(window(act, *POST)["r"], window(act, *POST)["trades"], window(act, *POST)["gagnants"]),
@@ -162,6 +171,7 @@ def run(session: Path) -> dict:
                      "indice_pct": round(100 * float((1 + sub["indice"].fillna(0)).prod() - 1), 1)}
     return {"protocole": "forex_lab/indices/PROTOCOLE.md", "jours_sans_volume": nov, "jours": len(days),
             "officiel_1x": rep, "criteres": crit, "verdict": verdict,
+            "info_sans_frais": {"repro": stats(window(gross, *REPRO)["r"]), "post": stats(window(gross, *POST)["r"])},
             "info_dynamique": {"repro": stats(window(act, *REPRO)["r_dyn"]), "post": stats(window(act, *POST)["r_dyn"])},
             "info_indice_achete_garde": {"repro": stats(window(act, *REPRO)["indice"]), "post": stats(window(act, *POST)["indice"])},
             "par_annee": yearly,
