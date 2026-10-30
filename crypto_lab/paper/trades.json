@@ -7,5 +7,23 @@
   "resultat_pct": -0.11,
   "resultat_usdt": -0.06,
   "sortie": "roi"
+ },
+ {
+  "paire": "DOT/USDT",
+  "ouverture": "2026-10-29 20:05",
+  "fermeture": "2026-10-29 20:50",
+  "duree_min": 45,
+  "resultat_pct": -6.3,
+  "resultat_usdt": -3.15,
+  "sortie": "roi"
+ },
+ {
+  "paire": "BNB/USDT",
+  "ouverture": "2026-10-29 20:40",
+  "fermeture": "2026-10-29 21:15",
+  "duree_min": 35,
+  "resultat_pct": 1.8,
+  "resultat_usdt": 0.89,
+  "sortie": "roi"
  }
 ]
