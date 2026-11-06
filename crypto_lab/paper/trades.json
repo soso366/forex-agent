@@ -25,5 +25,14 @@
   "resultat_pct": 1.8,
   "resultat_usdt": 0.89,
   "sortie": "roi"
+ },
+ {
+  "paire": "ATOM/USDT",
+  "ouverture": "2026-11-05 15:25",
+  "fermeture": "2026-11-05 16:10",
+  "duree_min": 45,
+  "resultat_pct": 0.5,
+  "resultat_usdt": 0.25,
+  "sortie": "roi"
  }
 ]
