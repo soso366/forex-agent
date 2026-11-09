@@ -34,5 +34,23 @@
   "resultat_pct": 0.5,
   "resultat_usdt": 0.25,
   "sortie": "roi"
+ },
+ {
+  "paire": "ETH/USDT",
+  "ouverture": "2026-11-08 21:55",
+  "fermeture": "2026-11-08 22:40",
+  "duree_min": 45,
+  "resultat_pct": -1.89,
+  "resultat_usdt": -0.94,
+  "sortie": "roi"
+ },
+ {
+  "paire": "LINK/USDT",
+  "ouverture": "2026-11-08 21:55",
+  "fermeture": "2026-11-08 22:40",
+  "duree_min": 45,
+  "resultat_pct": -0.57,
+  "resultat_usdt": -0.28,
+  "sortie": "roi"
  }
 ]
