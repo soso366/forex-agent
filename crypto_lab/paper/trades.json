@@ -52,5 +52,23 @@
   "resultat_pct": -0.57,
   "resultat_usdt": -0.28,
   "sortie": "roi"
+ },
+ {
+  "paire": "ADA/USDT",
+  "ouverture": "2026-11-14 20:55",
+  "fermeture": "2026-11-14 21:40",
+  "duree_min": 45,
+  "resultat_pct": -0.33,
+  "resultat_usdt": -0.17,
+  "sortie": "roi"
+ },
+ {
+  "paire": "AVAX/USDT",
+  "ouverture": "2026-11-14 20:55",
+  "fermeture": "2026-11-14 21:40",
+  "duree_min": 45,
+  "resultat_pct": 0.18,
+  "resultat_usdt": 0.09,
+  "sortie": "roi"
  }
 ]
