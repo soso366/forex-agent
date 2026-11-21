@@ -1,21 +1,25 @@
 # Paper trading — CombinedBinHAndClucV5_cap45
 
-Départ : 2026-10-22 · mis à jour : 2026-11-20 07:31 UTC (dernière bougie 2026-11-20 07:25) · 29.3 jours
+Départ : 2026-10-22 · mis à jour : 2026-11-21 07:26 UTC (dernière bougie 2026-11-21 07:20) · 30.3 jours
 
 Simulation uniquement, aucun ordre réel. Capital 150 USDT, 2 positions max, mise 50 USDT, frais 0,10 %/ordre.
 
 | | Paper trading | Attendu (backtest) |
 |---|---|---|
-| Capital | 146.63 USDT (avec glissement : 146.23) | — |
-| Trades terminés | 8 (0.27 / jour) | ≈ 0.69 / jour |
-| Taux de gain | 37.5 % | ≈ 68 % |
-| Gain moyen par trade | -0.94 % | ≈ 0.35 % |
+| Capital | 143.37 USDT (avec glissement : 142.77) | — |
+| Trades terminés | 12 (0.4 / jour) | ≈ 0.69 / jour |
+| Taux de gain | 25.0 % | ≈ 68 % |
+| Gain moyen par trade | -1.205 % | ≈ 0.35 % |
 | Positions ouvertes | 0 | — |
 
 ## Journal
 
 | Paire | Ouverture (UTC) | Fermeture (UTC) | Durée | Résultat | USDT | Sortie |
 |---|---|---|---|---|---|---|
+| BTC/USDT | 2026-11-21 03:35 | 2026-11-21 04:20 | 45 min | -2.19 % | -1.09 | roi |
+| ETH/USDT | 2026-11-21 03:35 | 2026-11-21 04:20 | 45 min | -0.63 % | -0.31 | roi |
+| ETH/USDT | 2026-11-20 15:20 | 2026-11-20 16:05 | 45 min | -2.67 % | -1.33 | roi |
+| ADA/USDT | 2026-11-20 15:20 | 2026-11-20 16:05 | 45 min | -1.05 % | -0.53 | roi |
 | ADA/USDT | 2026-11-14 20:55 | 2026-11-14 21:40 | 45 min | -0.33 % | -0.17 | roi |
 | AVAX/USDT | 2026-11-14 20:55 | 2026-11-14 21:40 | 45 min | 0.18 % | 0.09 | roi |
 | ETH/USDT | 2026-11-08 21:55 | 2026-11-08 22:40 | 45 min | -1.89 % | -0.94 | roi |

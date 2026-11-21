@@ -70,5 +70,41 @@
   "resultat_pct": 0.18,
   "resultat_usdt": 0.09,
   "sortie": "roi"
+ },
+ {
+  "paire": "ETH/USDT",
+  "ouverture": "2026-11-20 15:20",
+  "fermeture": "2026-11-20 16:05",
+  "duree_min": 45,
+  "resultat_pct": -2.67,
+  "resultat_usdt": -1.33,
+  "sortie": "roi"
+ },
+ {
+  "paire": "ADA/USDT",
+  "ouverture": "2026-11-20 15:20",
+  "fermeture": "2026-11-20 16:05",
+  "duree_min": 45,
+  "resultat_pct": -1.05,
+  "resultat_usdt": -0.53,
+  "sortie": "roi"
+ },
+ {
+  "paire": "BTC/USDT",
+  "ouverture": "2026-11-21 03:35",
+  "fermeture": "2026-11-21 04:20",
+  "duree_min": 45,
+  "resultat_pct": -2.19,
+  "resultat_usdt": -1.09,
+  "sortie": "roi"
+ },
+ {
+  "paire": "ETH/USDT",
+  "ouverture": "2026-11-21 03:35",
+  "fermeture": "2026-11-21 04:20",
+  "duree_min": 45,
+  "resultat_pct": -0.63,
+  "resultat_usdt": -0.31,
+  "sortie": "roi"
  }
 ]
