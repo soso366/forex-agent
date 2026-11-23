@@ -1,13 +1,13 @@
 # Paper trading — CombinedBinHAndClucV5_cap45
 
-Départ : 2026-10-22 · mis à jour : 2026-11-22 07:08 UTC (dernière bougie 2026-11-22 07:00) · 31.3 jours
+Départ : 2026-10-22 · mis à jour : 2026-11-23 07:54 UTC (dernière bougie 2026-11-23 07:45) · 32.3 jours
 
 Simulation uniquement, aucun ordre réel. Capital 150 USDT, 2 positions max, mise 50 USDT, frais 0,10 %/ordre.
 
 | | Paper trading | Attendu (backtest) |
 |---|---|---|
 | Capital | 143.37 USDT (avec glissement : 142.77) | — |
-| Trades terminés | 12 (0.38 / jour) | ≈ 0.69 / jour |
+| Trades terminés | 12 (0.37 / jour) | ≈ 0.69 / jour |
 | Taux de gain | 25.0 % | ≈ 68 % |
 | Gain moyen par trade | -1.205 % | ≈ 0.35 % |
 | Positions ouvertes | 0 | — |
